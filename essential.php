@@ -91,7 +91,7 @@ function getNextGroup($curGroup){
 }*/
 function printNextGroupOptions($curGroup){
   $groupArray = getNextGroup($curGroup);
-  if($groupArray == -1)
+    if($groupArray == -1)
     die("No valid group options found.\n");
   $groupKeys = array_keys($groupArray);
   
@@ -101,5 +101,29 @@ function printNextGroupOptions($curGroup){
   }
 }
 
+function generate_timeslot($myid,$default=false){
+        $st = "<select name='". $myid . "' id='". $myid."' >";
+        $st .= "<option value='' id='fg'>Please select</option>";
+        for($i=0;$i<24;$i++){
+                $dig=0;
+                $k = $i; 
+                while($k>0){
+                        $k/=10;
+                        $dig++;
+                }   
+                $j = $i.'';
+                if($i<10){
+                        $j = '0' . $j; 
+                }   
+                $j1 = $j.":00:00";
+                $j2 = $j.":30:00";
+                $st .= "<option value='" . $j1 . "' name='" . $j1 . "' id='" .$j1."'>".$j1."</option>";
+                $st .= "<option value='" . $j2 . "' name='" . $j2 . "' id='" .$j2."'>".$j2."</option>";
 
+        }   
+                $st .= "<option value='23:59:59' name='23:59:59' id='23:59:59'>23:59:59</option>";
+
+        $st .= "</select>";
+        return $st;
+}
 ?>
