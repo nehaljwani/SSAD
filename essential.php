@@ -26,7 +26,6 @@ function execute($query){
 	}   
 	$result = mysql_query($query,$con);
 	if(!$result){
-		header("location:error.php?msg=Cannot execute");
 		die("Cannot execute the query".$query);
 	}   
 	else{
