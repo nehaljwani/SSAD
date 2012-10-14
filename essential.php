@@ -5,7 +5,7 @@ $groups = array ('Student', 'Parliament', 'Academic Office', 'SLC Chair', 'Dean 
 
 function dbconnect(){
         GLOBAL $con;
-        $con = mysql_connect('','','');
+        $con = mysql_connect('172.17.16.48','','');
         if(!$con){
                 die("Error in connection!");
         }   
@@ -86,4 +86,20 @@ function printNextGroupOptions($curGroup){
 }
 
 
+function getRequestsByDate($groupID){
+  dbconnect();
+  $requests = mysql_query("SELECT * FROM Requests where concernedAdmin = $groupID");
+  return $requests;
+  
+}
+
+//Prints reqNo, creator, eventStartDate, eventStartTime, eventTitle,  
+function printTable($request){
+  while($row = mysql_fetch_assoc($request)){
+    //print_r($row);
+    echo "<tr><td>{$row['reqNo']}</td><td>{$row['creator']}</td><td>{$row['eventTitle']}</td><td>{$row['eventStartDate']}</td><td>{$row['eventStartTime']}</td><td>{$row['reqType']}</td></tr>\n";
+    //echo "<tr><td>{$row['reqNo']}</td></tr>\n";
+  }
+}
+printTable(getRequestsByDate(1));
 ?>
