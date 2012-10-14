@@ -18,6 +18,23 @@ function dbconnect(){
         }   
 }
 
+function execute($query){
+	GLOBAL $con;
+
+	if($con == 0 ){
+		dbconnect();
+	}   
+	$result = mysql_query($query,$con);
+	if(!$result){
+		header("location:error.php?msg=Cannot execute");
+		die("Cannot execute the query".$query);
+	}   
+	else{
+		return $result; 
+	}   
+}
+
+
 /*Returns an array containing the forwarding options available to each user. 
  *Not to be used directly, the printNextGroupOptions does the printing.
  *Javascript to be used to ensure that if time > 5pm, forwarding options are 
