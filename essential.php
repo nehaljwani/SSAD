@@ -101,9 +101,10 @@ function printNextGroupOptions($curGroup){
   }
 }
 
-function generate_timeslot($myid,$default=false){
+//To make a drop down list easily
+function generateTimeSlot($myid,$default=false){
         $st = "<select name='". $myid . "' id='". $myid."' >";
-        $st .= "<option value='' id='fg'>Please select</option>";
+        $st .= "<option value='00:00:00' id='fg'>Please select</option>";
         for($i=0;$i<24;$i++){
                 $dig=0;
                 $k = $i; 
@@ -123,6 +124,32 @@ function generate_timeslot($myid,$default=false){
         }   
                 $st .= "<option value='23:59:59' name='23:59:59' id='23:59:59'>23:59:59</option>";
 
+        $st .= "</select>";
+        return $st;
+}
+
+function generateRoomList($myid){
+	$query="SELECT roomName,B.buildingName FROM Room R, Building B WHERE R.buildingName=B.buildId;";
+	dbconnect();
+	$result=execute($query);
+        $st = "<select name='". $myid . "' class='". $myid."' >";
+        $st .= "<option value='' id='fg'>Please select</option>";
+	while($row = mysql_fetch_array($result)){
+		$st .= "<option value='" . $row['roomName'] . "' id='" .$row['buildingName']."'>".$row['roomName']."</option>";
+	}
+        $st .= "</select>";
+        return $st;
+}
+
+function generateBuildingList($myid){
+	$query="SELECT buildId,buildingName FROM Building;";
+	dbconnect();
+	$result=execute($query);
+        $st = "<select name='". $myid . "' id='". $myid."' >";
+        $st .= "<option value='' id='fg'>Please select</option>";
+	while($row = mysql_fetch_array($result)){
+		$st .= "<option value='" . $row['buildingName'] . "' id='" .$row['buildId']."'>".$row['buildingName']."</option>";
+	}
         $st .= "</select>";
         return $st;
 }
