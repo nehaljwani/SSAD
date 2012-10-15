@@ -34,7 +34,7 @@ $st =  generate_list($q,$x);
 <html>
 <title>Add room</title>
 <head>
-<script type='text/javascript' src='livevalidation_standalone.js'></script>
+<script type='text/javascript' src='/js/livevalidation_standalone.js'></script>
 </head>
 <body>
 
