@@ -221,6 +221,24 @@ function escape($x){
 	$x = mysql_real_escape_string($x);
 	return ($x);
 }
+function arrayToCSV($array)
+{
+  $out="";
+  foreach($array as $element){
+    if($out == "") 
+      $out = $element;
+    else
+      $out=$out.",".$element;
+  }
+  return $out;
+}
+function CSVToArray($string){
+  return explode(',', $string);
+}
+
+function checkConflicts(){
+        //ToDo
+}
 
 //weeklyRequestToInstance(NULL, "2012-01-02", "2012-02-03", array("1", "2", "3", "5", "6", "7"));
 ?>
