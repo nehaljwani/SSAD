@@ -5,7 +5,7 @@ $groups = array ('Student', 'Parliament', 'Academic Office', 'SLC Chair', 'Dean 
 
 function dbconnect(){
         GLOBAL $con;
-        $con = mysql_connect('172.17.16.48','','');
+        $con = mysql_connect('10.1.39.203','','');
         if(!$con){
                 die("Error in connection!");
         }   
