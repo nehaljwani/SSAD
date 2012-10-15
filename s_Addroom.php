@@ -1,5 +1,6 @@
 <?php
-include("shubham_essential.php");
+
+include("essential.php");
 dbconnect();
 if(isset($_GET['msg'])){
                 echo "<p style='background-color:#1C478E;font-size:14pt;color:#FFFFFF;text-align:right;'>" . $_GET['msg'] . "</p>";
@@ -27,6 +28,8 @@ else{
 $q = "select buildingName from Building";
 $x = "buildingName";
 $st =  generate_list($q,$x);
+//require_once('footer.php');
+
 
 ?>
 
@@ -37,6 +40,7 @@ $st =  generate_list($q,$x);
 <script type='text/javascript' src='/js/livevalidation_standalone.js'></script>
 </head>
 <body>
+<?php require_once('header.php'); ?>
 
 <form name='a_uroom' action=s_addroom2.php method='post'>
 <table align='center'>
@@ -87,5 +91,6 @@ select Building: </td>
                            <td><?php echo $list2 ?></td></tr>
                            <tr><td></td><td><input type='submit' name='deleteroom' value='Delete'/i></td></tr>
                 </table></form>
-
+<?php require_once('footer.php'); ?>
+</body>
 </html>

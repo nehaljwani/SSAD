@@ -1,5 +1,5 @@
 <?php
-include("shubham_essential.php");
+include("essential.php");
 dbconnect();
 if(isset($_GET['msg'])){
         echo "<p style='background-color:#1C478E;font-size:14pt;color:#FFFFFF;text-align:right;'>" . $_GET['msg'] . "</p>";
@@ -18,6 +18,8 @@ $list1=generate_list($query,$r);
 <script type='text/javascript' src='/js/livevalidation_standalone.js'></script>
 </head>
 <body>
+<?php require_once('header.php'); ?>
+
 <form name='insert' action='s_addbuild2.php' method='post'>
 <h2 align='center'>Add Building</h2>
 <table align='center'>
@@ -43,6 +45,8 @@ Building Name: </td>
 </tr><tr><td></td><td><input type='submit' name='delete' value='Delete' /></td>
 </tr></table>
 </form>
+<?php require_once('footer.php'); ?>
+
 </body>
 </html>
 
