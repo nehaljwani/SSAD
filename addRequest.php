@@ -38,10 +38,10 @@ if($_POST['concernedPEmail']==''){
 	$concernedPPhone=$_POST["creatorPhone"];
 }
 
-$days="";
+$eventDays="";
 if(isset($_POST["day"])){
 	foreach($_POST["day"] as $day){
-		$days=$days.$day.",";
+		$eventDays=$eventDays.$day.",";
 	}
 }
 
