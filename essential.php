@@ -18,6 +18,22 @@ function dbconnect(){
         }   
 }
 
+function execute($query){
+	GLOBAL $con;
+
+	if($con == 0 ){
+		dbconnect();
+	}   
+	$result = mysql_query($query,$con);
+	if(!$result){
+		die("Cannot execute the query".$query);
+	}   
+	else{
+		return $result; 
+	}   
+}
+
+
 /*Returns an array containing the forwarding options available to each user. 
  *Not to be used directly, the printNextGroupOptions does the printing.
  *Javascript to be used to ensure that if time > 5pm, forwarding options are 
@@ -75,7 +91,7 @@ function getNextGroup($curGroup){
 }*/
 function printNextGroupOptions($curGroup){
   $groupArray = getNextGroup($curGroup);
-  if($groupArray == -1)
+    if($groupArray == -1)
     die("No valid group options found.\n");
   $groupKeys = array_keys($groupArray);
   
@@ -85,21 +101,56 @@ function printNextGroupOptions($curGroup){
   }
 }
 
+//To make a drop down list easily
+function generateTimeSlot($myid,$default=false){
+        $st = "<select name='". $myid . "' id='". $myid."' >";
+        $st .= "<option value='00:00:00' id='fg'>Please select</option>";
+        for($i=0;$i<24;$i++){
+                $dig=0;
+                $k = $i; 
+                while($k>0){
+                        $k/=10;
+                        $dig++;
+                }   
+                $j = $i.'';
+                if($i<10){
+                        $j = '0' . $j; 
+                }   
+                $j1 = $j.":00:00";
+                $j2 = $j.":30:00";
+                $st .= "<option value='" . $j1 . "' name='" . $j1 . "' id='" .$j1."'>".$j1."</option>";
+                $st .= "<option value='" . $j2 . "' name='" . $j2 . "' id='" .$j2."'>".$j2."</option>";
 
-function getRequestsByDate($groupID){
-  dbconnect();
-  $requests = mysql_query("SELECT * FROM Requests where concernedAdmin = $groupID");
-  return $requests;
-  
+        }   
+                $st .= "<option value='23:59:59' name='23:59:59' id='23:59:59'>23:59:59</option>";
+
+        $st .= "</select>";
+        return $st;
 }
 
-//Prints reqNo, creator, eventStartDate, eventStartTime, eventTitle,  
-function printTable($request){
-  while($row = mysql_fetch_assoc($request)){
-    //print_r($row);
-    echo "<tr><td>{$row['reqNo']}</td><td>{$row['creator']}</td><td>{$row['eventTitle']}</td><td>{$row['eventStartDate']}</td><td>{$row['eventStartTime']}</td><td>{$row['reqType']}</td></tr>\n";
-    //echo "<tr><td>{$row['reqNo']}</td></tr>\n";
-  }
+function generateRoomList($myid){
+	$query="SELECT roomName,B.buildingName FROM Room R, Building B WHERE R.buildingName=B.buildId;";
+	dbconnect();
+	$result=execute($query);
+        $st = "<select name='". $myid . "' class='". $myid."' >";
+        $st .= "<option value='' id='fg'>Please select</option>";
+	while($row = mysql_fetch_array($result)){
+		$st .= "<option value='" . $row['roomName'] . "' id='" .$row['buildingName']."'>".$row['roomName']."</option>";
+	}
+        $st .= "</select>";
+        return $st;
 }
-printTable(getRequestsByDate(1));
+
+function generateBuildingList($myid){
+	$query="SELECT buildId,buildingName FROM Building;";
+	dbconnect();
+	$result=execute($query);
+        $st = "<select name='". $myid . "' id='". $myid."' >";
+        $st .= "<option value='' id='fg'>Please select</option>";
+	while($row = mysql_fetch_array($result)){
+		$st .= "<option value='" . $row['buildingName'] . "' id='" .$row['buildId']."'>".$row['buildingName']."</option>";
+	}
+        $st .= "</select>";
+        return $st;
+}
 ?>
