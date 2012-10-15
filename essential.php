@@ -264,6 +264,24 @@ function escape($x){
 	$x = mysql_real_escape_string($x);
 	return ($x);
 }
+function arrayToCSV($array)
+{
+  $out="";
+  foreach($array as $element){
+    if($out == "") 
+      $out = $element;
+    else
+      $out=$out.",".$element;
+  }
+  return $out;
+}
+function CSVToArray($string){
+  return explode(',', $string);
+}
+
+function checkConflicts(){
+        //ToDo
+}
 
 function instanceClash($startDate,$endDate,$startTime,$endTime){
 	dbconnect();
