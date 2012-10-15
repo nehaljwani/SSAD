@@ -276,16 +276,23 @@ function arrayToCSV($array)
   return $out;
 }
 function CSVToArray($string){
-  return explode(',', $string);
+  if(substr($string,-1)==','){
+	 $string=substr($string, 0, -1);
+  }
+  $result=explode(',', $string);
+  if($result[0]!='')
+	  return $result;
+  else
+	  return array();
 }
 
 function getConflictingRequests($date, $room){
         //ToDo
 }
 
-function instanceClash($startDate,$endDate,$startTime,$endTime){
+function instanceClash($startDate,$endDate,$startTime,$endTime,$room){
 	dbconnect();
-	$query="SELECT * FROM Instances WHERE eventStartDate BETWEEN '".$startDate."' AND '".$endDate."' AND (eventStartTime <= '".$startDate."' AND eventEndTime >= '".$endDate."') || eventStartTime <= '".$endTime."' AND eventEndTime >= '".$endTime."' || eventStartTime >= '".$startTime."' AND eventEndTime <= '".$endTime."';";
+	$query="SELECT * FROM Instances WHERE room=".$room." AND eventStartDate BETWEEN '".$startDate."' AND '".$endDate."' AND ((eventStartTime <= '".$startDate."' AND eventEndTime >= '".$endDate."') || eventStartTime <= '".$endTime."' AND eventEndTime >= '".$endTime."' || eventStartTime >= '".$startTime."' AND eventEndTime <= '".$endTime.")';";
 	$result=execute($query);
 	$num=mysql_num_rows($result);
 	if($num==0){
@@ -325,7 +332,7 @@ function forward($name,$mail_to,$room_no,$request_id,$original_mail_id)
 }
 
 
-if($_POST['check']==1)
+/*if($_POST['check']==1)
 {
 accept("Nehal","nehal.wani@students.iiit.ac.in","303","1");
 }
@@ -337,6 +344,7 @@ if($_POST['check']==3)
 {
 forward("shubham","nehal.wani@students.iiit.ac.in","303","1","shubham.sangal@students.iiit.ac.in");
 }
+ */
 
 ?>
 
