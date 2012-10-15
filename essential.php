@@ -279,7 +279,7 @@ function CSVToArray($string){
   return explode(',', $string);
 }
 
-function checkConflicts(){
+function getConflictingRequests($date, $room){
         //ToDo
 }
 
