@@ -4,7 +4,7 @@ if(isset($_GET['st']))
     $mstart=$_GET['st'];      
 else
     $mstart=0;
-$lim=1;
+$lim=10;
 $table="Requests";
 dbconnect();          //connecting db
 $query="SELECT reqNo,creator,room,eventTitle,reqDate,eventStartTime,reqType FROM $table"; //select table
@@ -25,7 +25,7 @@ while ($row=mysql_fetch_row($result)){                 //fetching rows from resu
 		$i++;
 }
 ?>
-</tr></table>
+</tr>
 <?php
 }
 mysql_close();   //closing
