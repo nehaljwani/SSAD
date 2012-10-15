@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script type='text/javascript' src='js/livevalidation_standalone.js'></script>
 <script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
 <script language="javascript" type="text/javascript" src="js/calendarDateInput.js"></script>
 <script language="javascript" type="text/javascript" src="js/addRequest.js"></script>
@@ -18,7 +19,7 @@
 	<tr class="CP"><td> Email: </td><td><input type="email" name="concernedPEmail" id="CP2" autocomplete="off"><br></tr>
 	<tr class="CP"><td> Phone No:</td> <td><input type="text" name="concernedPPhone" id="CP3" maxlength=10><br></tr>
 	<tr><td> Details of Event:</td><td></tr>
-	<tr><td> Title:</td><td><input type="text" name="eventTitle"><br></tr>
+	<tr><td> Title:</td><td><input type="text" name="eventTitle" id="ti1"><br></tr>
 	<tr><td> Select Building: </td><td> 
 	<?php echo generateBuildingList("buildingName"); ?>
 	</td></tr>
@@ -53,6 +54,18 @@
 	<textarea id='description'  name='eventDesc'/></textarea></tr>
 	<tr><td><input type='submit' name='submit' id='submit' class='center' value='BookRoom'/></td>
 	</table>
+	<script type="text/javascript">
+	var f21 = new LiveValidation('P1');
+	f21.add( Validate.Presence );
+	var f11 = new LiveValidation('P2');
+	f11.add( Validate.Email );
+	var f10 = new LiveValidation('P3');
+	f10.add( Validate.Presence );
+	f10.add( Validate.Numericality );
+	var f12 = new LiveValidation('ti1');
+	f12.add( Validate.Presence );
+	</script>
+
 	</form>	
 </body>
 </html>
