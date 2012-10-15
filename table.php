@@ -34,7 +34,17 @@ while ($row=mysql_fetch_row($result)){                 //fetching rows from resu
                 $i=0;
                 foreach($row as $col){        //for columns printing purposes
                         ?>  
-                <td><?php echo $col; echo " "; ?></td>
+                <td><?php 
+if($i==0)
+{
+echo "<a href='req_detail.php?id=$col'>$col</a>";
+}
+else
+{
+echo $col; echo " ";
+} 
+		//echo $i;
+		?></td>
                 <?php
                 $i++;
 }
