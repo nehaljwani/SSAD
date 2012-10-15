@@ -38,7 +38,14 @@ if($_POST['concernedPEmail']==''){
 	$concernedPPhone=$_POST["creatorPhone"];
 }
 
-$query="INSERT INTO Requests(reqNo, hash, creator, creatorEmail, creatorPhone, concernedPName, concernedPEmail, concernedPPhone, appStatus, reqGId, reqDate, eventStartDate, eventEndDate, eventStartTime, eventEndTime, eventTitle, eventDesc, concernedAdmin, room, reqType) VALUES(
+$days="";
+if(isset($_POST["day"])){
+	foreach($_POST["day"] as $day){
+		$days=$days.$day.",";
+	}
+}
+
+$query="INSERT INTO Requests(reqNo, hash, creator, creatorEmail, creatorPhone, concernedPName, concernedPEmail, concernedPPhone, appStatus, reqGId, reqDate, eventStartDate, eventEndDate, eventStartTime, eventEndTime, eventTitle, eventDesc, eventDays,concernedAdmin, room, reqType) VALUES(
 	'',
 	'".$hash."',
 	'".$creator."',
@@ -56,43 +63,31 @@ $query="INSERT INTO Requests(reqNo, hash, creator, creatorEmail, creatorPhone, c
 	'".$eventEndTime."',
 	'".$eventTitle."',
 	'".$eventDesc."',
+	'".$eventDays."',
 	'".$concernedAdmin."',
 	'".$room."',
 	'".$reqType."'
 );";
-execute($query);  //Adding 2 Requests Table
 
-if(!isset($_POST["day"])){
-	$_POST["day"]=array((string)((int)dateToDay($eventStartDate)+1));
+$result=instanceClash($eventStartDate,$eventEndDate,$eventStartTime,$eventEndTime);
+if($result){
+	echo "Sorry! your request clashes with the following events:";
+	$table=array();
+	while($row=mysql_fetch_array($result, MYSQL_ASSOC)){
+		$table[]=$row;
+	}
+	print_r($table);
+}
+else{
+	//Adding 2 Requests Table
+	if(execute($query)){
+		echo "Successfull";
+	}	
+	else{
+		die("Your code is crappy!");
+	}
 }
 
-echo $query;
-$events=weeklyRequestToInstance($eventStartDate,$eventEndDate,$_POST["day"]);
 
-foreach($events as $instanceDate){
-	$query="INSERT INTO Instances(reqNo, hash, creator, creatorEmail, creatorPhone, concernedPName, concernedPEmail, concernedPPhone, appStatus, reqGId, reqDate, eventStartDate, eventEndDate, eventStartTime, eventEndTime, eventTitle, eventDesc, concernedAdmin, room, reqType) VALUES(
-		'',
-		'".$hash."',
-		'".$creator."',
-		'".$creatorEmail."',
-		'".$creatorPhone."',
-		'".$concernedPName."',
-		'".$concernedPEmail."',
-		'".$concernedPPhone."',
-		'".$appStatus."',
-		'".$reqGId."',
-		'".$reqDate."',
-		'".$instanceDate."',
-		'".$instanceDate."',
-		'".$eventStartTime."',
-		'".$eventEndTime."',
-		'".$eventTitle."',
-		'".$eventDesc."',
-		'".$concernedAdmin."',
-		'".$room."',
-		'".$reqType."'
-	);";
-	execute($query);
-}
 
 ?>
