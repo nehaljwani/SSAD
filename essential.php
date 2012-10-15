@@ -8,7 +8,7 @@ date_default_timezone_set("Asia/Calcutta") or die("Time Zone setting issues\n");
 
 function dbconnect(){
         GLOBAL $con;
-        $con = mysql_connect('','','');
+        $con = mysql_connect('10.1.39.203','','');
         if(!$con){
                 die("Error in connection!");
         }   
