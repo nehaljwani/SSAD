@@ -59,10 +59,16 @@
 	<script type="text/javascript">
 	var f21 = new LiveValidation('P1');
 	f21.add( Validate.Presence );
+	</script>
+	<script type="text/javascript">
 	var f11 = new LiveValidation('P2');
-	f11.add( Validate.Email );
+	f11.add( Validate.Presence );
+	f11.add(Validate.Email );
+	</script>
+	<script type="text/javascript">
+
 	var f10 = new LiveValidation('P3');
-	f10.add( Validate.Presence );
+	f10.add(Validate.Presence );
 	f10.add( Validate.Numericality );
 	var f12 = new LiveValidation('ti1');
 	f12.add( Validate.Presence );
