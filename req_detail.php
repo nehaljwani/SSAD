@@ -1,7 +1,10 @@
 <?php
 include("essential.php");
 dbconnect();
-$id=19;
+if(isset($_GET['id'])){
+$id=$_GET['id'];
+}
+//$id=19;
 $sq="select * from Requests where reqNo =".$id.";";
 //echo $sq;
 $res=execute($sq);
