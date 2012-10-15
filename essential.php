@@ -2,14 +2,13 @@
 
 //All user $groupss, $groups IDs correspond to indices of the following array
 $groups = array ('Student', 'Parliament', 'Academic Office', 'SLC Chair', 'Dean Academics', 'Admin Manager', 'TA', 'faculty');
-$userTimeZone = date_default_timezone_get();
 date_default_timezone_set("Asia/Calcutta") or die("Time Zone setting issues\n");
-$userTimeZone = date_default_timezone_get();
-echo $userTimeZone."\n";
+//$userTimeZone = date_default_timezone_get();
+//echo $userTimeZone."\n";
 
 function dbconnect(){
         GLOBAL $con;
-        $con = mysql_connect('10.1.39.203','','');
+        $con = mysql_connect('','','');
         if(!$con){
                 die("Error in connection!");
         }   
@@ -162,25 +161,28 @@ function dateToDay($date){ //Input date yyyy-mm-dd; output 0-Sunday; 6-Satuday
   $day = date("w", $dateStamp);
   return $day;
 }
-function addWeeklyRequest($request, $startDate, $endDate)
+function addWeeklyRequest($startDate, $endDate)
 {
-  $curDate = $startDate;
-  while(strtotime($curDate) < strtotime($endDate)){
-    echo $curDate."\n";
+    $curDate = $startDate;
+    $events=array();
+    while(strtotime($curDate) <= strtotime($endDate)){
+	echo $curDate."\n";
+	$events[]= $curDate;
+	//Add request with curDate to instances
 
-    //Add request with curDate to instances
-
-    $curStamp = strtotime($curDate." + 1 week");
-    $curDate = date("Y-m-d", $curStamp);
-  }
+	$curStamp = strtotime($curDate." + 1 week");
+	$curDate = date("Y-m-d", $curStamp);
+    }
+    return $events;
 }
-function weeklyRequestToInstance($request, $startDate, $endDate, $arrayOfDays){
+function weeklyRequestToInstance($startDate, $endDate, $arrayOfDays){
   /*
    * Foreach arrayOfDays where 1-Sunday and 7-Saturday, call addWeeklyRequest 
    * with minor adjustments. Adjustments being:
    * Find the first Sunday on or after the startDate, and pass its date as the 
    * startDate to addWeeklyRequest. Repeat for every day of week in arrayOfDays
    */
+  $events=array();
   foreach($arrayOfDays as $day){
     $day = (int)$day;
     //Find the first n-day on or after the start date
@@ -192,10 +194,9 @@ function weeklyRequestToInstance($request, $startDate, $endDate, $arrayOfDays){
       $dateForDay = date("Y-m-d", strtotime($dateForDay."+ 1 day"));
     }
     echo "\n\n**".$dateForDay."\n";
-    addWeeklyRequest($request, $dateForDay, $endDate);
-
+    $events=array_merge($events,addWeeklyRequest($dateForDay, $endDate));
   }
-
+   return $events;
 }
-weeklyRequestToInstance(NULL, "2012-01-02", "2012-02-03", array("1", "2", "3", "5", "6", "7"));
+//weeklyRequestToInstance(NULL, "2012-01-02", "2012-02-03", array("1", "2", "3", "5", "6", "7"));
 ?>

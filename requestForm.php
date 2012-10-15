@@ -34,7 +34,7 @@
 		         <input type="checkbox" name='day[]' value="4"/>Wednesday</td></tr>
 	<tr class="days"><td></td><td><input type="checkbox" name='day[]' value="5"/>Thursday</td><td>
 		         <input type="checkbox" name='day[]' value="6"/>Friday</td></tr>
-	<tr class="days"><td></td><td><input type="checkbox" name='day[]' value="5"/>Saturday</td></tr>
+	<tr class="days"><td></td><td><input type="checkbox" name='day[]' value="7"/>Saturday</td></tr>
 	<tr><td> Start Date: </td><td><div id='sdivdate'>  <script>DateInput('eventStartDate', true,'YYYY-MM-DD')</script></div></td></tr>
 	<tr><td> End Date: </td><td><div id='edivdate'>  <script>DateInput('eventEndDate', true,'YYYY-MM-DD')</script> </div> </td></tr>
 	<tr> <td>Start Timeslot : </td>	
