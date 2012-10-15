@@ -59,11 +59,8 @@
 	<script type="text/javascript">
 	var f21 = new LiveValidation('P1');
 	f21.add( Validate.Presence );
-	</script>
-	<script type="text/javascript">
 	var f11 = new LiveValidation('P2');
-	f11.add( Validate.Presence );
-	f11.add(Validate.Email );
+	f11.add(Validate.Presence);
 	</script>
 	<script type="text/javascript">
 
