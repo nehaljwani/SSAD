@@ -11,12 +11,12 @@
 	<table class='center'>
 	<tr><td> Name:</td><td><input type="text" name="creator" id="P1"><br> </tr>
 	<tr><td> Email: </td><td><input type="email" name="creatorEmail" id="P2" autocomplete="off"><br></tr>
-	<tr><td> Phone No: </td><td><input type="text" name="creatorPhone" id="P3"><br></tr>
+	<tr><td> Phone No: </td><td><input type="text" name="creatorPhone" id="P3" maxlength=10><br></tr>
 	<tr><td> Are you requesting for someone else?</td><td><input type="checkbox" id="switchAlias"/></tr>
 	<tr class="CP"><td> Details of concerned person:</td></tr>
 	<tr class="CP"><td> Name:</td><td><input type="text" name="concernedPName" id="CP1"><br></tr>
 	<tr class="CP"><td> Email: </td><td><input type="email" name="concernedPEmail" id="CP2" autocomplete="off"><br></tr>
-	<tr class="CP"><td> Phone No:</td> <td><input type="text" name="concernedPPhone" id="CP3"><br></tr>
+	<tr class="CP"><td> Phone No:</td> <td><input type="text" name="concernedPPhone" id="CP3" maxlength=10><br></tr>
 	<tr><td> Details of Event:</td><td></tr>
 	<tr><td> Title:</td><td><input type="text" name="eventTitle"><br></tr>
 	<tr><td> Select Building: </td><td> 
@@ -25,7 +25,7 @@
 	<tr><td> Select Room:</td><td>
 	<?php echo generateRoomList("room"); ?>
 	</td></tr>
-	<tr> <td>Repeat Type : </td> 
+	<tr> <td>Event Type : </td> 
 	<td> <input type='radio' name='reqType' value='One Time' checked='true' class="repeat" id="repType1"/> One Time </td></tr><tr><td></td>
 	<td><input type='radio' name='reqType' value='Multiple' id="repType2" class="repeat"/> Multiple </td></tr>
 	<tr class="days"><td></td><td><input type="checkbox" name='day[]' value="1"/>Sunday</td><td>
