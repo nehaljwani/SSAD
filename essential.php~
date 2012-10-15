@@ -42,24 +42,6 @@ function execute($query){
  *Javascript to be used to ensure that if time > 5pm, forwarding options are 
  *limited for TAs.
  */
-function generate_list($q,$x,$isnull = true,$default= false ){
-	$r = execute($q);
-	$i=0;
-	$rowcount = mysql_num_rows($r);
-	$st = "<select name='" . $x . "' id='" . $x . "'>";
-	if($isnull) $st .= "<option value='' >--Please select--</option>";
-	while($row = mysql_fetch_array($r,MYSQL_NUM)){
-		//if($default!=false && $row[0]==$default){
-		//$st .= "<option value='".$row[0]."' id='".$row[0]."' selected>".$row[0]."</option>";
-		    
-		//  }
-	//	else{
-		$st .= "<option value='".$row[0]."' id='".$row[0]."'>".$row[0]."</option>";
-	//	}
-	}
-	$st .= "</select>";
-	return $st;
-}
 
 function getNextGroup($curGroup){
   global $groups;
@@ -216,11 +198,5 @@ function weeklyRequestToInstance($startDate, $endDate, $arrayOfDays){
   }
    return $events;
 }
-function escape($x){
-	$x = stripslashes($x);
-	$x = mysql_real_escape_string($x);
-	return ($x);
-}
-
 //weeklyRequestToInstance(NULL, "2012-01-02", "2012-02-03", array("1", "2", "3", "5", "6", "7"));
 ?>
