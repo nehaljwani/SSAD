@@ -16,7 +16,7 @@ else
     $mstart=0;
 $lim=1;
 $table="Requests";
-dbconnect();          //connecting db
+//dbconnect();          //connecting db
 $query="SELECT reqNo,creator,room,eventTitle,reqDate,eventStartTime,reqType FROM $table"; //select table
 $result=paginate("all.php",$query,$mstart,$lim);             //calling paging
 $num=mysql_numrows($result);

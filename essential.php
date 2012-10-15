@@ -265,5 +265,17 @@ function escape($x){
 	return ($x);
 }
 
-//weeklyRequestToInstance(NULL, "2012-01-02", "2012-02-03", array("1", "2", "3", "5", "6", "7"));
+function instanceClash($startDate,$endDate,$startTime,$endTime){
+	dbconnect();
+	$query="SELECT * FROM Instances WHERE eventStartDate BETWEEN '".$startDate."' AND '".$endDate."' AND (eventStartTime <= '".$startDate."' AND eventEndTime >= '".$endDate."') || eventStartTime <= '".$endTime."' AND eventEndTime >= '".$endTime."' || eventStartTime >= '".$startTime."' AND eventEndTime <= '".$endTime."';";
+	$result=execute($query);
+	$num=mysql_num_rows($result);
+	if($num==0){
+		return NULL;
+	}
+	else{
+		return $result;
+	}
+}
 ?>
+

@@ -2,7 +2,7 @@
 $con = 0;
 function dbconnect(){
 	GLOBAL $con;
-	$con = mysql_connect('localhost','root','abcdabcd');
+	$con = mysql_connect('10.1.39.203','','');
 	if(!$con){
 		die("no connection");
 	}
