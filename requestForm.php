@@ -1,12 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
+<?php require_once('header.php'); ?>
+<div class="post">
+  <h2 class="title"><a href="#">room request form </a></h2>
+  <div class="entry">
+  </div>
+</div>
+
 <script type='text/javascript' src='js/livevalidation_standalone.js'></script>
 <script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
 <script language="javascript" type="text/javascript" src="js/calendarDateInput.js"></script>
 <script language="javascript" type="text/javascript" src="js/addRequest.js"></script>
-</head>
-<body>
 <?php include("essential.php"); ?>
 <form action="addRequest.php" autocomplete="on" method="POST">
 	<table class='center'>
@@ -73,5 +75,4 @@
 	</script>
 
 	</form>	
-</body>
-</html>
+<?php require_once('footer.php'); ?>
