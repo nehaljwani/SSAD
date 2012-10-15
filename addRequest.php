@@ -7,7 +7,6 @@
 include("essential.php"); // Importing pre-defined functions
 dbconnect();
 
-
 $hash=sha1(uniqid(mt_rand(), true));
 $eventEndDate=$_POST["eventEndDate"];
 $creator=$_POST["creator"];
@@ -28,11 +27,35 @@ $concernedAdmin=$_POST["concernedAdmin"];
 $room=$_POST["room"];
 $reqType=$_POST["reqType"];
 
+if($_POST['concernedPEmail']==''){
+	$concernedPName=$_POST["creator"];
+	$concernedPEmail=$_POST["creatorEmail"];
+	$concernedPPhone=$_POST["creatorPhone"];
+}
 
-$query="INSERT INTO Requests(reqNo, hash, creator, creatorEmail, creatorPhone, concernedPName, concernedPEmail, concernedPPhone, appStatus, reqGId, reqDate, eventStartDate, eventEndDate, eventStartTime, eventEndTime, eventTitle, eventDesc, concernedAdmin, room, reqType) VALUES('','".$hash."','".$creator."','".$creatorEmail."','".$creatorPhone."','".$concernedPName."','".$concernedPEmail."','".$concernedPPhone."','".$appStatus."','".$reqGId."','".$reqDate."','".$eventStartDate."','".$eventEndDate."','".$eventStartTime."','".$eventEndTime."','".$eventTitle."','".$eventDesc."','".$concernedAdmin."','".$room."','".$reqType."');";
+$query="INSERT INTO Requests(reqNo, hash, creator, creatorEmail, creatorPhone, concernedPName, concernedPEmail, concernedPPhone, appStatus, reqGId, reqDate, eventStartDate, eventEndDate, eventStartTime, eventEndTime, eventTitle, eventDesc, concernedAdmin, room, reqType) VALUES(
+	'',
+	'".$hash."',
+	'".$creator."',
+	'".$creatorEmail."',
+	'".$creatorPhone."',
+	'".$concernedPName."',
+	'".$concernedPEmail."',
+	'".$concernedPPhone."',
+	'".$appStatus."',
+	'".$reqGId."',
+	'".$reqDate."',
+	'".$eventStartDate."',
+	'".$eventEndDate."',
+	'".$eventStartTime."',
+	'".$eventEndTime."',
+	'".$eventTitle."',
+	'".$eventDesc."',
+	'".$concernedAdmin."',
+	'".$room."',
+	'".$reqType."'
+);";
 
 echo $query;
-
-
 execute($query);
 ?>
