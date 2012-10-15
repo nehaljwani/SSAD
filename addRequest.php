@@ -1,12 +1,16 @@
 <?php
 	foreach ($_POST as $k => $v) {
 		echo "$k => $v"."<br />";
+		if(is_array($v)){
+			foreach ($v as $r => $u) {
+				echo "$r => $u"."<br />";
+			}
+		}
 }
 ?>
 <?php
 include("essential.php"); // Importing pre-defined functions
 dbconnect();
-
 
 $hash=sha1(uniqid(mt_rand(), true));
 $eventEndDate=$_POST["eventEndDate"];
@@ -21,18 +25,74 @@ $reqGId=0;//To be taken on the basis of user's groupId
 $reqDate=date("Y-m-d H:i:s");
 $eventStartDate=$_POST["eventStartDate"];
 $eventStartTime=$_POST["eventStartTime"];
-$eventEndTime=$_POST["eventStartTime"];
+$eventEndTime=$_POST["eventEndTime"];
 $eventTitle=$_POST["eventTitle"];
 $eventDesc=$_POST["eventDesc"];
 $concernedAdmin=$_POST["concernedAdmin"];
 $room=$_POST["room"];
 $reqType=$_POST["reqType"];
 
+if($_POST['concernedPEmail']==''){
+	$concernedPName=$_POST["creator"];
+	$concernedPEmail=$_POST["creatorEmail"];
+	$concernedPPhone=$_POST["creatorPhone"];
+}
 
-$query="INSERT INTO Requests(reqNo, hash, creator, creatorEmail, creatorPhone, concernedPName, concernedPEmail, concernedPPhone, appStatus, reqGId, reqDate, eventStartDate, eventEndDate, eventStartTime, eventEndTime, eventTitle, eventDesc, concernedAdmin, room, reqType) VALUES('','".$hash."','".$creator."','".$creatorEmail."','".$creatorPhone."','".$concernedPName."','".$concernedPEmail."','".$concernedPPhone."','".$appStatus."','".$reqGId."','".$reqDate."','".$eventStartDate."','".$eventEndDate."','".$eventStartTime."','".$eventEndTime."','".$eventTitle."','".$eventDesc."','".$concernedAdmin."','".$room."','".$reqType."');";
+$query="INSERT INTO Requests(reqNo, hash, creator, creatorEmail, creatorPhone, concernedPName, concernedPEmail, concernedPPhone, appStatus, reqGId, reqDate, eventStartDate, eventEndDate, eventStartTime, eventEndTime, eventTitle, eventDesc, concernedAdmin, room, reqType) VALUES(
+	'',
+	'".$hash."',
+	'".$creator."',
+	'".$creatorEmail."',
+	'".$creatorPhone."',
+	'".$concernedPName."',
+	'".$concernedPEmail."',
+	'".$concernedPPhone."',
+	'".$appStatus."',
+	'".$reqGId."',
+	'".$reqDate."',
+	'".$eventStartDate."',
+	'".$eventEndDate."',
+	'".$eventStartTime."',
+	'".$eventEndTime."',
+	'".$eventTitle."',
+	'".$eventDesc."',
+	'".$concernedAdmin."',
+	'".$room."',
+	'".$reqType."'
+);";
+execute($query);  //Adding 2 Requests Table
+
+if(!isset($_POST["day"])){
+	$_POST["day"]=array((string)((int)dateToDay($eventStartDate)+1));
+}
 
 echo $query;
+$events=weeklyRequestToInstance($eventStartDate,$eventEndDate,$_POST["day"]);
 
+foreach($events as $instanceDate){
+	$query="INSERT INTO Instances(reqNo, hash, creator, creatorEmail, creatorPhone, concernedPName, concernedPEmail, concernedPPhone, appStatus, reqGId, reqDate, eventStartDate, eventEndDate, eventStartTime, eventEndTime, eventTitle, eventDesc, concernedAdmin, room, reqType) VALUES(
+		'',
+		'".$hash."',
+		'".$creator."',
+		'".$creatorEmail."',
+		'".$creatorPhone."',
+		'".$concernedPName."',
+		'".$concernedPEmail."',
+		'".$concernedPPhone."',
+		'".$appStatus."',
+		'".$reqGId."',
+		'".$reqDate."',
+		'".$instanceDate."',
+		'".$instanceDate."',
+		'".$eventStartTime."',
+		'".$eventEndTime."',
+		'".$eventTitle."',
+		'".$eventDesc."',
+		'".$concernedAdmin."',
+		'".$room."',
+		'".$reqType."'
+	);";
+	execute($query);
+}
 
-execute($query);
 ?>
