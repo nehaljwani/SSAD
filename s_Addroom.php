@@ -37,7 +37,7 @@ $st =  generate_list($q,$x);
 <html>
 <title>Add room</title>
 <head>
-<script type='text/javascript' src='/js/livevalidation_standalone.js'></script>
+<script type='text/javascript' src='./js/livevalidation_standalone.js'></script>
 </head>
 <body>
 <?php require_once('header.php'); ?>
@@ -59,6 +59,7 @@ $st =  generate_list($q,$x);
 <td><input name='cap' type='number' id ='f1' min='0' max='2000' maxlength = 4 size = 4 value = 100>
 <script type="text/javascript">
 var f1 = new LiveValidation('f1');
+f1.add( Validate.Presence );
 f1.add( Validate.Numericality, { onlyInteger: true } );
 </script>
 </td>
