@@ -46,7 +46,7 @@ $col=mysql_fetch_row($res);
 			<td><select name="forwardID"><?php printNextGroupOptions(1); ?></select></td>
 		<tr>
 			<td></td>
-			<td><input type="hidden" name="reqID" value="<?php echo $_GET['id'] ?>"></td>
+			<td><input type="hidden" name="reqID" value="<?php echo $id; ?>"></td>
 		</tr>
 		</tr>
 		<tr>
@@ -59,7 +59,7 @@ $col=mysql_fetch_row($res);
 		</tr>
 		<tr>
 			<td></td>
-			<td><input type="hidden" name="reqID" value="<?php echo $_GET['id'] ?>"></td>
+			<td><input type="hidden" name="reqID" value="<?php echo $id; ?>"></td>
 		</tr>
 		<tr>
 			

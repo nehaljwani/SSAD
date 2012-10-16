@@ -45,7 +45,7 @@ else if($_POST['reqAction']==$a)
 			echo$rejectThis;
 			$otherQuery = "update Requests set appStatus = 'Rejected', reqRejectReason = 'A request conflicting with your request was accepted.' where reqNo = {$rejectThis}";
 			echo $otherQuery."\n";
-			//execute($otherQuery);
+			execute($otherQuery);
 
 			$req = getRequestByID($rejectThis);
 			reject($req['creator'], $req['creatorEmail'], $req['room'], $req['reqNo']);
@@ -67,7 +67,7 @@ else if($_POST['reqAction']==$c)
 	}
 }
 echo $sq;
-//execute($sq);
+execute($sq);
 
 echo "<br />";
 
