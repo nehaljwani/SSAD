@@ -1,6 +1,5 @@
 <?php include("header.php"); ?>
 <script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
-<script language="javascript" type="text/javascript" src="js/conflictTable.js"></script>
 			<div class="post">
 				<h2 class="title"><a href="#">Welcome to TrendyBiz </a></h2>
 				<table id="box-table-a">                        

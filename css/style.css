@@ -56,7 +56,7 @@ a:hover {
 }
 
 .container {
-	width: 1000px;
+/*	width: 1000px;*/
 	margin: 0px auto;
 }
 
@@ -123,18 +123,18 @@ a:hover {
 	text-decoration: none;
 	color: #731F1F;
 }
-#box-table-a, .myTable
+#box-table-a
 {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 	font-size: 12px;
-	margin: 45px;
-/*	width: 480px; This conflicts with the conflictTable.js */
+/*	margin: 45px;*/
+	width: 90%; 
 	text-align: left;
 	border-collapse: collapse;
-	margin-bottom: 20px;
-	margin-top: 20px;
+/*	margin-bottom: 20px;*/
+/*	margin-top: 20px;*/
 }
-#box-table-a th, .myTable th
+#box-table-a th
 {
 	font-size: 13px;
 	font-weight: normal;
@@ -144,7 +144,7 @@ a:hover {
 	border-bottom: 1px solid #fff;
 	color: #039;
 }
-#box-table-a td, .myTable td
+#box-table-a td
 {
 	padding: 8px;
 	background: #e8edff; 
@@ -263,7 +263,7 @@ a:hover {
 
 #page {
 	overflow: hidden;
-	width: 960px;
+	width: 1000px;
 	padding: 20px 20px 40px 20px;
 }
 
@@ -271,7 +271,7 @@ a:hover {
 
 #content {
 	float: left;
-	width: 620px;
+	width: 70%;
 	padding: 0px 0px 0px 0px;
 }
 
