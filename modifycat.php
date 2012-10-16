@@ -23,7 +23,7 @@ dbconnect();
 <html>
 <body>
 <head>
-<script type='text/javascript' src='/js/livevalidation_standalone.js'></script>
+<script type='text/javascript' src='./js/livevalidation_standalone.js'></script>
 </head>
 <h1 align ='center'>ADD CATEGORY</h2>
 <form name = 'add_category' method = 'POST' action ="deletecat.php">
