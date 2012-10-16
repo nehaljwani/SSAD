@@ -26,6 +26,18 @@ $col=mysql_fetch_row($res);
 			<td>Accept</td>
 		</tr>
 		<tr>
+			<td><input type="radio" name="reqAction" value="forward"></td>
+			<td>Forward</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><select name="forwardID"><?php printNextGroupOptions(1); ?></select></td>
+		<tr>
+			<td></td>
+			<td><input type="hidden" name="reqID" value="<?php echo $_GET['id'] ?>"></td>
+		</tr>
+		</tr>
+		<tr>
 			<td><input type="radio" name="reqAction" value="reject"></td>
 			<td>Reject</td>
 		</tr>

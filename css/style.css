@@ -8,7 +8,7 @@ Released for free under a Creative Commons Attribution 2.5 License
 body {
 	margin: 0;
 	padding: 0;
-	background: #690000 url("../images/img01.jpg") repeat;
+	background: #690000 url("../images/img021.jpg") repeat;
 	font-family: 'Open Sans Condensed', sans-serif;
 	font-size: 16px;
 	color: #070759;
@@ -123,16 +123,18 @@ a:hover {
 	text-decoration: none;
 	color: #731F1F;
 }
-#box-table-a
+#box-table-a, .myTable
 {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 	font-size: 12px;
 	margin: 45px;
-	width: 480px;
+/*	width: 480px; This conflicts with the conflictTable.js */
 	text-align: left;
 	border-collapse: collapse;
+	margin-bottom: 20px;
+	margin-top: 20px;
 }
-#box-table-a th
+#box-table-a th, .myTable th
 {
 	font-size: 13px;
 	font-weight: normal;
@@ -142,7 +144,7 @@ a:hover {
 	border-bottom: 1px solid #fff;
 	color: #039;
 }
-#box-table-a td
+#box-table-a td, .myTable td
 {
 	padding: 8px;
 	background: #e8edff; 
@@ -150,7 +152,7 @@ a:hover {
 	color: #669;
 	border-top: 1px solid transparent;
 }
-#box-table-a tr:hover td
+#box-table-a tr:hover td, .myTable tr:hover td
 {
 	background: #d0dafd;
 	color: #339;

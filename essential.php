@@ -426,7 +426,7 @@ function clashMux($clashTuples) {
 		$query="SELECT reqNo,creator,room,eventTitle,eventStartDate,eventStartTime,reqType,appStatus FROM Requests WHERE reqNo IN (".$currGroup.");";
 		$events = execute($query);
 		?>
-		<table id="box-table-a">                        
+		</table><table class="myTable">                        
 		<?php
 		while($roomRecords = mysql_fetch_assoc($events)){
 			?>
@@ -442,12 +442,28 @@ function clashMux($clashTuples) {
 			</tr>
 			<?php
 		}  
-		?>
-		</table>
-		<?php
 	}
 	//print_r($roomRecords);
+	return $clashGroups;
 }
 //To get requesting clashes, just do clashMux(checkConflicts()); --> will return array of clashing groups which consists of reqNo;
+function getRequestByID($ID){
+	dbconnect();
+	$query = "select * from Requests where reqNo = {$ID}";
+	$result = execute($query);
+	$reqArray = mysql_fetch_assoc($result);
+	return $reqArray;
+}
+function getEmails($ID)
+{
+	$query = "select email from User where level = {$ID}";
+	dbconnect();
+	$result = execute($query);
+	$emails = array();
+	while($arr = mysql_fetch_row($result)){
+		$emails[] = $arr[0];
+	}
+	return $emails;
+}
 ?>
 
