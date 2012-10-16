@@ -304,8 +304,18 @@ function accept($name,$mail_to,$room_no,$request_id)
  	$mail_to=$mail_to;
  	$date = date('Y-m-d H:i:s');
 	$body="Dear ".$name.",\nYour request with Request id ".$request_id." for Room no.".$room_no." has been accepted by Admins.\nThis is a System Generated Mail. Please do not reply.\n\n\n\nCheers,\nAdmins.\n\n\nMail generated at :".$date;
+	$message = <<<EOF
+	<html>
+	<body>
+	<a href="http://localhost/req_detail_hash.php?hash=11fa046ab5284948b7b7121be0b185a2213f6126">Click Here!!!</a>
+	</body>
+	</html>
+EOF;
  	$subject="Room allocation: Request Accepted";
- 	mail($mail_to,$subject,$body);
+	$headers  = 'MIME-Version: 1.0' . "\r\n";
+	$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+	$headers .= 'From: Noreply <noreply@.roomReservation.iiit.ac.in>' . "\r\n";
+	mail($mail_to,$subject,$body,$headers);
 }
 
 function reject($name,$mail_to,$room_no,$request_id)
@@ -322,7 +332,7 @@ function forward($name,$mail_to,$room_no,$request_id,$original_mail_id)
  	$mail_to=$mail_to;
 	$hash=gethash($request_id);
  	$date = date('Y-m-d H:i:s');
-	$body="Sir,\n".$name." with mail id ".$original_mail_id." has sent the Request for Room no. ".$room_no.".The Request id is. ".$request_id." .Kindly check and if possible give your Consent\n\n.Click on the link to verify the request  <a href='req_detail_hash.php?hash=$hash'>$hash</a>\n\n\n\nCheers,\nAdmins\n\n\n\nMail generated at: ".$date;
+	$body="Sir,\n".$name." with mail id ".$original_mail_id." has sent the Request for Room no. ".$room_no.".The Request id is. ".$request_id." .Kindly check and if possible give your Consent\n\n.Click on the link to verify the request  <a href='localhost/req_detail_hash.php?hash=$hash'>$hash</a>\n\n\n\nCheers,\nAdmins\n\n\n\nMail generated at: ".$date;
 //.$original_mail_id." has sent the mail requesting for Room no.".$room_no." .The request id is "//.$request_id." Kindly check about the neccessity of request.\n\n\n\nCheers,\nAdmins.\n\n\nMail generated at :".$date;
  	$subject="Room allocation: Request forwarded";
  	mail($mail_to,$subject,$body);
@@ -427,7 +437,7 @@ function clashMux($clashTuples) {
 		$query="SELECT reqNo,creator,room,eventTitle,eventStartDate,eventStartTime,reqType,appStatus FROM Requests WHERE reqNo IN (".$currGroup.");";
 		$events = execute($query);
 		?>
-		</table><table class="myTable">                        
+		<tr><td style="visibility:hidden"></td></tr>
 		<?php
 		while($roomRecords = mysql_fetch_assoc($events)){
 			?>
