@@ -320,8 +320,9 @@ function reject($name,$mail_to,$room_no,$request_id)
 function forward($name,$mail_to,$room_no,$request_id,$original_mail_id)
 {
  	$mail_to=$mail_to;
+	$hash=gethash($request_id);
  	$date = date('Y-m-d H:i:s');
-	$body="Sir,\n".$name." with mail id ".$original_mail_id." has sent the Request for Room no. ".$room_no.".The Request id is. ".$request_id." .Kindly check and if possible give your Consent\n\n\n\nCheers,\nAdmins\n\n\n\nMail generated at: ".$date;
+	$body="Sir,\n".$name." with mail id ".$original_mail_id." has sent the Request for Room no. ".$room_no.".The Request id is. ".$request_id." .Kindly check and if possible give your Consent\n\n.Click on the link to verify the request  <a href='req_detail_hash.php?hash=$hash'>$hash</a>\n\n\n\nCheers,\nAdmins\n\n\n\nMail generated at: ".$date;
 //.$original_mail_id." has sent the mail requesting for Room no.".$room_no." .The request id is "//.$request_id." Kindly check about the neccessity of request.\n\n\n\nCheers,\nAdmins.\n\n\nMail generated at :".$date;
  	$subject="Room allocation: Request forwarded";
  	mail($mail_to,$subject,$body);
@@ -464,6 +465,11 @@ function getEmails($ID)
 		$emails[] = $arr[0];
 	}
 	return $emails;
+}
+function gethash($id)
+{
+$res2=getRequestByID($id);
+return $res2['hash'];
 }
 ?>
 
