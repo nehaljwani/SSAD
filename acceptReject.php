@@ -39,6 +39,37 @@ if($_POST['reqAction']==$b)
 }
 else if($_POST['reqAction']==$a)
 {
+	$query="SELECT * FROM Requests WHERE reqNo='28';";
+	$acceptedEvent=execute($query);
+	$roomRecords=mysql_fetch_assoc($acceptedEvent);
+	$instances=weeklyRequestToInstance($roomRecords['eventStartDate'], $roomRecords['eventEndDate'], CSVToArray($roomRecords['eventDays']));
+	foreach($instances as $instance){
+		$query="INSERT INTO Instances(reqNo,hash,creator,creatorEmail,creatorPhone,concernedPName,concernedPEmail,concernedPPhone,appStatus,reqGId,reqDate,eventStartDate,eventEndDate,eventStartTime,eventEndTime,eventTitle,eventDesc,eventDays,concernedAdmin,room,reqType) VALUES(
+			'".$roomRecords['reqNo']."',
+			'".$roomRecords['hash']."',
+			'".$roomRecords['creator']."',
+			'".$roomRecords['creatorEmail']."',
+			'".$roomRecords['creatorPhone']."',
+			'".$roomRecords['concernedPName']."',
+			'".$roomRecords['concernedPEmail']."',
+			'".$roomRecords['concernedPPhone']."',
+			'Accepted',     
+			'".$roomRecords['reqGId']."',
+			'".$roomRecords['reqDate']."',
+			'".$instance."',
+			'".$instance."',
+			'".$roomRecords['eventStartTime']."',
+			'".$roomRecords['eventEndTime']."',
+			'".$roomRecords['eventTitle']."',
+			'".$roomRecords['eventDesc']."',
+			'".$roomRecords['eventDays']."',
+			'".$roomRecords['concernedAdmin']."',
+			'".$roomRecords['room']."',
+			'".$roomRecords['reqType']."'
+		);";
+		execute($query);
+	}   
+
 	$sq="update Requests set appstatus='Accepted' where reqNo=".$_POST['reqID'].";";
 	foreach($clashArray as $rejectThis){
 		if($rejectThis != $rID){
@@ -73,6 +104,8 @@ echo "<br />";
 
 
 print_r($clashArray);
+
+header("Location: table.php");
 
 
 ?>

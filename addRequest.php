@@ -91,6 +91,6 @@ else{
 	}
 }
 
-
+header("Location: table.php");
 
 ?>

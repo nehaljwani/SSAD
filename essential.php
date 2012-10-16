@@ -377,7 +377,7 @@ function doConflict($req1, $req2){
                         $st=$req2['eventStartTime'];
                         $ET=$req1['eventEndTime'];
                         $et=$req2['eventEndTime'];
-                        if(($st<$ST && $et>$ST)||($st<$ET && $et>$ST)||($st<$ET && $et>$ET)){
+                        if(($st<=$ST && $et>=$ST)||($st<=$ET && $et>=$ST)||($st<=$ET && $et>=$ET)){
                                 return 1;
                         }
                 }
@@ -485,6 +485,9 @@ function getEmails($ID)
 function gethash($id){
 	$res2=getRequestByID($id);
 	return $res2['hash'];
+}
+function isAdmin($id){
+	if($id == 0 || $id == 1){};
 }
 ?>
 

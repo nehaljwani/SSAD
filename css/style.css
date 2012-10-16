@@ -247,13 +247,13 @@ a:hover {
 	text-transform: uppercase;
 	font-size: 16px;
 	font-weight: 300;
-	color: #4C4C4C;
+	color: #9BAFF2;
 	border: none;
 }
 
 #menu a:hover, #menu .current_page_item a {
 	text-decoration: none;
-	color: #91B7ED;
+	color: #FCFEFF;
 }
 
 #menu .current_page_item a {
@@ -438,11 +438,11 @@ a:hover {
 	padding-top: 10px;
 	line-height: normal;
 	text-align: center;
-	color: #C59C9C;
+	color: #042EB8;
 }
 
 #footer a {
-	color: #C59C9C;
+	color: #042EB8;
 }
 
 #marketing {
@@ -490,6 +490,7 @@ a:hover {
 	margin: 0px;
 	padding: 0px;
 	list-style: none;
+	list-style-type: circle;
 }
 
 .list-style1 li {

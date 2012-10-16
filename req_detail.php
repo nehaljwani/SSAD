@@ -1,4 +1,5 @@
 <?php
+
 include("essential.php");
 dbconnect();
 if(isset($_GET['id'])){
@@ -15,7 +16,11 @@ $col=mysql_fetch_row($res);
 ?> 
 
 <?php include("header.php"); ?>
-<?php if(1){ ?>
+<?php 
+
+
+
+if(1){ ?>
 <div class = "post">
 	<h2 class="title">Take an action</h2>
 	<div class="entry">

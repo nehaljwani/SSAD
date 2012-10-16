@@ -1,7 +1,7 @@
 <?php include("header.php"); ?>
 <script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
 			<div class="post">
-				<h2 class="title"><a href="#">Welcome to TrendyBiz </a></h2>
+				<h2 class="title">ConflictView</h2>
 				<table id="box-table-a">                        
 <thead>
 <tr>
