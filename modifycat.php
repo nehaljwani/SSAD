@@ -1,3 +1,4 @@
+<?php require_once('header.php'); ?>
 <?php
 include("essential.php"); 
 dbconnect();
@@ -15,7 +16,7 @@ dbconnect();
 	}	
 	if(ISSET($_GET['msg']))
 	{
-		echo "<p style='background-color:#1C478E;font-size:14pt;color:#FFFFFF;text-align:right;'>" . $_GET['msg'] . "</p>";
+		echo "<p style='background-color:#1C478E;font-size:14pt;color:#FFFFFF;text-align:center;'>" . $_GET['msg'] . "</p>";
 
 	}
 
@@ -24,6 +25,7 @@ dbconnect();
 <body>
 <head>
 <script type='text/javascript' src='./js/livevalidation_standalone.js'></script>
+<script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
 </head>
 <h1 align ='center'>ADD CATEGORY</h2>
 <form name = 'add_category' method = 'POST' action ="deletecat.php">
@@ -72,4 +74,4 @@ $q = "select catName from Category;";
 
 </body>
 </html>
-
+<?php require_once('footer.php'); ?>
