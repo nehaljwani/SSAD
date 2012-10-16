@@ -30,7 +30,7 @@ Released   : 20120818
 				<li><a href="#">Photos</a></li>
 				<li><a href="#">About Us</a></li>
 				<li><a href="#">Links</a></li>
-				<li><a href="#">Contact Us</a></li>
+				<li><a href="?logout=true">Logged in as <?php echo $_SESSION['username']; ?></a></li>
 			</ul>
 		</div>
 	</div>

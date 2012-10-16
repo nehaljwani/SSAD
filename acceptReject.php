@@ -34,8 +34,8 @@ if($_POST['reqAction']==$b)
 		$sq="update Requests set appStatus='Rejected',reqRejectReason ='".$_POST['reason']."' where reqNo=".$_POST['reqID'].";";
 	}
 	$req = getRequestByID($rID);
-	reject($req['creator'], $req['creatorEmail'], $req['room'], $req['reqNo']);
-	reject($req['concernedPName'], $req['concernedPEmail'], $req['room'], $req['reqNo']);
+	reject($req['creator'], $req['creatorEmail'], $req['room'], $req['reqNo'],$_POST['reason']);
+	reject($req['concernedPName'], $req['concernedPEmail'], $req['room'], $req['reqNo'],$_POST['reason']);
 }
 else if($_POST['reqAction']==$a)
 {

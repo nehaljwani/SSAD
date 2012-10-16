@@ -6,6 +6,11 @@ date_default_timezone_set("Asia/Calcutta") or die("Time Zone setting issues\n");
 //$userTimeZone = date_default_timezone_get();
 //echo $userTimeZone."\n";
 
+if(isset($_GET['logout'])){
+	echo "Logout Successfull!";
+	session_destroy();
+}
+
 function dbconnect(){
         GLOBAL $con;
         $con = mysql_connect('','','');
@@ -301,7 +306,6 @@ function instanceClash($startDate,$endDate,$startTime,$endTime,$room){
 
 function accept($name,$mail_to,$room_no,$request_id)
 {
- 	$mail_to=$mail_to;
 	$date = date('Y-m-d H:i:s');
 	$body="Dear ".$name.",\nYour request with Request id ".$request_id." for Room no.".$room_no." has been accepted by Admins.\nThis is a System Generated Mail. Please do not reply.\n\n\n\nCheers,\nAdmins.\n\n\nMail generated at :".$date;
 	$message = " 
@@ -317,11 +321,10 @@ function accept($name,$mail_to,$room_no,$request_id)
 	mail($mail_to,$subject,$message,$headers);
 }
 
-function reject($name,$mail_to,$room_no,$request_id)
+function reject($name,$mail_to,$room_no,$request_id,$reason)
 {
- 	$mail_to=$mail_to;
  	$date = date('Y-m-d H:i:s');
-	$body="Dear ".$name.",\nYour request with Request id ".$request_id." for Room no.".$room_no." has been rejected by Admins due to non availability.\nThis is a System Generated Mail. Please do not reply.\n\n\n\nCheers,\nAdmins.\n\n\nMail generated at :".$date;
+	$body="Dear ".$name.",\nYour request with Request id ".$request_id." for Room no.".$room_no." has been rejected by Admins due to the reason: .\n ".$reason."  \nThis is a System Generated Mail. Please do not reply.\n\n\n\nCheers,\nAdmins.\n\n\nMail generated at :".$date;
 	$message = " 
 		<html>
 		<body>
@@ -329,12 +332,14 @@ function reject($name,$mail_to,$room_no,$request_id)
 		</body>
 		</html>";
 	$subject="Room allocation: Request Rejected";
- 	mail($mail_to,$subject,$message);
+	$headers  = 'MIME-Version: 1.0' . "\r\n";
+	$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+	$headers .= 'From: Noreply <noreply@.roomReservation.iiit.ac.in>' . "\r\n";
+ 	mail($mail_to,$subject,$message,$headers);
 }
 
 function forward($name,$mail_to,$room_no,$request_id,$original_mail_id)
 {
- 	$mail_to=$mail_to;
 	$hash=gethash($request_id);
  	$date = date('Y-m-d H:i:s');
 	$body="Sir,\n".$name." with mail id ".$original_mail_id." has sent the Request for Room no. ".$room_no.".The Request id is. ".$request_id." . Kindly check and if possible give your consent\n\n.";
@@ -347,23 +352,12 @@ function forward($name,$mail_to,$room_no,$request_id,$original_mail_id)
 		</body>
 		</html>";
 	$subject="Room allocation: Request forwarded";
- 	mail($mail_to,$subject,$message);
+	$headers  = 'MIME-Version: 1.0' . "\r\n";
+	$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+	$headers .= 'From: Noreply <noreply@.roomReservation.iiit.ac.in>' . "\r\n";
+ 	mail($mail_to,$subject,$message,$headers);
 }
 
-
-/*if($_POST['check']==1)
-{
-accept("Nehal","nehal.wani@students.iiit.ac.in","303","1");
-}
-if($_POST['check']==2)
-{
-reject("Nehal","nehal.wani@students.iiit.ac.in","303","1");
-}
-if($_POST['check']==3)
-{
-forward("shubham","nehal.wani@students.iiit.ac.in","303","1","shubham.sangal@students.iiit.ac.in");
-}
- */
 function RtoIWrapper($req)
 {
         $startDate = $req['eventStartDate'];
@@ -488,10 +482,9 @@ function getEmails($ID)
 	}
 	return $emails;
 }
-function gethash($id)
-{
-$res2=getRequestByID($id);
-return $res2['hash'];
+function gethash($id){
+	$res2=getRequestByID($id);
+	return $res2['hash'];
 }
 ?>
 
