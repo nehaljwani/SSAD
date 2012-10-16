@@ -10,7 +10,7 @@ $lim=10;
 $table="Requests";
 dbconnect();          //connecting db
 
-$query="SELECT reqNo,creator,room,eventTitle,eventStartDate,eventStartTime,reqType,appStatus FROM $table order by eventStartDate DESC";
+$query="SELECT reqNo,creator,room,eventTitle,eventStartDate,eventStartTime,reqType,appStatus FROM $table order by eventStartDate ASC";
 
 $result=paginate("tabledel.php",$query,$mstart,$lim);             //calling paging
 $num=mysql_numrows($result);
