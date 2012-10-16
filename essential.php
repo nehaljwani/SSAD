@@ -227,7 +227,7 @@ function addWeeklyRequest($startDate, $endDate)
     $curDate = $startDate;
     $events=array();
     while(strtotime($curDate) <= strtotime($endDate)){
-	echo $curDate."\n";
+	//echo $curDate."\n";
 	$events[]= $curDate;
 	//Add request with curDate to instances
 
@@ -254,7 +254,7 @@ function weeklyRequestToInstance($startDate, $endDate, $arrayOfDays){
     {
       $dateForDay = date("Y-m-d", strtotime($dateForDay."+ 1 day"));
     }
-    echo "\n\n**".$dateForDay."\n";
+   // echo "\n\n**".$dateForDay."\n";
     $events=array_merge($events,addWeeklyRequest($dateForDay, $endDate));
   }
    return $events;
@@ -284,10 +284,6 @@ function CSVToArray($string){
 	  return $result;
   else
 	  return array();
-}
-
-function getConflictingRequests($date, $room){
-        //ToDo
 }
 
 function instanceClash($startDate,$endDate,$startTime,$endTime,$room){
@@ -351,13 +347,9 @@ function RtoIWrapper($req)
         $endDate = $req['eventEndDate'];
         $arrayOfWeeks = $req['eventDays'];
         $arrayOfWeeks = CSVToArray($arrayOfWeeks);
-        echo "Bulallala\n";
-        print_r($arrayOfWeeks);
         return weeklyRequestToInstance($startDate, $endDate, $arrayOfWeeks);
 }
 function doConflict($req1, $req2){
-        print_r($req1);
-        print_r($req2);
         $req1Dates=RtoIWrapper($req1);
         $req2Dates=RtoIWrapper($req2);
         foreach($req2Dates as $instanceDate){
@@ -382,12 +374,9 @@ function checkConflicts(){
         $roomQuery = execute($query);
         while($roomList = mysql_fetch_row($roomQuery)){
                 $roomRecords = array();
-                echo "!!".$roomList[0]."\n";
-                $query = "SELECT * from Requests where room = \"{$roomList[0]}\" and appStatus = \"Pending\" order by eventStartDate DESC\n";
-                echo $query;
+                $query = "SELECT * FROM Requests WHERE room = \"{$roomList[0]}\" AND appStatus = \"Pending\" ORDER BY eventStartDate ASC\n";
                 $events = execute($query);
                 while($array = mysql_fetch_assoc($events)){
-                echo "lo";
                         $roomRecords[] = $array;
                 }
                 for($i = 0; $i < sizeof($roomRecords); $i++){
@@ -431,9 +420,34 @@ function clashMux($clashTuples) {
                 if(sizeof($currGroup))
                         $clashGroups[]=$currGroup;
         }   
-        return($clashGroups);
+	
+	foreach($clashGroups as $group){
+		$currGroup=arrayToCSV($group);
+		$query="SELECT reqNo,creator,room,eventTitle,eventStartDate,eventStartTime,reqType,appStatus FROM Requests WHERE reqNo IN (".$currGroup.");";
+		$events = execute($query);
+		?>
+		<table id="box-table-a">                        
+		<?php
+		while($roomRecords = mysql_fetch_assoc($events)){
+			?>
+			<tr>
+			<?php
+			foreach($roomRecords as $record){
+			?>
+				<td> <?php echo $record ?> </td> 
+			<?php
+			}
+			?>
+			<td><a href='req_detail.php?id=<?php echo $roomRecords['reqNo']; ?>'>Details</a></td>
+			</tr>
+			<?php
+		}  
+		?>
+		</table>
+		<?php
+	}
+	//print_r($roomRecords);
 }
 //To get requesting clashes, just do clashMux(checkConflicts()); --> will return array of clashing groups which consists of reqNo;
-
 ?>
 

@@ -2,7 +2,7 @@
 include("essential.php");
 dbconnect();
 if(isset($_GET['id'])){
-$id=$_GET['id'];
+	$id=$_GET['id'];
 }
 //$id=19;
 $sq="select * from Requests where reqNo =".$id.";";
@@ -12,13 +12,45 @@ $col1=array("RequestNO","hash","Creator","creatorEmail","creatorPhone ","creator
 $num_row=mysql_num_fields($res);
 $col=mysql_fetch_row($res);
 
-
 ?> 
-<html>
-<title>Request Details</title>
-<body>
+
 <?php include("header.php"); ?>
-<h2 align='center'>Request Details</h2>
+<?php if(1){ ?>
+<div class = "post">
+	<h2 class="title">Take an action</h2>
+	<div class="entry">
+		<form name="action" method="post" action="acceptReject.php">
+		<table>
+		<tr>
+			<td><input type="radio" name="reqAction" value="accept"></td>
+			<td>Accept</td>
+		</tr>
+		<tr>
+			<td><input type="radio" name="reqAction" value="reject"></td>
+			<td>Reject</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><textarea name="reason" cols="40" rows="5">Specify a reason for rejection (optional)</textarea></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="hidden" name="reqID" value="<?php echo $_GET['id'] ?>"></td>
+		</tr>
+		<tr>
+			
+		</tr>
+		</table>
+			<input type="submit" value="submit">
+
+		</form>
+
+
+	</div>
+</div>
+<?php } ?>
+<div class="post">
+<h2 class="title">Request Details</h2>
 <table id="box-table-a">
 <thead>
 <tr>
@@ -29,28 +61,26 @@ $col=mysql_fetch_row($res);
 
 
 <?php while($i<$num_row){
-if($i!=1)
-{
+	if($i!=1)
+	{
 ?>
-<tr>
-<td>
+		<tr>
+		<td>
 <?php
-echo $col1[$i];
+		echo $col1[$i];
 ?>
-</td>
-<td>
+		</td>
+		<td>
 <?php         
-echo $col[$i]; 
+		echo $col[$i]; 
 ?>
-</td>
-</tr>
+		</td>
+		</tr>
 <?php
-}
-$i++;
+	}
+	$i++;
 }
 ?>
 </table>
+</div>
 <?php include("footer.php"); ?>
-</body>
-</html>
-
