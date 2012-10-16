@@ -1,5 +1,5 @@
 <?php
-include("shubham_essential.php");
+include("essential.php");
 dbconnect();
 
 if(isset($_POST['delete']))                                     // if to delete a building

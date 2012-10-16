@@ -15,7 +15,7 @@ $list1=generate_list($query,$r);
 <html>
 <title>Add Building</title>
 <head>
-<script type='text/javascript' src='/js/livevalidation_standalone.js'></script>
+<script type='text/javascript' src='./js/livevalidation_standalone.js'></script>
 </head>
 <body>
 <?php require_once('header.php'); ?>
