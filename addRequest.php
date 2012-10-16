@@ -44,6 +44,9 @@ if(isset($_POST["day"])){
 		$eventDays=$eventDays.$day.",";
 	}
 }
+else{
+	$eventDays=(string)((int)dateToDay($eventStartDate)+1);
+}
 
 $query="INSERT INTO Requests(reqNo, hash, creator, creatorEmail, creatorPhone, concernedPName, concernedPEmail, concernedPPhone, appStatus, reqGId, reqDate, eventStartDate, eventEndDate, eventStartTime, eventEndTime, eventTitle, eventDesc, eventDays,concernedAdmin, room, reqType) VALUES(
 	'',
@@ -69,7 +72,7 @@ $query="INSERT INTO Requests(reqNo, hash, creator, creatorEmail, creatorPhone, c
 	'".$reqType."'
 );";
 
-$result=instanceClash($eventStartDate,$eventEndDate,$eventStartTime,$eventEndTime);
+$result=instanceClash($eventStartDate,$eventEndDate,$eventStartTime,$eventEndTime,$room);
 if($result){
 	echo "Sorry! your request clashes with the following events:";
 	$table=array();

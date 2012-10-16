@@ -292,7 +292,7 @@ function getConflictingRequests($date, $room){
 
 function instanceClash($startDate,$endDate,$startTime,$endTime,$room){
 	dbconnect();
-	$query="SELECT * FROM Instances WHERE room=".$room." AND eventStartDate BETWEEN '".$startDate."' AND '".$endDate."' AND ((eventStartTime <= '".$startDate."' AND eventEndTime >= '".$endDate."') || eventStartTime <= '".$endTime."' AND eventEndTime >= '".$endTime."' || eventStartTime >= '".$startTime."' AND eventEndTime <= '".$endTime.")';";
+	$query="SELECT * FROM Instances WHERE room='".$room."' AND eventStartDate BETWEEN '".$startDate."' AND '".$endDate."' AND ((eventStartTime <= '".$startDate."' AND eventEndTime >= '".$endDate."') || eventStartTime <= '".$endTime."' AND eventEndTime >= '".$endTime."' || eventStartTime >= '".$startTime."' AND eventEndTime <= '".$endTime."');";
 	$result=execute($query);
 	$num=mysql_num_rows($result);
 	if($num==0){
@@ -345,6 +345,95 @@ if($_POST['check']==3)
 forward("shubham","nehal.wani@students.iiit.ac.in","303","1","shubham.sangal@students.iiit.ac.in");
 }
  */
+function RtoIWrapper($req)
+{
+        $startDate = $req['eventStartDate'];
+        $endDate = $req['eventEndDate'];
+        $arrayOfWeeks = $req['eventDays'];
+        $arrayOfWeeks = CSVToArray($arrayOfWeeks);
+        echo "Bulallala\n";
+        print_r($arrayOfWeeks);
+        return weeklyRequestToInstance($startDate, $endDate, $arrayOfWeeks);
+}
+function doConflict($req1, $req2){
+        print_r($req1);
+        print_r($req2);
+        $req1Dates=RtoIWrapper($req1);
+        $req2Dates=RtoIWrapper($req2);
+        foreach($req2Dates as $instanceDate){
+                //Checking if dates clash
+                if(in_array($instanceDate,$req1Dates)){
+                //Checking if time clash
+                        $ST=$req1['eventStartTime'];
+                        $st=$req2['eventStartTime'];
+                        $ET=$req1['eventEndTime'];
+                        $et=$req2['eventEndTime'];
+                        if(($st<$ST && $et>$ST)||($st<$ET && $et>$ST)||($st<$ET && $et>$ET)){
+                                return 1;
+                        }
+                }
+        }
+        return 0;
+}
+function checkConflicts(){
+        $tuples = array();
+        dbconnect();
+        $query = "SELECT DISTINCT room from Requests where appStatus = \"Pending\"";
+        $roomQuery = execute($query);
+        while($roomList = mysql_fetch_row($roomQuery)){
+                $roomRecords = array();
+                echo "!!".$roomList[0]."\n";
+                $query = "SELECT * from Requests where room = \"{$roomList[0]}\" and appStatus = \"Pending\" order by eventStartDate DESC\n";
+                echo $query;
+                $events = execute($query);
+                while($array = mysql_fetch_assoc($events)){
+                echo "lo";
+                        $roomRecords[] = $array;
+                }
+                for($i = 0; $i < sizeof($roomRecords); $i++){
+                        for($j = $i + 1; $j < sizeof($roomRecords); $j++){
+                                if(doConflict($roomRecords[$i], $roomRecords[$j])){
+                                        $temp = array($roomRecords[$i]['reqNo'], $roomRecords[$j]['reqNo']);
+                                        $tuples[] = $temp;
+                                }
+                        }
+                }
+        }
+        return $tuples;
+}
+function clashMux($clashTuples) {
+        $clashGroups=array();
+        $clashed=array();
+        foreach($clashTuples as $tuple1){
+                $currGroup=array();
+                if(!in_array($tuple1[0],$clashed)){
+                        $clashed[]=$tuple1[0];
+                        $currGroup[]=$tuple1[0];
+                }   
+                if(!in_array($tuple1[1],$clashed)){
+                        $clashed[]=$tuple1[1];
+                        $currGroup[]=$tuple1[1];
+                }   
+                foreach($clashTuples as $tuple2){
+                        if(in_array($tuple2[0],$currGroup)){
+                                if(!in_array($tuple2[1],$clashed)){
+                                        $clashed[]=$tuple2[1]; 
+                                        $currGroup=array_merge($currGroup,array($tuple2[1]));
+                                }   
+                        }   
+                        else if(in_array($tuple2[1],$currGroup)){
+                                if(!in_array($tuple2[0],$clashed)){
+                                        $clashed[]=$tuple2[0];
+                                        $currGroup=array_merge($currGroup,array($tuple2[0]));
+                                }   
+                        }   
+                }   
+                if(sizeof($currGroup))
+                        $clashGroups[]=$currGroup;
+        }   
+        return($clashGroups);
+}
+//To get requesting clashes, just do clashMux(checkConflicts()); --> will return array of clashing groups which consists of reqNo;
 
 ?>
 
