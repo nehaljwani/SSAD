@@ -347,8 +347,8 @@ function forward($name,$mail_to,$room_no,$request_id,$original_mail_id)
 		<html>
 		<body>
 		<p>".$body."</p>
-		<p> Click <a href=\"http://localhost/req_detail_hash.php?hash=".$hash."\"> here </a>to verify the request! </p>
-		<p>\n\n\n\nCheers,\nAdmins\n\n\n\nMail generated at: ".$date."</p>
+		<p> Click <a href=\"http://localhost/roomReservationSystem/SSAD/req_detail_hash.php?hash=".$hash."\"> here </a>to verify the request! </p>
+		\n\n\n\nCheers,\nAdmins\n\n\n\nMail generated at: ".$date."
 		</body>
 		</html>";
 	$subject="Room allocation: Request forwarded";
@@ -471,6 +471,13 @@ function getRequestByID($ID){
 	$reqArray = mysql_fetch_assoc($result);
 	return $reqArray;
 }
+function getRequestByHash($hash){
+	dbconnect();
+	$query = "select * from Requests where hash = '".$hash."';";
+	$result = execute($query);
+	$reqArray = mysql_fetch_assoc($result);
+	return $reqArray;
+}
 function getEmails($ID)
 {
 	$query = "select email from User where level = {$ID}";
@@ -485,6 +492,10 @@ function getEmails($ID)
 function gethash($id){
 	$res2=getRequestByID($id);
 	return $res2['hash'];
+}
+function getId($hash){
+	$res2=getRequestByHash($hash);
+	return $res2['reqNo'];
 }
 function isAdmin($id){
 	if($id == 0 || $id == 1){};

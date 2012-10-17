@@ -48,6 +48,7 @@ else{
 	$eventDays=(string)((int)dateToDay($eventStartDate)+1);
 }
 
+
 $query="INSERT INTO Requests(reqNo, hash, creator, creatorEmail, creatorPhone, concernedPName, concernedPEmail, concernedPPhone, appStatus, reqGId, reqDate, eventStartDate, eventEndDate, eventStartTime, eventEndTime, eventTitle, eventDesc, eventDays,concernedAdmin, room, reqType) VALUES(
 	'',
 	'".$hash."',
@@ -85,6 +86,13 @@ else{
 	//Adding 2 Requests Table
 	if(execute($query)){
 		echo "Successfull";
+		$reqNo=getId($hash);
+		echo $reqNo;
+		$emails = getEmails($concernedAdmin);
+		print_r($emails);
+		foreach($emails as $email){
+			        forward($concernedPName, $email, $room, $reqNo, $concernedPEmail);
+		} 
 	}	
 	else{
 		die("Your code is crappy!");
