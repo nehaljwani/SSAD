@@ -39,7 +39,7 @@ if($_POST['reqAction']==$b)
 }
 else if($_POST['reqAction']==$a)
 {
-	$query="SELECT * FROM Requests WHERE reqNo='28';";
+	$query="SELECT * FROM Requests WHERE reqNo=".$_POST['reqID'].";";
 	$acceptedEvent=execute($query);
 	$roomRecords=mysql_fetch_assoc($acceptedEvent);
 	$instances=weeklyRequestToInstance($roomRecords['eventStartDate'], $roomRecords['eventEndDate'], CSVToArray($roomRecords['eventDays']));
