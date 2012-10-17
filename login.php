@@ -1,5 +1,6 @@
 
 <?php require_once('essential.php'); ?>
+
 <?php
 
 if(isset($_POST['id']))
@@ -16,9 +17,12 @@ if(isset($_POST['id']))
 		$_SESSION['level'] = $array[1];
 	}
 }
-
-
-
+print_r($_SESSION);
+?>
+<?php 
+if(isset($_SESSION['username'])){
+	header("Location: table.php");
+}
 ?>
 <?php require_once('header.php'); ?>
 <div class="post">
