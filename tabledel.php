@@ -29,19 +29,23 @@ $num=mysql_numrows($result);
 <th scope="col">Delete</th>
 </thead>
 <?php
+$pri=0;
 while ($row=mysql_fetch_row($result)){                 //fetching rows from result query
         ?>  
                 <tr>
                 <?php
                 $i=0;
                 foreach($row as $col){        //for columns printing purposes
-                        ?>  
+			if($i==0){
+				$pri=$col;
+			}
+                        ?>  	
                 <td><?php echo $col; echo " "; ?></td>
                 <?php
                 $i++;
 }
 ?>
-<td><a href='tabledel.php' style='text-align:right'>Del</a></td>
+<td><a href='confirmdel.php?SNO=<?php echo "$pri";?>' style='text-align:right'>Del</a></td>
 
 </tr>
 <?php
