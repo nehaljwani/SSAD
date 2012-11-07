@@ -28,6 +28,7 @@
 	<tr><td> Select Room:</td><td>
 	<?php echo generateRoomList("room"); ?>
 	</td></tr>
+<?php	if($_GET['roomName']){ echo "<select name ='room' id = 'room'><option name= '".$_GET['roomName']."' value='".$_GET['roomName']."'>".$_GET['roomName']."</option></select>";}    ?>
 	<tr> <td>Event Type : </td> 
 	<td> <input type='radio' name='reqType' value='One Time' checked='true' class="repeat" id="repType1"/> One Time </td></tr><tr><td></td>
 	<td><input type='radio' name='reqType' value='Multiple' id="repType2" class="repeat"/> Multiple </td></tr>

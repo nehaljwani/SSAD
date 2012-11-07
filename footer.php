@@ -5,15 +5,16 @@
 		<div id="sidebar">
 			<div>
 				<h2>Navigation</h2>
-				<ul class="list-style1">
+								<ul class="list-style1">
 					<li class="first"><a href="requestForm.php">Create Request</a></li>
 					<li><a href="instances.php">View instances</a></li>
+					<li><a href="av.php">Availability Status</a></li>
+					<li><a href="search.php">Advanced Search</a></li>
 					<li><a href="table.php">View requests</a></li>
 					<li><a href="tabledel.php">Remove requests</a></li>
 					<li><a href="s_Addroom.php">Add/Modify room</a></li>
 					<li><a href="s_Addbuilding.php">Add/Modify building</a></li>
-					<li><a href="modifycat.php">Add/Modify category</a></li>
-				</ul>
+				</ul> 
 			</div>
 		</div>
 		<!-- end #sidebar -->

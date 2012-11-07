@@ -1,5 +1,11 @@
 <?php
-
+$week['Sunday'] = 1;
+$week['Monday'] = 2;
+$week['Tuesday'] = 3;
+$week['Wednesday'] = 4;
+$week['Thursday'] = 5;
+$week['Friday'] = 6;
+$week['Saturday'] = 7;
 //All user $groupss, $groups IDs correspond to indices of the following array
 $groups = array ('Student', 'Parliament', 'Academic Office', 'SLC Chair', 'Dean Academics', 'Admin Manager', 'TA', 'faculty');
 date_default_timezone_set("Asia/Calcutta") or die("Time Zone setting issues\n");
@@ -13,12 +19,12 @@ if(isset($_GET['logout'])){
 
 function dbconnect(){
         GLOBAL $con;
-        $con = mysql_connect('','','');
+        $con = mysql_connect('localhost','root','chanti');
         if(!$con){
                 die("Error in connection!");
         }   
         else {
-                $chooseDB = "USE roomReser";
+                $chooseDB = "USE f";
                 $fetchDB = mysql_query( $chooseDB , $con);
                 if(!$fetchDB){
                         die("no database!");
@@ -500,5 +506,108 @@ function getId($hash){
 function isAdmin($id){
 	if($id == 0 || $id == 1){};
 }
-?>
+function collision($roomId , $date_s , $date_e , $time_s, $time_e , $Repeat_Type ){  // all parameters are in TIME type. not in string
 
+        $query = "SELECT * FROM Requests WHERE
+                Room = '".$roomId."' 
+                AND NOT (eventStartDate >'" . date('Y-m-d',$date_e) . "' OR eventEndDate < '" . date('Y-m-d',$date_s) . "') AND NOT (eventStartTime >='" . date('H:i:s',$time_e). "' OR eventEndTime <='" . date('H:i:s',$time_s). "') ORDER BY eventStartTime;";
+//      echo "</br>$query</br>";
+//      echo "echoing from essential.php int the collision funtion </br>";
+        $result = execute($query);
+        $result1 = array();
+        $counter = 0;
+        while( $row = mysql_fetch_assoc($result) ){
+        //      echo "$row" . "$counter" . $row['Repeat_Type'] . "$Repeat_Type" . "<br/>";
+                $counter++;
+                if( $row['reqType'] == 'Daily' &&  $Repeat_Type=='Daily'){  // collision will alwaz happen ....
+                        //echo "</br >inside of if condition </br>";
+                        $result1[] =  $row;
+                }
+                else if ($row['reqType']=='Daily' && $Repeat_Type=='Weekly' ){
+                        $row_incrdate = $date_s;
+                        While(!($row_incrdate <= strtotime($row['eventEndDate']) && $row_incrdate >= strtotime($row['eventStartDate'])) && $row_incrdate <= $date_e)
+                        {
+                                //echo date("Y-m-d",$row_incrdate);
+                                $row_incrdate = strtotime("+7 day",$row_incrdate);
+                                //echo date("Y-m-d",$row_incrdate);
+
+                        }
+                        if(!($row_incrdate > $date_e)){
+                                $result1[] = $row;
+                        }
+                }
+		else if ($row['reqType']=='Weekly' && $Repeat_Type=='Daily' ){
+                        $row_incrdate = strtotime($row['eventStartDate']);
+                        While(!($row_incrdate <= $date_e && $row_incrdate >= $date_s) && $row_incrdate <= strtotime($row['eventEndDate']))
+                        {
+                                //echo date("Y-m-d",$row_incrdate);
+                                $row_incrdate = strtotime("+7 day",$row_incrdate);
+                                //echo date("Y-m-d",$row_incrdate);
+
+                        }
+                        if(!($row_incrdate > strtotime($row['eventEndDate']))){
+                                $result1[] = $row;
+                        }
+
+                }
+                else if ($row['reqType']=='Weekly' && $Repeat_Type=='Weekly' ){
+                        $row_incrdate = strtotime($row['Start_Date']);
+                        $collide = 0;
+                        while($row_incrdate <= strtotime($row['eventEndDate'])){
+                                if($row_incrdate == $date_s){ // starting date collides with one of the days 
+                                        $collide = 1;
+                                        break;
+                                }
+                                $row_incrdate = strtotime("+7 day" , $row_incrdate );
+                        }
+                        if(!$collide){
+                                $row_incrdate = $date_s ;
+                                while( $row_incrdate <= $date_e ){
+                                        if( $row_incrdate == strtotime($row['eventStartTime'])){ //starting time collides with one of the days.
+                                                $collide = 1;
+                                                break;
+                                        }
+                                        $row_incrdate = strtotime("+7 day" , $row_incrdate );
+                                }
+                        }
+
+			if($collide){ // appending to the result array.
+                                $result1[] = $row;
+                        }
+                }
+	      else if($row['reqType']=='One Time')
+		{
+			$result1[] = $row;
+		}
+		else if($row['reqType']=='Multiple')
+		{
+$week['Sunday'] = 1;
+$week['Monday'] = 2;
+$week['Tuesday'] = 3;
+$week['Wednesday'] = 4;
+$week['Thursday'] = 5;
+$week['Friday'] = 6;
+$week['Saturday'] = 7;
+//echo "aaa".$week['Saturday'];
+	//			echo "a".$week['".$w."'];
+//			echo "multiple";
+			$w = date('l',$date_s);
+//			echo $w;
+			$r = CSVToArray($row['eventDays']);
+			for($i=0;$i<count($r);$i++)
+			{
+				if($week[$w]==$r[$i])
+				{
+//					echo "yahoo";
+					$result1[] = $row;
+					break;
+				}
+			}
+			
+		}
+        }
+return $result1;
+
+
+}
+?>
