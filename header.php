@@ -26,6 +26,7 @@ Released   : 20120818
 			<ul>
 				<li class="current_page_item"><a href="login.php">Homepage</a></li>
 				<li><a href="conflictTable.php">Conflict View</a></li>
+				<li><a href="giveFeedback.php">Feedback</a></li>
 				<li><a href="#">About Us</a></li>
 				<li><a href="#">Links</a></li>
 				<li><a href="?logout=true">Logged in as <?php echo $_SESSION['username']; ?></a></li>
