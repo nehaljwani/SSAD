@@ -1,17 +1,29 @@
 <?php
 include("essential.php");
-
-
+$on_page=array();
 if(isset($_POST['deleteroom']))                         //if clicks on delete button
         {
                 if(($_POST['dRoom']) == null || $_POST['dRoom'] == ''){
-                        header("Location:s_Addroom.php?msg='Room name not specified'");
+			$on_page[1]="addRoom";
+			$on_page[0]="deleteRoom";
+			$on_page[2]="deleteBuilding";
+			$on_page[3]="addBuilding";
+			$on_page[4]="Room name not specified";
+			$p= serialize($on_page);
+                        //header("Location:allForm.php?msg='Room name not specified'");
+                        header("Location:allForm.php?msg=$p");
                         die();
                 }
 
                 $query5 = "delete from Room where roomName = '".$_POST['dRoom']."';";
                 execute($query5);
-                header("Location:s_Addroom.php?msg='Room Deleted'");
+			$on_page[1]="addRoom";
+			$on_page[0]="deleteRoom";
+			$on_page[2]="deleteBuilding";
+			$on_page[3]="addBuilding";
+			$on_page[4]="Room Deleted";
+		$p= serialize($on_page);
+                header("Location:allForm.php?msg=$p");
                 die();
         }
 else
@@ -29,8 +41,15 @@ if($b== $a){
                 $r11=$_POST['roomName'];
                 if(empty($r11))
 			{
+			$on_page[0]="addRoom";
+			$on_page[1]="deleteRoom";
+			$on_page[2]="deleteBuilding";
+			$on_page[3]="addBuilding";
+			$on_page[4]="Room name not filled";
+		$p= serialize($on_page);
+                        header("Location:allForm.php?msg=$p");
 			
-                        header("Location:s_Addroom.php?msg=Room name not filled");           //checking if text field empty
+                        //header("Location:allForm.php?msg=Room name not filled");           //checking if text field empty
                         die();
 			}
 		 $rname=escape($_POST['roomName']);
@@ -41,7 +60,14 @@ if($b== $a){
                if(empty($_POST['roomName']))
 		{                          //if update
                         if(empty($_POST['Room'])){
-                                header("Location:s_Addroom.php?msg='Room name not specified'");
+			$on_page[0]="addRoom";
+			$on_page[1]="deleteRoom";
+			$on_page[2]="deleteBuilding";
+			$on_page[3]="addBuilding";
+			$on_page[4]="Room name not specified";
+		$p= serialize($on_page);
+                        header("Location:allForm.php?msg=$p");
+                        //        header("Location:allForm.php?msg='Room name not specified'");
                                 die();
                         }
                         $rname=$_POST['Room'];
@@ -56,7 +82,13 @@ if(mysql_num_rows($r)!=1)
  {
         if($_POST['a_u'] == 'add')
 	{
-                header("Location:s_Addroom.php?msg='Cannot insert.Cannot get proper building.'");
+			$on_page[0]="addRoom";
+			$on_page[1]="deleteRoom";
+			$on_page[2]="deleteBuilding";
+			$on_page[3]="addBuilding";
+			$on_page[4]="Cannot insert.Cannot get proper building";
+		$p= serialize($on_page);
+                header("Location:allForm.php?msg=$p");
                 die();
         }
 }
@@ -74,8 +106,15 @@ if(mysql_num_rows($r)!=1)
 		$pp=mysql_num_rows($lm);
 		//echo $pp;
                 if($pp!= 0) {
+			$on_page[0]="addRoom";
+			$on_page[1]="deleteRoom";
+			$on_page[2]="deleteBuilding";
+			$on_page[3]="addBuilding";
+			$on_page[4]="room already exists";
+		$p= serialize($on_page);
+                        header("Location:allForm.php?msg=$p");
                       
-                        header("Location:s_Addroom.php?msg='room already exists'");
+                        //header("Location:allForm.php?msg='room already exists'");
                         die();
                 }
 		else
@@ -105,8 +144,15 @@ if(mysql_num_rows($r)!=1)
                 }
                 if(empty($_POST['Category']))
                 {
+			$on_page[0]="addRoom";
+			$on_page[1]="deleteRoom";
+			$on_page[2]="deleteBuilding";
+			$on_page[3]="addBuilding";
+			$on_page[4]="Room inserted/updated successfully.You did not have category preferences";
+		$p= serialize($on_page);
+                        header("Location:allForm.php?msg=$p");
 
-                        header("Location:s_Addroom.php?msg='Room inserted/updated successfully.You did not have category preferences.'");
+                        //header("Location:allForm.php?msg='Room inserted/updated successfully.You did not have category preferences.'");
                          die();
                 }
                 else{                                                   // adding categories to the room.
@@ -116,7 +162,14 @@ if(mysql_num_rows($r)!=1)
                                 $query2="insert into Room_Cat values('".$id2."','" .$_POST['Category'][$i]. "');";
                                 execute($query2);
                         }
-                        header("Location:s_Addroom.php?msg='Room inserted/updated successfully.'");
+			$on_page[0]="addRoom";
+			$on_page[1]="deleteRoom";
+			$on_page[2]="deleteBuilding";
+			$on_page[3]="addBuilding";
+			$on_page[4]="Room inserted/updated successfully";
+		$p= serialize($on_page);
+                        header("Location:allForm.php?msg=$p");
+                        //header("Location:allForm.php?msg='Room inserted/updated successfully.'");
                         die();
                 }
        // }
