@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.1.63, for debian-linux-gnu (i686)
+-- MySQL dump 10.13  Distrib 5.5.27, for Linux (i686)
 --
 -- Host: localhost    Database: roomReser
 -- ------------------------------------------------------
--- Server version	5.1.63-0ubuntu0.11.04.1
+-- Server version	5.5.27
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -150,6 +150,30 @@ LOCK TABLES `Feedback_Form` WRITE;
 /*!40000 ALTER TABLE `Feedback_Form` DISABLE KEYS */;
 INSERT INTO `Feedback_Form` VALUES ('kapil','','Gud','2012-11-09 16:30:26'),('Nehal','','Rocks\r\n','2012-11-09 16:31:13'),('Ankush','','Partner','2012-11-09 16:51:00'),('alkjsa','','jkashdsaj\r\n','2012-11-09 16:51:12'),('asdsaasd','','sdasda','2012-11-09 16:51:16'),('wqewqw','','wqeewq','2012-11-09 16:51:20'),('wqewqwe','','qwewqe','2012-11-09 16:51:26'),('adsadasas','','asddsa','2012-11-09 16:51:47'),('aadsjsah','','kjhads','2012-11-09 16:51:54'),('oqwpowi','','OIuiuio\r\n','2012-11-09 16:52:16'),('fwe','','rwere','2012-11-09 16:52:27');
 /*!40000 ALTER TABLE `Feedback_Form` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Groups`
+--
+
+DROP TABLE IF EXISTS `Groups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Groups` (
+  `groupName` varchar(200) DEFAULT NULL,
+  `level` int(2) NOT NULL,
+  PRIMARY KEY (`level`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Groups`
+--
+
+LOCK TABLES `Groups` WRITE;
+/*!40000 ALTER TABLE `Groups` DISABLE KEYS */;
+INSERT INTO `Groups` VALUES ('Student',0),('Parliament',1),('Acad Office',2),('SLC Chair',3),('Dean Academics',4),('Manager (Admin)',5),('TA',6),('Faculty',7);
+/*!40000 ALTER TABLE `Groups` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -375,4 +399,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-11-11  0:34:12
+-- Dump completed on 2012-11-11  2:24:18
