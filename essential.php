@@ -24,7 +24,7 @@ function dbconnect(){
                 die("Error in connection!");
         }   
         else {
-                $chooseDB = "USE f";
+                $chooseDB = "USE roomReser";
                 $fetchDB = mysql_query( $chooseDB , $con);
                 if(!$fetchDB){
                         die("no database!");
@@ -215,6 +215,26 @@ function generateRoomList($myid){
         $st .= "</select>";
         return $st;
 }
+function generateRoomList1($myid,$a){
+        $query="SELECT roomName,B.buildingName FROM Room R, Building B WHERE R.buildingName=B.buildId;";
+        dbconnect();
+        $result=execute($query);
+        $st = "<select name='". $myid . "' class='". $myid."' >";
+        $st .= "<option value='' id='fg'>Please select</option>";
+        while($row = mysql_fetch_array($result)){
+		if($a==$row['roomName'])
+{
+                $st .= "<option selected='selected' value='" . $row['roomName'] . "' id='" .$row['buildingName']."'>".$row['roomName']."</option>";}
+else
+{
+
+                $st .= "<option value='" . $row['roomName'] . "' id='" .$row['buildingName']."'>".$row['roomName']."</option>";
+}
+        }
+        $st .= "</select>";
+        return $st;
+}
+
 
 function generateBuildingList($myid){
 	$query="SELECT buildId,buildingName FROM Building;";
@@ -413,6 +433,22 @@ function checkConflicts(){
         }
         return $tuples;
 }
+function generateBuildingList1($myid,$a){
+        $query="SELECT buildId,buildingName FROM Building;";
+        dbconnect();
+        $result=execute($query);
+        $st = "<select name='". $myid . "' id='". $myid."' >";
+        $st .= "<option value='' id='fg'>Please select</option>";
+        while($row = mysql_fetch_array($result)){
+                if($a==$row['buildId'])
+                {$st .= "<option selected='selected' value='" . $row['buildingName'] . "' id='" .$row['buildId']."'>".$row['buildingName']."</option>";}
+                else
+                {$st .= "<option value='" . $row['buildingName'] . "' id='" .$row['buildId']."'>".$row['buildingName']."</option>";}
+        }
+        $st .= "</select>";
+        return $st;
+}
+
 function clashMux($clashTuples) {
         $clashGroups=array();
         $clashed=array();

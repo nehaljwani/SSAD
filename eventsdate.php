@@ -82,3 +82,4 @@ echo "<table style='text-align:center'>
 echo "</form>";
 }
 ?>
+<?php include'footer.php' ?>

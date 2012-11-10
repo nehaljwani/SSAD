@@ -21,14 +21,33 @@
 	<tr class="CP"><td> Email: </td><td><input type="email" name="concernedPEmail" id="CP2" autocomplete="off"><br></tr>
 	<tr class="CP"><td> Phone No:</td> <td><input type="text" name="concernedPPhone" id="CP3" maxlength=10><br></tr>
 	<tr><td> Details of Event:</td><td></tr>
-	<tr><td> Title:</td><td><input type="text" name="eventTitle" id="ti1"><br></tr>
+<!--	<tr><td> Title:</td><td><input type="text" name="eventTitle" id="ti1"><br></tr>-->
+	<?php 
+echo "<tr><td>Event Type:</td><td>";
+$query = "select * from eventTitle";
+echo generate_list($query,"eventTitle");
+echo "</td>";
+?>
 	<tr><td> Select Building: </td><td> 
-	<?php echo generateBuildingList("buildingName"); ?>
+	<?php 
+if($_GET['buildingname'])
+{
+echo generateBuildingList1("buildingName",$_GET['buildingname']); 
+}
+else
+{
+echo generateBuildingList("buildingName");
+} ?>
 	</td></tr>
-	<tr><td> Select Room:</td><td>
-	<?php echo generateRoomList("room"); ?>
-	</td></tr>
-<?php	if($_GET['roomName']){ echo "<select name ='room' id = 'room'><option name= '".$_GET['roomName']."' value='".$_GET['roomName']."'>".$_GET['roomName']."</option></select>";}    ?>
+<?php 
+	echo "<tr><td> Select Room:</td><td>";
+	if($_GET['buildingname'])
+	 {echo generateRoomList1("room",$_GET['roomName']); }
+	else
+	 {echo generateRoomList("room"); }
+	
+	echo "</td></tr>";?>
+<?php//	if($_GET['roomName']){ echo "<select name ='room' id = 'room'><option name= '".$_GET['roomName']."' value='".$_GET['roomName']."'>".$_GET['roomName']."</option></select>";}    ?>
 	<tr> <td>Event Type : </td> 
 	<td> <input type='radio' name='reqType' value='One Time' checked='true' class="repeat" id="repType1"/> One Time </td></tr><tr><td></td>
 	<td><input type='radio' name='reqType' value='Multiple' id="repType2" class="repeat"/> Multiple </td></tr>

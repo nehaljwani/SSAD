@@ -4,6 +4,47 @@ Design by Free CSS Templates
 http://www.freecsstemplates.org
 Released for free under a Creative Commons Attribution 2.5 License
 */
+.styled-button-10 {
+/*background:#5CCD00;*/
+background: #B22222;
+background:-moz-linear-gradient(top,#B22222; 0%,#4AA400 100%);
+background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#B22222;),color-stop(100%,#4AA400));
+background:-webkit-linear-gradient(top,#B22222; 0%,#4AA400 100%);
+background:-o-linear-gradient(top,#B22222; 0%,#4AA400 100%);
+background:-ms-linear-gradient(top,#B22222; 0%,#4AA400 100%);
+background:linear-gradient(top,#B22222; 0%,#4AA400 100%);
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5CCD00',endColorstr='#4AA400',GradientType=0);
+/*padding:10px 15px;*/
+padding right:50px;
+padding-left:5px;
+padding-top:10px;
+padding-bottom:10px;
+color:#fff;
+font-family:'Helvetica Neue',sans-serif;
+font-size:14px;
+border-radius:5px;
+-moz-border-radius:5px;
+-webkit-border-radius:5px;
+border:1px solid #459A00
+}
+.link-style2 {
+width: 70px;
+        display: inline-block;
+        margin-top: 10px;
+    /*    padding: 10px 25px;*/
+padding right:50px;
+padding-left:5px;
+padding-top:10px;
+padding-bottom:10px;
+       /* background: #0C3E06;*/
+background: #B22222;
+        border-radius: 10px;
+        font-size: 14px;
+        color: #FFFFFF;
+}
+.link-style2:hover {
+background: #16251B;
+}
 .button {
 display: inline-block;
 width: 70px;
@@ -12,7 +53,11 @@ cursor: pointer;
         text-align: center;
         text-decoration: none;
 font: 14px/100% Arial, Helvetica, sans-serif;
-padding: .5em 2em .55em;
+padding-right:50px;
+/*padding: .5em 2em .55em;*/
+padding-left:5px;
+padding-top:10px;
+padding-bottom:10px;
          text-shadow: 0 1px 1px rgba(0,0,0,.3);
          -webkit-border-radius: .5em;
          -moz-border-radius: .5em;

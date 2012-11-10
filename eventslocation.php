@@ -98,3 +98,4 @@ echo "<table style='text-align:center'>
 }
 
 ?>
+<?php include'footer.php' ?>

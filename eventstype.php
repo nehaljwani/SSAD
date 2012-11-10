@@ -10,7 +10,7 @@ echo "
 <form name='queryroom' id ='queryname'  method='POST' action='" . $PHP_SELF . "'>" ;
 
 echo "<table class='center'>
-<tr><td style='text-align:right'>Search(Event Type) : </td><td><input name='keyword' type='string'</td></tr>
+<tr><td style='text-align:right'>Search(Event Type) : </td><td>"; echo generate_list("select * from eventTitle",'keyword'); echo "</td></tr>
 </table>
 <br/>
 <table style='text-align:center'>
@@ -40,7 +40,9 @@ $buildid = 1;
 $x = $_POST['date_start'];
 $y = $_POST['date_end'];
 $hardhik = $_POST['keyword'];
-$query2 = "select Building.buildingName,Requests.eventDesc,eventStartTime,eventEndTime,room,eventStartDate,eventEndDate from Requests,Room,Building where appStatus = 'Accepted' AND Requests.room = Room.roomName AND Building.buildId = Room.buildingName AND Requests.eventDesc LIKE '%".$hardhik."%' AND ((eventStartDate <= DATE '".$x."' AND eventEndDate >= DATE '".$y."') OR (eventStartDate >= DATE '".$x."' AND eventEndDate >= DATE '".$y."' AND eventStartDate <= DATE '".$y."') OR (eventStartDate >= DATE '".$x."' AND eventEndDate <= DATE '".$y."') OR (eventStartDate <= DATE '".$x."' AND eventEndDate <= DATE '".$y."' AND eventEndDate >= DATE '".$x."'));";
+echo $hardhik;
+//$query2 = "select Building.buildingName,Requests.eventDesc,eventStartTime,eventEndTime,room,eventStartDate,eventEndDate from Requests,Room,Building where appStatus = 'Accepted' AND Requests.room = Room.roomName AND Building.buildId = Room.buildingName AND Requests.eventDesc LIKE '%".$hardhik."%' AND ((eventStartDate <= DATE '".$x."' AND eventEndDate >= DATE '".$y."') OR (eventStartDate >= DATE '".$x."' AND eventEndDate >= DATE '".$y."' AND eventStartDate <= DATE '".$y."') OR (eventStartDate >= DATE '".$x."' AND eventEndDate <= DATE '".$y."') OR (eventStartDate <= DATE '".$x."' AND eventEndDate <= DATE '".$y."' AND eventEndDate >= DATE '".$x."'));";
+$query2 = "select Building.buildingName,Requests.eventDesc,eventStartTime,eventEndTime,room,eventStartDate,eventEndDate from Requests,Room,Building where appStatus = 'Accepted' AND Requests.room = Room.roomName AND Building.buildId = Room.buildingName AND Requests.eventTitle = '".$hardhik."' AND ((eventStartDate <= DATE '".$x."' AND eventEndDate >= DATE '".$y."') OR (eventStartDate >= DATE '".$x."' AND eventEndDate >= DATE '".$y."' AND eventStartDate <= DATE '".$y."') OR (eventStartDate >= DATE '".$x."' AND eventEndDate <= DATE '".$y."') OR (eventStartDate <= DATE '".$x."' AND eventEndDate <= DATE '".$y."' AND eventEndDate >= DATE '".$x."'));";
 $result9=execute($query2);
 $y = mysql_num_rows($result9);
 
@@ -88,3 +90,4 @@ $y = $y - 1;
 echo "</table>";
 }
 ?>
+<?php include'footer.php' ?>
