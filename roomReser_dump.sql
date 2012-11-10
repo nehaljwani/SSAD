@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.27, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.1.63, for debian-linux-gnu (i686)
 --
 -- Host: localhost    Database: roomReser
 -- ------------------------------------------------------
--- Server version	5.5.27-0ubuntu2
+-- Server version	5.1.63-0ubuntu0.11.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -101,6 +101,30 @@ LOCK TABLES `Category` WRITE;
 /*!40000 ALTER TABLE `Category` DISABLE KEYS */;
 INSERT INTO `Category` VALUES (1,'Projector_Room',NULL),(2,'AC',NULL),(3,'Teach_lab',NULL),(6,'Public Addressing System','Speakers'),(7,'',''),(8,'Mosquitos','Buuz buuz');
 /*!40000 ALTER TABLE `Category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `DaySlots`
+--
+
+DROP TABLE IF EXISTS `DaySlots`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `DaySlots` (
+  `slot` varchar(20) NOT NULL,
+  `starttime` varchar(10) NOT NULL,
+  `endtime` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `DaySlots`
+--
+
+LOCK TABLES `DaySlots` WRITE;
+/*!40000 ALTER TABLE `DaySlots` DISABLE KEYS */;
+INSERT INTO `DaySlots` VALUES ('MORNING','08:00:00','13:00:00'),('AFTERNOON','14:00:00','18:00:00'),('EVENING','18:00:00','22:00:00');
+/*!40000 ALTER TABLE `DaySlots` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -319,6 +343,28 @@ LOCK TABLES `User` WRITE;
 INSERT INTO `User` VALUES (1,'user1','user1','user1@students.iiit.ac.in',0),(16,'Acad Office','iiit123','nehal.wani@students.iiit.ac.in',2),(17,'SLC Chair','iiit123','nehal.wani@students.iiit.ac.in',3),(18,'Dean Academics','iiit123','nehal.wani@students.iiit.ac.in',4),(19,'Manager (Admin)','iiit123','nehal.wani@students.iiit.ac.in',5),(14,'Student','iiit123','nehal.wani@students.iiit.ac.in',0),(15,'Parliament','iiit123','nehal.wani@students.iiit.ac.in',1),(13,'nehaljwani','iiit123','nehal.wani@students.iiit.ac.in',2),(20,'TA','iiit123','nehal.wani@students.iiit.ac.in',6),(21,'Faculty','iiit123','nehal.wani@students.iiit.ac.in',7);
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `eventTitle`
+--
+
+DROP TABLE IF EXISTS `eventTitle`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `eventTitle` (
+  `title` varchar(90) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `eventTitle`
+--
+
+LOCK TABLES `eventTitle` WRITE;
+/*!40000 ALTER TABLE `eventTitle` DISABLE KEYS */;
+INSERT INTO `eventTitle` VALUES ('TUTS'),('LABS'),('D LECT.'),('FAC.TALKS'),('CULT'),('WORKSHOP'),('SEMINAR');
+/*!40000 ALTER TABLE `eventTitle` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -329,4 +375,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-11-09 22:35:27
+-- Dump completed on 2012-11-11  0:34:12
