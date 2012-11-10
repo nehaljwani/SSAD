@@ -12,6 +12,12 @@
 include("essential.php"); // Importing pre-defined functions
 dbconnect();
 
+$ccPersons = CSVToArray($_POST['cc']);
+
+print_r($ccPersons);
+
+echo "testtest";
+
 $hash=sha1(uniqid(mt_rand(), true));
 $eventEndDate=$_POST["eventEndDate"];
 $creator=$_POST["creator"];
@@ -99,6 +105,14 @@ else{
 	}
 }
 
-header("Location: table.php");
+echo "lala";
+$reqID = getId($hash);
+
+foreach($ccPersons as $guy){
+	$query = "INSERT INTO ccPerson(reqNo, email) values(\"{$reqID}\", \"{$guy}\");";
+	echo "\n".$query."\n";
+}
+
+//header("Location: table.php");
 
 ?>

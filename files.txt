@@ -1,0 +1,41 @@
+Please add a description to each file in the column besides it.
+
+acceptReject.php		Description A
+addRequest.php			Description B
+allForm.php			Description C
+av.php
+confirmdel.php
+confirm_feedback.php
+conflict.php
+conflictTable.php
+deletecat.php
+details.php
+error.php
+essential.php
+eventsdate.php
+eventslocation.php
+eventstype.php
+feedback_view.php
+footer.php
+giveFeedback.php
+header.php
+home.php
+h.php
+instances.php
+login.php
+modifycat.php
+nhome.php
+reference.php
+req_detail_hash.php
+req_detail.php
+requestDetails.php
+requestForm.php
+request.php
+r.php
+s_addbuild2.php
+s_Addbuilding.php
+s_addroom2.php
+s_Addroom.php
+search.php
+tabledel.php
+table.php

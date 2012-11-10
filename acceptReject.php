@@ -70,15 +70,17 @@ else if($_POST['reqAction']==$a)
 		execute($query);
 	}   
 
-	$sq="update Requests set appstatus='Accepted' where reqNo=".$_POST['reqID'].";";
-	foreach($clashArray as $rejectThis){
-		if($rejectThis != $rID){
-			echo$rejectThis;
-			$otherQuery = "update Requests set appStatus = 'Rejected', reqRejectReason = 'A request conflicting with your request was accepted.' where reqNo = {$rejectThis}";
+	$sq="update Requests set appStatus='Accepted' where reqNo=".$_POST['reqID'].";";
+	$clash=requestClash($roomRecords['eventStartDate'], $roomRecords['eventEndDate'],$roomRecords['eventStartTime'], $roomRecords['eventEndTime'],$roomRecords['room']);
+	while($req=mysql_fetch_assoc($clash)){
+		print_r($req);
+		if($req['reqNo'] != $rID){
+			echo $req['reqNo'];
+			echo "<HI><br><br><br><br>\n";
+			$otherQuery = "update Requests set appStatus = 'Rejected', reqRejectReason = 'A request conflicting with your request was accepted.' where reqNo = {$req['reqNo']}";
 			echo $otherQuery."\n";
 			execute($otherQuery);
 
-			$req = getRequestByID($rejectThis);
 			reject($req['creator'], $req['creatorEmail'], $req['room'], $req['reqNo']);
 			reject($req['concernedPName'], $req['concernedPEmail'], $req['room'], $req['reqNo']);
 		}
@@ -103,7 +105,9 @@ execute($sq);
 echo "<br />";
 
 
+echo "HIHIHIII";
 print_r($clashArray);
+echo "HIHIHIII";
 
 header("Location: table.php");
 

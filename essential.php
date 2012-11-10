@@ -319,7 +319,16 @@ function CSVToArray($string){
 
 function instanceClash($startDate,$endDate,$startTime,$endTime,$room){
 	dbconnect();
-	$query="SELECT * FROM Instances WHERE room='".$room."' AND eventStartDate BETWEEN '".$startDate."' AND '".$endDate."' AND ((eventStartTime <= '".$startDate."' AND eventEndTime >= '".$endDate."') || eventStartTime <= '".$endTime."' AND eventEndTime >= '".$endTime."' || eventStartTime >= '".$startTime."' AND eventEndTime <= '".$endTime."');";
+	$query="SELECT * FROM Instances WHERE 
+		room='".$room."' AND 
+		((eventStartDate < '".$startDate."' AND eventEndDate > '".$startDate."') || 
+		(eventStartDate < '".$endDate."' AND eventEndDate > '".$endDate."') || 
+		(eventStartDate > '".$startDate."' AND eventEndDate < '".$endDate."') ||
+		(eventStartDate = '".$startDate."' AND eventEndDate = '".$endDate."')) AND
+		((eventStartTime < '".$startTime."' AND eventEndTime > '".$startTime."') || 
+		(eventStartTime < '".$endTime."' AND eventEndTime >'".$endTime."') || 
+		(eventStartTime > '".$startTime."' AND eventEndTime < '".$endTime."') ||
+		(eventStartTime = '".$startTime."' AND eventEndTime = '".$endTime."'));";
 	$result=execute($query);
 	$num=mysql_num_rows($result);
 	if($num==0){
@@ -329,6 +338,29 @@ function instanceClash($startDate,$endDate,$startTime,$endTime,$room){
 		return $result;
 	}
 }
+function requestClash($startDate,$endDate,$startTime,$endTime,$room){
+	dbconnect();
+	$query="SELECT * FROM Requests WHERE
+		room='".$room."' AND 
+		((eventStartDate < '".$startDate."' AND eventEndDate > '".$startDate."') || 
+		(eventStartDate < '".$endDate."' AND eventEndDate > '".$endDate."') || 
+		(eventStartDate > '".$startDate."' AND eventEndDate < '".$endDate."') ||
+		(eventStartDate = '".$startDate."' AND eventEndDate = '".$endDate."')) AND
+		((eventStartTime < '".$startTime."' AND eventEndTime > '".$startTime."') || 
+		(eventStartTime < '".$endTime."' AND eventEndTime >'".$endTime."') || 
+		(eventStartTime > '".$startTime."' AND eventEndTime < '".$endTime."') ||
+		(eventStartTime = '".$startTime."' AND eventEndTime = '".$endTime."'));";
+	echo $query;
+	$result=execute($query);
+	$num=mysql_num_rows($result);
+	if($num==0){
+		return NULL;
+	}
+	else{
+		return $result;
+	}
+}
+
 
 function accept($name,$mail_to,$room_no,$request_id)
 {
@@ -403,7 +435,12 @@ function doConflict($req1, $req2){
                         $st=$req2['eventStartTime'];
                         $ET=$req1['eventEndTime'];
                         $et=$req2['eventEndTime'];
-                        if(($st<=$ST && $et>=$ST)||($st<=$ET && $et>=$ST)||($st<=$ET && $et>=$ET)){
+                        $SD=$req1['eventStartDate'];
+                        $sd=$req2['eventStartDate'];
+                        $ED=$req1['eventEndDate'];
+                        $ed=$req2['eventEndDate'];
+			if(	(($sd<$SD && $ed>$SD)||($sd<$ED && $ed>$SD)||($sd<$ED && $ed>$ED)||($sd==$SD && $ed==$ED))&&
+				(($st<$ST && $et>$ST)||($st<$ET && $et>$ST)||($st<$ET && $et>$ET)||($st==$ST && $et==$ET)) ){
                                 return 1;
                         }
                 }

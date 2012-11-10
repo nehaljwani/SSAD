@@ -9,6 +9,7 @@
 <script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
 <script language="javascript" type="text/javascript" src="js/calendarDateInput.js"></script>
 <script language="javascript" type="text/javascript" src="js/addRequest.js"></script>
+<script language="javascript" type="text/javascript" src="js/autofill.js"></script>
 <?php include("essential.php"); ?>
 <form action="addRequest.php" autocomplete="on" method="POST">
 	<table class='center'>
@@ -20,7 +21,7 @@
 	<tr class="CP"><td> Name:</td><td><input type="text" name="concernedPName" id="CP1"><br></tr>
 	<tr class="CP"><td> Email: </td><td><input type="email" name="concernedPEmail" id="CP2" autocomplete="off"><br></tr>
 	<tr class="CP"><td> Phone No:</td> <td><input type="text" name="concernedPPhone" id="CP3" maxlength=10><br></tr>
-	<tr><td> Details of Event:</td><td></tr>
+	<tr><td> <span style="font-weight: bold;">Details of Event:</span></td><td></tr>
 <!--	<tr><td> Title:</td><td><input type="text" name="eventTitle" id="ti1"><br></tr>-->
 	<?php 
 echo "<tr><td>Event Type:</td><td>";
@@ -74,7 +75,8 @@ echo generateBuildingList("buildingName");
 	</select></div></td></tr><br/>
 	<tr> <td> Activity/Reason: </td><td>
 	<textarea id='description'  name='eventDesc'/></textarea></tr>
-	<tr><td><input type='submit' name='submit' id='submit' class='center' value='BookRoom'/></td>
+	<tr><td>CC: </td><td><input type="text" name="cc"></td></tr>
+	<tr><td><input type='submit' name='submit' id='submit' class='center' value='Book Room'/></td></tr>
 	</table>
 	<script type="text/javascript">
 	var f21 = new LiveValidation('P1');

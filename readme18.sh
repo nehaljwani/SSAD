@@ -15,3 +15,4 @@ Modifications
 * cc vala never gets admin rights
 * New table reqID <-> ccEmail ; input is CSV, prompted at the time of request creation and forwarding; creator ka ID bhi hai, notification goes only to all those in the table
 * Conflicting and non-conflicting requests are tabs in a single View Requests page | Conflicting | Non-conflicting | Accepted | Rejected | Cancelled | All
+Add trim to CSV to array functions
