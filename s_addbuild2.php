@@ -53,8 +53,8 @@ if(isset($_POST['add'])){                                       // add button
 		if (mysql_affected_rows()){
 		$on_page[1]="addRoom";
 		$on_page[2]="deleteRoom";
-		$on_page[0]="deleteBuilding";
-		$on_page[3]="addBuilding";
+		$on_page[0]="addBuilding";
+		$on_page[3]="deleteBuilding";
 		$on_page[4]="Building Added";
 		$p= serialize($on_page);
 		header("Location:allForm.php?msg=$p");
