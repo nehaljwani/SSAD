@@ -15,4 +15,14 @@ Sept 19, 2012
 That's all for now. Ankush will be sending php tutorial links to all the three teams. Please go though them.
 Further communications will be through ra_ssad@googlegroups.com
 
+
+Steps:
+
+git pull
+git status
+git add *
+git commit -m "<message>"
+git push
+
+
 ---------------------------------------------------------------------------
