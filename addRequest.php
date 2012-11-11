@@ -37,13 +37,66 @@ $eventDesc=$_POST["eventDesc"];
 $concernedAdmin=$_POST["concernedAdmin"];
 $room=$_POST["room"];
 $reqType=$_POST["reqType"];
-
+$eventVenue=$_POST['buildingName'];
+if( (!is_numeric($creatorPhone)) or  strlen($creatorPhone) <10) {
+	header("Location:requestForm.php?msg='Phone number must be 10 numbers digits'");
+die();
+}
+$query = "select * from eventTitle where title='$eventTitle' ;";
+$rv=execute($query);
+if(mysql_num_rows($rv)==0)
+{
+	header("Location:requestForm.php?msg='event Title $eventTitle  is not exists'");
+die();
+}
+$query = "select * from Building where buildingName='$eventVenue' ;";
+$rv=execute($query);
+if(mysql_num_rows($rv)==0)
+{
+	header("Location:requestForm.php?msg='event Venue $eventVenue  is not exists'");
+die();
+}
+$query = "select * from Room where roomName='$room' ;";
+$rv=execute($query);
+if(mysql_num_rows($rv)==0)
+{
+	header("Location:requestForm.php?msg='event Room $room  is not exists'");
+die();
+}
+if($reqType!= 'One Time' and $reqType!='Multiple')
+{
+	header("Location:requestForm.php?msg='reqType $reqType  is not exists'");
+die();
+}
+$today=date("Y-m-d");
+$todayarray = explode("-", $today);
+$startdate = explode("-", $eventStartDate);
+$limstart=$todayarray[2]+2;
+if($todayarray[0]>=$startdate[0] and $todayarray[1]>=$startdate[1] and $startdate[2]<$limstart)
+{
+	header("Location:requestForm.php?msg='Invalid Date'");
+die();
+}
+if($eventStartDate > $eventEndDate)
+{
+	header("Location:requestForm.php?msg='End Date must be greater than Start Date'");
+die();
+}
+if($eventStartTime > $eventEndTime)
+{
+	header("Location:requestForm.php?msg='End Time must be greater than Start Time'");
+die();
+}
+if(empty($eventDesc))
+{
+	header("Location:requestForm.php?msg='Activity/Reason cannot be Empty'");
+die();
+}
 if($_POST['concernedPEmail']==''){
 	$concernedPName=$_POST["creator"];
 	$concernedPEmail=$_POST["creatorEmail"];
 	$concernedPPhone=$_POST["creatorPhone"];
 }
-
 $eventDays="";
 if(isset($_POST["day"])){
 	foreach($_POST["day"] as $day){
