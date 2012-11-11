@@ -92,6 +92,7 @@ echo generateBuildingList("buildingName");
 	<textarea id='description'  name='eventDesc'/></textarea></tr>
 	<tr><td>CC: </td><td><input type="text" name="cc"></td></tr>
 	<tr><td><input type='submit' name='submit' id='submit' class='center' value='Book Room'/></td></tr>
+	<tr><td><input type='reset' class='center' value='Reset'/></td></tr>
 	</table>
 	<script type="text/javascript">
 	var f21 = new LiveValidation('P1');
