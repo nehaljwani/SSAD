@@ -107,12 +107,17 @@ else{
 
 echo "lala";
 $reqID = getId($hash);
+$guy = $creatorEmail;
+
+$query = "INSERT INTO ccPerson(reqNo, email) values(\"{$reqID}\", \"{$guy}\");";
+
+execute($query);
 
 foreach($ccPersons as $guy){
 	$query = "INSERT INTO ccPerson(reqNo, email) values(\"{$reqID}\", \"{$guy}\");";
-	echo "\n".$query."\n";
+	execute($query) or die("ccPersonAddingError");
 }
 
-//header("Location: table.php");
+header("Location: table.php");
 
 ?>
