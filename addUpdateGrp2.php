@@ -1,6 +1,13 @@
 <?php
 include("essential.php");
 $group=$_POST['Gpname'];
+$query = "select * from Groups where groupName='$group' ;";
+$rv=execute($query);
+if(mysql_num_rows($rv)==0)
+{
+	        header("Location:addUpdateGrp.php?msg='Group $group  does not exist'");
+		die();
+}
 $name=$_POST['Mname'];
 $Email=$_POST['email'];
 $query1="select level from Groups where groupName='".$group."';";
