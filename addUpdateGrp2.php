@@ -8,8 +8,23 @@ if(mysql_num_rows($rv)==0)
 	        header("Location:addUpdateGrp.php?msg='Group $group  does not exist'");
 		die();
 }
+
 $name=$_POST['Mname'];
+if(empty($name))
+{
+	        header("Location:addUpdateGrp.php?msg='Name  cannot be empty'");
+		die();
+}
 $Email=$_POST['email'];
+if(empty($Email))
+{
+	        header("Location:addUpdateGrp.php?msg='Email  cannot be empty'");
+		die();
+}
+if (!(filter_var($Email, FILTER_VALIDATE_EMAIL))) {
+	        header("Location:addUpdateGrp.php?msg='Email is not valid'");
+		die();
+}
 $query1="select level from Groups where groupName='".$group."';";
 //echo $query1;
 $level=10;
