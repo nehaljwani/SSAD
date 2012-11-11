@@ -19,7 +19,7 @@ if(isset($_GET['logout'])){
 
 function dbconnect(){
         GLOBAL $con;
-        $con = mysql_connect('','','');
+        $con = mysql_connect('localhost','root','iiit123');
         if(!$con){
                 die("Error in connection!");
         }   
@@ -244,6 +244,19 @@ function generateBuildingList($myid){
         $st .= "<option value='' id='fg'>Please select</option>";
 	while($row = mysql_fetch_array($result)){
 		$st .= "<option value='" . $row['buildingName'] . "' id='" .$row['buildId']."'>".$row['buildingName']."</option>";
+	}
+        $st .= "</select>";
+        return $st;
+}
+
+
+function generateGroupList($query,$myid){
+	dbconnect();
+	$result=execute($query);
+        $st = "<select name='". $myid . "' id='". $myid."' >";
+        $st .= "<option value='' id='fg'>Please select</option>";
+	while($row = mysql_fetch_array($result)){
+		$st .= "<option value='" . $row['groupName'] . "' id='" .$row['level']."'>".$row['groupName']."</option>";
 	}
         $st .= "</select>";
         return $st;
