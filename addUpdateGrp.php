@@ -33,11 +33,11 @@ function timedMsg()
 	<?php
 }?>
 
-<h2 align='center'> Modify Group </h2>
+<h2 > Modify Group </h2>
 <br>
 <br>
 <form name='modifyGrp'  action='addUpdateGrp2.php' method='post'>
-<table align='center'>
+<table>
 <tr><td>
 Group Name: </td>
 <td><?php echo $list1 ?></td>
@@ -46,7 +46,7 @@ Group Name: </td>
 <tr><td><br ></td><td><br ></td></tr>
 <tr>
 <td>
-<h2 align='center' id='heade'>Add New Member</h2>
+<h2 id='heade'>Add New Member</h2>
 </td>
 <td>
 </td>
