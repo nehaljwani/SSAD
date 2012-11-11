@@ -12,6 +12,8 @@ $list1=generateGroupList($query,$r);
 <head>
 <script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
 <script language="javascript" type="text/javascript" src="js/delmem.js"></script>
+<script type='text/javascript' src='js/livevalidation_standalone.js'></script>
+
 <script type="text/javascript">
  
 function timedMsg()
@@ -59,6 +61,14 @@ Group Name: </td>
 </tr>
 <tr><td></td><td><input type='submit' name='add' value='Add' id='submit'/></td>
 </tr></table>
+<script type="text/javascript">
+        var f21 = new LiveValidation('Mname');
+	        f21.add( Validate.Presence );
+		        var f11 = new LiveValidation('email');
+			        f11.add(Validate.Presence);
+			        f11.add(Validate.Email);
+				        </script>
+
 </form><br/><br/><br/>
 <div class="post">
   <h2 class="title" id="deleteform"><a href="#">Delete Group Members</a></h2>
