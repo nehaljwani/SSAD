@@ -12,8 +12,20 @@ $list1=generateGroupList($query,$r);
 <head>
 <script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
 <script language="javascript" type="text/javascript" src="js/delmem.js"></script>
+<script type="text/javascript">
+ 
+function timedMsg()
+{
+	        var t=setTimeout("document.getElementById('kapi').style.display='none';",4000);
+}
+
+</script>
+
+
 </head>
 <body>
+<?php if(isset($_GET['msg'])){
+	                        echo "<p id='kapi' style='background-color:#1C478E;font-size:14pt;color:#FFFFFF;text-align:right;'>" . $_GET['msg']. "</p>";?>}
 
 <h2 align='center'> Modify Group </h2>
 <br>
