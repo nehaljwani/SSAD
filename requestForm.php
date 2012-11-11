@@ -17,7 +17,7 @@ function timedMsg()
 <script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
 <script language="javascript" type="text/javascript" src="js/calendarDateInput.js"></script>
 <script language="javascript" type="text/javascript" src="js/addRequest.js"></script>
-<script language="javascript" type="text/javascript" src="js/autofill.js"></script>
+<!--script language="javascript" type="text/javascript" src="js/autofill.js"></script-->
 <?php include("essential.php"); ?>
 <?php if(isset($_GET['msg'])){
 		        echo "<p id='kapi' style='background-color:#1C478E;font-size:14pt;color:#FFFFFF;text-align:right;'>" . $_GET['msg']. "</p>";?>

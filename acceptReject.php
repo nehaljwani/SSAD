@@ -19,6 +19,17 @@ foreach($clashArrays as $clashArray){
 	}
 }
 
+//Get comma separated string of concerned persons, insert into db
+$reqID = $_POST['reqID'];
+$cc = $_POST['cc'];
+$ccPersons = CSVToArray($cc);
+
+foreach($ccPersons as $guy){
+	$query = "INSERT INTO ccPerson(reqNo, email) values(\"{$reqID}\", \"{$guy}\");";
+	//echo $query;
+	execute($query) /*or die("ccPersonAddingError")*/;
+}
+
 //clashArray now has all elements clashing with the current request, including the current request
 //
 
@@ -33,7 +44,7 @@ if($_POST['reqAction']==$b)
 		$sq="update Requests set appStatus='Rejected',reqRejectReason ='".$_POST['reason']."' where reqNo=".$_POST['reqID'].";";
 	}
 	$req = getRequestByID($rID);
-	reject($req['creator'], $req['creatorEmail'], $req['room'], $req['reqNo'],$_POST['reason']);
+	reject($req['creator'], $req['creatorEmail'], $req['room'], $req['reqNo'],$_POST['reason'], getCC($rID));
 	reject($req['concernedPName'], $req['concernedPEmail'], $req['room'], $req['reqNo'],$_POST['reason']);
 }
 else if($_POST['reqAction']==$a)
@@ -80,13 +91,13 @@ else if($_POST['reqAction']==$a)
 			//echo $otherQuery."\n";
 			execute($otherQuery);
 
-			reject($req['creator'], $req['creatorEmail'], $req['room'], $req['reqNo']);
-			reject($req['concernedPName'], $req['concernedPEmail'], $req['room'], $req['reqNo']);
+			reject($req['creator'], $req['creatorEmail'], $req['room'], $req['reqNo'], getCC($rID));
+			reject($req['concernedPName'], $req['concernedPEmail'], $req['room'], $req['reqNo'], getCC($rID));
 		}
 	}
 	$req = getRequestByID($rID);
-	accept($req['creator'], $req['creatorEmail'], $req['room'], $req['reqNo']);
-	accept($req['concernedPName'], $req['concernedPEmail'], $req['room'], $req['reqNo']);
+	accept($req['creator'], $req['creatorEmail'], $req['room'], $req['reqNo'], getCC($rID));
+	accept($req['concernedPName'], $req['concernedPEmail'], $req['room'], $req['reqNo'], getCC($rID));
 }
 else if($_POST['reqAction']==$c)
 {
@@ -95,7 +106,7 @@ else if($_POST['reqAction']==$c)
 	$emails = getEmails($_POST['forwardID']);
 	//print_r($emails);
 	foreach($emails as $email){
-		forward($req['concernedPName'], $email, $req['room'], $req['reqNo'], $req['concernedPEmail']);
+		forward($req['concernedPName'], $email, $req['room'], $req['reqNo'], $req['concernedPEmail'], getCC($rID));
 	}
 }
 //echo $sq;
@@ -109,18 +120,6 @@ execute($sq);
 //echo "HIHIHIII";
 
 
-$reqID = $_POST['reqID'];
-$cc = $_POST['cc'];
-$ccPersons = CSVToArray($cc);
-
-//echo $reqID;
-//echo $cc;
-
-foreach($ccPersons as $guy){
-	$query = "INSERT INTO ccPerson(reqNo, email) values(\"{$reqID}\", \"{$guy}\");";
-	//echo $query;
-	execute($query) /*or die("ccPersonAddingError")*/;
-}
 
 
 echo "<script> window.location.replace('table.php') </script>"; 

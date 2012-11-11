@@ -375,7 +375,7 @@ function requestClash($startDate,$endDate,$startTime,$endTime,$room){
 }
 
 
-function accept($name,$mail_to,$room_no,$request_id)
+function accept($name,$mail_to,$room_no,$request_id,$cc)
 {
 	$date = date('Y-m-d H:i:s');
 	$body="Dear ".$name.",\nYour request with Request id ".$request_id." for Room no.".$room_no." has been accepted by Admins.\nThis is a System Generated Mail. Please do not reply.\n\n\n\nCheers,\nAdmins.\n\n\nMail generated at :".$date;
@@ -388,11 +388,12 @@ function accept($name,$mail_to,$room_no,$request_id)
 	$subject="Room allocation: Request Accepted";
 	$headers  = 'MIME-Version: 1.0' . "\r\n";
 	$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-	$headers .= 'From: Noreply <noreply@.roomReservation.iiit.ac.in>' . "\r\n";
+	$headers .= 'From: Noreply <noreply@roomreservation.iiit.ac.in>' . "\r\n";
+	$headers .= "Cc: {$cc}"."\r\n";
 	mail($mail_to,$subject,$message,$headers);
 }
 
-function reject($name,$mail_to,$room_no,$request_id,$reason)
+function reject($name,$mail_to,$room_no,$request_id,$reason, $cc)
 {
  	$date = date('Y-m-d H:i:s');
 	$body="Dear ".$name.",\nYour request with Request id ".$request_id." for Room no.".$room_no." has been rejected by Admins due to the reason: .\n ".$reason."  \nThis is a System Generated Mail. Please do not reply.\n\n\n\nCheers,\nAdmins.\n\n\nMail generated at :".$date;
@@ -405,11 +406,36 @@ function reject($name,$mail_to,$room_no,$request_id,$reason)
 	$subject="Room allocation: Request Rejected";
 	$headers  = 'MIME-Version: 1.0' . "\r\n";
 	$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-	$headers .= 'From: Noreply <noreply@.roomReservation.iiit.ac.in>' . "\r\n";
+	$headers .= 'From: Noreply <noreply@roomreservation.iiit.ac.in>' . "\r\n";
+	$headers .= "Cc: {$cc}"."\r\n";
  	mail($mail_to,$subject,$message,$headers);
 }
 
-function forward($name,$mail_to,$room_no,$request_id,$original_mail_id)
+function cancel($name,$mail_to,$room_no,$request_id,$reason, $cc){
+	echo "$name,<br>";
+	echo "$mail_to,<br>";
+	echo "$room_no,<br>";
+	echo "$request_id,<br>";
+	echo "$reason,<br>";
+	print_r($cc);
+ 	$date = date('Y-m-d H:i:s');
+	$body="Dear ".$name.",\nYour request with Request id ".$request_id." for Room no.".$room_no." has been rejected by Admins due to the reason: .\n ".$reason."  \nThis is a System Generated Mail. Please do not reply.\n\n\n\nCheers,\nAdmins.\n\n\nMail generated at :".$date;
+	$message = " 
+		<html>
+		<body>
+		<p>".$body."</p>
+		</body>
+		</html>";
+	$subject="Room allocation: Request Cancelled";
+	$headers  = 'MIME-Version: 1.0' . "\r\n";
+	$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+	$headers .= 'From: Noreply <noreply@roomreservation.iiit.ac.in>' . "\r\n";
+	$headers .= "Cc: {$cc}"."\r\n";
+ 	mail($mail_to,$subject,$message,$headers);
+}
+
+
+function forward($name,$mail_to,$room_no,$request_id,$original_mail_id, $cc)
 {
 	$hash=gethash($request_id);
  	$date = date('Y-m-d H:i:s');
@@ -425,7 +451,8 @@ function forward($name,$mail_to,$room_no,$request_id,$original_mail_id)
 	$subject="Room allocation: Request forwarded";
 	$headers  = 'MIME-Version: 1.0' . "\r\n";
 	$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-	$headers .= 'From: Noreply <noreply@.roomReservation.iiit.ac.in>' . "\r\n";
+	$headers .= 'From: Noreply <noreply@roomreservation.iiit.ac.in>' . "\r\n";
+	$headers .= "Cc: {$cc}"."\r\n";
  	mail($mail_to,$subject,$message,$headers);
 }
 
@@ -773,6 +800,16 @@ function getRequests($id,$query){
 	</tbody>
 	<?php
 }
+function getCC($reqID)
+{
+	$query = "select email from ccPerson where reqNo = {$reqID};";
+	$result = execute($query);
+	$CSVString="";
+	while($row = mysql_fetch_array($result)){
+		$CSVString .= $row[0];
+		$CSVString .=", ";
+	}
+	return $CSVString;
+}
 
 ?>
-

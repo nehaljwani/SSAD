@@ -18,3 +18,4 @@ Modifications
 Add trim to CSV to array functions
 Add form validation
 Add reset buttons in forms
+Mail goes twice, figure that
