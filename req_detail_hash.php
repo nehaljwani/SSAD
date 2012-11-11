@@ -5,6 +5,9 @@ dbconnect();
 if(isset($_GET['hash'])){
 	$hash=$_GET['hash'];
 }
+else{
+  die("You followed a wrong link to get to this page. Please notify the administrators.");
+}
 function getidfromhash($hash)
 {
 $sq2="select reqNo from Requests where hash='".$hash."';";
@@ -26,7 +29,7 @@ $col=mysql_fetch_row($res);
 
 ?> 
 
-<?php include("header.php"); ?>
+<?php include("header_noCAS.php"); ?>
 <?php if(1){ ?>
 <div class = "post">
 	<h2 class="title">Take an action</h2>

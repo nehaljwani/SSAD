@@ -430,7 +430,8 @@ a:hover {
 #menu-wrapper {
 	overflow: hidden;
 	height: 53px;
-	background: url("../images/img02.jpg") repeat;
+	background: url("../images/img02.jpg");
+	background-size: 100%;
 }
 
 #menu {
@@ -459,18 +460,22 @@ a:hover {
 	text-transform: lowercase;
 	text-align: center;
 	text-transform: uppercase;
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: 300;
-	color: #9BAFF2;
+	/*color: #9BAFF2;*/
+	color: #CCCFFF;
 	border: none;
+	text-shadow: 1px 1px #000;
 }
 
 #menu a:hover, #menu .current_page_item a {
 	text-decoration: none;
-	color: #FCFEFF;
+	/*color: #FCFEFF;*/
+	color: #FFF;
 }
 
 #menu .current_page_item a {
+	text-decoration: underline;
 }
 
 /* Page */
@@ -804,4 +809,15 @@ a:hover {
 }
 .action-table tr td:nth-child(1) {
 	text-align: right;
+}
+#msg {
+	border: 1px solid #88f;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin: 10px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	background-color: #bbe;
 }

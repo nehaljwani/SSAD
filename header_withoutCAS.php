@@ -9,29 +9,7 @@ Description: A two-column, fixed-width design with dark color scheme.
 Version    : 1.0
 Released   : 20120818
 
---><?php
-
-require_once('CAS.php');
-
-phpCAS::setDebug();
-
-phpCAS::client(CAS_VERSION_2_0, "login.iiit.ac.in", 443, "/cas");
-
-phpCAS::setNoCasServerValidation();
-
-phpCAS::forceAuthentication();
-
-$userID = phpCAS::getUser();
-
-$userID = explode('@', $userID);
-
-$userID = $userID[0];
-
-if(isset($_GET['logout'])){
-  phpCAS::logout();
-}
-
-?>
+--><?php session_start(); ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta name="keywords" content="" />
@@ -40,7 +18,6 @@ if(isset($_GET['logout'])){
 <title>Room Allocation Portal - Team 18</title>
 <link href="http://fonts.googleapis.com/css?family=Dancing+Script|Open+Sans+Condensed:300" rel="stylesheet" type="text/css" />
 <script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
-<script language="javascript" type="text/javascript" src="js/common.js"></script>
 <link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body>
@@ -53,12 +30,11 @@ if(isset($_GET['logout'])){
 				<li><a href="giveFeedback.php">Feedback</a></li>
 				<li><a href="#">About Us</a></li>
 				<li><a href="#">Links</a></li>
-				<li><a href="?logout=true"><?php echo $userID; ?> (Logout)</a></li>
+				<li><a href="?logout=true">Logged in as <?php echo $_SESSION['username']; ?></a></li>
 			</ul>
 		</div>
 	</div>
 	<div class="divider">&nbsp;</div>
-        <div id="page" class="container">
-        <?php if(isset($_GET['msg'])){ ?><div id="msgbox"><span id="msg"><?php echo $_GET['msg']; ?></span></div><?php } ?>
+	<div id="page" class="container">
                 <div id="content">
 <!--Split 1-->

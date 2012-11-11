@@ -19,16 +19,19 @@ phpCAS::client(CAS_VERSION_2_0, "login.iiit.ac.in", 443, "/cas");
 
 phpCAS::setNoCasServerValidation();
 
-phpCAS::forceAuthentication();
+//phpCAS::forceAuthentication();
 
-$userID = phpCAS::getUser();
+if(phpCAS::isAuthenticated()){
 
-$userID = explode('@', $userID);
+  $userID = phpCAS::getUser();
 
-$userID = $userID[0];
+  $userID = explode('@', $userID);
 
-if(isset($_GET['logout'])){
-  phpCAS::logout();
+  $userID = $userID[0];
+
+  if(isset($_GET['logout'])){
+    phpCAS::logout();
+  }
 }
 
 ?>
@@ -53,7 +56,7 @@ if(isset($_GET['logout'])){
 				<li><a href="giveFeedback.php">Feedback</a></li>
 				<li><a href="#">About Us</a></li>
 				<li><a href="#">Links</a></li>
-				<li><a href="?logout=true"><?php echo $userID; ?> (Logout)</a></li>
+                                <li><?php if(phpCAS::isAuthenticated()){ ?><a href="?logout=true"><?php echo $userID; ?> (Logout)</a><?php }else{ ?><a href="http://login.iiit.ac.in">Login</a><?php } ?></li>
 			</ul>
 		</div>
 	</div>

@@ -4,7 +4,7 @@
 		<!-- end #content -->
 		<div id="sidebar">
 			<div>
-				<h4>Navigation</h4>
+				<h2>Navigation</h2>
 								<ul class="list-style1">
 					<li class="first"><a href="requestForm.php">Create Request</a></li>
 					<li><a href="instances.php">View instances</a></li>

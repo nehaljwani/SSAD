@@ -1,0 +1,6 @@
+12/11/12 - 3:13pm - Ankush Jain
+-----------------------
+
+* Added CAS authentication - files with header header.php require authentication, and those with header_noCAS.php don't.
+* Added ?msg="Test message" feature. The message will slide out in 3 seconds.
+* Minor tweaks to CSS
