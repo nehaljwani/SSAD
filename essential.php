@@ -19,7 +19,7 @@ if(isset($_GET['logout'])){
 
 function dbconnect(){
         GLOBAL $con;
-        $con = mysql_connect('localhost','root','iiit123');
+        $con = mysql_connect('','','');
         if(!$con){
                 die("Error in connection!");
         }   
@@ -55,7 +55,7 @@ function paginate($file,$myquery,$start,$lim,$id='')
 	 if($con==0)       //for connecting db
 	dbconnect();
 	$result=execute($myquery);      //take query result
-	$num = mysql_numrows($result);
+	$num = mysql_num_rows($result);
 	if($num == 0)                    // check if empty
 	{
 		return $result;

@@ -17,6 +17,7 @@ $y = $_POST['date_end'];
 $buildid = 1;
 $roomid=1;
 $query2 = "select Building.buildingName,Requests.eventDesc,eventStartTime,eventEndTime,room,eventStartDate,eventEndDate from Requests,Room,Building where appStatus = 'Accepted'  AND Requests.room = Room.roomName AND Building.buildId = Room.buildingName AND ((eventStartDate <= DATE '".$x."' AND eventEndDate >= DATE '".$y."') OR (eventStartDate >= DATE '".$x."' AND eventEndDate >= DATE '".$y."' AND eventStartdate <= DATE '".$y."') OR (eventStartDate >= DATE '".$x."' AND eventEndDate <= DATE '".$y."') OR (eventStartDate <= DATE '".$x."' AND eventEndDate <= DATE '".$y."' AND eventEndDate >= DATE '".$x."'));";
+
 $result9=execute($query2);
 $y = mysql_num_rows($result9);
 echo "<table id='box-table-a'>
