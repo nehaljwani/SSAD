@@ -5,6 +5,8 @@ $(document).ready(function(){
 	$('#td1').hide();
 	$('#td2').hide();
 	$('#submit').hide();
+	$('#tablehead').hide();
+	$('#deleteform').hide();
 	for($i=0;$i<100;$i++){
 		if($('#grop'+$i).length){
 			$('#grop'+$i).hide();
@@ -18,6 +20,8 @@ $(document).ready(function(){
 	$('#td1').hide();
 	$('#td2').hide();
 	$('#submit').hide();
+	$('#tablehead').hide();
+	$('#deleteform').hide();
 		for($i=0;$i<100;$i++){
 		         if($('#grop'+$i).length){
 				        $('#grop'+$i).hide();
@@ -32,6 +36,8 @@ $(document).ready(function(){
 			$('#td1').show();
 			$('#td2').show();
 			$('#submit').show();
+			$('#tablehead').show();
+			$('#deleteform').show();
 				$sel=$(this).attr('id');  
 				$('#grop'+$sel).show();
 			}

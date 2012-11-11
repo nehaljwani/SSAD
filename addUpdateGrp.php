@@ -45,7 +45,7 @@ Group Name: </td>
 </tr></table>
 </form><br/><br/><br/>
 <div class="post">
-  <h2 class="title"><a href="#">Delete Group Members</a></h2>
+  <h2 class="title" id="deleteform"><a href="#">Delete Group Members</a></h2>
 <?php
 session_start();
 if(isset($_GET['st']))
@@ -105,7 +105,7 @@ function tBody($grp,$gid)
 	?>
 
 <table id="box-table-a">	
-<thead>
+<thead id="tablehead">
 <tr>
 <th scope="col">Name</th>
 <th scope="col">Email</th>
