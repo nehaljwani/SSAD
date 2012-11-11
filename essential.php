@@ -47,7 +47,7 @@ function execute($query){
 	}   
 }
 
-function paginate($file,$myquery,$start,$lim)
+function paginate($file,$myquery,$start,$lim,$id='')
 {
 	
 	$query1 = $myquery.';';
@@ -69,13 +69,13 @@ function paginate($file,$myquery,$start,$lim)
 	$index = 1;
 	if($num > $lim){		// display links only if records are enuf.
 		if($back >=0){
-			echo"<a href='".$file."?st=".$back."'>PREV</a>"; //pre page print
+			echo"<a href='".$file."?st=".$back."&view=${id}'>PREV</a>"; //pre page print
 		}
 
 		for($i=0;$i<$num;$i=$i+$lim){
 			if($i != $start){
 
-			echo" <a href='".$file."?st=".$i."'>"; //for next page print
+			echo" <a href='".$file."?st=".$i."&view=${id}'>"; //for next page print
 			echo ' '.$index;                          
 			echo "</a>";
 			}
@@ -86,7 +86,7 @@ function paginate($file,$myquery,$start,$lim)
 			$index = $index + 1;
 		}
 		if($next < $num){
-			echo" <a href='".$file."?st=".$next."'> NEXT</a>";  //next button referencing
+			echo" <a href='".$file."?st=".$next."&view={$id}'> NEXT</a>";  //next button referencing
 		}
 	}
 	return $result2;
@@ -448,12 +448,7 @@ function doConflict($req1, $req2){
                         $st=$req2['eventStartTime'];
                         $ET=$req1['eventEndTime'];
                         $et=$req2['eventEndTime'];
-                        $SD=$req1['eventStartDate'];
-                        $sd=$req2['eventStartDate'];
-                        $ED=$req1['eventEndDate'];
-                        $ed=$req2['eventEndDate'];
-			if(	(($sd<$SD && $ed>$SD)||($sd<$ED && $ed>$SD)||($sd<$ED && $ed>$ED)||($sd==$SD && $ed==$ED))&&
-				(($st<$ST && $et>$ST)||($st<$ET && $et>$ST)||($st<$ET && $et>$ET)||($st==$ST && $et==$ET)) ){
+			if((($st<$ST && $et>$ST)||($st<$ET && $et>$ST)||($st<$ET && $et>$ET)||($st==$ST && $et==$ET)) ){
                                 return 1;
                         }
                 }
@@ -482,6 +477,39 @@ function checkConflicts(){
                 }
         }
         return $tuples;
+}
+function checkNonConflicts(){
+	$records = array();
+	$isClash=false;
+        dbconnect();
+        $query = "SELECT DISTINCT room from Requests where appStatus = \"Pending\"";
+        $roomQuery = execute($query);
+        while($roomList = mysql_fetch_row($roomQuery)){
+                $roomRecords = array();
+                $query = "SELECT * FROM Requests WHERE room = \"{$roomList[0]}\" AND appStatus = \"Pending\" ORDER BY eventStartDate ASC\n";
+                $events = execute($query);
+                while($array = mysql_fetch_assoc($events)){
+                        $roomRecords[] = $array;
+                }
+		for($i = 0; $i < sizeof($roomRecords); $i++){
+			for($j = 0; $j < sizeof($roomRecords); $j++){
+				if($i!=$j){
+					if(doConflict($roomRecords[$i], $roomRecords[$j])){
+						$isClash=true;
+						break;
+					}
+					else{
+						$isClash=false;
+					}
+				}
+			}
+			if(!$isClash){
+				$records[]=$roomRecords[$i]['reqNo'];
+			}
+			$isClash=false;
+                }
+        }
+        return ($records);
 }
 function generateBuildingList1($myid,$a){
         $query="SELECT buildId,buildingName FROM Building;";
@@ -696,4 +724,50 @@ return $result1;
 
 
 }
+function getRequests($id,$query){
 ?>
+	<tbody id=<?php echo "'{$id}'"; ?>>
+<?php
+if(isset($_GET['st']))
+    $mstart=$_GET['st'];
+else
+    $mstart=0;
+$lim=10;
+$table="Requests";
+dbconnect();          //connecting db
+$result=paginate("table.php",$query,$mstart,$lim,$id);             //calling paging
+$num=mysql_numrows($result);
+?>
+<?php
+while ($row=mysql_fetch_row($result)){                 //fetching rows from result query
+        ?>
+                <tr>
+                <?php
+                $i=0;
+                foreach($row as $col){        //for columns printing purposes
+                        ?>
+                <td><?php
+if($i==0)
+{
+echo "<a href='req_detail.php?id=$col'>$col</a>";
+}
+else
+{
+echo $col; echo " ";
+}
+                ?></td>
+                <?php
+                $i++;
+}
+?>
+</tr>
+<?php
+}
+mysql_close();   
+?>
+</tbody>
+<?php
+}
+
+?>
+

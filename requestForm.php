@@ -4,6 +4,14 @@
   <div class="entry">
   </div>
 </div>
+<script type="text/javascript">
+ 
+function timedMsg()
+{
+	var t=setTimeout("document.getElementById('kapi').style.display='none';",4000);
+}
+
+</script>
 
 <script type='text/javascript' src='js/livevalidation_standalone.js'></script>
 <script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
@@ -11,6 +19,13 @@
 <script language="javascript" type="text/javascript" src="js/addRequest.js"></script>
 <script language="javascript" type="text/javascript" src="js/autofill.js"></script>
 <?php include("essential.php"); ?>
+<?php if(isset($_GET['msg'])){
+		        echo "<p id='kapi' style='background-color:#1C478E;font-size:14pt;color:#FFFFFF;text-align:right;'>" . $_GET['msg']. "</p>";?>
+<script language="JavaScript" type="text/javascript">timedMsg()</script>
+<?php
+}
+?>
+
 <form action="addRequest.php" autocomplete="on" method="POST">
 	<table class='center'>
 	<tr><td> Name:</td><td><input type="text" name="creator" id="P1"><br> </tr>

@@ -2,19 +2,17 @@
 include("essential.php");
 dbconnect();
 
-print_r($_POST);
+//print_r($_POST);
 
-echo $_POST['forwardID'];
+//echo $_POST['forwardID'];
 $a="accept";
 $b="reject";
 $c="forward";
 $d= "Specify a reason for rejection (optional) )";
 $rID = $_POST['reqID'];
-
 $reqArray = getRequestByID($_POST['reqID']);
-print_r($reqArray);
+//print_r($reqArray);
 $clashArrays = clashMux(checkConflicts());
-
 foreach($clashArrays as $clashArray){
 	if(in_array($rID, $clashArray)){
 		break;
@@ -22,6 +20,7 @@ foreach($clashArrays as $clashArray){
 }
 
 //clashArray now has all elements clashing with the current request, including the current request
+//
 
 if($_POST['reqAction']==$b)
 {
@@ -73,12 +72,12 @@ else if($_POST['reqAction']==$a)
 	$sq="update Requests set appStatus='Accepted' where reqNo=".$_POST['reqID'].";";
 	$clash=requestClash($roomRecords['eventStartDate'], $roomRecords['eventEndDate'],$roomRecords['eventStartTime'], $roomRecords['eventEndTime'],$roomRecords['room']);
 	while($req=mysql_fetch_assoc($clash)){
-		print_r($req);
+		//print_r($req);
 		if($req['reqNo'] != $rID){
-			echo $req['reqNo'];
-			echo "<HI><br><br><br><br>\n";
+			//echo $req['reqNo'];
+			//echo "<HI><br><br><br><br>\n";
 			$otherQuery = "update Requests set appStatus = 'Rejected', reqRejectReason = 'A request conflicting with your request was accepted.' where reqNo = {$req['reqNo']}";
-			echo $otherQuery."\n";
+			//echo $otherQuery."\n";
 			execute($otherQuery);
 
 			reject($req['creator'], $req['creatorEmail'], $req['room'], $req['reqNo']);
@@ -94,22 +93,35 @@ else if($_POST['reqAction']==$c)
 	$sq="update Requests set concernedAdmin = {$_POST['forwardID']} where reqNo = {$_POST['reqID']}";
 	$req = getRequestByID($rID);
 	$emails = getEmails($_POST['forwardID']);
-	print_r($emails);
+	//print_r($emails);
 	foreach($emails as $email){
 		forward($req['concernedPName'], $email, $req['room'], $req['reqNo'], $req['concernedPEmail']);
 	}
 }
-echo $sq;
+//echo $sq;
 execute($sq);
 
-echo "<br />";
+//echo "<br />";
 
 
-echo "HIHIHIII";
-print_r($clashArray);
-echo "HIHIHIII";
-
-header("Location: table.php");
+//cho "HIHIHIII";
+//print_r($clashArray);
+//echo "HIHIHIII";
 
 
+$reqID = $_POST['reqID'];
+$cc = $_POST['cc'];
+$ccPersons = CSVToArray($cc);
+
+//echo $reqID;
+//echo $cc;
+
+foreach($ccPersons as $guy){
+	$query = "INSERT INTO ccPerson(reqNo, email) values(\"{$reqID}\", \"{$guy}\");";
+	//echo $query;
+	execute($query) /*or die("ccPersonAddingError")*/;
+}
+
+
+echo "<script> window.location.replace('table.php') </script>"; 
 ?>

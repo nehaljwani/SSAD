@@ -16,7 +16,6 @@ var t=setTimeout("document.getElementById('kapi').style.display='none';",4000);
 </script>
 <script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
 <script language="javascript" type="text/javascript" src="js/calendarDateInput.js"></script>
-<script language="javascript" type="text/javascript" src="js/addRequest.js"></script>
 <script type='text/javascript' src='js/brand.js'></script>
 <script type='text/javascript' src='./js/livevalidation_standalone.js'></script>
 <button type="button" id='addroom' >add/update Room</button>
@@ -24,25 +23,31 @@ var t=setTimeout("document.getElementById('kapi').style.display='none';",4000);
 <button type="button" id='addbuild' >Add Building</button>
 <button type="button" id='delbuild' >Delete Building</button>
 <?php if(isset($_GET['msg'])){
-		$on_page=unserialize($_GET['msg']);		
-	  echo "<p id='kapi' style='background-color:#1C478E;font-size:14pt;color:#FFFFFF;text-align:right;'>" . $on_page[4] . "</p>";
+	$on_page=unserialize($_GET['msg']);		
+	echo "<p id='kapi' style='background-color:#1C478E;font-size:14pt;color:#FFFFFF;text-align:right;'>" . $on_page[4] . "</p>";
+}
 ?>
-<!--script  type="text/javascript">
+<script  type="text/javascript">
 
-var on_pager=<?php /*echo $on_page[1];*/?>;
-document.write(on_pager);
-$('#'.on_pager[1]).hide();
-$('#'.on_pager[0]).show();
-$('#'.on_pager[2]).hide();
-$('#'.on_pager[3]).hide();
-
-</script-->
+$on_pager=<?php echo json_encode($on_page);?>;
+$(document).ready(function() {
+	if($on_pager){
+		$('#'+$on_pager[1]).hide();
+		$('#'+$on_pager[2]).hide();
+		$('#'+$on_pager[3]).hide();
+		$('#'+$on_pager[0]).show();
+	}
+	else{
+		$('#deleteRoom').hide();
+		$('#addRoom').show();
+		$('#deleteBuilding').hide();
+		$('#addBuilding').hide();
+	}
+})
+</script>
 
 <script language="JavaScript" type="text/javascript">timedMsg()</script>
 
-<?php
-
-}?>
 <?php include("essential.php");dbconnect(); ?>
 <?php	$query4="select DISTINCT roomName from Room;";
 $r="Room";
@@ -107,7 +112,7 @@ select Building: </td>
 <?php echo $st ?>
 </td>
 </tr>
-<tr><td></td><td> <input type='submit' name='submit' id='submit' value='Add/UpdateRoom'/></td></tr>
+<tr><td></td><td> <input type='submit' name='submit' id='submit' value='Add/UpdateRoom'/><button type='reset' value='Reset'/>Reset</td></tr>
                 </table>
                 </form>
 <form name='deleteroom' method='POST' action ='s_addroom2.php' id="deleteRoom"  >

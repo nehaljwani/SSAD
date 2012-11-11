@@ -17,6 +17,7 @@ Released   : 20120818
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>Room Allocation Portal - Team 18</title>
 <link href="http://fonts.googleapis.com/css?family=Dancing+Script|Open+Sans+Condensed:300" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
 <link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body>

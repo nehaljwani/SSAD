@@ -25,7 +25,7 @@ if(1){ ?>
 	<h2 class="title">Take an action</h2>
 	<div class="entry">
 		<form name="action" method="post" action="acceptReject.php">
-		<table>
+		<table class="action-table">
 		<tr>
 			<td><input type="radio" name="reqAction" value="accept"></td>
 			<td>Accept</td>
@@ -53,6 +53,10 @@ if(1){ ?>
 		<tr>
 			<td></td>
 			<td><input type="hidden" name="reqID" value="<?php echo $_GET['id'] ?>"></td>
+		</tr>
+		<tr>
+			<td>CC (send a notification) to: </td>
+			<td><input type="text" name="cc"></td>
 		</tr>
 		<tr>
 			
