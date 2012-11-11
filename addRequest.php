@@ -92,6 +92,11 @@ if(empty($eventDesc))
 	header("Location:requestForm.php?msg='Activity/Reason cannot be Empty'");
 die();
 }
+if(empty($creator))
+{
+	header("Location:requestForm.php?msg='Creator cannot be Empty'");
+die();
+}
 if($_POST['concernedPEmail']==''){
 	$concernedPName=$_POST["creator"];
 	$concernedPEmail=$_POST["creatorEmail"];

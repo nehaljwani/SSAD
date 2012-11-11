@@ -712,48 +712,53 @@ return $result1;
 
 }
 function getRequests($id,$query){
-?>
+	?>
 	<tbody id=<?php echo "'{$id}'"; ?>>
-<?php
-if(isset($_GET['st']))
-    $mstart=$_GET['st'];
-else
-    $mstart=0;
-$lim=10;
-$table="Requests";
-dbconnect();          //connecting db
-$result=paginate("table.php",$query,$mstart,$lim,$id);             //calling paging
-$num=mysql_numrows($result);
-?>
-<?php
-while ($row=mysql_fetch_row($result)){                 //fetching rows from result query
-        ?>
-                <tr>
-                <?php
-                $i=0;
+	<?php
+	if(isset($_GET['st']))
+	    $mstart=$_GET['st'];
+	else
+	    $mstart=0;
+	$lim=10;
+	$table="Requests";
+	dbconnect();          //connecting db
+	$result=paginate("table.php",$query,$mstart,$lim,$id);             //calling paging
+	$num=mysql_numrows($result);
+	?>
+	<?php		
+		while ($row=mysql_fetch_assoc($result)){                 //fetching rows from result query
+	        ?>
+			<tr> 
+	       	<?php
+			$i=0;
                 foreach($row as $col){        //for columns printing purposes
-                        ?>
-                <td><?php
-if($i==0)
-{
-echo "<a href='req_detail.php?id=$col'>$col</a>";
-}
-else
-{
-echo $col; echo " ";
-}
-                ?></td>
-                <?php
-                $i++;
-}
-?>
-</tr>
-<?php
-}
-mysql_close();   
-?>
-</tbody>
-<?php
+                	?>
+			<td>
+			<?php
+			if($i==0){
+			echo "<a href='req_detail.php?id=$col'>$col</a>";
+			}
+			else{
+				echo $col; echo " ";
+			}
+	                ?></td>
+        	        <?php
+                	$i++;
+			}
+			if($id=='Accepted'){
+			?>
+				<td><button type='submit' class="cancelBtn" value=<?php echo $row['reqNo']; ?> >Cancel</button></td>
+			<?php
+			}
+	?>
+		
+	</tr>
+	<?php
+	}
+	mysql_close();   
+	?>
+	</tbody>
+	<?php
 }
 
 ?>

@@ -5,10 +5,12 @@
 <button type='button' id='All'>All Requests</button>
 <button type='button' id='Pending'>Pending Requests</button>
 <button type='button' id='Rejected'>Rejected Requests</button>
+<button type='button' id='Accepted'>Accepted Requests</button>
 <button type='button' id='nonConflicts'>Non Conflicting Requests</button>
 <button type='button' id='Conflicts'>Conflicting Requests</button>
+<button type='button' id='Cancelled'>Cancelled Requests</button>
 <br><br>
-				<table id="box-table-a">                        
+	<table id="box-table-a">                        
 <script language="javascript" type="text/javascript" src="js/table.js"></script>
 <thead>
 <tr>
@@ -21,7 +23,14 @@
 <th scope="col">Type</th>
 <th scope="col">Status</th>
 <?php  if($_GET['view']=='Conflicts'){
-?>	<th scope="col">Details</th> <?php
+	?>	
+		<th scope="col">Details</th> 
+	<?php
+	}
+	else if($_GET['view']=='Accepted'){
+	?>	
+		<th scope="col">Cancel Option</th> 
+	<?php
 	}
 ?>
 </tr>
@@ -47,6 +56,14 @@ switch ($_GET[view]){
 		$query="SELECT reqNo,creator,room,eventTitle,eventStartDate,eventStartTime,reqType,appStatus FROM Requests where reqNo in ".$nonConflicts."";
 		getRequests("nonConflicts",$query);
 		break;
+	case 'Cancelled':
+		$query="SELECT reqNo,creator,room,eventTitle,eventStartDate,eventStartTime,reqType,appStatus FROM Requests where appStatus = 'Cancelled'";
+		getRequests("Cancelled",$query); 
+		break;
+	case 'Accepted':
+		$query="SELECT reqNo,creator,room,eventTitle,eventStartDate,eventStartTime,reqType,appStatus FROM Requests where appStatus = 'Accepted'";
+		getRequests("Accepted",$query);
+		break;
 	case 'Conflicts':
 		clashMux(checkConflicts());
 		if(isset($_GET['st']))
@@ -57,5 +74,22 @@ switch ($_GET[view]){
 }
 ?>
 </table>
-			</div>
+
+<form method='POST' action='cancelReq.php' id='cancelForm'>
+	<table>
+		<tr>
+			<td>Request Number</td>
+			<td><input type='text' readonly name='reqNo'></td>
+		</tr>	
+		<tr>
+			<td>Cancel Reason</td>
+			<td><textarea rows="4" cols="40" name="cancelReason" required></textarea></td>
+		</tr>
+		<tr>	<td></td>
+			<td><button type='Submit' class="cancelSubmit" >Submit</button>	</td>
+		</tr>
+	</table>
+</form>
+
+</div>
 <?php include("footer.php"); ?>
