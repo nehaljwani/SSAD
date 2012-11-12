@@ -499,7 +499,7 @@ CREATE TABLE `User` (
 
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
-INSERT INTO `User` VALUES (16,'Acad Office','nehal.wani@students.iiit.ac.in',2),(17,'SLC Chair','nehal.wani@students.iiit.ac.in',3),(18,'Dean Academics','nehal.wani@students.iiit.ac.in',4),(19,'Manager (Admin)','nehal.wani@students.iiit.ac.in',5),(14,'Student','nehal.wani@students.iiit.ac.in',0),(15,'Parliament','nehal.wani@students.iiit.ac.in',1),(23,'kapil kumar','kapil@gmail.com',6),(20,'TA','nehal.wani@students.iiit.ac.in',6),(21,'Faculty','nehal.wani@students.iiit.ac.in',7),(25,'Ankush Jain','ankush.jain@students.iiit.ac.in',2),(26,'Shubham Sangal','shubham.sangal@students.iiit.ac.in',5),(27,'Kapil Kumar','kapil.kumar@students.iiit.ac.in',2);
+INSERT INTO `User` VALUES (16,'Acad Office','nehal.wani@students.iiit.ac.in',2),(17,'SLC Chair','nehal.wani@students.iiit.ac.in',3),(18,'Dean Academics','nehal.wani@students.iiit.ac.in',4),(19,'Manager (Admin)','nehal.wani@students.iiit.ac.in',5),(14,'Student','nehal.wani@students.iiit.ac.in',0),(15,'Parliament','nehal.wani@students.iiit.ac.in',1),(23,'kapil kumar','kapil@gmail.com',6),(20,'TA','nehal.wani@students.iiit.ac.in',6),(21,'Faculty','nehal.wani@students.iiit.ac.in',7),(25,'Ankush Jain','ankush.jain@students.iiit.ac.in',2),(26,'Shubham Sangal','shubham.sangal@students.iiit.ac.in',2),(27,'Kapil Kumar','kapil.kumar@students.iiit.ac.in',2);
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
 
