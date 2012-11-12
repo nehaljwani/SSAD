@@ -12,7 +12,7 @@ include "essential.php";
 <div style="clear: both;">&nbsp;</div>
 <div class="entry">
 <form id="info" method="post" action='confirm_feedback.php'>
-<table id="entry">
+<table id="">	
 <tr>
 <td>Name</td>
 <td><input type="text" name="name" id='name'></td>
@@ -28,6 +28,11 @@ f21.add( Validate.Presence );
 var f11 = new LiveValidation('feedback');
 f11.add(Validate.Presence);
 </script>
+<?php
+require_once("recaptchalib.php");
+$publickey = "6LfA-NgSAAAAAI9-J_Llw-K2OkhfZxSzJy0IElfM";
+echo recaptcha_get_html($publickey);
+?>
 
 <input type="submit" name="submit" value="Submit">
 <!--p class="links">	
