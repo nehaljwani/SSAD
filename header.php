@@ -39,7 +39,8 @@ if(isset($_GET['logout'])){
 <meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>Room Allocation Portal - Team 18</title>
-<link href="http://fonts.googleapis.com/css?family=Dancing+Script|Open+Sans+Condensed:300" rel="stylesheet" type="text/css" />
+<!--link href="http://fonts.googleapis.com/css?family=Dancing+Script|Open+Sans+Condensed:300" rel="stylesheet" type="text/css" /-->
+<link href="css/fonts.css" rel="stylesheet" type="text/css" />
 <script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
 <script language="javascript" type="text/javascript" src="js/common.js"></script>
 <link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />

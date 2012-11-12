@@ -1,0 +1,274 @@
+Code,Name,Course Type
+ISC202,Science II,UG3
+ICS211,Algorithms ,UG2
+CSE371,Artificial Intelligence ,UG2
+ECE335,Communication Theory I,UG2
+ICS251,Computer Networks,UG2
+IEC239,Digital Signal Analysis and Applications,UG2
+ECE341,Digital Signal Processing ,UG2
+ECE260,Electrical Science II,UG2
+ECE291,Electronics Workshop II ,UG2
+ECE225,Embedded Hardware Design,UG2
+IEG201,Engineering Systems,UG2
+CSE311,Formal Methods ,UG2
+CSE251,Graphics ,UG2
+IHS107,Human Values II,UG2
+IHS201,Humanities ,UG2
+ECE361,Intro to VLSI,UG2
+ICS241,Introduction to Databases,UG2
+ECE205,Linear Electronic Circuits,UG2
+ICS231,Operating Systems ,UG2
+ECE230,Probability & Random Processes,UG2
+ISC201,Science I,UG2
+ECE241,Signals and Systems,UG2
+ICS261,SSAD & Project,UG2
+H9991,Art and Craft,UG1
+H9997,Art and Medium,UG1
+IEC103,Basic Electronic Circuits,UG1
+ICS101,Computer Programming ,UG1
+ICS104,Computer System Organization,UG1
+H9993,Creative Movement ,UG1
+ICS103,Data Structures ,UG1
+IEC101,Digital Logic and Processors,UG1
+IEC102,Electrical Science I,UG1
+IEC104,Electronics Workshop I,UG1
+IHS101,English I,UG1
+IHS102,English II,UG1
+IHS103,Human Values I,UG1
+ICS102,IT Workshop I,UG1
+ICS105,IT Workshop II,UG1
+IMA101,Mathematics I,UG1
+IMA102,Mathematics II,UG1
+H9992,Painting and Folk Art,UG1
+H9996,Photography and Film,UG1
+H9995,Site and Art,UG1
+CSE603,Advanced Problem Solving ,PG1
+CSE611,Discrete Maths and Algorithms,PG1
+CSE531,Operating Systems (PG),PG1
+CSE505,Scripting and Computer Environments,PG1
+CEA611,Theory of Elasticity,PG1
+IMA201,Mathematics III,UG2
+CSE435,Advanced Computer Networks,BC
+CSE419,Compilers ,BC
+CSE411,Complexity and Advanced Algorithms,BC
+CSE441,Database Systems ,BC
+CSE431,Distributed Systems,BC
+CSE481,Optimization Methods,BC
+CSE415,Principles of Programming Languages ,BC
+CSE461,Software Engineering,BC
+CSE471,Statistical Methods in AI,BC
+CSE662,A Systems View of Business,Elective
+ECE441,Adaptive Signal Processing ,Elective
+CEA711,Adv. Mechanics of Materials,Elective
+SCI652,Advanced Bioinformatics ,Elective
+SCI421,Advanced Biology(Cellular/Molecular/Genetic),Elective
+SCI541,Advanced Biomolecular Architecture,Elective
+CSE519,Advanced Compilers,Elective
+CES625,Advanced Reinforce Concrete Design,Elective
+CSE561,Advanced Software Engineering,Elective
+CES626,Advanced Steel Design,Elective
+CES611,Advanced Structural Analysis,Elective
+HSS601,Advanced Topics in Humanities,Elective
+CEG561,Advanced Topics in Remote Sensing,Elective
+CSE545,Advances in Data Mining,Elective
+CSE541,Advances in Database Systems,Elective
+HSS330,Aesthetics Narrative and Design,Elective
+AGR588,Agricultural Marketing,Elective
+CEG411,Agricultural Production Economics,Elective
+ICS331,Algorithms and Operating Systems,Elective
+SCI461,Algorithms used in Scientific Simulations,Elective
+ECE461,Analog and Mixed Signal Design,Elective
+AGR587,Applied Agricultural Workshop II,Elective
+AGR583,Applied Agriculture (eSagu) Workshop - I,Elective
+AGR585,Applied Crop Producation Technology II,Elective
+AGR581,Applied Crop Production Technology I,Elective
+AGR582,Applied Crop Protection Technology I,Elective
+AGR586,Applied Crop Protection Technology II,Elective
+CLG611,Basic Maths I,Elective
+SCI650,Bioinformatics Resources,Elective
+SCI644,Biomolecular Structure and Supramolecular Chemistry,Elective
+SCI643,Biomolecular Structure Interaction and Dynamics ,Elective
+ECE530,Broadband Networks,Elective
+CEG421,Building Energy Simulation,Elective
+CES634,CASE Workshop,Elective
+SCI311,Chemical Basis of Everyday Phenomena,Elective
+SCI431,Classical and Quantum Mechanics-I,Elective
+HSS341,Classical Language: Sanskrit I,Elective
+HSS342,Classical Language: Sanskrit II,Elective
+SCI342,Classical Mechanics,Elective
+HSS422,Classical Text Reading,Elective
+CSE565,Cloud Computing,Elective
+ECE467,CMOS Radio Frequencey Integrated Circuit Design,Elective
+SCI373,CNS Lab,Elective
+CSE586,Cognitive Neuroscience,Elective
+ECE337,Communication Networks ,Elective
+ECE436,Communication Theory II,Elective
+SCI762,Complex Systems: Dynamics,Elective
+CSE518,Computational Geometry,Elective
+CLG421,Computational Linguistics I,Elective
+CLG422,Computational Linguistics II,Elective
+BIO483,Computational Structural Biology,Elective
+CES711,Computer Analysis and Structural Systems,Elective
+CSE602,Computer Problem Solving,Elective
+CLG661,Computers and Scripting I,Elective
+CES651,Concrete Engineering,Elective
+CSE503,Concurrent Data Structures,Elective
+HSS290,Confluence of Humanities and CS,Elective
+HSS355,Corporate Strategy,Elective
+HSS432,Creative Writing,Elective
+HSS344,Creative Writing and Literary Appreciation in Hindi,Elective
+HSS433,Creative Writing:Poetry from the Outside In,Elective
+CSE445,Data Warehousing and Data Mining ,Elective
+HSS414,Debates on Truth across Philosophical Traditions,Elective
+SCI861,Density Functional Theory in Molecular Physics,Elective
+HSS363,Dharma Polity and Constitution of India,Elective
+CSE478,Digital Image Processing ,Elective
+ECE463,Digital System Design,Elective
+CES442,Disaster Management,Elective
+CSE612,"Dynamic, Concurrent Functional Language",Elective
+CES441,Earthquake Engineering and Disaster Management,Elective
+CSE592,Ecological and Geospatial Modeling,Elective
+HSS360,Economics and Organizations,Elective
+HSS353,Education & Self,Elective
+CSE566,e-Governance,Elective
+ECE381,Electromagnetic Theory and Applications,Elective
+ECE559,Embedded Robotics II,Elective
+ECE661,Embedded Systems,Elective
+SCI481,Environmental Science,Elective
+HSS322,Epistemology in Indian Philosophy,Elective
+CLG513,Event and Time in Discourse,Elective
+AGR584,Farm Management,Elective
+HSS431,"Form, Arts and Aesthetics",Elective
+HSS411,Formal Approaches of Indian and Greek thought,Elective
+CEG631,Foundation Engineering and Design,Elective
+HSS348,Gandhi and India,Elective
+HSS461,Gandhian Thought,Elective
+SCI341,General and Structural Chemistry,Elective
+SCI101,General Physics,Elective
+HSS415,Generative Ontology,Elective
+HSS416,Greek Thought,Elective
+CEG422,Green Buildings,Elective
+HSS300,History of Ideas,Elective
+CSE564,Human Computer Interaction,Elective
+HSS343,Human Condition and Mahabharata,Elective
+HSS361,Human Rights,Elective
+ICS291,ICTs in Agriculture,Elective
+HSS402,Images of Science,Elective
+HSS346,Imagined Futures: Readings in Science Fiction,Elective
+HSS323,Indian Thoughts on Cognition and Communication,Elective
+CLG542,Information Dynamics in Language & Machine Translation,Elective
+CSE539,Information Security: Research and Mgmt,Elective
+ECE539,Information Theory and Coding,Elective
+HSS352,Innovation and Technology Management,Elective
+HSS332,Installation as a Form of Art,Elective
+HSS451,Intelligence: A Technology of Mind,Elective
+CSE563,Internals of Application Servers,Elective
+SCI551,Intro to Bioinformatics,Elective
+SCI320,Intro to Biology,Elective
+CSE485,Intro to Cognitive Science,Elective
+SCI462,Intro to Quantum Field Theory,Elective
+ECE452,Intro to Robotics: Mechanics and Control,Elective
+CSE601,Introduction to Computer Systems and Technologies,Elective
+CLG211,Introduction to Linguistics,Elective
+CSE463,Introduction to Middleware Systems,Elective
+SCI765,Introduction to Systems Biology,Elective
+HSS324,Introduction to Vedic Darshan,Elective
+SCI370,Learning Science by doing: A Lab-based Approach,Elective
+ECE451,Linear Control Systems ,Elective
+CLG451,Linguistic Data : Collection and Analysis,Elective
+CLG411,Linguistics 1: Language Typology and Universals,Elective
+CSE577,Machine Learning ,Elective
+IMA403,Mathematical Analysis,Elective
+SCI550,Maths and Statistics,Elective
+HSS312,"Meaning: Cognition ,Language and Ontology",Elective
+HSS313,Minds and Machines,Elective
+CSE536,Mobile Information Systems,Elective
+CSE483,Mobile Robotics ,Elective
+SCI433,Modelling and Simulations,Elective
+CSE504,Modern Computer Architecture,Elective
+SCI422,Molecular Biology,Elective
+CSE482,Multi Agent Systems ,Elective
+CSE473,Multiple Text Processing,Elective
+CSE573,Natural Language Application,Elective
+CSE472,Natural Language Processing ,Elective
+ECE434,Network Theory,Elective
+HSS354,Non-Violence,Elective
+IMA404,Number Theory and Cryptology,Elective
+IMA401,Numerical Analysis - I,Elective
+IMA402,Numerical Analysis - II,Elective
+HSS321,Ontologies in Indian Philosophy,Elective
+HSS310,Ontology,Elective
+HSS412,Ontology of Language,Elective
+HSS333,"Ontology of Re-Creation Sports, Stories and Movies",Elective
+IMA406,Operations Research,Elective
+SCI635,"Optics, Symmetry and Spectroscopy",Elective
+SCI344,Organic Chemistry and BMSID,Elective
+HSS421,Panini's Theory of Grammar,Elective
+CSE502,Parallel Programming,Elective
+HSS364,"Partitioned Politics, Fragmented Nation",Elective
+CSE663,Performance Modeling of Software Systems,Elective
+HSS314,Phenomenology of Perception,Elective
+HSS311,Philosophy of Mind,Elective
+CLG413,Phonetics and Phonology,Elective
+ECE566,Photonics,Elective
+HSS362,Political and Economic Thought for Human Society,Elective
+CEG511,Principles and Practices of Organic Forming,Elective
+SCI419,Principles and Techniques of Instrumental Analysis,Elective
+SCI719,Principles and Techniques of Instrumental Analysis,Elective
+CSE418,Principles of Information Security,Elective
+CEG441,Process Engineering,Elective
+CSE568,Product Design and Engineering,Elective
+SCI463,Quantum Information and Computing,Elective
+SCI432,Quantum Mechanics II ,Elective
+ECE535,Radar Systems,Elective
+SCI753,Reading in Molecular Docking,Elective
+CEG461,Remote Sensing,Elective
+CSE540,Research in Information Security,Elective
+CSE991,Research Methodology,Elective
+SCI371,Science Lab 1,Elective
+SCI372,Science Lab II,Elective
+ICS141,"SDLC, Database Application Development and Project Mgmt",Elective
+HSS351,Search for a Humane Society,Elective
+CES641,Seismic Eva and Strengthening of Buildings,Elective
+HSS413,Seminar Course on Exactitude,Elective
+HSS240,Sense of Past,Elective
+HSS357,Social and Technical Innovation,Elective
+HSS260,Society and Development ,Elective
+CSE562,Software Platforms,Elective
+CSE861,Software Quality Engineering,Elective
+CEG628,Soil Dynamics and Machine Foundations,Elective
+HSS401,Space Time in Arts and Humanities,Elective
+CSE591,Spatial Informatics ,Elective
+ECE448,Speech Signal Processing,Elective
+ECE446,Speech Systems ,Elective
+CSE682,Spoken Language Interface,Elective
+SCI435,Statistical Mechanics,Elective
+CES631,Structural Dynamics,Elective
+HSS462,Studies in Alternative Development,Elective
+SCI754,Symmetry and Unification of Forces,Elective
+CSE587,System and Resource Virtualization,Elective
+HSS553,Technology in the Service of Society,Elective
+HSS200,"Theoretical Humanities and Formalisms, Digital Humanities",Elective
+SCI752,Theoretical Physics,Elective
+HSS334,Theories of Arts and Aesthetics,Elective
+HSS301,"Theory of Society, History and Justice",Elective
+SCI111,Thermodynamics and Kinetics,Elective
+ECE442,Time Frequency Analysis ,Elective
+CSE913,Topics in Computational Geometry,Elective
+ECE564,Topics in Embedded Systems,Elective
+CSE964,Topics in HCI,Elective
+CSE846,Topics in Information Access,Elective
+SCI761,Topics in Nanosciences,Elective
+HSS417,Topics in Ontology,Elective
+CSE912,Topics in Parallel Processing,Elective
+SCI831,Topics in Physical Chemistry,Elective
+SCI751,Topics in Physics,Elective
+CSE911,Topics in Programming Languages,Elective
+CSE962,Topics in Software Engineering,Elective
+ECE531,Topics in Wireless Communications,Elective
+ECE534,Topics in Wireless Security,Elective
+IMA405,UG Topics in Mathematics,Elective
+HSS347,Understanding Human Society and Cultural Variations,Elective
+ECE561,VLSI Algorithms,Elective
+ECE465,VLSI Architectures,Elective
+HSS345,Yogavasishtam:A Philosophical Poem,Elective

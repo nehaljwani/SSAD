@@ -1,5 +1,14 @@
 <?php
 include("essential.php");
+include("header.php");
+
+$gID = getCurGroup();
+
+if($gID != 2){ 
+	        die("You do not have sufficient privileges to access this page");
+}
+
+
 dbconnect();
 $on_page=array();
 if(isset($_POST['delete']))                                     // if to delete a building
@@ -12,8 +21,8 @@ if(isset($_POST['delete']))                                     // if to delete 
 		$on_page[3]="addBuilding";
 		$on_page[4]="Give the building name";
 		$p= serialize($on_page);
-		header("Location:allForm.php?msg=$p");
-//		header("Location:allForm.php?msg=Give the building name");
+		header("Location:allForm.php?msg2=$p");
+//		header("Location:allForm.php?msg2=Give the building name");
 		die();
 	}
 	$query2="delete from Building where buildingName = '".$_POST['bname']."';";
@@ -24,7 +33,7 @@ if(isset($_POST['delete']))                                     // if to delete 
 		$on_page[3]="addBuilding";
 		$on_page[4]="Building Deleted";
 		$p= serialize($on_page);
-		header("Location:allForm.php?msg=$p");
+		header("Location:allForm.php?msg2=$p");
 //	header("Location:allForm.php");
 	die();
 }
@@ -42,8 +51,8 @@ if(isset($_POST['add'])){                                       // add button
 		$on_page[0]="addBuilding";
 		$on_page[4]="Building already in the system";
 		$p= serialize($on_page);
-		header("Location:allForm.php?msg=$p");
-//			header("Location:allForm.php?msg='Building already in the system'");
+		header("Location:allForm.php?msg2=$p");
+//			header("Location:allForm.php?msg2='Building already in the system'");
 			die();
 		}
 
@@ -57,9 +66,9 @@ if(isset($_POST['add'])){                                       // add button
 		$on_page[3]="deleteBuilding";
 		$on_page[4]="Building Added";
 		$p= serialize($on_page);
-		header("Location:allForm.php?msg=$p");
+		header("Location:allForm.php?msg2=$p");
 
-		//	header("Location:allForm.php?msg=Building Added");
+		//	header("Location:allForm.php?msg2=Building Added");
 			die();
 
 		}

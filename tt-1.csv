@@ -1,0 +1,231 @@
+Code,Name,Timings,Room No
+SCI421,Advanced Biology(Cellular/Molecular/Genetic),Sat:11.30-12.55,102
+,,Thu:11.30-12.55,102
+SCI541,Advanced Biomolecular Architecture,Sat:10.00-11.25,201
+,,Wed:10.00-11.25,201
+CSE435,Advanced Computer Networks,Mon:08.30-09.55,SH2
+,,Thu:08.30-09.55,SH2
+CSE603,Advanced Problem Solving,Fri:11.00-13.00,N104
+,,Tue:11.00-13.00,N104
+CES625,Advanced Reinforce Concrete Design,Mon:14.00-15.25,N104
+,,Thu:14.00-15.25,N104
+CEG561,Advanced Topics in Remote Sensing,Mon:14.00-15.25,104
+,,Thu:14.00-15.25,104
+CSE545,Advances in Data Mining,Mon:14.00-15.25,201
+,,Thu:14.00-15.25,201
+ICS211,Algorithms,Sat:10.00-11.25,SH2
+,,Wed:10.00-11.25,SH2
+ICS331,Algorithms and Operating Systems,Sat:14.00-15.25,CR1
+,,Wed:14.00-15.25,CR1
+ECE461,Analog and Mixed Signal Design,Mon:14.00-15.25,103
+,,Thu:14.00-15.25,103
+CLG611,Basic Maths I,Mon:10.00-11.25,102
+,,Thu:10.00-11.25,102
+SCI643,Biomolecular Structure Interaction and Dynamics,Fri:08.30-09.55,103
+,,Tue:08.30-09.55,103
+SCI644,Biomolecular Structure and Supramolecular Chemistry,Mon:10.00-11.25,201
+,,Thu:10.00-11.25,201
+ECE530,Broadband Networks,Sat:11.30-12.55,CR1
+,,Wed:11.30-12.55,CR1
+CEG421,Building Energy Simulation,Mon:10.00-11.25,103
+,,Thu:10.00-11.25,103
+CES634,CASE Workshop,Mon:10.00-11.25,203
+,,Thu:10.00-11.25,203
+ECE467,CMOS Radio Frequencey Integrated Circuit Design,Sat:11.30-12.55,203
+,,Wed:11.30-12.55,203
+SCI373,CNS Lab,Thu:14.00-17.00,
+SCI311,Chemical Basis of Everyday Phenomena,Fri:08.30-09.55,104
+,,Tue:08.30-09.55,104
+HSS342,Classical Language: Sanskrit II,Sat:08.30-09.55,CR1
+,,Wed:08.30-09.55,CR1
+HSS422,Classical Text Reading,Fri:11.30-12.55,201
+,,Tue:11.30-12.55,201
+CSE565,Cloud Computing,Sat:08.30-09.55,SH2
+,,Wed:08.30-09.55,SH2
+ECE436,Communication Theory II,Sat:11.30-12.55,202
+,,Wed:11.30-12.55,202
+CSE419,Compilers,Fri:08.30-09.55,SH2
+,,Tue:08.30-09.55,SH2
+CSE411,Complexity and Advanced Algorithms,Sat:11.30-12.55,204
+,,Wed:11.30-12.55,204
+CLG421,Computational Linguistics I,Mon:14.00-15.25,101
+,,Thu:14.00-15.25,101
+ICS101,Computer Programming,Fri:10.30-11.25,SH1
+,,Fri:12.00-13.00,CR2
+,,Mon:10.30-11.25,SH1
+,,Mon:12.00-12.25,CR2
+,,Thu:10.30-11.25,SH1
+,,Thu:12.00-13.00,CR2
+,,Tue:10.30-11.25,SH1
+,,Tue:12.00-13.00,CR2
+CSE602,Computer Problem Solving,Fri:10.00-11.25,304
+,,Tue:10.00-11.25,304
+CLG661,Computers and Scripting I,Fri:11.30-12.55,102
+,,Tue:11.30-12.55,102
+HSS290,Confluence of Humanities and CS,Thu:10.00-11.30,CEHConf
+,,Tue:10.00-11.30,CEHConf
+CSE445,Data Warehousing and Data Mining,Sat:10.00-11.25,103
+,,Wed:10.00-11.25,103
+CSE478,Digital Image Processing,Mon:14.00-15.25,102
+,,Thu:14.00-15.25,102
+IEC101,Digital Logic and Processors,Fri:08.30-09.30,CR2
+,,Fri:09.30-10.25,SH1
+,,Mon:08.30-09.30,CR2
+,,Mon:09.30-10.25,SH1
+,,Wed:08.30-09.30,CR2
+,,Wed:09.30-10.25,SH1
+CES442,Disaster Management,Mon:10.00-11.25,202
+,,Thu:10.00-11.25,202
+CSE611,Discrete Maths and Algorithms,Mon:11.30-13.00,N104
+,,Thu:11.30-13.00,N104
+CSE592,Ecological and Geospatial Modeling,Fri:08.30-09.55,202
+,,Tue:08.30-09.55,202
+HSS360,Economics and Organizations,Thu:08.30-09.55,B6-309
+,,Tue:08.30-09.55,B6-309
+ECE260,Electrical Science II,Fri:14.00-15.25,101
+,,Tue:14.00-15.25,101
+IEC102,Electrical Science I,Thu:08.30-09.25,CR2
+,,Thu:09.30-10.25,SH1
+,,Tue:08.30-09.25,CR2
+,,Tue:09.30-10.25,SH1
+ECE381,Electromagnetic Theory and Applications,Mon:10.00-11.25,B6-309
+,,Thu:10.00-11.25,B6-309
+ECE225,Embedded Hardware Design,Fri:10.00-11.25,101
+,,Tue:10.00-11.25,101
+ECE661,Embedded Systems,Fri:14.00-15.25,103
+,,Tue:14.00-15.25,103
+IHS101,English I,Sat:11.30-12.55,B4-301
+,,Wed:11.30-12.55,B4-301
+CLG513,Event and Time in Discourse,Mon:08.30-09.55,B4-301
+,,Thu:08.30-09.55,B4-301
+CEG631,Foundation Engineering and Design,Mon:11.30-12.55,201
+,,Thu:11.30-12.55,201
+SCI101,General Physics,Thu:10.00-11.25,B4--304
+,,Tue:10.00-11.25,B4-304
+IHS103,Human Values I,Sat:08.30-09.55,102&104&201&202&203&204&301&CR2&B4-301&B4-304
+,,Tue:15.30-17.00,
+IHS105,Humanities Skills I,Sat:11.30-12.55,N305&N303&N302&N319&A3-301&A2-201
+,,Wed:11.30-12.55,
+ICS102,IT Workshop I,Fri:10.30-11.25,SH1
+,,Fri:12.00-13.00,CR2
+,,Mon:10.30-11.25,SH1
+,,Mon:12.00-13.00,CR2
+,,Thu:10.30-11.25,SH1
+,,Thu:12.00-13.00,CR2
+,,Tue:10.30-11.25,SH1
+,,Tue:12.00-13.00,CR2
+HSS346,Imagined Futures: Readings in Science Fiction,Fri:11.30-12.55,B6-309
+,,Tue:11.30-12.55,B6-309
+ECE539,Information Theory and Coding,Fri:14.00-15.25,201
+,,Tue:14.00-15.25,201
+HSS352,Innovation and Technology Management,Fri:11.30-12.55,103
+,,Tue:11.30-12.55,103
+HSS332,Installation as a Form of Art,Fri:14.00-15.25,203
+,,Tue:14.00-15.25,203
+CSE485,Intro to Cognitive Science,Sat:11.30-12.55,104
+,,Wed:11.30-12.55,104
+SCI462,Intro to Quantum Field Theory,Fri:08.30-09.55,201
+,,Tue:08.30-09.55,201
+ICS241,Introduction to Databases,Fri:10.00-11.25,SH2
+,,Tue:10.00-11.25,SH2
+CLG211,Introduction to Linguistics,Thu:10.00-11.25,B4-301
+,,Tue:10.00-11.25,B4-301
+CSE463,Introduction to Middleware Systems,Sat:10.00-11.25,N104
+,,Wed:10.00-11.25,N104
+ECE451,Linear Control Systems,Mon:08.30-09.55,102
+,,Thu:08.30-09.55,102
+ECE205,Linear Electronic Circuits,Mon:10.00-11.25,101
+,,Thu:10.00-11.25,101
+CLG451,Linguistic Data : Collection and Analysis,Fri:10.00-11.25,B6-309
+,,Tue:10.00-11.25,B6-309
+CLG411,Linguistics 1: Language Typology and Universals,Mon:11.30-12.55,B4-301
+,,Thu:11.30-12.55,B4-301
+CSE577,Machine Learning,Mon:08.30-09.55,201
+,,Thu:08.30-09.55,201
+IMA403,Mathematical Analysis,Sat:10.00-11.25,101
+,,Wed:10.00-11.25,101
+IMA101,Mathematics I,Fri:08.30-09.25,SH1
+,,Fri:09.30-10.25,CR2
+,,Mon:08.30-09.25,SH1
+,,Mon:09.30-10.25,CR2
+,,Wed:08.30-09.25,SH1
+,,Wed:09.30-10.25,CR2
+IMA201,Mathematics III,Sat:11.30-12.55,SH2
+,,Tue:11.30-12.55,SH2
+SCI550,Maths and Statistics,Fri:11.30-12.55,101
+,,Tue:11.30-12.55,101
+CSE483,Mobile Robotics,Fri:14.00-15.25,202
+,,Tue:14.00-15.25,202
+CSE504,Modern Computer Architecture,Sat:10.00-11.25,102
+,,Wed:10.00-11.25,102
+SCI422,Molecular Biology,Mon:11.30-12.55,202
+,,Thu:11.30-12.55,202
+CSE472,Natural Language Processing,Mon:08.30-09.55,CR1
+,,Thu:08.30-09.55,CR1
+HSS354,Non-Violence,Sat:14.00-15.25,201
+,,Wed:14.00-15.25,201
+IMA404,Number Theory and Cryptology,Mon:10.00-11.25,104
+,,Thu:10.00-11.25,104
+HSS310,Ontology,Mon:10.00-11.25,CR1
+,,Thu:10.00-11.25,CR1
+ICS231,Operating Systems,Mon:10.00-11.25,SH2
+,,Thu:10.00-11.25,SH2
+CSE531,Operating Systems (PG),Mon:08.30-09.55,N104
+,,Thu:08.30-09.55,N104
+IMA406,Operations Research,Fri:08.30-09.55,102
+,,Tue:08.30-09.55,102
+SCI635,"Optics, Symmetry and Spectroscopy",Fri:14.00-15.25,102
+,,Tue:14.00-15.25,102
+CSE502,Parallel Programming,Fri:10.00-11.25,CR1
+,,Tue:10.00-11.25,CR1
+CLG413,Phonetics and Phonology,Sat:11.30-12.55,201
+,,Wed:11.30-12.55,201
+HSS362,Political and Economic Thought for Human Society,Sat:14.00-15.25,102
+,,Wed:14.00-15.25,102
+CSE415,Principles of Programming Languages,Mon:11.30-12.55,SH1
+,,Thu:11.30-12.55,SH1
+ECE230,Probability & Random Processes,Sat:11.30-12.55,101
+,,Wed:11.30-12.55,101
+SCI463,Quantuam Information and Computing,Sat:10.00-11.25,104
+,,Wed:10.00-11.25,104
+CSE991,Research Methodology,Sat:08.30-09.55,N104
+,,Wed:08.30-09.55,N104
+CSE540,Research in Information Security,Mon:11.30-12.55,103
+,,Thu:11.30-12.55,103
+ICS261,SSAD & Project,Mon:11.30-12.55,SH2
+,,Thu:11.30-12.55,SH2
+ISC201,Science I,Fri:11.30-12.55,SH2
+,,Tue:11.30-12.55,SH2
+SCI371,Science Lab 1,Mon:14.00-17.00,
+CSE505,Scripting and Computer Environments,Fri:14.00-15.25,305
+,,Tue:14.00-15.25,305
+CES641,Seismic Eva and Strengthening of Buildings,Fri:08.30-09.55,101
+,,Tue:08.30-09.55,101
+HSS240,Sense of Past,Thu:08.30-10.00,C1-302
+,,Tue:08.30-10.00,C1-302
+ECE241,Signals and Systems,Mon:11.30-12.55,101
+,,Thu:11.30-12.55,101
+CSE861,Software Quality Engineering,Mon:14.00-15.25,202
+,,Thu:14.00-15.25,202
+CEG628,Soil Dynamics and Machine Foundations,Fri:10.00-11.25,102
+,,Tue:10.00-11.25,102
+HSS401,Space Time in Arts and Humanities,Sat:14.00-15.25,101
+,,Wed:14.00-15.25,101
+CSE591,Spatial Informatics,Mon:08.30-09.55,202
+,,Thu:08.30-09.55,202
+ECE448,Speech Signal Processing,Mon:08.30-09.55,101
+,,Thu:08.30-09.55,101
+ECE446,Speech Systems,Fri:10.00-11.25,103
+,,Tue:10.00-11.25,103
+CSE471,Statistical Methods in AI,Fri:10.00-11.25,N104
+,,Tue:10.00-11.25,N104
+CES631,Structural Dynamics,Mon:08.30-09.55,301
+,,Thu:08.30-09.55,301
+HSS462,Studies in Alternative Development,Fri:11.30-12.55,104
+,,Tue:11.30-12.55,104
+CEA611,Theory of Elasticity,Fri:14.00-15.25,N104
+,,Tue:14.00-15.25,N104
+ECE442,Time Frequency Analysis,Sat:08.30-09.55,101
+,,Wed:08.30-09.55,101
+ECE561,VLSI Algorithms,Fri:14.00-15.25,104
+,,Tue:14.00-15.25,104

@@ -34,13 +34,17 @@ $st =  generate_list($q,$x);
 ?>
 
 
-<html>
-<title>Add room</title>
-<head>
 <script type='text/javascript' src='./js/livevalidation_standalone.js'></script>
-</head>
-<body>
 <?php require_once('header.php'); ?>
+<?php
+
+$gID = getCurGroup();
+
+if($gID != 2){ 
+	        die("You do not have sufficient privileges to access this page");
+}
+
+?>
 
 <form name='a_uroom' action=s_addroom2.php method='post'>
 <table align='center'>

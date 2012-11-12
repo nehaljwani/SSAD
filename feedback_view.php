@@ -1,4 +1,13 @@
-<?php include("essential.php"); include("header.php"); ?>
+<?php include("essential.php"); include("header.php"); 
+
+$gID = getCurGroup();
+
+if($gID != 2){
+	die("You don't have the required privileges to access this page.");
+}
+//echo getGroup(phpCAS::getUser());
+
+?>
 <div class="post">
 <h2 class="title">Feedback Details</h2>
 <table id="box-table-a">                        

@@ -1,7 +1,19 @@
 <?php 
 
 require_once('essential.php');
-require_once('header.php'); 
+if(isset($_GET['msg2'])){
+	$message=unserialize($_GET['msg2']);
+	$_GET['msg']=$message[4];
+}
+require_once('header.php');
+
+$gID = getCurGroup();
+
+if($gID != 2){ 
+	        die("You do not have sufficient privileges to access this page");
+		}
+
+
 dbconnect();
 ?>
 <div class="post">
@@ -26,14 +38,16 @@ var t=setTimeout("document.getElementById('kapi').style.display='none';",4000);
 <button type="button" id='delroom' >delete Room</button>
 <button type="button" id='addbuild' >Add Building</button>
 <button type="button" id='delbuild' >Delete Building</button>
-<?php if(isset($_GET['msg'])){
-	$on_page=unserialize($_GET['msg']);		
+<?php if(isset($_GET['msg2'])){
+/*
+	$on_page=unserialize($_GET['msg2']);		
 	echo "<p id='kapi' style='background-color:#1C478E;font-size:14pt;color:#FFFFFF;text-align:right;'>" . $on_page[4] . "</p>";
+*/
 }
 ?>
 <script  type="text/javascript">
 
-$on_pager=<?php echo json_encode($on_page);?>;
+$on_pager=<?php echo json_encode($message);?>;
 $(document).ready(function() {
 	if($on_pager){
 		$('#'+$on_pager[1]).hide();
@@ -50,7 +64,7 @@ $(document).ready(function() {
 })
 </script>
 
-<script language="JavaScript" type="text/javascript">timedMsg()</script>
+<!--script language="JavaScript" type="text/javascript">timedMsg()</script-->
 
 <?php	$query4="select DISTINCT roomName from Room;";
 $r="Room";

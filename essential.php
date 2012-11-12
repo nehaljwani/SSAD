@@ -827,6 +827,75 @@ function getGroup($userID){
 	}
 }
 
+function courseToInstance(){
+        $day2No=array(
+                "Sun"=>1,
+                "Mon"=>2,
+                "Tue"=>3,
+                "Wed"=>4,
+                "Thu"=>5,
+                "Fri"=>6,
+                "Sat"=>7,
+        );
+        $eventStartDate="2012-08-01";
+        $eventEndDate="2012-11-28";
+	dbconnect();
+	$query="SELECT reqNo FROM Requests ORDER BY reqNO DESC limit 1";
+	$result=mysql_fetch_row(execute($query));
+	$reqNo=$result['reqNo'];
+        $query="SELECT * FROM CourseRooms;";
+        $result=execute($query);
+        $i=0;
+        $total=mysql_num_rows($result);
+        while($roomRecords=mysql_fetch_assoc($result)){
+		$instances=weeklyRequestToInstance($eventStartDate, $eventEndDate, CSVToArray($day2No[$roomRecords['Day']]));
+		foreach($instances as $instance){
+			$reqNo++;
+                        $query="INSERT INTO Instances(reqNo,hash,creator,creatorEmail,creatorPhone,concernedPName,concernedPEmail,concernedPPhone,appStatus,reqGId,reqDate,eventStartDate,eventEndDate,eventStartTime,eventEndTime,eventTitle,eventDesc,eventDays,concernedAdmin,room,reqType) VALUES(
+				'".$reqNo."',
+                                '".$hash=sha1(uniqid(mt_rand(), true))."',
+                                'Admin',
+                                'appaji@iiit.ac.in',
+                                '',
+                                'Admin',
+                                'appaji@iiit.ac.in',
+                                '',
+                                'Accepted',     
+                                '5',
+                                '".$reqDate=date("Y-m-d H:i:s")."',
+                                '".$instance."',
+                                '".$instance."',
+                                '".$roomRecords['StartTime']."',
+                                '".$roomRecords['EndTime']."',
+                                '".$roomRecords['Code']."',
+                                '".$roomRecords['Name']."',
+                                '".$day2No[$roomRecords['Day']]."',
+                                'Admin',
+                                '".$roomRecords['Room']."',
+                                '".$roomRecords['Type']."'
+                        );";
+                        execute($query);
+                }
+                        $i++;
+                $percent = intval($i/$total * 100)."%";
+                // Javascript for updating the progress bar and information
+                echo '<script language="javascript">
+                        document.getElementById("progress").innerHTML="<div style=\"width:'.$percent.';background-color:#ddd;\">&nbsp;</div>";
+                document.getElementById("information").innerHTML="'.$i.'/'.$total.' row(s) processed.";
+                    </script>';
+
+            // This is for the buffer achieve the minimum size in order to flush data
+                    echo str_repeat(' ',1024*64);
+
+                    // Send output to browser immediately
+                    flush();
+
+            // Sleep one second so we can see the delay
+
+        }
+}
+
+
 function getCurGroup(){
 	return getGroup(phpCAS::getUser());
 }

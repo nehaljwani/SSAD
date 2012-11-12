@@ -1,5 +1,14 @@
 <?php
 include("essential.php");
+include("header.php");
+
+$gID = getCurGroup();
+
+if($gID != 2){ 
+	        die("You do not have sufficient privileges to access this page");
+}
+
+
 $on_page=array();
 if(isset($_POST['deleteroom']))                         //if clicks on delete button
         {
@@ -10,8 +19,8 @@ if(isset($_POST['deleteroom']))                         //if clicks on delete bu
 			$on_page[3]="addBuilding";
 			$on_page[4]="Room name not specified";
 			$p= serialize($on_page);
-                        //header("Location:allForm.php?msg='Room name not specified'");
-                        header("Location:allForm.php?msg=$p");
+                        //header("Location:allForm.php?msg2='Room name not specified'");
+                        header("Location:allForm.php?msg2=$p");
                         die();
                 }
 
@@ -23,7 +32,7 @@ if(isset($_POST['deleteroom']))                         //if clicks on delete bu
 			$on_page[3]="addBuilding";
 			$on_page[4]="Room Deleted";
 		$p= serialize($on_page);
-                header("Location:allForm.php?msg=$p");
+                header("Location:allForm.php?msg2=$p");
                 die();
         }
 else
@@ -47,9 +56,9 @@ if($b== $a){
 			$on_page[3]="addBuilding";
 			$on_page[4]="Room name not filled";
 		$p= serialize($on_page);
-                        header("Location:allForm.php?msg=$p");
+                        header("Location:allForm.php?msg2=$p");
 			
-                        //header("Location:allForm.php?msg=Room name not filled");           //checking if text field empty
+                        //header("Location:allForm.php?msg2=Room name not filled");           //checking if text field empty
                         die();
 			}
 		 $rname=escape($_POST['roomName']);
@@ -66,8 +75,8 @@ if($b== $a){
 			$on_page[3]="addBuilding";
 			$on_page[4]="Room name not specified";
 		$p= serialize($on_page);
-                        header("Location:allForm.php?msg=$p");
-                        //        header("Location:allForm.php?msg='Room name not specified'");
+                        header("Location:allForm.php?msg2=$p");
+                        //        header("Location:allForm.php?msg2='Room name not specified'");
                                 die();
                         }
                         $rname=$_POST['Room'];
@@ -88,7 +97,7 @@ if(mysql_num_rows($r)!=1)
 			$on_page[3]="addBuilding";
 			$on_page[4]="Cannot insert.Cannot get proper building";
 		$p= serialize($on_page);
-                header("Location:allForm.php?msg=$p");
+                header("Location:allForm.php?msg2=$p");
                 die();
         }
 }
@@ -112,9 +121,9 @@ if(mysql_num_rows($r)!=1)
 			$on_page[3]="addBuilding";
 			$on_page[4]="room already exists";
 		$p= serialize($on_page);
-                        header("Location:allForm.php?msg=$p");
+                        header("Location:allForm.php?msg2=$p");
                       
-                        //header("Location:allForm.php?msg='room already exists'");
+                        //header("Location:allForm.php?msg2='room already exists'");
                         die();
                 }
 		else
@@ -150,9 +159,9 @@ if(mysql_num_rows($r)!=1)
 			$on_page[3]="addBuilding";
 			$on_page[4]="Room inserted/updated successfully.You did not have category preferences";
 		$p= serialize($on_page);
-                        header("Location:allForm.php?msg=$p");
+                        header("Location:allForm.php?msg2=$p");
 
-                        //header("Location:allForm.php?msg='Room inserted/updated successfully.You did not have category preferences.'");
+                        //header("Location:allForm.php?msg2='Room inserted/updated successfully.You did not have category preferences.'");
                          die();
                 }
                 else{                                                   // adding categories to the room.
@@ -168,8 +177,8 @@ if(mysql_num_rows($r)!=1)
 			$on_page[3]="addBuilding";
 			$on_page[4]="Room inserted/updated successfully";
 		$p= serialize($on_page);
-                        header("Location:allForm.php?msg=$p");
-                        //header("Location:allForm.php?msg='Room inserted/updated successfully.'");
+                        header("Location:allForm.php?msg2=$p");
+                        //header("Location:allForm.php?msg2='Room inserted/updated successfully.'");
                         die();
                 }
        // }

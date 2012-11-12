@@ -17,6 +17,10 @@
 					<li><a href="s_Addbuilding.php">Add/Modify building</a></li>
 					<li><a href="feedback_view.php">View Feedbacks</a></li>
 					<li><a href="allForm.php">AllForms</a></li>
+					<li><a href="lectures.php">lectures</a></li>
+                                        <li><a href="#">tutorials</a></li>
+                                        <li><a href="#">labs</a></li>
+
 				</ul> 
 			</div>
 		</div>

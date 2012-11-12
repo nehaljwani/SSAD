@@ -19,6 +19,15 @@ $list1=generate_list($query,$r);
 </head>
 <body>
 <?php require_once('header.php'); ?>
+<?php
+
+$gID = getCurGroup();
+
+if($gID != 2){ 
+	        die("You do not have sufficient privileges to access this page");
+}
+
+?>
 
 <form name='insert' action='s_addbuild2.php' method='post'>
 <h2 align='center'>Add Building</h2>

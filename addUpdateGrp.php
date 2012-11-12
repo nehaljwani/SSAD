@@ -1,6 +1,14 @@
 <?php
 include("essential.php");
 require_once('header.php');
+
+$gID = getCurGroup();
+
+if($gID != 2){ 
+	        die("You do not have sufficient privileges to access this page");
+}
+
+
 dbconnect();
 $query = "select groupName,level from Groups;";
 $r='Gpname';

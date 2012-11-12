@@ -1,0 +1,337 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Room Allocation Portal - Team 18</title>
+<link href="http://fonts.googleapis.com/css?family=Dancing+Script|Open+Sans+Condensed:300" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body>
+<div id="wrapper">
+	<div id="menu-wrapper">
+		<div id="menu" class="container">
+			<ul>
+				<li class="current_page_item"><a href="index.php">Homepage</a></li>
+				<li><a href="conflictTable.php">Conflict View</a></li>
+				<li><a href="#">About Us</a></li>
+				<li><a href="#">Links</a></li>
+			<!--	<li><a href="?logout=true">Logged in as </a></li> -->
+			</ul>
+		</div>
+	</div>
+	<div class="divider">&nbsp;</div>
+	<div id="page" class="container">
+                <div id="content">
+<!--Split 1-->
+
+
+			<div class="post">
+
+				<h2 class="title"></h2>
+
+								<table id="box-table-a">                        
+
+								<thead>
+
+								<tr>
+
+								<th scope="col">CODE</th>
+
+								<th scope="col">NAME</th>
+
+								<th scope="col">DAY</th>
+
+								<th scope="col">START-TIME</th>
+
+								<th scope="col">END-TIME</th>
+								<th scope="col">Section</th>
+
+								</tr>
+
+								</thead>
+			
+
+<h1>CLASHES OCCURED FOR UG1 ARE:</h1><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+				<tr>
+				<td>ICS101</td>
+				<td>Computer Programming</td>
+				<td>Fri</td>
+				<td>12.00</td>
+				<td>13.00</td>
+				<td>SEC-B</td>
+				</tr>
+				
+				<tr class=alt>
+				<td>ICS102</td>
+				<td>IT Workshop I</td>
+				<td>Fri</td>
+				<td>12.00</td>
+				<td>13.00</td>
+				<td>SEC-B</td>
+				</tr>
+				<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+				<tr>
+				<td>ICS101</td>
+				<td>Computer Programming</td>
+				<td>Mon</td>
+				<td>12.00</td>
+				<td>12.25</td>
+				<td>SEC-B</td>
+				</tr>
+				
+				<tr class=alt>
+				<td>ICS102</td>
+				<td>IT Workshop I</td>
+				<td>Mon</td>
+				<td>12.00</td>
+				<td>13.00</td>
+				<td>SEC-B</td>
+				</tr>
+				<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+				<tr>
+				<td>ICS101</td>
+				<td>Computer Programming</td>
+				<td>Thu</td>
+				<td>12.00</td>
+				<td>13.00</td>
+				<td>SEC-B</td>
+				</tr>
+				
+				<tr class=alt>
+				<td>ICS102</td>
+				<td>IT Workshop I</td>
+				<td>Thu</td>
+				<td>12.00</td>
+				<td>13.00</td>
+				<td>SEC-B</td>
+				</tr>
+				<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+				<tr>
+				<td>ICS101</td>
+				<td>Computer Programming</td>
+				<td>Tue</td>
+				<td>12.00</td>
+				<td>13.00</td>
+				<td>SEC-B</td>
+				</tr>
+				
+				<tr class=alt>
+				<td>ICS102</td>
+				<td>IT Workshop I</td>
+				<td>Tue</td>
+				<td>12.00</td>
+				<td>13.00</td>
+				<td>SEC-B</td>
+				</tr>
+				<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+				<tr>
+				<td>ICS101</td>
+				<td>Computer Programming</td>
+				<td>Fri</td>
+				<td>10.30</td>
+				<td>11.25</td>
+				<td>SEC-A</td>
+				</tr>
+				
+				<tr class=alt>
+				<td>ICS102</td>
+				<td>IT Workshop I</td>
+				<td>Fri</td>
+				<td>10.30</td>
+				<td>11.25</td>
+				<td>SEC-A</td>
+				</tr>
+				<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+				<tr>
+				<td>ICS102</td>
+				<td>IT Workshop I</td>
+				<td>Mon</td>
+				<td>10.30</td>
+				<td>11.25</td>
+				<td>SEC-A</td>
+				</tr>
+				
+				<tr class=alt>
+				<td>ICS101</td>
+				<td>Computer Programming</td>
+				<td>Mon</td>
+				<td>10.30</td>
+				<td>11.25</td>
+				<td>SEC-A</td>
+				</tr>
+				<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+				<tr>
+				<td>ICS101</td>
+				<td>Computer Programming</td>
+				<td>Thu</td>
+				<td>10.30</td>
+				<td>11.25</td>
+				<td>SEC-A</td>
+				</tr>
+				
+				<tr class=alt>
+				<td>ICS102</td>
+				<td>IT Workshop I</td>
+				<td>Thu</td>
+				<td>10.30</td>
+				<td>11.25</td>
+				<td>SEC-A</td>
+				</tr>
+				<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+				<tr>
+				<td>ICS101</td>
+				<td>Computer Programming</td>
+				<td>Tue</td>
+				<td>10.30</td>
+				<td>11.25</td>
+				<td>SEC-A</td>
+				</tr>
+				
+				<tr class=alt>
+				<td>ICS102</td>
+				<td>IT Workshop I</td>
+				<td>Tue</td>
+				<td>10.30</td>
+				<td>11.25</td>
+				<td>SEC-A</td>
+				</tr>
+				<br><br><br><br><br><br><br><br><br><br></table><div class="post">
+
+				<h2 class="title"></h2>
+
+								<table id="box-table-a">                        
+
+								<thead>
+
+								<tr>
+
+								<th scope="col">CODE</th>
+
+								<th scope="col">NAME</th>
+
+								<th scope="col">DAY</th>
+
+								<th scope="col">START-TIME</th>
+
+								<th scope="col">END-TIME</th>
+								</tr>
+
+								</thead>
+			
+<h1>CLASHES OCCURED FOR PG1 ARE:</h1><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+				<tr>
+				<td>CSE505</td>
+				<td>Scripting and Computer Environments</td>
+				<td>Fri</td>
+				<td>14.00</td>
+				<td>15.25</td>
+				</tr>
+				<tr class=alt>
+				<td>CEA611</td>
+				<td>Theory of Elasticity</td>
+				<td>Fri</td>
+				<td>14.00</td>
+				<td>15.25</td>
+				</tr>
+				<br><br><br><br>
+				<tr>
+				<td>CSE505</td>
+				<td>Scripting and Computer Environments</td>
+				<td>Tue</td>
+				<td>14.00</td>
+				<td>15.25</td>
+				</tr>
+				<tr class=alt>
+				<td>CEA611</td>
+				<td>Theory of Elasticity</td>
+				<td>Tue</td>
+				<td>14.00</td>
+				<td>15.25</td>
+				</tr>
+				<br><br><br><br><br></table><div class="post">
+
+				<h2 class="title"></h2>
+
+								<table id="box-table-a">                        
+
+								<thead>
+
+								<tr>
+
+								<th scope="col">CODE</th>
+
+								<th scope="col">NAME</th>
+
+								<th scope="col">DAY</th>
+
+								<th scope="col">START-TIME</th>
+
+								<th scope="col">END-TIME</th>
+								<th scope="col">Type</th>
+
+								</tr>
+
+								</thead>
+			
+<h1>CLASHES OCCURED FOR UG2 ARE:</h1><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+				<tr>
+				<td>ISC201</td>
+				<td>Science I</td>
+				<td>Tue</td>
+				<td>11.30</td>
+				<td>12.55</td>
+				<td>CSE</td>
+				</tr>
+				<tr class=alt>
+				<td>IMA201</td>
+				<td>Mathematics III</td>
+				<td>Tue</td>
+				<td>11.30</td>
+				<td>12.55</td>
+				<td>CSE</td>
+				</tr>
+				<br><br><br>
+				<tr>
+				<td>ECE241</td>
+				<td>Signals and Systems</td>
+				<td>Mon</td>
+				<td>11.30</td>
+				<td>12.55</td>
+				<td>COMMON</td>
+				</tr>
+				<tr class=alt>
+				<td>ICS261</td>
+				<td>SSAD & Project</td>
+				<td>Mon</td>
+				<td>11.30</td>
+				<td>12.55</td>
+				<td>CSE</td>
+				</tr>
+				<br><br><br><br><br><br>
+				<tr>
+				<td>ECE241</td>
+				<td>Signals and Systems</td>
+				<td>Thu</td>
+				<td>11.30</td>
+				<td>12.55</td>
+				<td>COMMON</td>
+				</tr>
+				<tr class=alt>
+				<td>ICS261</td>
+				<td>SSAD & Project</td>
+				<td>Thu</td>
+				<td>11.30</td>
+				<td>12.55</td>
+				<td>CSE</td>
+				</tr>
+				<br><br><br><br><br><br><br><br><br><br><br><br><br><br></table>  
+		<br>
+		<br>
+		<form action='show.php' method='post'>
+		<input type='submit' value='Resolve Clashes'>
+		</form>
+		
+</center>
+</body>
+</html>

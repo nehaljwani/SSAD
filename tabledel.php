@@ -1,4 +1,12 @@
-<?php include_once('essential.php'); include("header.php"); ?>
+<?php include_once('essential.php'); include("header.php"); 
+
+$gID = getCurGroup();
+
+if($gID != 2){
+	die("You do not have sufficient privileges to access this page");
+}
+
+?>
 <div class="post">
   <h2 class="title"><a href="#">Request Details</a></h2>
 <?php //include("essential.php");     //include for dbconnect and paginate function

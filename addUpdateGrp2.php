@@ -1,5 +1,14 @@
 <?php
 include("essential.php");
+include("header.php");
+
+$gID = getCurGroup();
+
+if($gID != 2){ 
+	        die("You do not have sufficient privileges to access this page");
+}
+
+
 $group=$_POST['Gpname'];
 $query = "select * from Groups where groupName='$group' ;";
 $rv=execute($query);
@@ -33,7 +42,7 @@ while($row =mysql_fetch_row($result1))
 {
 	$level =$row[0];
 }
-$query2="insert into User values('','".$name."','','".$Email."',".$level.");";
+$query2="insert into User values('','".$name."','".$Email."',".$level.");";
 execute($query2);
 header("Location:addUpdateGrp.php");
 ?>

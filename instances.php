@@ -25,8 +25,8 @@ else
 $lim=10;
 $table="Instances";
 dbconnect();          //connecting db
-$query="SELECT reqNo,creator,room,eventTitle,eventStartDate,eventStartTime,reqType,appStatus FROM $table"; //select table
-$result=paginate("table.php",$query,$mstart,$lim);             //calling paging
+$query="SELECT reqNo,creator,room,eventTitle,eventStartDate,eventStartTime,reqType,appStatus FROM $table ORDER BY eventStartDate"; //select table
+$result=paginate("instances.php",$query,$mstart,$lim);             //calling paging
 $num=mysql_numrows($result);
 ?>
 <?php

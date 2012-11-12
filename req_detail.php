@@ -18,9 +18,9 @@ $col=mysql_fetch_row($res);
 <?php include("header.php"); ?>
 <?php 
 
+$gID = getCurGroup();
 
-
-if(1){ ?>
+if($gID == 2 || $gID ==3 || $gID ==4 | $gID ==5){ ?>
 <div class = "post">
 	<h2 class="title">Take an action</h2>
 	<div class="entry">
