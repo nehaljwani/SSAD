@@ -20,7 +20,8 @@ Add form validation       ---Almost DONE
 Add reset buttons in forms  -- DONE
 Mail goes twice, figure that  ---Twice because you are creator as well as in cc.
 
-
+error Logout link( at request accept or reject time)
+css error at capcha
 
 Update Room
 XSS
