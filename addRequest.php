@@ -22,6 +22,16 @@ $hash=sha1(uniqid(mt_rand(), true));
 $eventEndDate=$_POST["eventEndDate"];
 $creator=$_POST["creator"];
 $creatorEmail=$_POST["creatorEmail"];
+if(empty($creatorEmail))
+{
+	                header("Location:requestForm.php?msg='Email  cannot be empty'");
+			                die();
+}
+if (!(filter_var($creatorEmail, FILTER_VALIDATE_EMAIL))) {
+	                header("Location:requestForm.php?msg='Email is not valid'");
+			                die();
+}
+
 $creatorPhone=$_POST["creatorPhone"];
 $concernedPName=$_POST["concernedPName"];
 $concernedPEmail=$_POST["concernedPEmail"];
