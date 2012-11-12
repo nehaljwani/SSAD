@@ -26,7 +26,7 @@ if(!$rv)
 }
 else
 {
-	header("Location:giveFeedback.php");
+	header("Location:giveFeedback.php?msg='Your Feedback has been recorded successfully'");
 }
 }
 ?>
