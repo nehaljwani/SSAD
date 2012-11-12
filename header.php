@@ -31,6 +31,7 @@ if(isset($_GET['logout'])){
   phpCAS::logout();
 }
 
+
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>

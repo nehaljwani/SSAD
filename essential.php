@@ -19,7 +19,7 @@ if(isset($_GET['logout'])){
 
 function dbconnect(){
         GLOBAL $con;
-        $con = mysql_connect('localhost','root','iiit123');
+        $con = mysql_connect('','','');
         if(!$con){
                 die("Error in connection!");
         }   
@@ -802,6 +802,7 @@ function getRequests($id,$query){
 }
 function getCC($reqID)
 {
+	dbconnect();
 	$query = "select email from ccPerson where reqNo = {$reqID};";
 	$result = execute($query);
 	$CSVString="";
@@ -810,6 +811,24 @@ function getCC($reqID)
 		$CSVString .=", ";
 	}
 	return $CSVString;
+}
+
+function getGroup($userID){
+	//Takes a user ID and returns group from database. Returns 0 if not found.
+	dbconnect();
+	$query = "select level from User where email = \"{$userID}\"";
+	$result = execute($query);
+	if(mysql_num_rows($result)==0){
+		return 0;
+	}
+	else{
+		$row = mysql_fetch_row($result);
+		return $row[0];
+	}
+}
+
+function getCurGroup(){
+	return getGroup(phpCAS::getUser());
 }
 
 ?>

@@ -4,7 +4,7 @@ include("essential.php");
 dbconnect();
 if(isset($_GET['id'])){
 	$id=$_GET['id'];
-require_once("header.php");
+//require_once("header.php");
 }
 //$id=19;
 $sq="select * from Requests where reqNo =".$id.";";

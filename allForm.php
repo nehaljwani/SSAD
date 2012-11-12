@@ -1,4 +1,8 @@
-<?php require_once('header.php'); 
+<?php 
+
+require_once('essential.php');
+require_once('header.php'); 
+dbconnect();
 ?>
 <div class="post">
   <h2 class="title"><a href="#">room request form </a></h2>
@@ -48,7 +52,6 @@ $(document).ready(function() {
 
 <script language="JavaScript" type="text/javascript">timedMsg()</script>
 
-<?php include("essential.php");dbconnect(); ?>
 <?php	$query4="select DISTINCT roomName from Room;";
 $r="Room";
 $r1='dRoom';

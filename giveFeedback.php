@@ -1,8 +1,6 @@
+<?php include "essential.php"; ?>
 <?php include_once('header.php');?>
 <script type='text/javascript' src='js/livevalidation_standalone.js'></script>
-<?php
-include "essential.php";
-?>
 <div class="post">
 <h2 class="title"><a href="#">Provide Feedback</a></h2>
 <!--p class="meta">

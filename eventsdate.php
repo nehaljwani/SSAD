@@ -1,6 +1,6 @@
 <?php
-require_once("header.php");
 include('essential.php');
+require_once("header.php");
 echo "<script type='text/javascript' src='js/calendarDateInput.js'> </script>";
 if($_POST['submit'])
 {

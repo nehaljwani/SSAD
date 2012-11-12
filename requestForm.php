@@ -1,3 +1,4 @@
+<?php include("essential.php"); ?>
 <?php require_once('header.php'); ?>
 <div class="post">
   <h2 class="title"><a href="#">room request form </a></h2>
@@ -18,7 +19,6 @@ function timedMsg()
 <script language="javascript" type="text/javascript" src="js/calendarDateInput.js"></script>
 <script language="javascript" type="text/javascript" src="js/addRequest.js"></script>
 <script language="javascript" type="text/javascript" src="js/autofill.js"></script>
-<?php include("essential.php"); ?>
 <?php if(isset($_GET['msg'])){
 		        echo "<p id='kapi' style='background-color:#1C478E;font-size:14pt;color:#FFFFFF;text-align:right;'>" . $_GET['msg']. "</p>";?>
 <script language="JavaScript" type="text/javascript">timedMsg()</script>

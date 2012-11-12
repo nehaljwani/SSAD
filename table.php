@@ -1,5 +1,5 @@
-<?php include("header.php"); ?>
 <?php include("essential.php"); ?> 
+<?php include("header.php"); ?>
 			<div class="post">
 				<h2 class="title">Requests</h2>
 <button type='button' id='All'>All Requests</button>

@@ -1,4 +1,7 @@
-<?php include("header.php"); ?>
+<?php 
+include("essential.php"); 
+include("header.php"); 
+?>
 			<div class="post">
 				<h2 class="title">Requests</h2>
 				<table id="box-table-a">                        
@@ -14,7 +17,7 @@
 <th scope="col">Status</th>
 </tr>
 </thead>
-<?php include("essential.php");     //include for dbconnect and paginate function
+<?php /*include("essential.php");*/    //include for dbconnect and paginate function
 if(isset($_GET['st']))
     $mstart=$_GET['st'];    
 else

@@ -1,5 +1,5 @@
 <?php
-include("../essential.php");     //include for dbconnect and paginate function
+include("essential.php");     //include for dbconnect and paginate function
 if(isset($_GET['st']))
     $mstart=$_GET['st'];      
 else

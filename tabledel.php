@@ -1,7 +1,7 @@
-<?php include("header.php"); ?>
+<?php include_once('essential.php'); include("header.php"); ?>
 <div class="post">
   <h2 class="title"><a href="#">Request Details</a></h2>
-<?php include("essential.php");     //include for dbconnect and paginate function
+<?php //include("essential.php");     //include for dbconnect and paginate function
 if(isset($_GET['st']))
     $mstart=$_GET['st'];    
 else

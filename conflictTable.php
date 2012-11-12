@@ -1,4 +1,9 @@
-<?php include("header.php"); ?>
+<?php 
+
+include("essential.php");     //include for dbconnect and paginate function
+include("header.php"); 
+
+?>
 <script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
 			<div class="post">
 				<h2 class="title">ConflictView</h2>
@@ -16,7 +21,7 @@
 <th scope="col">Details</th>
 </tr>
 </thead>
-<?php include("essential.php");     //include for dbconnect and paginate function
+<?php 
 dbconnect();          //connecting db
 clashMux(checkConflicts());
 
