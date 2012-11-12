@@ -176,6 +176,46 @@ function printNextGroupOptions($curGroup){
   }
 }
 
+function generateTimeSlot1($myid,$t,$default=false){
+        $st = "<select name='". $myid . "' id='". $myid."' >";
+        $st .= "<option value='00:00:00' id='fg'>Please select</option>";
+        for($i=0;$i<24;$i++){
+                $dig=0;
+                $k = $i; 
+                while($k>0){
+                        $k/=10;
+                        $dig++;
+                }   
+                $j = $i.'';
+                if($i<10){
+                        $j = '0' . $j; 
+                }   
+                $j1 = $j.":00:00";
+		$j2 = $j.":30:00";
+		if($t==$j1)
+		{
+			$st .= "<option selected='selected' value='" . $j1 . "' name='" . $j1 . "' id='" .$j1."'>".$j1."</option>";
+		}
+		else
+		{
+			$st .= "<option value='" . $j1 . "' name='" . $j1 . "' id='" .$j1."'>".$j1."</option>";
+		}
+		if($t == $j2)
+		{
+		$st .= "<option selected = 'selected' value='" . $j2 . "' name='" . $j2 . "' id='" .$j2."'>".$j2."</option>";
+		}
+		else
+		{
+			$st .= "<option value='" . $j2 . "' name='" . $j2 . "' id='" .$j2."'>".$j2."</option>";
+		}
+
+        }   
+                $st .= "<option value='23:59:59' name='23:59:59' id='23:59:59'>23:59:59</option>";
+
+        $st .= "</select>";
+        return $st;
+}
+
 //To make a drop down list easily
 function generateTimeSlot($myid,$default=false){
         $st = "<select name='". $myid . "' id='". $myid."' >";
