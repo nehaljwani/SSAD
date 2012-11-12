@@ -17,7 +17,7 @@ function timedMsg()
 <script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
 <script language="javascript" type="text/javascript" src="js/calendarDateInput.js"></script>
 <script language="javascript" type="text/javascript" src="js/addRequest.js"></script>
-<script language="javascript" type="text/javascript" src="js/autofill.js"></script>
+<!--script language="javascript" type="text/javascript" src="js/autofill.js"></script-->
 <?php include("essential.php"); ?>
 <?php if(isset($_GET['msg'])){
 		        echo "<p id='kapi' style='background-color:#1C478E;font-size:14pt;color:#FFFFFF;text-align:right;'>" . $_GET['msg']. "</p>";?>
@@ -91,13 +91,6 @@ echo generateBuildingList("buildingName");
 	<tr> <td> Activity/Reason: </td><td>
 	<textarea id='description'  name='eventDesc'/></textarea></tr>
 	<tr><td>CC: </td><td><input type="text" name="cc"></td></tr>
-	<tr><td>
-	<?php
-	require_once("recaptchalib.php");
-	$publickey = "6LfA-NgSAAAAAI9-J_Llw-K2OkhfZxSzJy0IElfM";
-	echo recaptcha_get_html($publickey);
-	?>
-	</td></tr>
 	<tr><td><input type='submit' name='submit' id='submit' class='center' value='Book Room'/></td></tr>
 	<tr><td><input type='reset' class='center' value='Reset'/></td></tr>
 	</table>
