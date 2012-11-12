@@ -192,7 +192,7 @@ function generateTimeSlot1($myid,$t,$default=false){
                 }   
                 $j1 = $j.":00:00";
 		$j2 = $j.":30:00";
-		if($t==$j1)
+		if($t == $j1)
 		{
 			$st .= "<option selected='selected' value='" . $j1 . "' name='" . $j1 . "' id='" .$j1."'>".$j1."</option>";
 		}
