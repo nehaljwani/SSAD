@@ -299,10 +299,10 @@ if($roomnum>0)
 }
 //sleep(5);
 include('footer.php');
-/*echo '
+echo '
 <script type="text/javascript">
 window.location="progress.php";
 </script>
-	';*/
+	';
 ?>
 

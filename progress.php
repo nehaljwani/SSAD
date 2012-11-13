@@ -20,5 +20,5 @@ echo '<script language="javascript">document.getElementById("information").inner
 </body>
 </html>
 
-<?php header("Location: ".$_SERVER['HTTP_REFERER'].") ?>
+<?php header("Location: lectures.php"); ?>
 

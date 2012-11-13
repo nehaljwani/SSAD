@@ -19,7 +19,7 @@ if(isset($_GET['logout'])){
 
 function dbconnect(){
         GLOBAL $con;
-        $con = mysql_connect('','','');
+        $con = mysql_connect('localhost','root','venky123');
         if(!$con){
                 die("Error in connection!");
         }   
