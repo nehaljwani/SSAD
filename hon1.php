@@ -20,10 +20,10 @@ while($row=mysql_fetch_array($sql1))
 echo"
 <table>
 <tr><td>
-<h1 id='mybody'> Code:</h3></td><td><h1 id='capital_mybody'>$code</h1></td><table>";
+<h1 id='myBig'> Code:</h3></td><td><h1 id='capital_mybody'>$code</h1></td><table>";
 //echo "Code : <input type='text' value='$code' name='$saver'><br><br>";
 $saver++;
-echo "<h1 id='mybody'>Name : $name<br></h1>";
+echo "<h1 id='myBig'>Name : $name<br></h1>";
 //echo "Name : <input type='text' value='$name' name='$saver'><br><br>";
 $saver++;
 $sql1=mysql_query("select * from dassod");
