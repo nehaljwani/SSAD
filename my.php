@@ -287,6 +287,7 @@ while($row = mysql_fetch_array($result))
 mysql_close($con);
 echo"
 	</table>
+	</div>
 	</body>
 	</html>
 ";
@@ -296,7 +297,7 @@ if($roomnum>0)
 	$_SESSION['codes']=$codearr;
 	$_SESSION['names']=$namearr;
 }
-sleep(5);
+//sleep(5);
 include('footer.php');
 /*echo '
 <script type="text/javascript">

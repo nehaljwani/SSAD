@@ -13,7 +13,7 @@ $sql="CREATE TABLE clash
  Others varchar(10)
 )";
 mysql_query($sql,$con);*/
-mysql_query("DELETE FROM CLASHES");
+mysql_query("DELETE FROM clash");
 $sql="CREATE VIEW UG1 AS select DISTINCT Tablem.Code,Tablem.Name,Type,Day,StartTime,EndTime,PrevRoom from Tablem,Tableme where Tablem.Code=Tableme.Code and Type like 'UG1'";
 mysql_query($sql,$con);
 $sql1=mysql_query("select * from UG1 where PrevRoom like 'CR2' or PrevRoom like 'SH1' order by PrevRoom,Day,StartTime");
