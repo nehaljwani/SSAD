@@ -1,8 +1,8 @@
 <?php
 session_start();
 $code=$_POST['a'];
-$con=mysql_connect('localhost', 'root', 'venky123');
-mysql_select_db('parse',$con);
+include("essential.php");
+dbconnect();
 	$sql2="CREATE TABLE dassod
 	(
 	 Code varchar(10),
@@ -15,7 +15,7 @@ mysql_select_db('parse',$con);
 	 PrevRoom varchar(10)
 	)
 	";
-	mysql_query($sql2,$con);
+	execute($sql2);
 	$sql1=mysql_query("select * from CourseRooms where Code='$code'");
 if($code==="UG1" or $code==="UG2" or $code==="PG1" or $code==="BC" or $code==="ELECTIVE")
 {

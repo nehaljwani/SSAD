@@ -1,8 +1,8 @@
 <?php
 session_start();
 include("header.php");
-$con = mysql_connect("localhost","root","venky123");
-mysql_select_db('parse',$con);
+include("essential.php");
+dbconnect();
 $saver=1;
 $rr=$_SESSION['modtyper'];
 $weeks=array('Mon','Tue','Wed','Thu','Fri','Sat');
@@ -17,10 +17,13 @@ while($row=mysql_fetch_array($sql1))
 	$code=$row['Code'];
 	$name=$row['Name'];
 }
-echo "<h1 id='capital_mycode'> Code : $code<br></h1>";
+echo"
+<table>
+<tr><td>
+<h1 id='mybody'> Code:</h3></td><td><h1 id='capital_mybody'>$code</h1></td><table>";
 //echo "Code : <input type='text' value='$code' name='$saver'><br><br>";
 $saver++;
-echo "<h2>Name : $name<br></h2>";
+echo "<h1 id='mybody'>Name : $name<br></h1>";
 //echo "Name : <input type='text' value='$name' name='$saver'><br><br>";
 $saver++;
 $sql1=mysql_query("select * from dassod");
@@ -60,6 +63,7 @@ $saver++;
 echo "<br><input type='submit' value='Submit' name='$saver'><br>";
 $_SESSION['realsaver']=$saver;
 echo "
+</div>
 </form>
 </center>
 ";
