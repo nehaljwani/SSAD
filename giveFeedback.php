@@ -13,7 +13,11 @@
 <table id="">	
 <tr>
 <td>Name</td>
-<td><input type="text" name="name" id='name'></td>
+<td><input type="text" name="name" id="name"></td>
+</tr>
+<tr>
+<td>E-Mail</td>
+<td><input type="text" name="email" id="email" value="<?php echo phpCAS::getUser(); ?>" READONLY></td>
 </tr>
 <tr>
 <td valign="top">Feedback</td>

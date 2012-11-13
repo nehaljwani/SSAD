@@ -3,6 +3,12 @@
 include("essential.php"); 
 dbconnect();
 
+$gID = getCurGroup();
+
+if($gID != 2){
+	die("Insufficient privileges");
+}
+
 	if(ISSET($_POST['delete']))
 	{
 		if(empty($_POST['cat_sel']))
@@ -27,9 +33,9 @@ dbconnect();
 <script type='text/javascript' src='./js/livevalidation_standalone.js'></script>
 <script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
 </head>
-<h1 align ='center'>ADD CATEGORY</h2>
+<h2>Add Category</h2>
 <form name = 'add_category' method = 'POST' action ="deletecat.php">
-<table align = 'center'>
+<table class="cat-form">
 <tr>
 <td>Category name</td>
 <td><input type = 'text' name = 'cat_name' id='cat_nam'/>
@@ -56,9 +62,9 @@ $q = "select catName from Category;";
 	$x = "cat_sel";
 	$list = generate_list($q, $x);
 ?>
-<h2 align = 'center'>Delete Category</h2>
+<h2>Delete Category</h2>
 <form name = 'delete_category' method = 'POST' action = "modifycat.php">
-<table align= 'center'>
+<table class="cat-form">
 <tr>
 <td>Category name</td>
 <td><?php echo $list;?></td>

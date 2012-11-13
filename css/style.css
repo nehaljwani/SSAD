@@ -845,3 +845,6 @@ a:hover {
 	border-radius: 5px;
 	background-color: #bbe;
 }
+table.indent-form, table.cat-form {
+	margin-left: 40px;
+}
