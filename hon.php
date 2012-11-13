@@ -1,8 +1,8 @@
 <?php
 session_start();
 $code=$_POST['a'];
-include('essential.php');
-dbconnect();
+$con=mysql_connect('localhost', 'root', 'venky123');
+mysql_select_db('parse',$con);
 	$sql2="CREATE TABLE dassod
 	(
 	 Code varchar(10),
@@ -27,6 +27,7 @@ while($row=mysql_fetch_array($sql1))
 {
 	$z1=$row['Code'];
 	$_SESSION['patacode']=$z1;
+	$_SESSION['pataname']=$z2;
 	$z2=$row['Name'];
 	$z3=$row['Room'];
 	$_SESSION['pataroom']=$z3;
