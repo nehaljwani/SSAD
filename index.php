@@ -4,9 +4,8 @@
 <h2 class="title">ROOM &nbsp; ALLOTMENT &nbsp; PORTAL</h2>
 </div>
 <div class="post">
-<h2 class="title">login</h2>
 	<div class="entry">
-	<form name="login" method="post" action="login.php">
+	<!--form name="login" method="post" action="login.php">
 	<table>	
 	<tr>
 		<td>Username</td>
@@ -18,7 +17,8 @@
 	</tr>
 	</table>
 	<input type="submit" name="submit" value="Submit">
-	</form>
+	</form-->
+	Welcome to Room Allocation Portal. <br /><br />You are logged in as <?php echo phpCAS::getUser(); ?>. <a href="?logout=true">Click here</a> to logout. <br /><br />Otherwise, click on the navigation links at the top or side to browse the portal. In case of any suggestions, queries, or bugs, contact us at ra_ssad@googlegroups.com.
 	</div>
 </div>
 <?php require_once('footer.php'); ?>

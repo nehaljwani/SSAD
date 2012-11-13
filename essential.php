@@ -19,12 +19,12 @@ if(isset($_GET['logout'])){
 
 function dbconnect(){
         GLOBAL $con;
-        $con = mysql_connect('localhost','root','venky123');
+        $con = mysql_connect('localhost','room','ROOMIE_ROOMIE');
         if(!$con){
                 die("Error in connection!");
         }   
         else {
-                $chooseDB = "USE roomReser";
+                $chooseDB = "USE room_allocation";
                 $fetchDB = mysql_query( $chooseDB , $con);
                 if(!$fetchDB){
                         die("no database!");

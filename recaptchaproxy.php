@@ -67,8 +67,10 @@ function _recaptcha_qsencode ($data) {
 function _recaptcha_http_post($host, $path, $data, $port = 80) {
 
         $req = _recaptcha_qsencode ($data);
+	$proxy_host = "proxy.iiit.ac.in";
+	$proxy_port = "8080";
 
-        $http_request  = "POST $path HTTP/1.0\r\n";
+        $http_request  = "POST http://$host$path HTTP/1.0\r\n";
         $http_request .= "Host: $host\r\n";
         $http_request .= "Content-Type: application/x-www-form-urlencoded;\r\n";
         $http_request .= "Content-Length: " . strlen($req) . "\r\n";
@@ -77,8 +79,8 @@ function _recaptcha_http_post($host, $path, $data, $port = 80) {
         $http_request .= $req;
 
         $response = '';
-        if( false == ( $fs = @fsockopen($host, $port, $errno, $errstr, 10) ) ) {
-                die ('Could not open socket');
+        if( false == ( $fs = @fsockopen($proxy_host, $proxy_port, $errno, $errstr, 10) ) ) {
+                die ('Could not open socket aah');
         }
 
         fwrite($fs, $http_request);
