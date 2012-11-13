@@ -231,9 +231,16 @@ $p = mysql_num_rows($new1);
 $x = 1;
 foreach($new1 as $h)
 {
+if($strttime > $h['eventStartTime'])
+{
+continue;
+}
 //echo "mehar"."<br/>";
 //echo $h['reqNo'];
+//echo "<br/>";
 //echo $h['eventStartTime'];
+//echo "<br/>";
+//echo "gv".$strttime;
 //echo "<br/>";
 //echo $h['creator'];
 //echo "<br/>";
