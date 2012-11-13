@@ -1,39 +1,17 @@
 <?php include("header.php"); ?>
-
-                        <div class="post">
-
-                                <h2 class="title"></h2>
-
-                                <table id="box-table-a">
-
+<div class="post">
+<h2 class="title"></h2>
+<table id="box-table-a">
 <thead>
-
 <tr>
-
 <th scope="col">CODE</th>
-
 <th scope="col">NAME</th>
-
 <th scope="col">TYPE</th>
-
 </tr>
-
 </thead>
-
-
 <?php
-
 include('essential.php');
 dbconnect();
-
-/*if (mysql_query("CREATE DATABASE parse2",$con))
-  {
-  echo "Database created";
-  }
-  else
-  {
-  echo "Error creating database: " . mysql_error();
-  }*/
 function temp ()
 {
 		echo '<script type="text/javascript"> window.location.replace("lectures.php"); </script>';
@@ -42,13 +20,14 @@ function temp ()
 $file=fopen($_FILES["file2"]["tmp_name"],"r");
 $linecount=0;
 $gold=0;
+mysql_query("DELETE FROM Tableme");
 while(1)
 {
 	$line = fgets($file);
 	$q=strlen($line);
 	if($q===0)
 	{
-		temp();
+	//	temp();
 		break;
 	}
 	if($gold===0)

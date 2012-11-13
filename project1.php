@@ -23,13 +23,14 @@ dbconnect();
 $file=fopen($_FILES["file1"]["tmp_name"],"r");
 $linecount=0;
 $gold=0;
+mysql_query("DELETE FROM Tablem"); 
 while(1)
 {
 	$line = fgets($file);
 	$q=strlen($line);
 	if($q===0)
 	{
-		temp();
+//		temp();
 		break;
 	}
 	if($gold===0)
