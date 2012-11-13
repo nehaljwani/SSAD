@@ -12,7 +12,7 @@ echo "
 while($i<$val)
 {
 	$h=$rooms[$i];
-	echo "<option value='$h'>".$h."</option>";
+	echo "<option value='$h' id='$h'>".$h."</option>";
 	$i++;
 }
 echo "</select></td></tr>
@@ -21,7 +21,7 @@ $i=0;
 while($i<$val)
 {
 	$h=$rooms[$i];
-	echo "<option value='$h'>".$h."</option>";
+	echo "<option value='$h' id='$h'>".$h."</option>";
 	$i++;
 }
 echo "</select></td></tr>
@@ -30,7 +30,7 @@ $i=0;
 while($i<$val)
 {
 	$h=$rooms[$i];
-	echo "<option value='$h'>".$h."</option>";
+	echo "<option value='$h' id='$h'>".$h."</option>";
 	$i++;
 }
 echo "</select></td></tr>
@@ -39,7 +39,7 @@ $i=0;
 while($i<$val)
 {
 	$h=$rooms[$i];
-	echo "<option value='$h'>".$h."</option>";
+	echo "<option value='$h' id='$h'>".$h."</option>";
 	$i++;
 }
 echo "</select></td></tr>
@@ -48,7 +48,7 @@ $i=0;
 while($i<$val)
 {
 	$h=$rooms[$i];
-	echo "<option value='$h'>".$h."</option>";
+	echo "<option value='$h' id='$h'>".$h."</option>";
 	$i++;
 }
 echo "</select></td></tr></table><br/><br/>";

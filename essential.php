@@ -17,9 +17,8 @@ if(isset($_GET['logout'])){
 	session_destroy();
 }
 
-/*
-	To make a connection with the database
-*/
+
+//	To make a connection with the database
 
 function dbconnect(){
         GLOBAL $con;
@@ -695,12 +694,12 @@ function collision($roomId , $date_s , $date_e , $time_s, $time_e , $Repeat_Type
 
 /*        $query = "SELECT * FROM Requests WHERE appStatus='Pending' and
                 Room = '".$roomId."' 
+<<<<<<< HEAD
                 AND NOT (eventStartDate >'" . date('Y-m-d',$date_e) . "' OR eventEndDate < '" . date('Y-m-d',$date_s) . "') AND NOT (eventStartTime >='" . date('H:i:s',$time_e). "' OR eventEndTime <='" . date('H:i:s',$time_s). "') ORDER BY eventStartTime;";*/
  $query = "SELECT * FROM Requests WHERE appStatus='Pending' and
                 Room = '".$roomId."' 
 		AND NOT (eventStartDate >'" . date('Y-m-d',$date_e) . "' OR eventEndDate < '" . date('Y-m-d',$date_s) . "') AND NOT (eventStartTime >='" . date('H:i:s',$time_e). "' OR eventEndTime <='" . date('H:i:s',$time_s). "') union all SELECT * FROM Instances Where Room = '".$roomId."' AND NOT (eventStartDate >'" . date('Y-m-d',$date_e) . "' OR eventEndDate < '" . date('Y-m-d',$date_s) . "') AND NOT (eventStartTime >='" . date('H:i:s',$time_e). "' OR eventEndTime <='" . date('H:i:s',$time_s). "') ORDER BY eventStartTime;";
 
-//echo $query;
 //      echo "</br>$query</br>";
 //      echo "echoing from essential.php int the collision funtion </br>";
         $result = execute($query);
@@ -809,6 +808,7 @@ while($t = mysql_fetch_array($r))
 {
 $result1[]=$t;
 }
+<<<<<<< HEAD
 */
 return $result1;
 
