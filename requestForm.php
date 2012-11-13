@@ -20,7 +20,7 @@ function timedMsg()
 <script language="javascript" type="text/javascript" src="js/addRequest.js"></script>
 <script language="javascript" type="text/javascript" src="js/autofill.js"></script>
 <?php if(isset($_GET['msg'])){
-		        echo "<p id='kapi' style='background-color:#1C478E;font-size:14pt;color:#FFFFFF;text-align:right;'>" . $_GET['msg']. "</p>";?>
+		      //  echo "<p id='kapi' style='background-color:#1C478E;font-size:14pt;color:#FFFFFF;text-align:right;'>" . $_GET['msg']. "</p>";?>
 <script language="JavaScript" type="text/javascript">timedMsg()</script>
 <?php
 }
@@ -77,23 +77,10 @@ echo generateBuildingList("buildingName");
 	<tr><td> Start Date: </td><td><div id='sdivdate'>  <script>DateInput('eventStartDate', true,'YYYY-MM-DD')</script></div></td></tr>
 	<tr><td> End Date: </td><td><div id='edivdate'>  <script>DateInput('eventEndDate', true,'YYYY-MM-DD')</script> </div> </td></tr>
 	<tr> <td>Start Timeslot : </td>	
-	<td> <?php 
-	if($_GET['Start_Time'])
-	{
-		echo generateTimeSlot1("eventStartTime",$_GET['Start_Time']);
-	}
-	else
-	{
-echo generateTimeSlot("eventStartTime");} ?> </td>	
+	<td> <?php echo generateTimeSlot("eventStartTime"); ?> </td>	
 	</tr>
 	<tr> <td>End Timeslot : </td>
-	<td> <?php 
-	if($_GET['End_Time'])
-	{
-		echo generateTimeSlot1("eventEndTime",$_GET['End_Time']);
-	}
-	else
-	{echo generateTimeSlot("eventEndTime"); }?></td>
+	<td> <?php echo generateTimeSlot("eventEndTime"); ?></td>
 	</tr>
 		
 	<tr> <td>Confirm from: </td>

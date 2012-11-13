@@ -2,6 +2,7 @@
 
 $gID = getCurGroup();
 
+
 if($gID != 2){
 	die("You don't have the required privileges to access this page.");
 }

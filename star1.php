@@ -16,6 +16,7 @@ while($row=mysql_fetch_array($sql))
 	$z7=$row['Type'];
 	$z8=$row['PrevRoom'];
 	mysql_query("insert into CourseRooms values ('$z1','$z2','$z3','$z4','$z5','$z6','$z7','$z8') ");
+	//func.call
 	mysql_query("insert into Tablem values ('$z1','$z2','$z4','$z5','$z6','$z8')");
 	mysql_query("insert into Tableme values ('$z1','$z2','$z7') ");
 }

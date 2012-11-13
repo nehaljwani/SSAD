@@ -44,6 +44,6 @@ while($row =mysql_fetch_row($result1))
 }
 $query2="insert into User values('','".$name."','".$Email."',".$level.");";
 execute($query2);
-header("Location:addUpdateGrp.php");
+header("Location:addUpdateGrp.php?msg='Member has been added in Group'");
 ?>
 
