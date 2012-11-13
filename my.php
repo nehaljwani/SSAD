@@ -301,7 +301,7 @@ if($roomnum>0)
 include('footer.php');
 /*echo '
 <script type="text/javascript">
-window.location="display.php";
+window.location="progress.php";
 </script>
 	';*/
 ?>
