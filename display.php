@@ -41,7 +41,9 @@ $i=0;
 		$i++;
 	}
 }
-echo "</table></div><br/><br/><br/><br/><br/>";
+//echo "</table></div>";
+// if </div> is removed , layout is correct.
+echo "</table>";
 include("footer.php");
 echo "<br/><br/>";
 ?>

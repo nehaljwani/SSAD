@@ -23,7 +23,7 @@ while($row=mysql_fetch_array($sql))
 		$pre=$row['Code'];
 		$k=$row['Name'];
 		$p=" :";
-		echo "<h1 id='mybody'> $pre $k $pi <br/> </h1>";
+		echo "<h1 id='capital_mybody' > $pre $k $pi <br/> </h1>";
 	}
 	$co=$row['Code'];
 	$na=$row['Name'];
@@ -95,7 +95,7 @@ while($row=mysql_fetch_array($sql))
 		$pre=$row['Code'];
 		$k=$row['Name'];
 		$p=" :";
-		echo "<h1 id='mybody'> $pre $k $pi <br/> </h1>";
+		echo "<h1 id='capital_mybody'> $pre $k $pi <br/> </h1>";
 //		echo "$pre $k $p<br>";
 	}
 	$co=$row['Code'];
@@ -158,7 +158,7 @@ while($row=mysql_fetch_array($sql))
 		$pre=$row['Code'];
 		$k=$row['Name'];
 		$p=" :";
-		echo "<h1 id='mybody'> $pre $k $pi <br/> </h1>";
+		echo "<h1 id='capital_mybody'> $pre $k $pi <br/> </h1>";
 	//	echo "$pre $k $p<br>";
 	}
 	$co=$row['Code'];
@@ -230,7 +230,7 @@ if($flag>0)
 		<input type='submit' value='change'>
 		";
 }
-mysql_query("drop table clash");
+//mysql_query("drop table clash");
 echo
 "
 </form>
