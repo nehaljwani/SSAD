@@ -273,12 +273,19 @@ A
 //echo "accepted";
 //echo $strttime;
 //echo $h['eventEndTime'];
-while($strttime != $h['eventEndTime'])
+while($strttime <= $h['eventEndTime'])
 {
+if($strttime == $endtime)
+{
+break;
+}
 //echo "eeeeeeee"."<br/>";
                 echo "<td><a class='button red' style='width:20px;height:20px' href='details.php?id=".$h['reqNo']."'> ".$h['eventTitle']."</a></td>";
 $strttime = gmdate("H:i:s",(strtotime($strttime)-strtotime("00:00:00"))+1800);
         }
+
+//                echo "<td><a class='button red' style='width:20px;height:20px' href='details.php?id=".$h['reqNo']."'> ".$h['eventTitle']."</a></td>";
+//$strttime = gmdate("H:i:s",(strtotime($strttime)-strtotime("00:00:00"))+1800);
 
 }
         if($h['appStatus']=='Pending' && $strttime <$endtime){
