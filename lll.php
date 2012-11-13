@@ -1,5 +1,4 @@
 <?php
-include("header.php");
 include("essential.php");
 dbconnect();
 $arr=array("Mon","Tue","Wed","Thu","Fri","Sat");
@@ -37,6 +36,8 @@ foreach($arr as $val)
 	$i++;
 }
 echo "
+<html>
+<body>
 <table border='1' cellspacing='0'>
 <tr>
 <th>DAY</th>
@@ -58,6 +59,7 @@ for($i=0;$i<6;$i++)
 }
 echo "
 </table>
+</body>
+</html>
 ";
-require("footer.php")
 ?>
