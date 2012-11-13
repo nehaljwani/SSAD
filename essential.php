@@ -17,9 +17,8 @@ if(isset($_GET['logout'])){
 	session_destroy();
 }
 
-/*
-	To make a connection with the database
-*/
+
+//	To make a connection with the database
 
 function dbconnect(){
         GLOBAL $con;
