@@ -19,6 +19,12 @@
 <tr>
 <td><li><a href="predef.php" id="mybody">Allocate</a></li><br></td>
 </tr>
+<td><li><a href="#" id="mybody">View Time-Table File</a></li><br></td>
+</tr>
+<td><li><a href="#" id="mybody">View Master File</a></li><br></td>
+</tr>
+                </table>
+                </form>
                 </table>
                 </form>
 <br/><br/><br/><br/><br/>

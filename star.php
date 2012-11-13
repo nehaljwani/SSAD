@@ -112,8 +112,6 @@ while($m<10)
 	$m++;
 }
 echo "
-<html>
-<head>
 <script>
 function myFunction2()
 {
@@ -125,7 +123,7 @@ function myFunction2()
 <center>";
 echo "<h2 id='myBig'>Previous room for this course was : $gh<br><br>
 Clashes for this Room are : <br></h2>
-<h1 id='capital_mybody' ";
+<h1 id='capital_mybody'> ";
 if($cour===0)
 {
 	echo "None";
