@@ -3,7 +3,6 @@ $a=$_POST['number'];
 include("essential.php");
 include("header.php");
 dbconnect();
-include("a.php");
 echo "
 	<center>
 	<form action='present.php?tab=$a' method='post'>
@@ -28,7 +27,6 @@ echo "
 	<input type='submit' value='Submit'>
 	</form>
 	</center>
-	</div>
 	";
 include("footer.php")
 ?>

@@ -20,7 +20,7 @@ while($row=mysql_fetch_array($sql1))
 echo"
 <table>
 <tr><td>
-<h1 id='myBig'> Code:</h1></td><td><h1 id='capital_mybody'>$code</h1></td><table>";
+<h1 id='myBig'> Code:</h1></td><td><h1 id='capital_mybody'>$code</h1></td></table>";
 //echo "Code : <input type='text' value='$code' name='$saver'><br><br>";
 $saver++;
 echo "<h1 id='myBig'>Name : $name<br></h1>";

@@ -21,6 +21,13 @@
                                         <li><a href="#">Tutorials</a></li>
                                         <li><a href="#">Labs</a></li>
 
+				</ul>
+				<h2>Category 2</h2>
+				<ul class="list-style1">
+					<li><a href="#">Cat</li>
+					<li><a href="#">Cat</li>
+					<li><a href="#">Cat</li>
+					<li><a href="#">Cat</li>
 				</ul> 
 			</div>
 		</div>
