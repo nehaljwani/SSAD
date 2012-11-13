@@ -4,8 +4,6 @@ include('essential.php');
 dbconnect();
 $sql=mysql_query("select distinct Name from Tablem where PrevRoom='COMMON'");
 echo "
-<html>
-<body>
 <center>
 <h3>Common courses already added are : <br></h3>
 ";
