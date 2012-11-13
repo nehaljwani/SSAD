@@ -499,7 +499,7 @@ CREATE TABLE `User` (
 
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
-INSERT INTO `User` VALUES (16,'Acad Office','nehal.wani@students.iiit.ac.in',2),(17,'SLC Chair','nehal.wani@students.iiit.ac.in',3),(18,'Dean Academics','nehal.wani@students.iiit.ac.in',4),(19,'Manager (Admin)','nehal.wani@students.iiit.ac.in',5),(14,'Student','nehal.wani@students.iiit.ac.in',0),(15,'Parliament','nehal.wani@students.iiit.ac.in',1),(23,'kapil kumar','kapil@gmail.com',6),(20,'TA','nehal.wani@students.iiit.ac.in',6),(21,'Faculty','nehal.wani@students.iiit.ac.in',7),(25,'Ankush Jain','ankush.jain@students.iiit.ac.in',2),(26,'Shubham Sangal','shubham.sangal@students.iiit.ac.in',5),(27,'Kapil Kumar','kapil.kumar@students.iiit.ac.in',2);
+INSERT INTO `User` VALUES (16,'Acad Office','nehal.wani@students.iiit.ac.in',2),(17,'SLC Chair','nehal.wani@students.iiit.ac.in',3),(18,'Dean Academics','nehal.wani@students.iiit.ac.in',4),(19,'Manager (Admin)','nehal.wani@students.iiit.ac.in',5),(14,'Student','nehal.wani@students.iiit.ac.in',0),(15,'Parliament','nehal.wani@students.iiit.ac.in',1),(23,'kapil kumar','kapil@gmail.com',6),(20,'TA','nehal.wani@students.iiit.ac.in',6),(21,'Faculty','nehal.wani@students.iiit.ac.in',7),(25,'Ankush Jain','ankush.jain@students.iiit.ac.in',2),(26,'Shubham Sangal','shubham.sangal@students.iiit.ac.in',2),(27,'Kapil Kumar','kapil.kumar@students.iiit.ac.in',2);
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -561,7 +561,6 @@ UNLOCK TABLES;
 /*!50001 SET character_set_results     = latin1 */;
 /*!50001 SET collation_connection      = latin1_swedish_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `Tablet` AS select distinct `Tablem`.`Code` AS `Code`,`Tablem`.`Name` AS `Name`,`Tableme`.`Type` AS `Type`,`Tablem`.`Day` AS `Day`,`Tablem`.`StartTime` AS `StartTime`,`Tablem`.`EndTime` AS `EndTime`,`Tablem`.`PrevRoom` AS `PrevRoom` from (`Tablem` join `Tableme`) where (`Tablem`.`Code` = `Tableme`.`Code`) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
@@ -580,7 +579,6 @@ UNLOCK TABLES;
 /*!50001 SET character_set_results     = latin1 */;
 /*!50001 SET collation_connection      = latin1_swedish_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `Tablet1` AS select `Tablet`.`Code` AS `Code`,`Tablet`.`Name` AS `Name`,`Tablet`.`Type` AS `Type`,`Tablet`.`Day` AS `Day`,`Tablet`.`StartTime` AS `StartTime`,`Tablet`.`EndTime` AS `EndTime`,`Tablet`.`PrevRoom` AS `PrevRoom` from `Tablet` where ((`Tablet`.`Type` = 'BC') or ((`Tablet`.`Type` = 'Elective') and (not((`Tablet`.`Name` like '%Lab%'))))) order by `Tablet`.`Type`,`Tablet`.`Code`,`Tablet`.`StartTime` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
@@ -599,7 +597,6 @@ UNLOCK TABLES;
 /*!50001 SET character_set_results     = latin1 */;
 /*!50001 SET collation_connection      = latin1_swedish_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=``@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `UG1` AS select distinct `Tablem`.`Code` AS `Code`,`Tablem`.`Name` AS `Name`,`Tableme`.`Type` AS `Type`,`Tablem`.`Day` AS `Day`,`Tablem`.`StartTime` AS `StartTime`,`Tablem`.`EndTime` AS `EndTime`,`Tablem`.`PrevRoom` AS `PrevRoom` from (`Tablem` join `Tableme`) where ((`Tablem`.`Code` = `Tableme`.`Code`) and (`Tableme`.`Type` like 'UG1')) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
