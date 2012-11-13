@@ -17,6 +17,10 @@ if(isset($_GET['logout'])){
 	session_destroy();
 }
 
+/*
+	To make a connection with the database
+*/
+
 function dbconnect(){
         GLOBAL $con;
         $con = mysql_connect('localhost','room','ROOMIE_ROOMIE');
