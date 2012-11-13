@@ -13,8 +13,8 @@
 					<li><a href="table.php">View requests</a></li>
 					<li><a href="tabledel.php">Remove requests</a></li>
 					<li><a href="addUpdateGrp.php">Modify Groups</a></li>
-					<li><a href="s_Addroom.php">Add/Modify room</a></li>
-					<li><a href="s_Addbuilding.php">Add/Modify building</a></li>
+					<!--li><a href="s_Addroom.php">Add/Modify room</a></li>
+					<li><a href="s_Addbuilding.php">Add/Modify building</a></li-->
 					<li><a href="feedback_view.php">View Feedbacks</a></li>
 					<li><a href="allForm.php">AllForms</a></li>
 					<li><a href="lectures.php">Lectures</a></li>

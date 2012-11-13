@@ -3,7 +3,7 @@ include("essential.php");
 include("header.php"); 
 ?>
 			<div class="post">
-				<h2 class="title">Requests</h2>
+				<h2 class="title">Instances</h2>
 				<table id="box-table-a">                        
 <thead>
 <tr>

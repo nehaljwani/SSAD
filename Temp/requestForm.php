@@ -20,7 +20,7 @@ function timedMsg()
 <script language="javascript" type="text/javascript" src="js/addRequest.js"></script>
 <script language="javascript" type="text/javascript" src="js/autofill.js"></script>
 <?php if(isset($_GET['msg'])){
-		      //  echo "<p id='kapi' style='background-color:#1C478E;font-size:14pt;color:#FFFFFF;text-align:right;'>" . $_GET['msg']. "</p>";?>
+		        echo "<p id='kapi' style='background-color:#1C478E;font-size:14pt;color:#FFFFFF;text-align:right;'>" . $_GET['msg']. "</p>";?>
 <script language="JavaScript" type="text/javascript">timedMsg()</script>
 <?php
 }
@@ -39,7 +39,7 @@ function timedMsg()
 	<tr><td> <span style="font-weight: bold;">Details of Event:</span></td><td></tr>
 <!--	<tr><td> Title:</td><td><input type="text" name="eventTitle" id="ti1"><br></tr>-->
 	<?php 
-echo "<tr><td>Event Type:</td><td>";
+echo "<tr><td>Event Title:</td><td>";
 $query = "select * from eventTitle";
 echo generate_list($query,"eventTitle");
 echo "</td>";

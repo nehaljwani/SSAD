@@ -35,7 +35,7 @@ function timedMsg()
 </head>
 <body>
 <?php if(isset($_GET['msg'])){
-	echo "<p id='kapi' style='background-color:#1C478E;font-size:14pt;color:#FFFFFF;text-align:right;'>" . $_GET['msg']. "</p>";
+	//echo "<p id='kapi' style='background-color:#1C478E;font-size:14pt;color:#FFFFFF;text-align:right;'>" . $_GET['msg']. "</p>";
 	?>
 	 <script> timedMsg(); </script>
 	<?php

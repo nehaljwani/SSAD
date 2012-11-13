@@ -201,5 +201,5 @@ foreach($ccPersons as $guy){
 }
 
 header("Location: table.php");
-}
+}	
 ?>
