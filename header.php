@@ -50,7 +50,7 @@ if(isset($_GET['logout'])){
 	<div id="menu-wrapper">
 		<div id="menu" class="container">
 			<ul>
-				<li class="current_page_item"><a href="login.php">Homepage</a></li>
+				<li class="current_page_item"><a href="index.php">Homepage</a></li>
 				<li><a href="conflictTable.php">Conflict View</a></li>
 				<li><a href="giveFeedback.php">Feedback</a></li>
 				<li><a href="#">About Us</a></li>

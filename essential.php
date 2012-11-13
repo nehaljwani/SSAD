@@ -17,14 +17,18 @@ if(isset($_GET['logout'])){
 	session_destroy();
 }
 
+/*
+	To make a connection with the database
+*/
+
 function dbconnect(){
         GLOBAL $con;
-        $con = mysql_connect('localhost','root','venky123');
+        $con = mysql_connect('localhost','room','ROOMIE_ROOMIE');
         if(!$con){
                 die("Error in connection!");
         }   
         else {
-                $chooseDB = "USE roomReser";
+                $chooseDB = "USE room_allocation";
                 $fetchDB = mysql_query( $chooseDB , $con);
                 if(!$fetchDB){
                         die("no database!");
@@ -789,7 +793,7 @@ $week['Saturday'] = 7;
         }
  $query2 = "SELECT * FROM Instances WHERE 
                 Room = '".$roomId."' 
-                AND NOT (eventStartDate >'" . date('Y-m-d',$date_e) . "' OR eventEndDate < '" . date('Y-m-d',$date_s) . "') AND NOT (eventStartTime >='" . date('H:i:s',$time_e). "' OR eventEndTime <='" . date('H:i:s',$time_s). "') ORDER BY eventStartTime;";
+		AND NOT (eventStartDate >'" . date('Y-m-d',$date_e) . "' OR eventEndDate < '" . date('Y-m-d',$date_s) . "') AND NOT (eventStartTime >='" . date('H:i:s',$time_e). "' OR eventEndTime <='" . date('H:i:s',$time_s). "') ORDER BY eventStartTime;";
 
 $r = execute($query2);
 while($t = mysql_fetch_array($r))
@@ -890,19 +894,21 @@ function courseToInstance(){
         $eventStartDate="2012-08-01";
         $eventEndDate="2012-11-28";
 	dbconnect();
-	$query="SELECT reqNo FROM Requests ORDER BY reqNO DESC limit 1";
+/*	$query="SELECT reqNo FROM Requests ORDER BY reqNO DESC limit 1";
 	$result=mysql_fetch_row(execute($query));
 	$reqNo=$result['reqNo'];
-        $query="SELECT * FROM CourseRooms;";
+*/      $query="SELECT * FROM CourseRooms;";
         $result=execute($query);
         $i=0;
         $total=mysql_num_rows($result);
         while($roomRecords=mysql_fetch_assoc($result)){
 		$instances=weeklyRequestToInstance($eventStartDate, $eventEndDate, CSVToArray($day2No[$roomRecords['Day']]));
 		foreach($instances as $instance){
-			$reqNo++;
+			$roomRecords['StartTime']=str_replace('.',':',$roomRecords['StartTime']).":00";
+			$roomRecords['EndTime']=str_replace('.',':',$roomRecords['EndTime']).":00";
+//			$reqNo++;
                         $query="INSERT INTO Instances(reqNo,hash,creator,creatorEmail,creatorPhone,concernedPName,concernedPEmail,concernedPPhone,appStatus,reqGId,reqDate,eventStartDate,eventEndDate,eventStartTime,eventEndTime,eventTitle,eventDesc,eventDays,concernedAdmin,room,reqType) VALUES(
-				'".$reqNo."',
+				'00',
                                 '".$hash=sha1(uniqid(mt_rand(), true))."',
                                 'Admin',
                                 'appaji@iiit.ac.in',
