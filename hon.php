@@ -1,7 +1,7 @@
 <?php
 session_start();
 $code=$_POST['a'];
-include('essential.php');
+include("essential.php");
 dbconnect();
 	$sql2="CREATE TABLE dassod
 	(
@@ -15,7 +15,7 @@ dbconnect();
 	 PrevRoom varchar(10)
 	)
 	";
-	mysql_query($sql2,$con);
+	execute($sql2);
 	$sql1=mysql_query("select * from CourseRooms where Code='$code'");
 if($code==="UG1" or $code==="UG2" or $code==="PG1" or $code==="BC" or $code==="ELECTIVE")
 {
@@ -27,6 +27,7 @@ while($row=mysql_fetch_array($sql1))
 {
 	$z1=$row['Code'];
 	$_SESSION['patacode']=$z1;
+	$_SESSION['pataname']=$z2;
 	$z2=$row['Name'];
 	$z3=$row['Room'];
 	$_SESSION['pataroom']=$z3;

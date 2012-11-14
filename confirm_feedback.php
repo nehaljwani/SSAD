@@ -1,4 +1,5 @@
 <?php include "essential.php";
+include_once("header.php");
   require_once("recaptchalib.php");
     $privatekey = "6LfA-NgSAAAAAPN9GjdtA6RG4MJdeS_We5sHpkAz";
       $resp = recaptcha_check_answer ($privatekey,
@@ -14,8 +15,7 @@
 			    
 			  
 
-session_start();
-$email=$_SESSION['email'];
+$email=phpCAS::getUser();
 $name=$_POST['name'];
 $comment=$_POST['Feedback'];
 $query = "insert into Feedback_Form(Name,Email_id,Comment) values('$name','$email','$comment')".";";

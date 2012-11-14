@@ -1,16 +1,14 @@
 <?php
-require('header.php');
 session_start();
-include('essential.php');
+include("header.php");
+include("essential.php");
 dbconnect();
 $saver=1;
 $rr=$_SESSION['modtyper'];
 $weeks=array('Mon','Tue','Wed','Thu','Fri','Sat');
 echo "
-<html>
-<body>
 <center>
-<h1>COURSE TYPE : $rr </h1>
+<h1>COURSE TYPE : ".$_SESSION['modtyper']." </h1>
 <form action='jjj.php' method=post>
 ";
 $sql1=mysql_query("select * from dassod");
@@ -19,9 +17,14 @@ while($row=mysql_fetch_array($sql1))
 	$code=$row['Code'];
 	$name=$row['Name'];
 }
-echo "Code : <input type='text' value='$code' name='$saver'><br><br>";
+echo"
+<table>
+<tr><td>
+<h1 id='myBig'> Code:</h1></td><td><h1 id='capital_mybody'>$code</h1></td></table>";
+//echo "Code : <input type='text' value='$code' name='$saver'><br><br>";
 $saver++;
-echo "Name : <input type='text' value='$name' name='$saver'><br><br>";
+echo "<h1 id='myBig'>Name : $name<br></h1>";
+//echo "Name : <input type='text' value='$name' name='$saver'><br><br>";
 $saver++;
 $sql1=mysql_query("select * from dassod");
 while($row=mysql_fetch_array($sql1))
@@ -63,6 +66,5 @@ echo "
 </form>
 </center>
 ";
-echo "<br><br><br>";
-include('footer.php');
+include("footer.php");
 ?>

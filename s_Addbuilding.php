@@ -12,13 +12,8 @@ $list1=generate_list($query,$r);
 ?>
 
 
-<html>
-<title>Add Building</title>
-<head>
-<script type='text/javascript' src='./js/livevalidation_standalone.js'></script>
-</head>
-<body>
 <?php require_once('header.php'); ?>
+<script type='text/javascript' src='./js/livevalidation_standalone.js'></script>
 <?php
 
 $gID = getCurGroup();
@@ -30,8 +25,8 @@ if($gID != 2){
 ?>
 
 <form name='insert' action='s_addbuild2.php' method='post'>
-<h2 align='center'>Add Building</h2>
-<table align='center'>
+<h2>Add Building</h2>
+<table class="indent-form">
 
 <tr><td>
 Enter the new Building's Name : </td><td><input type='text' id='enter' name = 'Bname' />
@@ -45,9 +40,9 @@ f2.add( Validate.Presence );
 <tr><td></td><td><input type='submit' name='add' value='Add'/></td>
 </tr></table>
 </form><br/><br/><br/>
-<h2 align='center'> Delete Building </h2>
+<h2> Delete Building </h2>
 <form name='delete' action='s_addbuild2.php' method='post'>
-<table align='center'>
+<table class="indent-form">
 <tr><td>
 Building Name: </td>
 <td><?php echo $list1 ?></td>
@@ -55,7 +50,4 @@ Building Name: </td>
 </tr></table>
 </form>
 <?php require_once('footer.php'); ?>
-
-</body>
-</html>
 

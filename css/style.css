@@ -228,6 +228,13 @@ body {
 	color: #070759;
 }
 
+#myBig {
+        margin: 0;
+        padding: 0;
+        font-family: 'Open Sans Condensed', sans-serif;
+        font-size: 24px;
+        color: #070759;
+}
 #mybody {
         margin: 0;
         padding: 0;
@@ -582,7 +589,7 @@ a:hover {
 
 #sidebar {
 	float: right;
-	width: 100px;
+	width: 150px;
 	margin: 0px;
 	padding: 0px 0px 0px 0px;
 	color: #3861C2;
@@ -837,4 +844,7 @@ a:hover {
 	margin-bottom: 20px;
 	border-radius: 5px;
 	background-color: #bbe;
+}
+table.indent-form, table.cat-form {
+	margin-left: 40px;
 }

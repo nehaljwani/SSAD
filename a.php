@@ -2,11 +2,8 @@
 include('header.php');
 include('essential.php');
 dbconnect();
-mysql_select_db("parse", $con);
 $sql=mysql_query("select distinct Name from Tablem where PrevRoom='COMMON'");
 echo "
-<html>
-<body>
 <center>
 <h3>Common courses already added are : <br></h3>
 ";
@@ -24,7 +21,8 @@ if($c===0)
 echo "
 <form action='b.php' method='post'>
 <h3>Number Of Common Courses for UG2 : <input type='text' name='number'></h3>
+<input type='submit' value='submit'>
 </form>
 </center>";
-include('footer.php');
+include("footer.php");
 ?>

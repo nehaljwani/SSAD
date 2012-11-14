@@ -6,6 +6,9 @@ $gID = getCurGroup();
 if($gID != 2){ 
 	        die("You do not have sufficient privileges to access this page");
 }
+if(!(isset($_GET['SNO']))){
+	die("Invalid link");
+}
 
 dbconnect();
 $pri=$_GET['SNO'];

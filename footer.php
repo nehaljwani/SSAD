@@ -6,7 +6,9 @@
 			<div>
 				<h2>Navigation</h2>
 								<ul class="list-style1">
+								<!-- Placed Lectures At top. Will change. -->
 					<li class="first"><a href="requestForm.php">Create Request</a></li>
+					<li><a href="lectures.php">Lectures</a></li>
 					<li><a href="instances.php">View instances</a></li>
 					<li><a href="nhome.php">Availability Status</a></li>
 					<li><a href="search.php">Advanced Search</a></li>
@@ -17,10 +19,17 @@
 					<li><a href="s_Addbuilding.php">Add/Modify building</a></li-->
 					<li><a href="feedback_view.php">View Feedbacks</a></li>
 					<li><a href="allForm.php">AllForms</a></li>
-					<li><a href="lectures.php">Lectures</a></li>
+			<!--		<li><a href="lectures.php">Lectures</a></li> -->
                                         <li><a href="#">Tutorials</a></li>
                                         <li><a href="#">Labs</a></li>
 
+				</ul>
+				<h2>Category 2</h2>
+				<ul class="list-style1">
+					<li><a href="#">Cat</li>
+					<li><a href="#">Cat</li>
+					<li><a href="#">Cat</li>
+					<li><a href="#">Cat</li>
 				</ul> 
 			</div>
 		</div>

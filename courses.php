@@ -9,6 +9,7 @@ $_SESSION["mod_cou"]=10;
 <form action='modifying.php' method='post'>
 <input type='submit' value='MODIFY A COURSE'>
 </form>
+<br/>
 <form action='deleting.php' method='post'>
 <input type='submit' value='DELETE A COURSE'>
 </form>

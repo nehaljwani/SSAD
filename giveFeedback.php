@@ -2,7 +2,7 @@
 <?php include_once('header.php');?>
 <script type='text/javascript' src='js/livevalidation_standalone.js'></script>
 <div class="post">
-<h2 class="title"><a href="#">Provide Feedback</a></h2>
+<h2 class="title">Provide Feedback</h2>
 <!--p class="meta">
 <span class="date">September 12, 2012</span>
 <span class="posted">Posted by <a href="#">Someone</a></span>
@@ -13,7 +13,11 @@
 <table id="">	
 <tr>
 <td>Name</td>
-<td><input type="text" name="name" id='name'></td>
+<td><input type="text" name="name" id="name"></td>
+</tr>
+<tr>
+<td>E-Mail</td>
+<td><input type="text" name="email" id="email" value="<?php echo phpCAS::getUser(); ?>" READONLY></td>
 </tr>
 <tr>
 <td valign="top">Feedback</td>

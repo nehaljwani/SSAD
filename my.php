@@ -234,7 +234,7 @@ for($i=1;$i<$count;$i++)
 		$n=($n+1)%10;
 	}
 }
-$result = mysql_query("SELECT * FROM CourseRooms order by Day,StartTime");
+$result = mysql_query("SELECT * FROM CourseRooms order by Code");
 while($row = mysql_fetch_array($result))
 {
 	$co=$row['Code'];
@@ -299,10 +299,10 @@ if($roomnum>0)
 }
 //sleep(5);
 include('footer.php');
-echo '
+/*echo '
 <script type="text/javascript">
 window.location="progress.php";
 </script>
-	';
+	';*/
 ?>
 

@@ -223,6 +223,7 @@ echo"			<table>
 //collision strts
 $strttime=$_GET['start_time'];
 $endtime=$_GET['end_time'];
+$pq = $_GET['start_time'];
 $new1 = collision($rows['roomName'] , $time , $time ,$time , strtotime('23:59:59'),'DAILY');
 $p = mysql_num_rows($new1);
 //echo count($new1);
@@ -231,9 +232,37 @@ $p = mysql_num_rows($new1);
 $x = 1;
 foreach($new1 as $h)
 {
+	if($h['eventStartTime'] < $pq and $h['eventEndTime'] < $pq)
+	{
+	//	echo "yahoo";
+		continue;
+	}
+	elseif($h['eventStartTime'] < $pq and $h['eventEndTime'] > $pq)
+	{
+		while($strttime != $h['eventEndTime'] and $strtime < $endtime)
+		{
+			if($h['appStatus']=='Accepted' and $strttime < $endtime)
+			{
+				                echo "<td><a class='button red' style='width:20px;height:20px' href='details.php?id=".$h['reqNo']."'> ".$h['eventTitle']."</a></td>";
+						$strttime = gmdate("H:i:s",(strtotime($strttime)-strtotime("00:00:00"))+1800);
+			}
+			elseif($h['appStatus']=='Pending' and $strttime < $endtime)
+			{
+				                echo "<td><a class='button blue' style='width:20px;height:20px' href='details.php?id=".$h["reqNo"]."'> R </a></td>";
+						$strttime = gmdate("H:i:s",(strtotime($strttime)-strtotime("00:00:00"))+1800);
+			}
+		}
+	}
+	elseif($strttime > $h['eventStartTime'])
+	{
+	continue;
+	}
 //echo "mehar"."<br/>";
 //echo $h['reqNo'];
+//echo "<br/>";
 //echo $h['eventStartTime'];
+//echo "<br/>";
+//echo "gv".$strttime;
 //echo "<br/>";
 //echo $h['creator'];
 //echo "<br/>";
@@ -273,17 +302,20 @@ A
 //echo "accepted";
 //echo $strttime;
 //echo $h['eventEndTime'];
-while($strttime != $h['eventEndTime'])
+while($strttime <= $h['eventEndTime'] and $strttime < $endtime)
 {
 //echo "eeeeeeee"."<br/>";
                 echo "<td><a class='button red' style='width:20px;height:20px' href='details.php?id=".$h['reqNo']."'> ".$h['eventTitle']."</a></td>";
 $strttime = gmdate("H:i:s",(strtotime($strttime)-strtotime("00:00:00"))+1800);
         }
 
+//                echo "<td><a class='button red' style='width:20px;height:20px' href='details.php?id=".$h['reqNo']."'> ".$h['eventTitle']."</a></td>";
+//$strttime = gmdate("H:i:s",(strtotime($strttime)-strtotime("00:00:00"))+1800);
+
 }
         if($h['appStatus']=='Pending' && $strttime <$endtime){
 //echo "pendingiiiiiiiiiiiiiiiiiiiiiiii";
-while($strttime != $h['eventEndTime'])
+while($strttime != $h['eventEndTime'] and $strttime < $endtime)
 {
                 echo "<td><a class='button blue' style='width:20px;height:20px' href='details.php?id=".$h["reqNo"]."'> R </a></td>";
 $strttime = gmdate("H:i:s",(strtotime($strttime)-strtotime("00:00:00"))+1800);

@@ -19,5 +19,5 @@ echo '<script language="javascript">document.getElementById("information").inner
 ?>
 </body>
 </html>
-<?php header("Location: lectures.php"); ?>
+<?php header("location:lectures.php"); ?>
 

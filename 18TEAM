@@ -1,0 +1,42 @@
+//session_start() should not be used anywhere, since we're using CAS
+//WTF is header_withoutCAS.php?
+//Add warning to request deletion
+//s_Addbuilding had its own HTML, HEAD, BODY tags. That's what header.php is for, folks! Does not use standard divs according to the template. Marcle it still works.
+
+acceptReject.php - 18
+addRequest.php - 18
+addUpdateGrp2.php - 18
+addUpdateGrp.php - 18
+allForm.php - 18
+cancelReq.php - 18
+confirmdel.php - Used in the process of request deletion process, accessible only to Group 2
+confirm_feedback.php - submit feedback, requires user to be logged in
+conflict.php - 18
+conflictTable.php - 18
+deletecat.php - 18
+deletemember.php - 18
+details.php - id=5 gives details of Request 5, to do, change field names to appropriate ones
+error.php - not being used, for now
+essential.php - collection of functions
+feedback_view.php - can view all feedbacks, only group 2 has access
+footer.php - footer of CSS
+giveFeedback.php - can leave feedback, viewable to all
+header_noCAS.php - Header for pages that can be accessed without logging in
+header.php - Header for pages that force authentication
+header_withoutCAS.php - Never created it, don't remember, WHY ARE PEOPLE USING SESSION_START() ??
+index.php - Simple, friendly, login page
+instances.php - Sort them somehow, dunno.
+modifycat.php - Room feature categories are added/modified. Accessible only to group 2.
+recaptchalib.php - Standard reCAPTCHA library 
+recaptchaproxy.php - Library uses proxy settings for socket-connection
+req_detail_hash.php - 18
+req_detail.php - 18
+requestDetails.php - 18
+requestForm.php - 18
+request.php - WTF IS THIS? 18
+s_addbuild2.php - Accessible only to admins, used for adding buildings by the file below
+s_Addbuilding.php - Issues, but works. See above for issues. Accessible only to admins.
+s_addroom2.php - 18
+s_Addroom.php - 18
+tabledel.php - Need to ask for confirmation or something
+table.php - 18

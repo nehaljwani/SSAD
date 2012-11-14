@@ -55,6 +55,7 @@ if(isset($_GET['logout'])){
 				<li><a href="giveFeedback.php">Feedback</a></li>
 				<li><a href="#">About Us</a></li>
 				<li><a href="#">Links</a></li>
+				<li><a href="masterpage.php">MasterPage</a></li>
 				<li><a href="?logout=true"><?php echo $userID; ?> (Logout)</a></li>
 			</ul>
 		</div>

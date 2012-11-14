@@ -112,8 +112,6 @@ while($m<10)
 	$m++;
 }
 echo "
-<html>
-<head>
 <script>
 function myFunction2()
 {
@@ -123,8 +121,9 @@ function myFunction2()
 </head>
 <body>
 <center>";
-echo "<br><br><h2>Previous room for this course was : $gh<br><br>
-Clashes for this Room are : <br>";
+echo "<h2 id='myBig'>Previous room for this course was : $gh<br><br>
+Clashes for this Room are : <br></h2>
+<h1 id='capital_mybody'> ";
 if($cour===0)
 {
 	echo "None";
@@ -139,14 +138,14 @@ else
 	}
 }
 echo "
-</h2>
+</h1><br/>
 <form action=star1.php method='post'>
 <input type='submit' onclick='myFunction2()' value='Allocate Same Room' name='1'>
 </form>
 ";
-echo "
+echo "<br/>
 <form action=star1.php method='post'>
-<h2>Choose other room : </h2><select name='1'>";
+<h2 id='myBig'>Choose other room : </h2><select name='1'>";
 for($i=1;$i<$rooms;$i++)
 {
 	$h=$arr[$i];
