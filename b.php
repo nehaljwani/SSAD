@@ -1,7 +1,7 @@
 <?php
 $a=$_POST['number'];
 include("essential.php");
-include("header_withoutCAS.php");
+include("header.php");
 dbconnect();
 //include("a.php");
 echo "
@@ -9,6 +9,7 @@ echo "
 	<form action='present.php?tab=$a' method='post'>
 	";
 $i=0;
+
 while($i<$a)
 {
 	$sql="select DISTINCT Tablem.Code,Tablem.Name from Tablem,Tableme where Tablem.Code=Tableme.Code and Type='UG2'";

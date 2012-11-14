@@ -40,14 +40,14 @@ echo "
 <body>
 <table border='1' cellspacing='0'>
 <tr>
-<th>DAY</th>
-<th>08.30-09.55</th>
-<th>10.00-11.25</th>
-<th>11.30-12.55</th>
-<th>02.00-03.25</th>
+<th height='50'>DAY<br></th>
+<th>08.30 AM - 09.55 AM<br></th>
+<th>10.00 AM - 11.25 AM<br></th>
+<th>11.30 AM - 12.55 PM<br></th>
+<th>02.00 PM - 03.25 PM<br></th>
 </tr>
 ";
-for($i=0;$i<6;$i++)
+for($i=0;$i<3;$i++)
 {
 	$h=$arr[$i];
 	echo "<tr><td>$h</td>";
@@ -58,7 +58,40 @@ for($i=0;$i<6;$i++)
 	echo "</tr>";
 }
 echo "
-</table>
+</table><b><br><br>
+<div style='color:#0000FF'>
+LUNCH: 01.00-02.00</div><br>
+Class Rooms: N104 in Nilgiri Building<br>
+Class Rooms: SH1, SH2, CR1, CR2, B4-301, B4-304, B6-309 in Vindhya Building<br>
+Class Rooms: H101,H102,H103,H104,H201,H202,H203,H204,H301,H302,H303,H304 in Himalaya Building<br><br><br><br><br><br><br><br><br><br></b>
+";
+echo "
+<table border='1' cellspacing='0'>
+<tr>
+<th height='50'>DAY</th>
+<th>08.30 AM - 09.55 AM</th>
+<th>10.00 AM - 11.25 AM</th>
+<th>11.30 AM - 12.55 PM</th>
+<th>02.00 PM - 03.25 PM</th>
+</tr>
+";
+for($i=3;$i<6;$i++)
+{
+	$h=$arr[$i];
+	echo "<tr><td>$h</td>";
+	for($j=0;$j<4;$j++)
+	{
+		echo "<td>".$ans[$i][$j]."</td>";
+	}
+	echo "</tr>";
+}
+echo "
+</table><b><br><br>
+<div style='color:#0000FF'>
+LUNCH: 01.00-02.00</div><br>
+Class Rooms: N104 in Nilgiri Building<br>
+Class Rooms: SH1, SH2, CR1, CR2, B4-301, B4-304, B6-309 in Vindhya Building<br>
+Class Rooms: H101,H102,H103,H104,H201,H202,H203,H204,H301,H302,H303,H304 in Himalaya Building<br></b>
 </body>
 </html>
 ";

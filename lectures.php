@@ -19,11 +19,13 @@
 <tr>
 <td><li><a href="predef.php" id="mybody">Allocate</a></li><br></td>
 </tr>
-<td><li><a href="printoutput.php" id="mybody">Consolidated View</a></li><br></td>
+<td><li><a href="printMasterFile.php" id="mybody">View Master File</a></li><br></td>
 </tr>
-<td><li><a href="#" id="mybody">View Time-Table File</a></li><br></td>
+<td><li><a href="printTimeTable.php" id="mybody">View Time-Table File</a></li><br></td>
 </tr>
-<td><li><a href="#" id="mybody">View Master File</a></li><br></td>
+<td><li><a href="printAllottedRooms.php" id="mybody">View Allotted Rooms</a></li><br></td>
+</tr>
+<td><li><a href="printoutput.php" id="mybody">Consolidaed View</a></li><br></td>
 </tr>
                 </table>
                 </form>

@@ -10,13 +10,15 @@ dbconnect();
 <tr>
 <th scope="col">CODE</th>
 <th scope="col">NAME</th>
+<th scope="col">TYPE</th>
 <th scope="col">DAY</th>
 <th scope="col">START-TIME</th>
 <th scope="col">END-TIME</th>
+<th scope="col">ROOM</th>
 </tr>
 </thead>
 <?php
-$result = mysql_query("SELECT * FROM Tablem order by Name");
+$result = mysql_query("SELECT * FROM CourseRooms order by Name");
 while($row = mysql_fetch_array($result))
 {
 	$co=$row['Code'];
@@ -24,13 +26,17 @@ while($row = mysql_fetch_array($result))
 	$da=$row['Day'];
 	$st=$row['StartTime'];
 	$et=$row['EndTime'];
+	$ro=$row['Room'];
+	$ty=$row['Type'];
 	echo"
 		<tr>
 		<td>$co</td>
 		<td>$na</td>
+		<td>$ty</td>
 		<td>$da</td>
 		<td>$st</td>
 		<td>$et</td>
+		<td>$ro</td>
 		</tr>";
 }
 mysql_close($con);
