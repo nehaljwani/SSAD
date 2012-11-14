@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.28, for debian-linux-gnu (i686)
+-- MySQL dump 10.11
 --
--- Host: localhost    Database: roomReser
+-- Host: localhost    Database: room_allocation
 -- ------------------------------------------------------
--- Server version	5.5.28-0ubuntu0.12.04.2
+-- Server version	5.0.95
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -28,15 +28,15 @@ CREATE TABLE `Booking` (
   `madeAt` time NOT NULL,
   `madeOn` date NOT NULL,
   `roomId` int(11) NOT NULL,
-  `status` int(11) NOT NULL DEFAULT '0',
-  `description` varchar(300) DEFAULT NULL,
-  `Start_Date` date NOT NULL DEFAULT '0000-00-00',
-  `End_Date` date NOT NULL DEFAULT '0000-00-00',
-  `Start_Time` time NOT NULL DEFAULT '00:00:00',
-  `End_Time` time NOT NULL DEFAULT '00:00:00',
-  `Repeat_Type` char(9) NOT NULL DEFAULT 'None',
-  `booking_id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`booking_id`),
+  `status` int(11) NOT NULL default '0',
+  `description` varchar(300) default NULL,
+  `Start_Date` date NOT NULL default '0000-00-00',
+  `End_Date` date NOT NULL default '0000-00-00',
+  `Start_Time` time NOT NULL default '00:00:00',
+  `End_Time` time NOT NULL default '00:00:00',
+  `Repeat_Type` char(9) NOT NULL default 'None',
+  `booking_id` int(11) NOT NULL auto_increment,
+  PRIMARY KEY  (`booking_id`),
   UNIQUE KEY `booking_id` (`booking_id`),
   KEY `user` (`user`),
   KEY `confirmedBy` (`confirmedBy`)
@@ -61,11 +61,11 @@ DROP TABLE IF EXISTS `BugComments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `BugComments` (
-  `CommentId` int(11) NOT NULL AUTO_INCREMENT,
-  `BugId` int(11) DEFAULT NULL,
-  `Comments` varchar(1000) DEFAULT NULL,
-  `CommentorEmail` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`CommentId`)
+  `CommentId` int(11) NOT NULL auto_increment,
+  `BugId` int(11) default NULL,
+  `Comments` varchar(1000) default NULL,
+  `CommentorEmail` varchar(100) default NULL,
+  PRIMARY KEY  (`CommentId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -87,11 +87,11 @@ DROP TABLE IF EXISTS `BugTracker`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `BugTracker` (
-  `BugId` int(11) NOT NULL AUTO_INCREMENT,
-  `Details` varchar(1000) DEFAULT NULL,
-  `Status` varchar(100) DEFAULT NULL,
-  `reporterEmail` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`BugId`)
+  `BugId` int(11) NOT NULL auto_increment,
+  `Details` varchar(1000) default NULL,
+  `Status` varchar(100) default NULL,
+  `reporterEmail` varchar(100) default NULL,
+  PRIMARY KEY  (`BugId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -113,9 +113,9 @@ DROP TABLE IF EXISTS `Building`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Building` (
-  `buildId` int(11) NOT NULL AUTO_INCREMENT,
-  `buildingName` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`buildId`)
+  `buildId` int(11) NOT NULL auto_increment,
+  `buildingName` varchar(30) default NULL,
+  PRIMARY KEY  (`buildId`)
 ) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -137,10 +137,10 @@ DROP TABLE IF EXISTS `Category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Category` (
-  `catId` int(11) NOT NULL AUTO_INCREMENT,
+  `catId` int(11) NOT NULL auto_increment,
   `catName` varchar(30) NOT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`catId`),
+  `description` varchar(255) default NULL,
+  PRIMARY KEY  (`catId`),
   UNIQUE KEY `catName` (`catName`)
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -156,6 +156,30 @@ INSERT INTO `Category` VALUES (1,'Projector_Room',NULL),(2,'AC',NULL),(3,'Teach_
 UNLOCK TABLES;
 
 --
+-- Table structure for table `Configuration`
+--
+
+DROP TABLE IF EXISTS `Configuration`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Configuration` (
+  `name` varchar(30) default NULL,
+  `startDate` date NOT NULL default '0000-00-00',
+  `endDate` date NOT NULL default '0000-00-00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Configuration`
+--
+
+LOCK TABLES `Configuration` WRITE;
+/*!40000 ALTER TABLE `Configuration` DISABLE KEYS */;
+INSERT INTO `Configuration` VALUES ('Summer','0000-00-11','0000-00-00'),('Winter','0000-00-22','0000-00-22'),('Monsoon','0000-00-02','0000-00-13'),('Spring','0000-00-21','0000-00-21'),('Semester_Break','0000-00-00','0000-00-00');
+/*!40000 ALTER TABLE `Configuration` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `CourseRooms`
 --
 
@@ -163,14 +187,15 @@ DROP TABLE IF EXISTS `CourseRooms`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `CourseRooms` (
-  `Code` varchar(10) DEFAULT NULL,
-  `Name` varchar(100) DEFAULT NULL,
-  `Room` varchar(10) DEFAULT NULL,
-  `Day` varchar(10) DEFAULT NULL,
-  `StartTime` varchar(10) DEFAULT NULL,
-  `EndTime` varchar(10) DEFAULT NULL,
-  `Type` varchar(10) DEFAULT NULL,
-  `PrevRoom` varchar(10) DEFAULT NULL
+  `Code` varchar(10) default NULL,
+  `hash` varchar(100) default NULL,
+  `Name` varchar(100) default NULL,
+  `Room` varchar(10) default NULL,
+  `Day` varchar(10) default NULL,
+  `StartTime` varchar(10) default NULL,
+  `EndTime` varchar(10) default NULL,
+  `Type` varchar(10) default NULL,
+  `PrevRoom` varchar(10) default NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -180,7 +205,7 @@ CREATE TABLE `CourseRooms` (
 
 LOCK TABLES `CourseRooms` WRITE;
 /*!40000 ALTER TABLE `CourseRooms` DISABLE KEYS */;
-INSERT INTO `CourseRooms` VALUES ('ICS101','Computer Programming','CR2','Tue','10.30','11.25','UG1','SH1'),('ICS101','Computer Programming','CR2','Fri','10.30','11.25','UG1','SH1'),('ICS101','Computer Programming','CR2','Mon','10.30','11.25','UG1','SH1'),('ICS101','Computer Programming','CR2','Thu','10.30','11.25','UG1','SH1'),('ICS102','IT Workshop I','CR2','Mon','10.30','11.25','UG1','SH1'),('ICS102','IT Workshop I','CR2','Thu','10.30','11.25','UG1','SH1'),('ICS102','IT Workshop I','CR2','Tue','10.30','11.25','UG1','SH1'),('ICS102','IT Workshop I','CR2','Fri','10.30','11.25','UG1','SH1'),('IEC101','Digital Logic and Processors','CR2','Fri','09.30','10.25','UG1','SH1'),('IEC101','Digital Logic and Processors','CR2','Mon','09.30','10.25','UG1','SH1'),('IEC101','Digital Logic and Processors','CR2','Wed','09.30','10.25','UG1','SH1'),('IEC102','Electrical Science I','CR2','Thu','09.30','10.25','UG1','SH1'),('IEC102','Electrical Science I','CR2','Tue','09.30','10.25','UG1','SH1'),('IMA101','Mathematics I','CR2','Fri','08.30','09.25','UG1','SH1'),('IMA101','Mathematics I','CR2','Mon','08.30','09.25','UG1','SH1'),('IMA101','Mathematics I','CR2','Wed','08.30','09.25','UG1','SH1'),('ICS101','Computer Programming','CR2','Mon','12.00','12.25','UG1','CR2'),('ICS101','Computer Programming','CR2','Thu','12.00','13.00','UG1','CR2'),('ICS101','Computer Programming','CR2','Tue','12.00','13.00','UG1','CR2'),('ICS101','Computer Programming','CR2','Fri','12.00','13.00','UG1','CR2'),('ICS102','IT Workshop I','CR2','Thu','12.00','13.00','UG1','CR2'),('ICS102','IT Workshop I','CR2','Tue','12.00','13.00','UG1','CR2'),('ICS102','IT Workshop I','CR2','Fri','12.00','13.00','UG1','CR2'),('ICS102','IT Workshop I','CR2','Mon','12.00','13.00','UG1','CR2'),('IEC101','Digital Logic and Processors','CR2','Wed','08.30','09.30','UG1','CR2'),('IEC101','Digital Logic and Processors','CR2','Fri','08.30','09.30','UG1','CR2'),('IEC101','Digital Logic and Processors','CR2','Mon','08.30','09.30','UG1','CR2'),('IEC102','Electrical Science I','CR2','Thu','08.30','09.25','UG1','CR2'),('IEC102','Electrical Science I','CR2','Tue','08.30','09.25','UG1','CR2'),('IMA101','Mathematics I','CR2','Wed','09.30','10.25','UG1','CR2'),('IMA101','Mathematics I','CR2','Fri','09.30','10.25','UG1','CR2'),('IMA101','Mathematics I','CR2','Mon','09.30','10.25','UG1','CR2'),('ICS211','Algorithms','SH1','Sat','10.00','11.25','UG2','SH2'),('ICS211','Algorithms','SH1','Wed','10.00','11.25','UG2','SH2'),('ICS231','Operating Systems','SH1','Thu','10.00','11.25','UG2','SH2'),('ICS231','Operating Systems','SH1','Mon','10.00','11.25','UG2','SH2'),('ICS241','Introduction to Databases','SH1','Fri','10.00','11.25','UG2','SH2'),('ICS241','Introduction to Databases','SH1','Tue','10.00','11.25','UG2','SH2'),('ICS261','SSAD & Project','SH1','Mon','11.30','12.55','UG2','SH2'),('ICS261','SSAD & Project','SH1','Thu','11.30','12.55','UG2','SH2'),('IMA201','Mathematics III','SH1','Wed','11.30','12.55','UG2','SH2'),('IMA201','Mathematics III','SH1','Sat','11.30','12.55','UG2','SH2'),('ECE205','Linear Electronic Circuits','H101','Thu','10.00','11.25','UG2','101'),('ECE205','Linear Electronic Circuits','H101','Mon','10.00','11.25','UG2','101'),('ECE225','Embedded Hardware Design','H101','Tue','10.00','11.25','UG2','101'),('ECE225','Embedded Hardware Design','H101','Fri','10.00','11.25','UG2','101'),('ECE230','Probability & Random Processes','H101','Sat','11.30','12.55','UG2','101'),('ECE230','Probability & Random Processes','H101','Wed','11.30','12.55','UG2','101'),('ECE241','Signals and Systems','H101','Thu','11.30','12.55','UG2','101'),('ECE241','Signals and Systems','H101','Mon','11.30','12.55','UG2','101'),('ECE260','Electrical Science II','H101','Tue','14.00','15.25','UG2','101'),('ECE260','Electrical Science II','H101','Fri','14.00','15.25','UG2','101'),('CEA611','Theory of Elasticity','H102','Fri','14.00','15.25','PG1','N104'),('CEA611','Theory of Elasticity','H102','Tue','14.00','15.25','PG1','N104'),('CSE505','Scripting and Computer Environments','H102','Tue','14.00','15.25','PG1','305'),('CSE505','Scripting and Computer Environments','H102','Fri','14.00','15.25','PG1','305'),('CSE531','Operating Systems (PG)','H102','Thu','08.30','09.55','PG1','N104'),('CSE531','Operating Systems (PG)','H102','Mon','08.30','09.55','PG1','N104'),('CSE603','Advanced Problem Solving','H102','Tue','11.00','13.00','PG1','N104'),('CSE603','Advanced Problem Solving','H102','Fri','11.00','13.00','PG1','N104'),('CSE611','Discrete Maths and Algorithms','H102','Mon','11.30','13.00','PG1','N104'),('CSE611','Discrete Maths and Algorithms','H102','Thu','11.30','13.00','PG1','N104'),('CSE411','Complexity and Advanced Algorithms','SH2','Wed','11.30','12.55','BC','204'),('CSE411','Complexity and Advanced Algorithms','SH2','Sat','11.30','12.55','BC','204'),('CSE415','Principles of Programming Languages','SH2','Thu','11.30','12.55','BC','SH1'),('CSE415','Principles of Programming Languages','SH2','Mon','11.30','12.55','BC','SH1'),('CSE419','Compilers','SH2','Fri','08.30','09.55','BC','SH2'),('CSE419','Compilers','SH2','Tue','08.30','09.55','BC','SH2'),('CSE435','Advanced Computer Networks','SH2','Thu','08.30','09.55','BC','SH2'),('CSE435','Advanced Computer Networks','SH2','Mon','08.30','09.55','BC','SH2'),('CSE471','Statistical Methods in AI','SH2','Fri','10.00','11.25','BC','N104'),('CSE471','Statistical Methods in AI','SH2','Tue','10.00','11.25','BC','N104'),('CEG421','Building Energy Simulation','SH2','Thu','10.00','11.25','Elective','103'),('CEG421','Building Energy Simulation','SH2','Mon','10.00','11.25','Elective','103'),('CEG561','Advanced Topics in Remote Sensing','SH2','Mon','14.00','15.25','Elective','104'),('CEG561','Advanced Topics in Remote Sensing','SH2','Thu','14.00','15.25','Elective','104'),('CEG628','Soil Dynamics and Machine Foundations','CR1','Fri','10.00','11.25','Elective','102'),('CEG628','Soil Dynamics and Machine Foundations','CR1','Tue','10.00','11.25','Elective','102'),('CEG631','Foundation Engineering and Design','CR1','Thu','11.30','12.55','Elective','201'),('CEG631','Foundation Engineering and Design','CR1','Mon','11.30','12.55','Elective','201'),('CES442','Disaster Management','CR1','Thu','10.00','11.25','Elective','202'),('CES442','Disaster Management','CR1','Mon','10.00','11.25','Elective','202'),('CES625','Advanced Reinforce Concrete Design','CR1','Mon','14.00','15.25','Elective','N104'),('CES625','Advanced Reinforce Concrete Design','CR1','Thu','14.00','15.25','Elective','N104'),('CES631','Structural Dynamics','CR1','Thu','08.30','09.55','Elective','301'),('CES631','Structural Dynamics','CR1','Mon','08.30','09.55','Elective','301'),('CES634','CASE Workshop','H103','Mon','10.00','11.25','Elective','203'),('CES634','CASE Workshop','H103','Thu','10.00','11.25','Elective','203'),('CES641','Seismic Eva and Strengthening of Buildings','H103','Fri','08.30','09.55','Elective','101'),('CES641','Seismic Eva and Strengthening of Buildings','H103','Tue','08.30','09.55','Elective','101'),('CLG211','Introduction to Linguistics','H104','Thu','10.00','11.25','Elective','B4301'),('CLG211','Introduction to Linguistics','H104','Tue','10.00','11.25','Elective','B4301'),('CLG411','Linguistics 1: Language Typology and Universals','H104','Thu','11.30','12.55','Elective','B4301'),('CLG411','Linguistics 1: Language Typology and Universals','H104','Mon','11.30','12.55','Elective','B4301'),('CLG413','Phonetics and Phonology','H104','Wed','11.30','12.55','Elective','201'),('CLG413','Phonetics and Phonology','H104','Sat','11.30','12.55','Elective','201'),('CLG421','Computational Linguistics I','H104','Thu','14.00','15.25','Elective','101'),('CLG421','Computational Linguistics I','H104','Mon','14.00','15.25','Elective','101'),('CLG451','Linguistic Data : Collection and Analysis','H203','Fri','10.00','11.25','Elective','B6309'),('CLG451','Linguistic Data : Collection and Analysis','H203','Tue','10.00','11.25','Elective','B6309'),('CLG513','Event and Time in Discourse','H203','Thu','08.30','09.55','Elective','B4301'),('CLG513','Event and Time in Discourse','H203','Mon','08.30','09.55','Elective','B4301'),('CLG611','Basic Maths I','H203','Thu','10.00','11.25','Elective','102'),('CLG611','Basic Maths I','H203','Mon','10.00','11.25','Elective','102'),('CLG661','Computers and Scripting I','H203','Tue','11.30','12.55','Elective','102'),('CLG661','Computers and Scripting I','H203','Fri','11.30','12.55','Elective','102'),('CSE445','Data Warehousing and Data Mining','H203','Sat','10.00','11.25','Elective','103'),('CSE445','Data Warehousing and Data Mining','H203','Wed','10.00','11.25','Elective','103'),('CSE463','Introduction to Middleware Systems','H204','Wed','10.00','11.25','Elective','N104'),('CSE463','Introduction to Middleware Systems','H204','Sat','10.00','11.25','Elective','N104'),('CSE472','Natural Language Processing','H204','Thu','08.30','09.55','Elective','CR1'),('CSE472','Natural Language Processing','H204','Mon','08.30','09.55','Elective','CR1'),('CSE478','Digital Image Processing','H204','Thu','14.00','15.25','Elective','102'),('CSE478','Digital Image Processing','H204','Mon','14.00','15.25','Elective','102'),('CSE483','Mobile Robotics','H204','Tue','14.00','15.25','Elective','202'),('CSE483','Mobile Robotics','H204','Fri','14.00','15.25','Elective','202'),('CSE485','Intro to Cognitive Science','H204','Wed','11.30','12.55','Elective','104'),('CSE485','Intro to Cognitive Science','H204','Sat','11.30','12.55','Elective','104'),('CSE502','Parallel Programming','H204','Tue','10.00','11.25','Elective','CR1'),('CSE502','Parallel Programming','H204','Fri','10.00','11.25','Elective','CR1'),('CSE504','Modern Computer Architecture','H303','Sat','10.00','11.25','Elective','102'),('CSE504','Modern Computer Architecture','H303','Wed','10.00','11.25','Elective','102'),('CSE540','Research in Information Security','H303','Thu','11.30','12.55','Elective','103'),('CSE540','Research in Information Security','H303','Mon','11.30','12.55','Elective','103'),('CSE545','Advances in Data Mining','H303','Thu','14.00','15.25','Elective','201'),('CSE545','Advances in Data Mining','H303','Mon','14.00','15.25','Elective','201'),('CSE565','Cloud Computing','H303','Wed','08.30','09.55','Elective','SH2'),('CSE565','Cloud Computing','H303','Sat','08.30','09.55','Elective','SH2'),('CSE577','Machine Learning','H303','Thu','08.30','09.55','Elective','201'),('CSE577','Machine Learning','H303','Mon','08.30','09.55','Elective','201'),('CSE591','Spatial Informatics','H304','Thu','08.30','09.55','Elective','202'),('CSE591','Spatial Informatics','H304','Mon','08.30','09.55','Elective','202'),('CSE592','Ecological and Geospatial Modeling','H304','Fri','08.30','09.55','Elective','202'),('CSE592','Ecological and Geospatial Modeling','H304','Tue','08.30','09.55','Elective','202'),('CSE602','Computer Problem Solving','H304','Fri','10.00','11.25','Elective','304'),('CSE602','Computer Problem Solving','H304','Tue','10.00','11.25','Elective','304'),('CSE861','Software Quality Engineering','H304','Thu','14.00','15.25','Elective','202'),('CSE861','Software Quality Engineering','H304','Mon','14.00','15.25','Elective','202'),('CSE991','Research Methodology','H304','Sat','08.30','09.55','Elective','N104'),('CSE991','Research Methodology','H304','Wed','08.30','09.55','Elective','N104'),('ECE381','Electromagnetic Theory and Applications','H304','Thu','10.00','11.25','Elective','B6309'),('ECE381','Electromagnetic Theory and Applications','H304','Mon','10.00','11.25','Elective','B6309'),('ECE436','Communication Theory II','H304','Wed','11.30','12.55','Elective','202'),('ECE436','Communication Theory II','H304','Sat','11.30','12.55','Elective','202'),('ECE442','Time Frequency Analysis','N104','Sat','08.30','09.55','Elective','101'),('ECE442','Time Frequency Analysis','N104','Wed','08.30','09.55','Elective','101'),('ECE446','Speech Systems','N104','Fri','10.00','11.25','Elective','103'),('ECE446','Speech Systems','N104','Tue','10.00','11.25','Elective','103'),('ECE448','Speech Signal Processing','N104','Thu','08.30','09.55','Elective','101'),('ECE448','Speech Signal Processing','N104','Mon','08.30','09.55','Elective','101'),('ECE451','Linear Control Systems','SH1','Thu','08.30','09.55','Elective','102'),('ECE451','Linear Control Systems','SH1','Mon','08.30','09.55','Elective','102'),('ECE461','Analog and Mixed Signal Design','SH1','Mon','14.00','15.25','Elective','103'),('ECE461','Analog and Mixed Signal Design','SH1','Thu','14.00','15.25','Elective','103'),('ECE467','CMOS Radio Frequencey Integrated Circuit Design','CR1','Wed','11.30','12.55','Elective','203'),('ECE467','CMOS Radio Frequencey Integrated Circuit Design','CR1','Sat','11.30','12.55','Elective','203'),('ECE530','Broadband Networks','CR2','Wed','11.30','12.55','Elective','CR1'),('ECE530','Broadband Networks','CR2','Sat','11.30','12.55','Elective','CR1'),('ECE539','Information Theory and Coding','CR2','Tue','14.00','15.25','Elective','201'),('ECE539','Information Theory and Coding','CR2','Fri','14.00','15.25','Elective','201'),('ECE561','VLSI Algorithms','H103','Tue','14.00','15.25','Elective','104'),('ECE561','VLSI Algorithms','H103','Fri','14.00','15.25','Elective','104'),('ECE661','Embedded Systems','H104','Fri','14.00','15.25','Elective','103'),('ECE661','Embedded Systems','H104','Tue','14.00','15.25','Elective','103'),('HSS240','Sense of Past','H201','Tue','08.30','10.00','Elective','C1302'),('HSS240','Sense of Past','H201','Thu','08.30','10.00','Elective','C1302'),('HSS290','Confluence of Humanities and CS','H202','Tue','10.00','11.30','Elective','CEHConf'),('HSS290','Confluence of Humanities and CS','H202','Thu','10.00','11.30','Elective','CEHConf'),('HSS310','Ontology','H204','Thu','10.00','11.25','Elective','CR1'),('HSS310','Ontology','H204','Mon','10.00','11.25','Elective','CR1'),('HSS332','Installation as a Form of Art','H303','Fri','14.00','15.25','Elective','203'),('HSS332','Installation as a Form of Art','H303','Tue','14.00','15.25','Elective','203'),('HSS342','Classical Language: Sanskrit II','SH1','Wed','08.30','09.55','Elective','CR1'),('HSS342','Classical Language: Sanskrit II','SH1','Sat','08.30','09.55','Elective','CR1'),('HSS346','Imagined Futures: Readings in Science Fiction','SH1','Tue','11.30','12.55','Elective','B6309'),('HSS346','Imagined Futures: Readings in Science Fiction','SH1','Fri','11.30','12.55','Elective','B6309'),('HSS352','Innovation and Technology Management','SH2','Tue','11.30','12.55','Elective','103'),('HSS352','Innovation and Technology Management','SH2','Fri','11.30','12.55','Elective','103'),('HSS354','Non-Violence','SH2','Wed','14.00','15.25','Elective','201'),('HSS354','Non-Violence','SH2','Sat','14.00','15.25','Elective','201'),('HSS360','Economics and Organizations','H104','Tue','08.30','09.55','Elective','B6309'),('HSS360','Economics and Organizations','H104','Thu','08.30','09.55','Elective','B6309'),('HSS362','Political and Economic Thought for Human Society','H104','Sat','14.00','15.25','Elective','102'),('HSS362','Political and Economic Thought for Human Society','H104','Wed','14.00','15.25','Elective','102'),('HSS401','Space Time in Arts and Humanities','H203','Sat','14.00','15.25','Elective','101'),('HSS401','Space Time in Arts and Humanities','H203','Wed','14.00','15.25','Elective','101'),('HSS422','Classical Text Reading','H204','Fri','11.30','12.55','Elective','201'),('HSS422','Classical Text Reading','H204','Tue','11.30','12.55','Elective','201'),('HSS462','Studies in Alternative Development','H303','Tue','11.30','12.55','Elective','104'),('HSS462','Studies in Alternative Development','H303','Fri','11.30','12.55','Elective','104'),('ICS331','Algorithms and Operating Systems','H303','Wed','14.00','15.25','Elective','CR1'),('ICS331','Algorithms and Operating Systems','H303','Sat','14.00','15.25','Elective','CR1'),('IMA403','Mathematical Analysis','H304','Sat','10.00','11.25','Elective','101'),('IMA403','Mathematical Analysis','H304','Wed','10.00','11.25','Elective','101'),('IMA404','Number Theory and Cryptology','N104','Mon','10.00','11.25','Elective','104'),('IMA404','Number Theory and Cryptology','N104','Thu','10.00','11.25','Elective','104'),('IMA406','Operations Research','N104','Tue','08.30','09.55','Elective','102'),('IMA406','Operations Research','N104','Fri','08.30','09.55','Elective','102'),('SCI101','General Physics','H303','Thu','10.00','11.25','Elective','B4304'),('SCI101','General Physics','H303','Tue','10.00','11.25','Elective','B4304'),('SCI311','Chemical Basis of Everyday Phenomena','H303','Tue','08.30','09.55','Elective','104'),('SCI311','Chemical Basis of Everyday Phenomena','H303','Fri','08.30','09.55','Elective','104'),('SCI421','Advanced Biology(Cellular/Molecular/Genetic)','N104','Thu','11.30','12.55','Elective','102'),('SCI421','Advanced Biology(Cellular/Molecular/Genetic)','N104','Sat','11.30','12.55','Elective','102'),('SCI422','Molecular Biology','H103','Thu','11.30','12.55','Elective','202'),('SCI422','Molecular Biology','H103','Mon','11.30','12.55','Elective','202'),('SCI462','Intro to Quantum Field Theory','H203','Tue','08.30','09.55','Elective','201'),('SCI462','Intro to Quantum Field Theory','H203','Fri','08.30','09.55','Elective','201'),('SCI463','Quantuam Information and Computing','N104','Wed','10.00','11.25','Elective','104'),('SCI463','Quantuam Information and Computing','N104','Sat','10.00','11.25','Elective','104'),('SCI541','Advanced Biomolecular Architecture','SH2','Wed','10.00','11.25','Elective','201'),('SCI541','Advanced Biomolecular Architecture','SH2','Sat','10.00','11.25','Elective','201'),('SCI550','Maths and Statistics','CR1','Tue','11.30','12.55','Elective','101'),('SCI550','Maths and Statistics','CR1','Fri','11.30','12.55','Elective','101'),('SCI635','\"Optics, Symmetry and Spectroscopy\"','CR1','Fri','14.00','15.25','Elective','102'),('SCI635','\"Optics, Symmetry and Spectroscopy\"','CR1','Tue','14.00','15.25','Elective','102'),('SCI643','Biomolecular Structure Interaction and Dynamics','CR1','Fri','08.30','09.55','Elective','103'),('SCI643','Biomolecular Structure Interaction and Dynamics','CR1','Tue','08.30','09.55','Elective','103'),('SCI644','Biomolecular Structure and Supramolecular Chemistry','H301','Thu','10.00','11.25','Elective','201');
+INSERT INTO `CourseRooms` VALUES ('ICS101',NULL,'Computer Programming','CR2','Tue','10.30','11.25','UG1','SH1'),('ICS101',NULL,'Computer Programming','CR2','Fri','10.30','11.25','UG1','SH1'),('ICS101',NULL,'Computer Programming','CR2','Mon','10.30','11.25','UG1','SH1'),('ICS101',NULL,'Computer Programming','CR2','Thu','10.30','11.25','UG1','SH1'),('ICS102',NULL,'IT Workshop I','CR2','Mon','10.30','11.25','UG1','SH1'),('ICS102',NULL,'IT Workshop I','CR2','Thu','10.30','11.25','UG1','SH1'),('ICS102',NULL,'IT Workshop I','CR2','Tue','10.30','11.25','UG1','SH1'),('ICS102',NULL,'IT Workshop I','CR2','Fri','10.30','11.25','UG1','SH1'),('IEC101',NULL,'Digital Logic and Processors','CR2','Fri','09.30','10.25','UG1','SH1'),('IEC101',NULL,'Digital Logic and Processors','CR2','Mon','09.30','10.25','UG1','SH1'),('IEC101',NULL,'Digital Logic and Processors','CR2','Wed','09.30','10.25','UG1','SH1'),('IEC102',NULL,'Electrical Science I','CR2','Thu','09.30','10.25','UG1','SH1'),('IEC102',NULL,'Electrical Science I','CR2','Tue','09.30','10.25','UG1','SH1'),('IMA101',NULL,'Mathematics I','CR2','Fri','08.30','09.25','UG1','SH1'),('IMA101',NULL,'Mathematics I','CR2','Mon','08.30','09.25','UG1','SH1'),('IMA101',NULL,'Mathematics I','CR2','Wed','08.30','09.25','UG1','SH1'),('ICS101',NULL,'Computer Programming','CR2','Mon','12.00','12.25','UG1','CR2'),('ICS101',NULL,'Computer Programming','CR2','Thu','12.00','13.00','UG1','CR2'),('ICS101',NULL,'Computer Programming','CR2','Tue','12.00','13.00','UG1','CR2'),('ICS101',NULL,'Computer Programming','CR2','Fri','12.00','13.00','UG1','CR2'),('ICS102',NULL,'IT Workshop I','CR2','Thu','12.00','13.00','UG1','CR2'),('ICS102',NULL,'IT Workshop I','CR2','Tue','12.00','13.00','UG1','CR2'),('ICS102',NULL,'IT Workshop I','CR2','Fri','12.00','13.00','UG1','CR2'),('ICS102',NULL,'IT Workshop I','CR2','Mon','12.00','13.00','UG1','CR2'),('IEC101',NULL,'Digital Logic and Processors','CR2','Wed','08.30','09.30','UG1','CR2'),('IEC101',NULL,'Digital Logic and Processors','CR2','Fri','08.30','09.30','UG1','CR2'),('IEC101',NULL,'Digital Logic and Processors','CR2','Mon','08.30','09.30','UG1','CR2'),('IEC102',NULL,'Electrical Science I','CR2','Thu','08.30','09.25','UG1','CR2'),('IEC102',NULL,'Electrical Science I','CR2','Tue','08.30','09.25','UG1','CR2'),('IMA101',NULL,'Mathematics I','CR2','Wed','09.30','10.25','UG1','CR2'),('IMA101',NULL,'Mathematics I','CR2','Fri','09.30','10.25','UG1','CR2'),('IMA101',NULL,'Mathematics I','CR2','Mon','09.30','10.25','UG1','CR2'),('ICS211',NULL,'Algorithms','SH1','Sat','10.00','11.25','UG2','SH2'),('ICS211',NULL,'Algorithms','SH1','Wed','10.00','11.25','UG2','SH2'),('ICS231',NULL,'Operating Systems','SH1','Thu','10.00','11.25','UG2','SH2'),('ICS231',NULL,'Operating Systems','SH1','Mon','10.00','11.25','UG2','SH2'),('ICS241',NULL,'Introduction to Databases','SH1','Fri','10.00','11.25','UG2','SH2'),('ICS241',NULL,'Introduction to Databases','SH1','Tue','10.00','11.25','UG2','SH2'),('ICS261',NULL,'SSAD & Project','SH1','Mon','11.30','12.55','UG2','SH2'),('ICS261',NULL,'SSAD & Project','SH1','Thu','11.30','12.55','UG2','SH2'),('IMA201',NULL,'Mathematics III','SH1','Wed','11.30','12.55','UG2','SH2'),('IMA201',NULL,'Mathematics III','SH1','Sat','11.30','12.55','UG2','SH2'),('ECE205',NULL,'Linear Electronic Circuits','H101','Thu','10.00','11.25','UG2','101'),('ECE205',NULL,'Linear Electronic Circuits','H101','Mon','10.00','11.25','UG2','101'),('ECE225',NULL,'Embedded Hardware Design','H101','Tue','10.00','11.25','UG2','101'),('ECE225',NULL,'Embedded Hardware Design','H101','Fri','10.00','11.25','UG2','101'),('ECE230',NULL,'Probability & Random Processes','H101','Sat','11.30','12.55','UG2','101'),('ECE230',NULL,'Probability & Random Processes','H101','Wed','11.30','12.55','UG2','101'),('ECE241',NULL,'Signals and Systems','H101','Thu','11.30','12.55','UG2','101'),('ECE241',NULL,'Signals and Systems','H101','Mon','11.30','12.55','UG2','101'),('ECE260',NULL,'Electrical Science II','H101','Tue','14.00','15.25','UG2','101'),('ECE260',NULL,'Electrical Science II','H101','Fri','14.00','15.25','UG2','101'),('CEA611',NULL,'Theory of Elasticity','H102','Fri','14.00','15.25','PG1','N104'),('CEA611',NULL,'Theory of Elasticity','H102','Tue','14.00','15.25','PG1','N104'),('CSE505',NULL,'Scripting and Computer Environments','H102','Tue','14.00','15.25','PG1','305'),('CSE505',NULL,'Scripting and Computer Environments','H102','Fri','14.00','15.25','PG1','305'),('CSE531',NULL,'Operating Systems (PG)','H102','Thu','08.30','09.55','PG1','N104'),('CSE531',NULL,'Operating Systems (PG)','H102','Mon','08.30','09.55','PG1','N104'),('CSE603',NULL,'Advanced Problem Solving','H102','Tue','11.00','13.00','PG1','N104'),('CSE603',NULL,'Advanced Problem Solving','H102','Fri','11.00','13.00','PG1','N104'),('CSE611',NULL,'Discrete Maths and Algorithms','H102','Mon','11.30','13.00','PG1','N104'),('CSE611',NULL,'Discrete Maths and Algorithms','H102','Thu','11.30','13.00','PG1','N104'),('CSE411',NULL,'Complexity and Advanced Algorithms','SH2','Wed','11.30','12.55','BC','204'),('CSE411',NULL,'Complexity and Advanced Algorithms','SH2','Sat','11.30','12.55','BC','204'),('CSE415',NULL,'Principles of Programming Languages','SH2','Thu','11.30','12.55','BC','SH1'),('CSE415',NULL,'Principles of Programming Languages','SH2','Mon','11.30','12.55','BC','SH1'),('CSE419',NULL,'Compilers','SH2','Fri','08.30','09.55','BC','SH2'),('CSE419',NULL,'Compilers','SH2','Tue','08.30','09.55','BC','SH2'),('CSE435',NULL,'Advanced Computer Networks','SH2','Thu','08.30','09.55','BC','SH2'),('CSE435',NULL,'Advanced Computer Networks','SH2','Mon','08.30','09.55','BC','SH2'),('CSE471',NULL,'Statistical Methods in AI','SH2','Fri','10.00','11.25','BC','N104'),('CSE471',NULL,'Statistical Methods in AI','SH2','Tue','10.00','11.25','BC','N104'),('CEG421',NULL,'Building Energy Simulation','SH2','Thu','10.00','11.25','Elective','103'),('CEG421',NULL,'Building Energy Simulation','SH2','Mon','10.00','11.25','Elective','103'),('CEG561',NULL,'Advanced Topics in Remote Sensing','SH2','Mon','14.00','15.25','Elective','104'),('CEG561',NULL,'Advanced Topics in Remote Sensing','SH2','Thu','14.00','15.25','Elective','104'),('CEG628',NULL,'Soil Dynamics and Machine Foundations','CR1','Fri','10.00','11.25','Elective','102'),('CEG628',NULL,'Soil Dynamics and Machine Foundations','CR1','Tue','10.00','11.25','Elective','102'),('CEG631',NULL,'Foundation Engineering and Design','CR1','Thu','11.30','12.55','Elective','201'),('CEG631',NULL,'Foundation Engineering and Design','CR1','Mon','11.30','12.55','Elective','201'),('CES442',NULL,'Disaster Management','CR1','Thu','10.00','11.25','Elective','202'),('CES442',NULL,'Disaster Management','CR1','Mon','10.00','11.25','Elective','202'),('CES625',NULL,'Advanced Reinforce Concrete Design','CR1','Mon','14.00','15.25','Elective','N104'),('CES625',NULL,'Advanced Reinforce Concrete Design','CR1','Thu','14.00','15.25','Elective','N104'),('CES631',NULL,'Structural Dynamics','CR1','Thu','08.30','09.55','Elective','301'),('CES631',NULL,'Structural Dynamics','CR1','Mon','08.30','09.55','Elective','301'),('CES634',NULL,'CASE Workshop','H103','Mon','10.00','11.25','Elective','203'),('CES634',NULL,'CASE Workshop','H103','Thu','10.00','11.25','Elective','203'),('CES641',NULL,'Seismic Eva and Strengthening of Buildings','H103','Fri','08.30','09.55','Elective','101'),('CES641',NULL,'Seismic Eva and Strengthening of Buildings','H103','Tue','08.30','09.55','Elective','101'),('CLG211',NULL,'Introduction to Linguistics','H104','Thu','10.00','11.25','Elective','B4301'),('CLG211',NULL,'Introduction to Linguistics','H104','Tue','10.00','11.25','Elective','B4301'),('CLG411',NULL,'Linguistics 1: Language Typology and Universals','H104','Thu','11.30','12.55','Elective','B4301'),('CLG411',NULL,'Linguistics 1: Language Typology and Universals','H104','Mon','11.30','12.55','Elective','B4301'),('CLG413',NULL,'Phonetics and Phonology','H104','Wed','11.30','12.55','Elective','201'),('CLG413',NULL,'Phonetics and Phonology','H104','Sat','11.30','12.55','Elective','201'),('CLG421',NULL,'Computational Linguistics I','H104','Thu','14.00','15.25','Elective','101'),('CLG421',NULL,'Computational Linguistics I','H104','Mon','14.00','15.25','Elective','101'),('CLG451',NULL,'Linguistic Data : Collection and Analysis','H203','Fri','10.00','11.25','Elective','B6309'),('CLG451',NULL,'Linguistic Data : Collection and Analysis','H203','Tue','10.00','11.25','Elective','B6309'),('CLG513',NULL,'Event and Time in Discourse','H203','Thu','08.30','09.55','Elective','B4301'),('CLG513',NULL,'Event and Time in Discourse','H203','Mon','08.30','09.55','Elective','B4301'),('CLG611',NULL,'Basic Maths I','H203','Thu','10.00','11.25','Elective','102'),('CLG611',NULL,'Basic Maths I','H203','Mon','10.00','11.25','Elective','102'),('CLG661',NULL,'Computers and Scripting I','H203','Tue','11.30','12.55','Elective','102'),('CLG661',NULL,'Computers and Scripting I','H203','Fri','11.30','12.55','Elective','102'),('CSE445',NULL,'Data Warehousing and Data Mining','H203','Sat','10.00','11.25','Elective','103'),('CSE445',NULL,'Data Warehousing and Data Mining','H203','Wed','10.00','11.25','Elective','103'),('CSE463',NULL,'Introduction to Middleware Systems','H204','Wed','10.00','11.25','Elective','N104'),('CSE463',NULL,'Introduction to Middleware Systems','H204','Sat','10.00','11.25','Elective','N104'),('CSE472',NULL,'Natural Language Processing','H204','Thu','08.30','09.55','Elective','CR1'),('CSE472',NULL,'Natural Language Processing','H204','Mon','08.30','09.55','Elective','CR1'),('CSE478',NULL,'Digital Image Processing','H204','Thu','14.00','15.25','Elective','102'),('CSE478',NULL,'Digital Image Processing','H204','Mon','14.00','15.25','Elective','102'),('CSE483',NULL,'Mobile Robotics','H204','Tue','14.00','15.25','Elective','202'),('CSE483',NULL,'Mobile Robotics','H204','Fri','14.00','15.25','Elective','202'),('CSE485',NULL,'Intro to Cognitive Science','H204','Wed','11.30','12.55','Elective','104'),('CSE485',NULL,'Intro to Cognitive Science','H204','Sat','11.30','12.55','Elective','104'),('CSE502',NULL,'Parallel Programming','H204','Tue','10.00','11.25','Elective','CR1'),('CSE502',NULL,'Parallel Programming','H204','Fri','10.00','11.25','Elective','CR1'),('CSE504',NULL,'Modern Computer Architecture','H303','Sat','10.00','11.25','Elective','102'),('CSE504',NULL,'Modern Computer Architecture','H303','Wed','10.00','11.25','Elective','102'),('CSE540',NULL,'Research in Information Security','H303','Thu','11.30','12.55','Elective','103'),('CSE540',NULL,'Research in Information Security','H303','Mon','11.30','12.55','Elective','103'),('CSE545',NULL,'Advances in Data Mining','H303','Thu','14.00','15.25','Elective','201'),('CSE545',NULL,'Advances in Data Mining','H303','Mon','14.00','15.25','Elective','201'),('CSE565',NULL,'Cloud Computing','H303','Wed','08.30','09.55','Elective','SH2'),('CSE565',NULL,'Cloud Computing','H303','Sat','08.30','09.55','Elective','SH2'),('CSE577',NULL,'Machine Learning','H303','Thu','08.30','09.55','Elective','201'),('CSE577',NULL,'Machine Learning','H303','Mon','08.30','09.55','Elective','201'),('CSE591',NULL,'Spatial Informatics','H304','Thu','08.30','09.55','Elective','202'),('CSE591',NULL,'Spatial Informatics','H304','Mon','08.30','09.55','Elective','202'),('CSE592',NULL,'Ecological and Geospatial Modeling','H304','Fri','08.30','09.55','Elective','202'),('CSE592',NULL,'Ecological and Geospatial Modeling','H304','Tue','08.30','09.55','Elective','202'),('CSE602',NULL,'Computer Problem Solving','H304','Fri','10.00','11.25','Elective','304'),('CSE602',NULL,'Computer Problem Solving','H304','Tue','10.00','11.25','Elective','304'),('CSE861',NULL,'Software Quality Engineering','H304','Thu','14.00','15.25','Elective','202'),('CSE861',NULL,'Software Quality Engineering','H304','Mon','14.00','15.25','Elective','202'),('CSE991',NULL,'Research Methodology','H304','Sat','08.30','09.55','Elective','N104'),('CSE991',NULL,'Research Methodology','H304','Wed','08.30','09.55','Elective','N104'),('ECE381',NULL,'Electromagnetic Theory and Applications','H304','Thu','10.00','11.25','Elective','B6309'),('ECE381',NULL,'Electromagnetic Theory and Applications','H304','Mon','10.00','11.25','Elective','B6309'),('ECE436',NULL,'Communication Theory II','H304','Wed','11.30','12.55','Elective','202'),('ECE436',NULL,'Communication Theory II','H304','Sat','11.30','12.55','Elective','202'),('ECE442',NULL,'Time Frequency Analysis','N104','Sat','08.30','09.55','Elective','101'),('ECE442',NULL,'Time Frequency Analysis','N104','Wed','08.30','09.55','Elective','101'),('ECE446',NULL,'Speech Systems','N104','Fri','10.00','11.25','Elective','103'),('ECE446',NULL,'Speech Systems','N104','Tue','10.00','11.25','Elective','103'),('ECE448',NULL,'Speech Signal Processing','N104','Thu','08.30','09.55','Elective','101'),('ECE448',NULL,'Speech Signal Processing','N104','Mon','08.30','09.55','Elective','101'),('ECE451',NULL,'Linear Control Systems','SH1','Thu','08.30','09.55','Elective','102'),('ECE451',NULL,'Linear Control Systems','SH1','Mon','08.30','09.55','Elective','102'),('ECE461',NULL,'Analog and Mixed Signal Design','SH1','Mon','14.00','15.25','Elective','103'),('ECE461',NULL,'Analog and Mixed Signal Design','SH1','Thu','14.00','15.25','Elective','103'),('ECE467',NULL,'CMOS Radio Frequencey Integrated Circuit Design','CR1','Wed','11.30','12.55','Elective','203'),('ECE467',NULL,'CMOS Radio Frequencey Integrated Circuit Design','CR1','Sat','11.30','12.55','Elective','203'),('ECE530',NULL,'Broadband Networks','CR2','Wed','11.30','12.55','Elective','CR1'),('ECE530',NULL,'Broadband Networks','CR2','Sat','11.30','12.55','Elective','CR1'),('ECE539',NULL,'Information Theory and Coding','CR2','Tue','14.00','15.25','Elective','201'),('ECE539',NULL,'Information Theory and Coding','CR2','Fri','14.00','15.25','Elective','201'),('ECE561',NULL,'VLSI Algorithms','H103','Tue','14.00','15.25','Elective','104'),('ECE561',NULL,'VLSI Algorithms','H103','Fri','14.00','15.25','Elective','104'),('ECE661',NULL,'Embedded Systems','H104','Fri','14.00','15.25','Elective','103'),('ECE661',NULL,'Embedded Systems','H104','Tue','14.00','15.25','Elective','103'),('HSS240',NULL,'Sense of Past','H201','Tue','08.30','10.00','Elective','C1302'),('HSS240',NULL,'Sense of Past','H201','Thu','08.30','10.00','Elective','C1302'),('HSS290',NULL,'Confluence of Humanities and CS','H202','Tue','10.00','11.30','Elective','CEHConf'),('HSS290',NULL,'Confluence of Humanities and CS','H202','Thu','10.00','11.30','Elective','CEHConf'),('HSS310',NULL,'Ontology','H204','Thu','10.00','11.25','Elective','CR1'),('HSS310',NULL,'Ontology','H204','Mon','10.00','11.25','Elective','CR1'),('HSS332',NULL,'Installation as a Form of Art','H303','Fri','14.00','15.25','Elective','203'),('HSS332',NULL,'Installation as a Form of Art','H303','Tue','14.00','15.25','Elective','203'),('HSS342',NULL,'Classical Language: Sanskrit II','SH1','Wed','08.30','09.55','Elective','CR1'),('HSS342',NULL,'Classical Language: Sanskrit II','SH1','Sat','08.30','09.55','Elective','CR1'),('HSS346',NULL,'Imagined Futures: Readings in Science Fiction','SH1','Tue','11.30','12.55','Elective','B6309'),('HSS346',NULL,'Imagined Futures: Readings in Science Fiction','SH1','Fri','11.30','12.55','Elective','B6309'),('HSS352',NULL,'Innovation and Technology Management','SH2','Tue','11.30','12.55','Elective','103'),('HSS352',NULL,'Innovation and Technology Management','SH2','Fri','11.30','12.55','Elective','103'),('HSS354',NULL,'Non-Violence','SH2','Wed','14.00','15.25','Elective','201'),('HSS354',NULL,'Non-Violence','SH2','Sat','14.00','15.25','Elective','201'),('HSS360',NULL,'Economics and Organizations','H104','Tue','08.30','09.55','Elective','B6309'),('HSS360',NULL,'Economics and Organizations','H104','Thu','08.30','09.55','Elective','B6309'),('HSS362',NULL,'Political and Economic Thought for Human Society','H104','Sat','14.00','15.25','Elective','102'),('HSS362',NULL,'Political and Economic Thought for Human Society','H104','Wed','14.00','15.25','Elective','102'),('HSS401',NULL,'Space Time in Arts and Humanities','H203','Sat','14.00','15.25','Elective','101'),('HSS401',NULL,'Space Time in Arts and Humanities','H203','Wed','14.00','15.25','Elective','101'),('HSS422',NULL,'Classical Text Reading','H204','Fri','11.30','12.55','Elective','201'),('HSS422',NULL,'Classical Text Reading','H204','Tue','11.30','12.55','Elective','201'),('HSS462',NULL,'Studies in Alternative Development','H303','Tue','11.30','12.55','Elective','104'),('HSS462',NULL,'Studies in Alternative Development','H303','Fri','11.30','12.55','Elective','104'),('ICS331',NULL,'Algorithms and Operating Systems','H303','Wed','14.00','15.25','Elective','CR1'),('ICS331',NULL,'Algorithms and Operating Systems','H303','Sat','14.00','15.25','Elective','CR1'),('IMA403',NULL,'Mathematical Analysis','H304','Sat','10.00','11.25','Elective','101'),('IMA403',NULL,'Mathematical Analysis','H304','Wed','10.00','11.25','Elective','101'),('IMA404',NULL,'Number Theory and Cryptology','N104','Mon','10.00','11.25','Elective','104'),('IMA404',NULL,'Number Theory and Cryptology','N104','Thu','10.00','11.25','Elective','104'),('IMA406',NULL,'Operations Research','N104','Tue','08.30','09.55','Elective','102'),('IMA406',NULL,'Operations Research','N104','Fri','08.30','09.55','Elective','102'),('SCI101',NULL,'General Physics','H303','Thu','10.00','11.25','Elective','B4304'),('SCI101',NULL,'General Physics','H303','Tue','10.00','11.25','Elective','B4304'),('SCI311',NULL,'Chemical Basis of Everyday Phenomena','H303','Tue','08.30','09.55','Elective','104'),('SCI311',NULL,'Chemical Basis of Everyday Phenomena','H303','Fri','08.30','09.55','Elective','104'),('SCI421',NULL,'Advanced Biology(Cellular/Molecular/Genetic)','N104','Thu','11.30','12.55','Elective','102'),('SCI421',NULL,'Advanced Biology(Cellular/Molecular/Genetic)','N104','Sat','11.30','12.55','Elective','102'),('SCI422',NULL,'Molecular Biology','H103','Thu','11.30','12.55','Elective','202'),('SCI422',NULL,'Molecular Biology','H103','Mon','11.30','12.55','Elective','202'),('SCI462',NULL,'Intro to Quantum Field Theory','H203','Tue','08.30','09.55','Elective','201'),('SCI462',NULL,'Intro to Quantum Field Theory','H203','Fri','08.30','09.55','Elective','201'),('SCI463',NULL,'Quantuam Information and Computing','N104','Wed','10.00','11.25','Elective','104'),('SCI463',NULL,'Quantuam Information and Computing','N104','Sat','10.00','11.25','Elective','104'),('SCI541',NULL,'Advanced Biomolecular Architecture','SH2','Wed','10.00','11.25','Elective','201'),('SCI541',NULL,'Advanced Biomolecular Architecture','SH2','Sat','10.00','11.25','Elective','201'),('SCI550',NULL,'Maths and Statistics','CR1','Tue','11.30','12.55','Elective','101'),('SCI550',NULL,'Maths and Statistics','CR1','Fri','11.30','12.55','Elective','101'),('SCI635',NULL,'\"Optics, Symmetry and Spectroscopy\"','CR1','Fri','14.00','15.25','Elective','102'),('SCI635',NULL,'\"Optics, Symmetry and Spectroscopy\"','CR1','Tue','14.00','15.25','Elective','102'),('SCI643',NULL,'Biomolecular Structure Interaction and Dynamics','CR1','Fri','08.30','09.55','Elective','103'),('SCI643',NULL,'Biomolecular Structure Interaction and Dynamics','CR1','Tue','08.30','09.55','Elective','103'),('SCI644',NULL,'Biomolecular Structure and Supramolecular Chemistry','H301','Thu','10.00','11.25','Elective','201');
 /*!40000 ALTER TABLE `CourseRooms` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -216,10 +241,10 @@ DROP TABLE IF EXISTS `Feedback_Form`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Feedback_Form` (
-  `Name` char(50) DEFAULT NULL,
-  `Email_id` varchar(50) DEFAULT NULL,
-  `Comment` varchar(200) DEFAULT NULL,
-  `Time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Name` char(50) default NULL,
+  `Email_id` varchar(50) default NULL,
+  `Comment` varchar(200) default NULL,
+  `Time` timestamp NOT NULL default CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -241,9 +266,9 @@ DROP TABLE IF EXISTS `Groups`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Groups` (
-  `groupName` varchar(200) DEFAULT NULL,
+  `groupName` varchar(200) default NULL,
   `level` int(2) NOT NULL,
-  PRIMARY KEY (`level`)
+  PRIMARY KEY  (`level`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -265,29 +290,29 @@ DROP TABLE IF EXISTS `Instances`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Instances` (
-  `reqNo` int(11) NOT NULL DEFAULT '0',
-  `hash` varchar(100) DEFAULT NULL,
-  `creator` varchar(25) DEFAULT NULL,
-  `creatorEmail` varchar(50) DEFAULT NULL,
-  `creatorPhone` varchar(15) DEFAULT NULL,
-  `concernedPName` varchar(15) DEFAULT NULL,
-  `concernedPEmail` varchar(50) DEFAULT NULL,
-  `concernedPPhone` varchar(15) DEFAULT NULL,
-  `appStatus` varchar(25) DEFAULT 'Accepted',
-  `reqGId` int(10) DEFAULT NULL,
-  `reqDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `eventStartDate` date DEFAULT NULL,
-  `eventEndDate` date DEFAULT NULL,
-  `eventStartTime` time DEFAULT NULL,
-  `eventEndTime` time DEFAULT NULL,
-  `eventTitle` varchar(40) DEFAULT NULL,
-  `eventDesc` varchar(1000) DEFAULT NULL,
-  `eventDays` varchar(50) DEFAULT NULL,
-  `concernedAdmin` int(2) DEFAULT NULL,
-  `room` varchar(10) DEFAULT NULL,
-  `reqType` varchar(10) DEFAULT 'One Time',
-  `reqRejectReason` varchar(1000) DEFAULT NULL,
-  `modifyTimestamp` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `reqNo` int(11) NOT NULL default '0',
+  `hash` varchar(100) default NULL,
+  `creator` varchar(25) default NULL,
+  `creatorEmail` varchar(50) default NULL,
+  `creatorPhone` varchar(15) default NULL,
+  `concernedPName` varchar(15) default NULL,
+  `concernedPEmail` varchar(50) default NULL,
+  `concernedPPhone` varchar(15) default NULL,
+  `appStatus` varchar(25) default 'Accepted',
+  `reqGId` int(10) default NULL,
+  `reqDate` timestamp NOT NULL default CURRENT_TIMESTAMP,
+  `eventStartDate` date default NULL,
+  `eventEndDate` date default NULL,
+  `eventStartTime` time default NULL,
+  `eventEndTime` time default NULL,
+  `eventTitle` varchar(40) default NULL,
+  `eventDesc` varchar(1000) default NULL,
+  `eventDays` varchar(50) default NULL,
+  `concernedAdmin` int(2) default NULL,
+  `room` varchar(10) default NULL,
+  `reqType` varchar(10) default 'One Time',
+  `reqRejectReason` varchar(1000) default NULL,
+  `modifyTimestamp` timestamp NOT NULL default '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -312,30 +337,30 @@ DROP TABLE IF EXISTS `Requests`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Requests` (
-  `reqNo` int(11) NOT NULL AUTO_INCREMENT,
-  `hash` varchar(100) DEFAULT NULL,
-  `creator` varchar(25) DEFAULT NULL,
-  `creatorEmail` varchar(50) DEFAULT NULL,
-  `creatorPhone` varchar(15) DEFAULT NULL,
-  `concernedPName` varchar(15) DEFAULT NULL,
-  `concernedPEmail` varchar(50) DEFAULT NULL,
-  `concernedPPhone` varchar(15) DEFAULT NULL,
-  `appStatus` varchar(25) DEFAULT 'Pending',
-  `reqGId` int(10) DEFAULT NULL,
-  `reqDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `eventStartDate` date DEFAULT NULL,
-  `eventEndDate` date DEFAULT NULL,
-  `eventStartTime` time DEFAULT NULL,
-  `eventEndTime` time DEFAULT NULL,
-  `eventTitle` varchar(40) DEFAULT NULL,
-  `eventDesc` varchar(1000) DEFAULT NULL,
-  `eventDays` varchar(50) DEFAULT NULL,
-  `concernedAdmin` int(2) DEFAULT NULL,
-  `room` varchar(10) DEFAULT NULL,
-  `reqType` varchar(10) DEFAULT 'One Time',
-  `reqRejectReason` varchar(1000) DEFAULT 'Your request is pending! :)',
-  `modifyTimestamp` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`reqNo`)
+  `reqNo` int(11) NOT NULL auto_increment,
+  `hash` varchar(100) default NULL,
+  `creator` varchar(25) default NULL,
+  `creatorEmail` varchar(50) default NULL,
+  `creatorPhone` varchar(15) default NULL,
+  `concernedPName` varchar(15) default NULL,
+  `concernedPEmail` varchar(50) default NULL,
+  `concernedPPhone` varchar(15) default NULL,
+  `appStatus` varchar(25) default 'Pending',
+  `reqGId` int(10) default NULL,
+  `reqDate` timestamp NOT NULL default CURRENT_TIMESTAMP,
+  `eventStartDate` date default NULL,
+  `eventEndDate` date default NULL,
+  `eventStartTime` time default NULL,
+  `eventEndTime` time default NULL,
+  `eventTitle` varchar(40) default NULL,
+  `eventDesc` varchar(1000) default NULL,
+  `eventDays` varchar(50) default NULL,
+  `concernedAdmin` int(2) default NULL,
+  `room` varchar(10) default NULL,
+  `reqType` varchar(10) default 'One Time',
+  `reqRejectReason` varchar(1000) default 'Your request is pending! :)',
+  `modifyTimestamp` timestamp NOT NULL default '0000-00-00 00:00:00',
+  PRIMARY KEY  (`reqNo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -357,13 +382,13 @@ DROP TABLE IF EXISTS `Room`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Room` (
-  `roomId` int(11) NOT NULL AUTO_INCREMENT,
+  `roomId` int(11) NOT NULL auto_increment,
   `roomName` varchar(8) NOT NULL,
   `buildingName` int(11) NOT NULL,
   `blockName` int(11) NOT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `capacity` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`roomId`),
+  `description` varchar(255) default NULL,
+  `capacity` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`roomId`),
   UNIQUE KEY `roomName` (`roomName`),
   KEY `building` (`buildingName`),
   KEY `block` (`blockName`)
@@ -390,7 +415,7 @@ DROP TABLE IF EXISTS `Room_Cat`;
 CREATE TABLE `Room_Cat` (
   `roomId` int(11) NOT NULL,
   `catId` int(11) NOT NULL,
-  PRIMARY KEY (`roomId`,`catId`),
+  PRIMARY KEY  (`roomId`,`catId`),
   KEY `catId` (`catId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -413,12 +438,12 @@ DROP TABLE IF EXISTS `Tablem`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Tablem` (
-  `Code` varchar(10) DEFAULT NULL,
-  `Name` varchar(100) DEFAULT NULL,
-  `Day` varchar(5) DEFAULT NULL,
-  `StartTime` varchar(10) DEFAULT NULL,
-  `EndTime` varchar(10) DEFAULT NULL,
-  `PrevRoom` varchar(10) DEFAULT NULL
+  `Code` varchar(10) default NULL,
+  `Name` varchar(100) default NULL,
+  `Day` varchar(5) default NULL,
+  `StartTime` varchar(10) default NULL,
+  `EndTime` varchar(10) default NULL,
+  `PrevRoom` varchar(10) default NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -440,9 +465,9 @@ DROP TABLE IF EXISTS `Tableme`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Tableme` (
-  `Code` varchar(10) DEFAULT NULL,
-  `Name` varchar(100) DEFAULT NULL,
-  `Type` varchar(10) DEFAULT NULL
+  `Code` varchar(10) default NULL,
+  `Name` varchar(100) default NULL,
+  `Type` varchar(10) default NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -462,18 +487,15 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Tablet`;
 /*!50001 DROP VIEW IF EXISTS `Tablet`*/;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
 /*!50001 CREATE TABLE `Tablet` (
-  `Code` tinyint NOT NULL,
-  `Name` tinyint NOT NULL,
-  `Type` tinyint NOT NULL,
-  `Day` tinyint NOT NULL,
-  `StartTime` tinyint NOT NULL,
-  `EndTime` tinyint NOT NULL,
-  `PrevRoom` tinyint NOT NULL
+  `Code` varchar(10),
+  `Name` varchar(100),
+  `Type` varchar(10),
+  `Day` varchar(5),
+  `StartTime` varchar(10),
+  `EndTime` varchar(10),
+  `PrevRoom` varchar(10)
 ) ENGINE=MyISAM */;
-SET character_set_client = @saved_cs_client;
 
 --
 -- Temporary table structure for view `Tablet1`
@@ -481,18 +503,15 @@ SET character_set_client = @saved_cs_client;
 
 DROP TABLE IF EXISTS `Tablet1`;
 /*!50001 DROP VIEW IF EXISTS `Tablet1`*/;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
 /*!50001 CREATE TABLE `Tablet1` (
-  `Code` tinyint NOT NULL,
-  `Name` tinyint NOT NULL,
-  `Type` tinyint NOT NULL,
-  `Day` tinyint NOT NULL,
-  `StartTime` tinyint NOT NULL,
-  `EndTime` tinyint NOT NULL,
-  `PrevRoom` tinyint NOT NULL
+  `Code` varchar(10),
+  `Name` varchar(100),
+  `Type` varchar(10),
+  `Day` varchar(5),
+  `StartTime` varchar(10),
+  `EndTime` varchar(10),
+  `PrevRoom` varchar(10)
 ) ENGINE=MyISAM */;
-SET character_set_client = @saved_cs_client;
 
 --
 -- Temporary table structure for view `UG1`
@@ -500,18 +519,15 @@ SET character_set_client = @saved_cs_client;
 
 DROP TABLE IF EXISTS `UG1`;
 /*!50001 DROP VIEW IF EXISTS `UG1`*/;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
 /*!50001 CREATE TABLE `UG1` (
-  `Code` tinyint NOT NULL,
-  `Name` tinyint NOT NULL,
-  `Type` tinyint NOT NULL,
-  `Day` tinyint NOT NULL,
-  `StartTime` tinyint NOT NULL,
-  `EndTime` tinyint NOT NULL,
-  `PrevRoom` tinyint NOT NULL
+  `Code` varchar(10),
+  `Name` varchar(100),
+  `Type` varchar(10),
+  `Day` varchar(5),
+  `StartTime` varchar(10),
+  `EndTime` varchar(10),
+  `PrevRoom` varchar(10)
 ) ENGINE=MyISAM */;
-SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `Updates`
@@ -544,11 +560,11 @@ DROP TABLE IF EXISTS `User`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `User` (
-  `userId` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) NOT NULL auto_increment,
   `name` varchar(30) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `level` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`userId`)
+  `level` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`userId`)
 ) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -570,7 +586,7 @@ DROP TABLE IF EXISTS `ccPerson`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ccPerson` (
-  `reqNo` int(11) DEFAULT NULL,
+  `reqNo` int(11) default NULL,
   `email` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -593,13 +609,13 @@ DROP TABLE IF EXISTS `clash`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `clash` (
-  `Code` varchar(10) DEFAULT NULL,
-  `Name` varchar(100) DEFAULT NULL,
-  `Day` varchar(5) DEFAULT NULL,
-  `StartTime` varchar(10) DEFAULT NULL,
-  `EndTime` varchar(10) DEFAULT NULL,
-  `Type` varchar(10) DEFAULT NULL,
-  `Others` varchar(10) DEFAULT NULL
+  `Code` varchar(10) default NULL,
+  `Name` varchar(100) default NULL,
+  `Day` varchar(5) default NULL,
+  `StartTime` varchar(10) default NULL,
+  `EndTime` varchar(10) default NULL,
+  `Type` varchar(10) default NULL,
+  `Others` varchar(10) default NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -621,14 +637,14 @@ DROP TABLE IF EXISTS `dassod`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `dassod` (
-  `Code` varchar(10) DEFAULT NULL,
-  `Name` varchar(100) DEFAULT NULL,
-  `Room` varchar(10) DEFAULT NULL,
-  `Day` varchar(10) DEFAULT NULL,
-  `StartTime` varchar(10) DEFAULT NULL,
-  `EndTime` varchar(10) DEFAULT NULL,
-  `Type` varchar(10) DEFAULT NULL,
-  `PrevRoom` varchar(10) DEFAULT NULL
+  `Code` varchar(10) default NULL,
+  `Name` varchar(100) default NULL,
+  `Room` varchar(10) default NULL,
+  `Day` varchar(10) default NULL,
+  `StartTime` varchar(10) default NULL,
+  `EndTime` varchar(10) default NULL,
+  `Type` varchar(10) default NULL,
+  `PrevRoom` varchar(10) default NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -668,58 +684,28 @@ UNLOCK TABLES;
 -- Final view structure for view `Tablet`
 --
 
-/*!50001 DROP TABLE IF EXISTS `Tablet`*/;
+/*!50001 DROP TABLE `Tablet`*/;
 /*!50001 DROP VIEW IF EXISTS `Tablet`*/;
-/*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8 */;
-/*!50001 SET character_set_results     = utf8 */;
-/*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `Tablet` AS select distinct `Tablem`.`Code` AS `Code`,`Tablem`.`Name` AS `Name`,`Tableme`.`Type` AS `Type`,`Tablem`.`Day` AS `Day`,`Tablem`.`StartTime` AS `StartTime`,`Tablem`.`EndTime` AS `EndTime`,`Tablem`.`PrevRoom` AS `PrevRoom` from (`Tablem` join `Tableme`) where (`Tablem`.`Code` = `Tableme`.`Code`) */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
 -- Final view structure for view `Tablet1`
 --
 
-/*!50001 DROP TABLE IF EXISTS `Tablet1`*/;
+/*!50001 DROP TABLE `Tablet1`*/;
 /*!50001 DROP VIEW IF EXISTS `Tablet1`*/;
-/*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8 */;
-/*!50001 SET character_set_results     = utf8 */;
-/*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `Tablet1` AS select `Tablet`.`Code` AS `Code`,`Tablet`.`Name` AS `Name`,`Tablet`.`Type` AS `Type`,`Tablet`.`Day` AS `Day`,`Tablet`.`StartTime` AS `StartTime`,`Tablet`.`EndTime` AS `EndTime`,`Tablet`.`PrevRoom` AS `PrevRoom` from `Tablet` where ((`Tablet`.`Type` = _latin1'BC') or ((`Tablet`.`Type` = _latin1'Elective') and (not((`Tablet`.`Name` like _latin1'%Lab%'))))) order by `Tablet`.`Type`,`Tablet`.`Code`,`Tablet`.`StartTime` */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
 -- Final view structure for view `UG1`
 --
 
-/*!50001 DROP TABLE IF EXISTS `UG1`*/;
+/*!50001 DROP TABLE `UG1`*/;
 /*!50001 DROP VIEW IF EXISTS `UG1`*/;
-/*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8 */;
-/*!50001 SET character_set_results     = utf8 */;
-/*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `UG1` AS select distinct `Tablem`.`Code` AS `Code`,`Tablem`.`Name` AS `Name`,`Tableme`.`Type` AS `Type`,`Tablem`.`Day` AS `Day`,`Tablem`.`StartTime` AS `StartTime`,`Tablem`.`EndTime` AS `EndTime`,`Tablem`.`PrevRoom` AS `PrevRoom` from (`Tablem` join `Tableme`) where ((`Tablem`.`Code` = `Tableme`.`Code`) and (`Tableme`.`Type` like _latin1'UG1')) */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -730,4 +716,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-11-15  3:27:10
+-- Dump completed on 2012-11-15  5:12:33

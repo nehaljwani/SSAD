@@ -20,6 +20,7 @@ phpCAS::client(CAS_VERSION_2_0, "login.iiit.ac.in", 443, "/cas");
 phpCAS::setNoCasServerValidation();
 
 phpCAS::forceAuthentication();
+$gID = getCurGroup();
 
 $userID = phpCAS::getUser();
 
@@ -31,7 +32,14 @@ if(isset($_GET['logout'])){
   phpCAS::logout();
 }
 
-print_r($_SERVER);
+$filePath = $_SERVER['PHP_SELF'];
+$fileArray = explode('/', $filePath);
+$length = sizeof($fileArray);
+$file = $fileArray[$length-1];
+$fArray = explode('.', $file);
+$file = $fArray[0];
+
+$classVar = " class=\"current_page_item\"";
 
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -50,14 +58,23 @@ print_r($_SERVER);
 <div id="wrapper">
 	<div id="menu-wrapper">
 		<div id="menu" class="container">
-			<ul>
-				<li class="current_page_item"><a href="index.php">Homepage</a></li>
-				<li><a href="conflictTable.php">Conflict View</a></li>
-				<li><a href="giveFeedback.php">Feedback</a></li>
-				<li><a href="masterpage.php">MasterPage</a></li>
-				<li><a href="#">Links</a></li>
-				<li><a href="humans.txt">Team</a></li>
+			<ul><?php if($gID==2){ ?>
+				<li <?php if($file=="index") echo $classVar;?>><a href="index.php">AdminHomepage</a></li>
+				<li <?php if($file=="conflictTable") echo $classVar; ?>><a href="conflictTable.php">Conflict View</a></li>
+				<li<?php if($file=="giveFeedback") echo $classVar; ?>><a href="giveFeedback.php">Feedback</a></li>
+				<li<?php if($file=="masterpage") echo $classVar; ?>><a href="masterpage.php">MasterPage</a></li>
+				<li<?php if($file=="#") echo $classVar; ?>><a href="#">Links</a></li>
+				<li<?php if($file=="humans") echo $classVar; ?>><a href="humans.txt">Team</a></li>
 				<li><a href="?logout=true"><?php echo $userID; ?> (Logout)</a></li>
+			    <?php }else{ ?>
+				<li <?php if($file=="index") echo $classVar;?>><a href="index.php">Homepage</a></li>
+				<li <?php if($file=="conflictTable") echo $classVar; ?>><a href="conflictTable.php">Conflict View</a></li>
+				<li<?php if($file=="giveFeedback") echo $classVar; ?>><a href="giveFeedback.php">Feedback</a></li>
+				<li<?php if($file=="masterpage") echo $classVar; ?>><a href="masterpage.php">MasterPage</a></li>
+				<li<?php if($file=="#") echo $classVar; ?>><a href="#">Links</a></li>
+				<li<?php if($file=="humans") echo $classVar; ?>><a href="humans.txt">Team</a></li>
+				<li><a href="?logout=true"><?php echo $userID; ?> (Logout)</a></li>
+			    <?php } ?>
 			</ul>
 		</div>
 	</div>
