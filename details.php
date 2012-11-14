@@ -84,6 +84,10 @@ if(1){ ?>
 <?php while($i<$num_row){
 	if($i!=1)
 	{
+		if($i==17)
+		{
+			$col[$i]=explosion($col[$i]);
+		}
 ?>
 		<tr>
 		<td>
