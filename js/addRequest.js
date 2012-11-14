@@ -14,11 +14,34 @@ $(document).ready(function() {
                  	var checkStatus = $('#repType1').is(':checked');
 			if(checkStatus == true){
 				$('.days').hide();
+				$day=$('select#eventStartDate_Day_ID.calendarDateInput.myday').attr('value');
+				$('select#eventEndDate_Day_ID.calendarDateInput.myday').attr('value',$day);
+				$month=$('select#eventStartDate_Month_ID.calendarDateInput.mymonth').attr('value')
+				$('select#eventEndDate_Month_ID.calendarDateInput.mymonth').attr('value',$month);
+				$('#endDate').hide();
+				$('#startDate').children().first().html('Event Date');
 			}
 			else{
 				$('.days').show();
+				$('#endDate').show();
+				$('#startDate').children().first().html('Start Date');
 			}
 		});
+		$('select#eventStartDate_Month_ID.calendarDateInput.mymonth').change(function(){
+                 	var checkStatus = $('#repType1').is(':checked');
+			if(checkStatus == true){
+				$month=$('select#eventStartDate_Month_ID.calendarDateInput.mymonth').attr('value')
+				$('select#eventEndDate_Month_ID.calendarDateInput.mymonth').attr('value',$month);
+			}
+		})
+		$('select#eventStartDate_Day_ID.calendarDateInput.myday').change(function(){
+                 	var checkStatus = $('#repType1').is(':checked');
+			if(checkStatus == true){
+				$day=$('select#eventStartDate_Day_ID.calendarDateInput.myday').attr('value');
+				$('select#eventEndDate_Day_ID.calendarDateInput.myday').attr('value',$day);
+			}
+		})
+		
 		$('#buildingName').change(function() {
 			$building=($('#buildingName').val());
 			$("select.room").children(':not(#'+$building+')').css('display','none');
@@ -44,4 +67,6 @@ $(document).ready(function() {
 				$('#all').removeAttr('checked')     
 			}        
 		})
+		$('#endDate').hide();
+		$('#startDate').children().first().html('Event Date');
 });

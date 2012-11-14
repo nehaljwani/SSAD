@@ -140,6 +140,19 @@ function generate_select_list($q,$x,$b,$isnull = true,$default= false ){
 	$st .= "</select>";
 	return $st;
 }
+function getGroup($userID){
+	//Takes a user ID and returns group from database. Returns 0 if not found.
+	dbconnect();
+	$query = "select level from User where email = \"{$userID}\"";
+	$result = execute($query);
+	if(mysql_num_rows($result)==0){
+		return 0;
+	}
+	else{
+		$row = mysql_fetch_row($result);
+		return $row[0];
+	}
+}
 function getNextGroup($curGroup){
   global $groups;
   switch($curGroup){
@@ -503,13 +516,14 @@ function cancel($name,$mail_to,$room_no,$request_id,$reason, $cc){
 function forward($name,$mail_to,$room_no,$request_id,$original_mail_id, $cc)
 {
 	$hash=gethash($request_id);
+	$gID = getGroup($mail_to);
  	$date = date('Y-m-d H:i:s');
 	$body="Sir,\n".$name." with mail id ".$original_mail_id." has sent the Request for Room no. ".$room_no.".The Request id is. ".$request_id." . Kindly check and if possible give your consent\n\n.";
 	$message = " 
 		<html>
 		<body>
 		<p>".$body."</p>
-		<p> Click <a href=\"http://localhost/roomReservationSystem/SSAD/req_detail_hash.php?hash=".$hash."\"> here </a>to verify the request! </p>
+		<p> Click <a href=\"http://localhost/roomReservationSystem/SSAD/req_detail_hash.php?hash=".$hash."&gID={$gID}\"> here </a>to verify the request! </p>
 		\n\n\n\nCheers,\nAdmins\n\n\n\nMail generated at: ".$date."
 		</body>
 		</html>";
@@ -981,19 +995,6 @@ function getCC($reqID)
 	return $CSVString;
 }
 
-function getGroup($userID){
-	//Takes a user ID and returns group from database. Returns 0 if not found.
-	dbconnect();
-	$query = "select level from User where email = \"{$userID}\"";
-	$result = execute($query);
-	if(mysql_num_rows($result)==0){
-		return 0;
-	}
-	else{
-		$row = mysql_fetch_row($result);
-		return $row[0];
-	}
-}
 
 function courseToInstance(){
         $day2No=array(
@@ -1100,5 +1101,11 @@ function getRequestStatus($reqID){
 	$row = mysql_fetch_row($result);
 	return $row[0];
 }
-
+function getIDFromHash($hash){
+	dbconnect();
+	$query = "select reqNo from Requests where hash='".$hash."';";
+	$result=execute($query);
+	$row=mysql_fetch_row($result);
+	return $row[0];
+}
 ?>

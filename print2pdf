@@ -1,1 +1,1 @@
-php printoutput.php > TT.html && ./wkhtmltopdf -O Landscape -s A4 TT.html  out.pdf 
+php printoutput.php > TT.html && ./wkhtmltopdf -O Landscape -s  A3  TT.html  out.pdf 

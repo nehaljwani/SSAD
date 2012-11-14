@@ -32,7 +32,8 @@ $cAdmin = getConcernedAdmin($id);
 
 if(getRequestStatus($id) != "Pending"){//If request is not pending, do not display the form. All other options valid only for pending requests
 
-	echo "<h2 class=\"title\">Already processed!</h2>This request has already been processed. Request status: ".getRequestStatus($id);
+	if($gID != 0){
+		echo "<h2 class=\"title\">Already processed!</h2>This request has already been processed. Request status: ".getRequestStatus($id);}
 }
 else{
 if($gID == 2 && $cAdmin != 2){//If Acad Office is currently logged in, but is not the concerned admin, display a warning
@@ -48,11 +49,11 @@ if($gID == $cAdmin || $gID == 2){ //Acad office always gets to see the form, oth
 			<td><input type="radio" name="reqAction" value="accept"></td>
 			<td>Accept</td>
 		</tr>
+		<?php if(getNextGroup($gID) != -1){ ?>
 		<tr>
 			<td><input type="radio" name="reqAction" value="forward"></td>
 			<td>Forward</td>
 		</tr>
-		<?php if(getNextGroup($gID) != -1){ ?>
 		<tr>
 			<td></td>
 			<td><select name="forwardID"><?php printNextGroupOptions($gID); ?></select></td>

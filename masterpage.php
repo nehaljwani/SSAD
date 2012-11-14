@@ -1,3 +1,4 @@
+<?php require_once('essential.php'); ?>
 <?php require_once('header.php'); ?>
 <form action="project2.php"method="post"
 enctype="multipart/form-data">

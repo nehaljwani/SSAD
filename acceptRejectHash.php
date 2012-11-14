@@ -1,12 +1,5 @@
 <?php
 include("essential.php");
-include("header.php");
-
-$gID = getCurGroup();
-if($gID == 0 || $gID == 6 || $gID == 7){
-	die("Insufficient privileges.");
-}
-
 dbconnect();
 
 //print_r($_POST);
@@ -16,8 +9,8 @@ $a="accept";
 $b="reject";
 $c="forward";
 $d= "Specify a reason for rejection (optional) )";
-$rID = $_POST['reqID'];
-$reqArray = getRequestByID($_POST['reqID']);
+$rID = getIDFromHash($_POST['reqID']);
+$reqArray = getRequestByID(getIDFromHash($_POST['reqID']));
 //print_r($reqArray);
 $clashArrays = clashMux(checkConflicts());
 foreach($clashArrays as $clashArray){
@@ -26,8 +19,10 @@ foreach($clashArrays as $clashArray){
 	}
 }
 
+$_POST['reqID'] = getIDFromHash($_POST['reqID']);
+
 //Get comma separated string of concerned persons, insert into db
-$reqID = $_POST['reqID'];
+$reqID = getIDFromHash($_POST['reqID']);
 $cc = $_POST['cc'];
 $ccPersons = CSVToArray($cc);
 

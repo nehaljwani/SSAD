@@ -38,6 +38,7 @@ foreach($arr as $val)
 echo "
 <html>
 <body>
+<font=10>
 <table border='1' cellspacing='0'>
 <tr>
 <th height='50'>DAY<br></th>
@@ -86,12 +87,13 @@ for($i=3;$i<6;$i++)
 	echo "</tr>";
 }
 echo "
-</table><b><br><br>
+</table><b><br>
 <div style='color:#0000FF'>
 LUNCH: 01.00-02.00</div><br>
 Class Rooms: N104 in Nilgiri Building<br>
 Class Rooms: SH1, SH2, CR1, CR2, B4-301, B4-304, B6-309 in Vindhya Building<br>
-Class Rooms: H101,H102,H103,H104,H201,H202,H203,H204,H301,H302,H303,H304 in Himalaya Building<br></b>
+Class Rooms: H101,H102,H103,H104,H201,H202,H203,H204,H301,H302,H303,H304 in Himalaya Building
+</font>
 </body>
 </html>
 ";

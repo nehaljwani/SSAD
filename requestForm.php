@@ -87,8 +87,8 @@ echo generateBuildingList("buildingName");
 		         <input type="checkbox" name='day[]' value="6" class='weekday'/>Friday</td></tr>
 	<tr class="days"><td></td><td><input type="checkbox" name='day[]' value="7" class='weekday'/>Saturday</td><td>
 		         <input type="checkbox" id='all' value="all" />All</td></tr>
-	<tr><td> Start Date: </td><td><div id='sdivdate'>  <script>DateInput('eventStartDate', true,'YYYY-MM-DD')</script></div></td></tr>
-	<tr><td> End Date: </td><td><div id='edivdate'>  <script>DateInput('eventEndDate', true,'YYYY-MM-DD')</script> </div> </td></tr>
+	<tr id="startDate"><td> Start Date: </td><td><div id='sdivdate'>  <script>DateInput('eventStartDate', true,'YYYY-MM-DD')</script></div></td></tr>
+	<tr id="endDate"><td> End Date: </td><td><div id='edivdate'>  <script>DateInput('eventEndDate', true,'YYYY-MM-DD')</script> </div> </td></tr>
 	<tr> <td>Start Timeslot : </td>	
 	<td> <?php echo generateTimeSlot("eventStartTime"); ?> </td>	
 	</tr>
@@ -99,7 +99,7 @@ echo generateBuildingList("buildingName");
 	<tr> <td>Confirm from: </td>
 	<td><div id='priveleged_users'>
 	<select name='concernedAdmin' id='confirmedBy'>
-	<?php printNextGroupOptions(0); ?> <!-- Default will be the value of $curGroup of the user currently logged in-->
+	<?php printNextGroupOptions(getCurGroup()); ?> <!-- Default will be the value of $curGroup of the user currently logged in-->
 	</select></div></td></tr><br/>
 	<tr> <td> Activity Description: </td><td>
 	<textarea id='description'  name='eventDesc'/></textarea></tr>

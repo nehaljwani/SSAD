@@ -1,5 +1,3 @@
-<html>
-<body>
 <?php include('header.php'); ?>
 
 <form name='predef' action="my.php" method='post'>
@@ -33,5 +31,3 @@
                 </form>
 <br/><br/><br/><br/><br/>
 <?php include('footer.php'); ?>
-</body>
-</html>

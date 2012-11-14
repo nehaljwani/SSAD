@@ -31,6 +31,7 @@ if(isset($_GET['logout'])){
   phpCAS::logout();
 }
 
+print_r($_SERVER);
 
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -53,9 +54,9 @@ if(isset($_GET['logout'])){
 				<li class="current_page_item"><a href="index.php">Homepage</a></li>
 				<li><a href="conflictTable.php">Conflict View</a></li>
 				<li><a href="giveFeedback.php">Feedback</a></li>
-				<li><a href="#">About Us</a></li>
-				<li><a href="#">Links</a></li>
 				<li><a href="masterpage.php">MasterPage</a></li>
+				<li><a href="#">Links</a></li>
+				<li><a href="humans.txt">Team</a></li>
 				<li><a href="?logout=true"><?php echo $userID; ?> (Logout)</a></li>
 			</ul>
 		</div>
