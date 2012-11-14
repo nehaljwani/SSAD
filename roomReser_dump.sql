@@ -1,8 +1,8 @@
--- MySQL dump 10.11
+-- MySQL dump 10.13  Distrib 5.5.28, for debian-linux-gnu (x86_64)
 --
--- Host: localhost    Database: room_allocation
+-- Host: localhost    Database: roomReser
 -- ------------------------------------------------------
--- Server version	5.0.95
+-- Server version	5.5.28-0ubuntu0.12.10.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -28,15 +28,15 @@ CREATE TABLE `Booking` (
   `madeAt` time NOT NULL,
   `madeOn` date NOT NULL,
   `roomId` int(11) NOT NULL,
-  `status` int(11) NOT NULL default '0',
-  `description` varchar(300) default NULL,
-  `Start_Date` date NOT NULL default '0000-00-00',
-  `End_Date` date NOT NULL default '0000-00-00',
-  `Start_Time` time NOT NULL default '00:00:00',
-  `End_Time` time NOT NULL default '00:00:00',
-  `Repeat_Type` char(9) NOT NULL default 'None',
-  `booking_id` int(11) NOT NULL auto_increment,
-  PRIMARY KEY  (`booking_id`),
+  `status` int(11) NOT NULL DEFAULT '0',
+  `description` varchar(300) DEFAULT NULL,
+  `Start_Date` date NOT NULL DEFAULT '0000-00-00',
+  `End_Date` date NOT NULL DEFAULT '0000-00-00',
+  `Start_Time` time NOT NULL DEFAULT '00:00:00',
+  `End_Time` time NOT NULL DEFAULT '00:00:00',
+  `Repeat_Type` char(9) NOT NULL DEFAULT 'None',
+  `booking_id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`booking_id`),
   UNIQUE KEY `booking_id` (`booking_id`),
   KEY `user` (`user`),
   KEY `confirmedBy` (`confirmedBy`)
@@ -61,9 +61,9 @@ DROP TABLE IF EXISTS `Building`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Building` (
-  `buildId` int(11) NOT NULL auto_increment,
-  `buildingName` varchar(30) default NULL,
-  PRIMARY KEY  (`buildId`)
+  `buildId` int(11) NOT NULL AUTO_INCREMENT,
+  `buildingName` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`buildId`)
 ) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -85,10 +85,10 @@ DROP TABLE IF EXISTS `Category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Category` (
-  `catId` int(11) NOT NULL auto_increment,
+  `catId` int(11) NOT NULL AUTO_INCREMENT,
   `catName` varchar(30) NOT NULL,
-  `description` varchar(255) default NULL,
-  PRIMARY KEY  (`catId`),
+  `description` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`catId`),
   UNIQUE KEY `catName` (`catName`)
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -104,6 +104,30 @@ INSERT INTO `Category` VALUES (1,'Projector_Room',NULL),(2,'AC',NULL),(3,'Teach_
 UNLOCK TABLES;
 
 --
+-- Table structure for table `Configuration`
+--
+
+DROP TABLE IF EXISTS `Configuration`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Configuration` (
+  `name` varchar(30) DEFAULT NULL,
+  `startDate` date NOT NULL DEFAULT '0000-00-00',
+  `endDate` date NOT NULL DEFAULT '0000-00-00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Configuration`
+--
+
+LOCK TABLES `Configuration` WRITE;
+/*!40000 ALTER TABLE `Configuration` DISABLE KEYS */;
+INSERT INTO `Configuration` VALUES ('Summer','0000-00-11','0000-00-00'),('Winter','0000-00-22','0000-00-22'),('Monsoon','0000-00-02','0000-00-12'),('Spring','0000-00-21','0000-00-21'),('Semester_Break','0000-00-00','0000-00-00');
+/*!40000 ALTER TABLE `Configuration` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `CourseRooms`
 --
 
@@ -111,14 +135,14 @@ DROP TABLE IF EXISTS `CourseRooms`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `CourseRooms` (
-  `Code` varchar(10) default NULL,
-  `Name` varchar(100) default NULL,
-  `Room` varchar(10) default NULL,
-  `Day` varchar(10) default NULL,
-  `StartTime` varchar(10) default NULL,
-  `EndTime` varchar(10) default NULL,
-  `Type` varchar(10) default NULL,
-  `PrevRoom` varchar(10) default NULL
+  `Code` varchar(10) DEFAULT NULL,
+  `Name` varchar(100) DEFAULT NULL,
+  `Room` varchar(10) DEFAULT NULL,
+  `Day` varchar(10) DEFAULT NULL,
+  `StartTime` varchar(10) DEFAULT NULL,
+  `EndTime` varchar(10) DEFAULT NULL,
+  `Type` varchar(10) DEFAULT NULL,
+  `PrevRoom` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -164,10 +188,10 @@ DROP TABLE IF EXISTS `Feedback_Form`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Feedback_Form` (
-  `Name` char(50) default NULL,
-  `Email_id` varchar(50) default NULL,
-  `Comment` varchar(200) default NULL,
-  `Time` timestamp NOT NULL default CURRENT_TIMESTAMP
+  `Name` char(50) DEFAULT NULL,
+  `Email_id` varchar(50) DEFAULT NULL,
+  `Comment` varchar(200) DEFAULT NULL,
+  `Time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -189,9 +213,9 @@ DROP TABLE IF EXISTS `Groups`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Groups` (
-  `groupName` varchar(200) default NULL,
+  `groupName` varchar(200) DEFAULT NULL,
   `level` int(2) NOT NULL,
-  PRIMARY KEY  (`level`)
+  PRIMARY KEY (`level`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -213,29 +237,29 @@ DROP TABLE IF EXISTS `Instances`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Instances` (
-  `reqNo` int(11) NOT NULL default '0',
-  `hash` varchar(100) default NULL,
-  `creator` varchar(25) default NULL,
-  `creatorEmail` varchar(50) default NULL,
-  `creatorPhone` varchar(15) default NULL,
-  `concernedPName` varchar(15) default NULL,
-  `concernedPEmail` varchar(50) default NULL,
-  `concernedPPhone` varchar(15) default NULL,
-  `appStatus` varchar(25) default 'Accepted',
-  `reqGId` int(10) default NULL,
-  `reqDate` timestamp NOT NULL default CURRENT_TIMESTAMP,
-  `eventStartDate` date default NULL,
-  `eventEndDate` date default NULL,
-  `eventStartTime` time default NULL,
-  `eventEndTime` time default NULL,
-  `eventTitle` varchar(40) default NULL,
-  `eventDesc` varchar(1000) default NULL,
-  `eventDays` varchar(50) default NULL,
-  `concernedAdmin` int(2) default NULL,
-  `room` varchar(10) default NULL,
-  `reqType` varchar(10) default 'One Time',
-  `reqRejectReason` varchar(1000) default NULL,
-  `modifyTimestamp` timestamp NOT NULL default '0000-00-00 00:00:00'
+  `reqNo` int(11) NOT NULL DEFAULT '0',
+  `hash` varchar(100) DEFAULT NULL,
+  `creator` varchar(25) DEFAULT NULL,
+  `creatorEmail` varchar(50) DEFAULT NULL,
+  `creatorPhone` varchar(15) DEFAULT NULL,
+  `concernedPName` varchar(15) DEFAULT NULL,
+  `concernedPEmail` varchar(50) DEFAULT NULL,
+  `concernedPPhone` varchar(15) DEFAULT NULL,
+  `appStatus` varchar(25) DEFAULT 'Accepted',
+  `reqGId` int(10) DEFAULT NULL,
+  `reqDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `eventStartDate` date DEFAULT NULL,
+  `eventEndDate` date DEFAULT NULL,
+  `eventStartTime` time DEFAULT NULL,
+  `eventEndTime` time DEFAULT NULL,
+  `eventTitle` varchar(40) DEFAULT NULL,
+  `eventDesc` varchar(1000) DEFAULT NULL,
+  `eventDays` varchar(50) DEFAULT NULL,
+  `concernedAdmin` int(2) DEFAULT NULL,
+  `room` varchar(10) DEFAULT NULL,
+  `reqType` varchar(10) DEFAULT 'One Time',
+  `reqRejectReason` varchar(1000) DEFAULT NULL,
+  `modifyTimestamp` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -260,30 +284,30 @@ DROP TABLE IF EXISTS `Requests`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Requests` (
-  `reqNo` int(11) NOT NULL auto_increment,
-  `hash` varchar(100) default NULL,
-  `creator` varchar(25) default NULL,
-  `creatorEmail` varchar(50) default NULL,
-  `creatorPhone` varchar(15) default NULL,
-  `concernedPName` varchar(15) default NULL,
-  `concernedPEmail` varchar(50) default NULL,
-  `concernedPPhone` varchar(15) default NULL,
-  `appStatus` varchar(25) default 'Pending',
-  `reqGId` int(10) default NULL,
-  `reqDate` timestamp NOT NULL default CURRENT_TIMESTAMP,
-  `eventStartDate` date default NULL,
-  `eventEndDate` date default NULL,
-  `eventStartTime` time default NULL,
-  `eventEndTime` time default NULL,
-  `eventTitle` varchar(40) default NULL,
-  `eventDesc` varchar(1000) default NULL,
-  `eventDays` varchar(50) default NULL,
-  `concernedAdmin` int(2) default NULL,
-  `room` varchar(10) default NULL,
-  `reqType` varchar(10) default 'One Time',
-  `reqRejectReason` varchar(1000) default 'Your request is pending! :)',
-  `modifyTimestamp` timestamp NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`reqNo`)
+  `reqNo` int(11) NOT NULL AUTO_INCREMENT,
+  `hash` varchar(100) DEFAULT NULL,
+  `creator` varchar(25) DEFAULT NULL,
+  `creatorEmail` varchar(50) DEFAULT NULL,
+  `creatorPhone` varchar(15) DEFAULT NULL,
+  `concernedPName` varchar(15) DEFAULT NULL,
+  `concernedPEmail` varchar(50) DEFAULT NULL,
+  `concernedPPhone` varchar(15) DEFAULT NULL,
+  `appStatus` varchar(25) DEFAULT 'Pending',
+  `reqGId` int(10) DEFAULT NULL,
+  `reqDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `eventStartDate` date DEFAULT NULL,
+  `eventEndDate` date DEFAULT NULL,
+  `eventStartTime` time DEFAULT NULL,
+  `eventEndTime` time DEFAULT NULL,
+  `eventTitle` varchar(40) DEFAULT NULL,
+  `eventDesc` varchar(1000) DEFAULT NULL,
+  `eventDays` varchar(50) DEFAULT NULL,
+  `concernedAdmin` int(2) DEFAULT NULL,
+  `room` varchar(10) DEFAULT NULL,
+  `reqType` varchar(10) DEFAULT 'One Time',
+  `reqRejectReason` varchar(1000) DEFAULT 'Your request is pending! :)',
+  `modifyTimestamp` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`reqNo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -305,13 +329,13 @@ DROP TABLE IF EXISTS `Room`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Room` (
-  `roomId` int(11) NOT NULL auto_increment,
+  `roomId` int(11) NOT NULL AUTO_INCREMENT,
   `roomName` varchar(8) NOT NULL,
   `buildingName` int(11) NOT NULL,
   `blockName` int(11) NOT NULL,
-  `description` varchar(255) default NULL,
-  `capacity` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`roomId`),
+  `description` varchar(255) DEFAULT NULL,
+  `capacity` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`roomId`),
   UNIQUE KEY `roomName` (`roomName`),
   KEY `building` (`buildingName`),
   KEY `block` (`blockName`)
@@ -338,7 +362,7 @@ DROP TABLE IF EXISTS `Room_Cat`;
 CREATE TABLE `Room_Cat` (
   `roomId` int(11) NOT NULL,
   `catId` int(11) NOT NULL,
-  PRIMARY KEY  (`roomId`,`catId`),
+  PRIMARY KEY (`roomId`,`catId`),
   KEY `catId` (`catId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -361,12 +385,12 @@ DROP TABLE IF EXISTS `Tablem`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Tablem` (
-  `Code` varchar(10) default NULL,
-  `Name` varchar(100) default NULL,
-  `Day` varchar(5) default NULL,
-  `StartTime` varchar(10) default NULL,
-  `EndTime` varchar(10) default NULL,
-  `PrevRoom` varchar(10) default NULL
+  `Code` varchar(10) DEFAULT NULL,
+  `Name` varchar(100) DEFAULT NULL,
+  `Day` varchar(5) DEFAULT NULL,
+  `StartTime` varchar(10) DEFAULT NULL,
+  `EndTime` varchar(10) DEFAULT NULL,
+  `PrevRoom` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -388,9 +412,9 @@ DROP TABLE IF EXISTS `Tableme`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Tableme` (
-  `Code` varchar(10) default NULL,
-  `Name` varchar(100) default NULL,
-  `Type` varchar(10) default NULL
+  `Code` varchar(10) DEFAULT NULL,
+  `Name` varchar(100) DEFAULT NULL,
+  `Type` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -410,15 +434,18 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Tablet`;
 /*!50001 DROP VIEW IF EXISTS `Tablet`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
 /*!50001 CREATE TABLE `Tablet` (
-  `Code` varchar(10),
-  `Name` varchar(100),
-  `Type` varchar(10),
-  `Day` varchar(5),
-  `StartTime` varchar(10),
-  `EndTime` varchar(10),
-  `PrevRoom` varchar(10)
+  `Code` tinyint NOT NULL,
+  `Name` tinyint NOT NULL,
+  `Type` tinyint NOT NULL,
+  `Day` tinyint NOT NULL,
+  `StartTime` tinyint NOT NULL,
+  `EndTime` tinyint NOT NULL,
+  `PrevRoom` tinyint NOT NULL
 ) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Temporary table structure for view `Tablet1`
@@ -426,15 +453,18 @@ DROP TABLE IF EXISTS `Tablet`;
 
 DROP TABLE IF EXISTS `Tablet1`;
 /*!50001 DROP VIEW IF EXISTS `Tablet1`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
 /*!50001 CREATE TABLE `Tablet1` (
-  `Code` varchar(10),
-  `Name` varchar(100),
-  `Type` varchar(10),
-  `Day` varchar(5),
-  `StartTime` varchar(10),
-  `EndTime` varchar(10),
-  `PrevRoom` varchar(10)
+  `Code` tinyint NOT NULL,
+  `Name` tinyint NOT NULL,
+  `Type` tinyint NOT NULL,
+  `Day` tinyint NOT NULL,
+  `StartTime` tinyint NOT NULL,
+  `EndTime` tinyint NOT NULL,
+  `PrevRoom` tinyint NOT NULL
 ) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Temporary table structure for view `UG1`
@@ -442,15 +472,18 @@ DROP TABLE IF EXISTS `Tablet1`;
 
 DROP TABLE IF EXISTS `UG1`;
 /*!50001 DROP VIEW IF EXISTS `UG1`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
 /*!50001 CREATE TABLE `UG1` (
-  `Code` varchar(10),
-  `Name` varchar(100),
-  `Type` varchar(10),
-  `Day` varchar(5),
-  `StartTime` varchar(10),
-  `EndTime` varchar(10),
-  `PrevRoom` varchar(10)
+  `Code` tinyint NOT NULL,
+  `Name` tinyint NOT NULL,
+  `Type` tinyint NOT NULL,
+  `Day` tinyint NOT NULL,
+  `StartTime` tinyint NOT NULL,
+  `EndTime` tinyint NOT NULL,
+  `PrevRoom` tinyint NOT NULL
 ) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `Updates`
@@ -483,11 +516,11 @@ DROP TABLE IF EXISTS `User`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `User` (
-  `userId` int(11) NOT NULL auto_increment,
+  `userId` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `level` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`userId`)
+  `level` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`userId`)
 ) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -509,7 +542,7 @@ DROP TABLE IF EXISTS `ccPerson`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ccPerson` (
-  `reqNo` int(11) default NULL,
+  `reqNo` int(11) DEFAULT NULL,
   `email` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -532,13 +565,13 @@ DROP TABLE IF EXISTS `clash`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `clash` (
-  `Code` varchar(10) default NULL,
-  `Name` varchar(100) default NULL,
-  `Day` varchar(5) default NULL,
-  `StartTime` varchar(10) default NULL,
-  `EndTime` varchar(10) default NULL,
-  `Type` varchar(10) default NULL,
-  `Others` varchar(10) default NULL
+  `Code` varchar(10) DEFAULT NULL,
+  `Name` varchar(100) DEFAULT NULL,
+  `Day` varchar(5) DEFAULT NULL,
+  `StartTime` varchar(10) DEFAULT NULL,
+  `EndTime` varchar(10) DEFAULT NULL,
+  `Type` varchar(10) DEFAULT NULL,
+  `Others` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -578,28 +611,58 @@ UNLOCK TABLES;
 -- Final view structure for view `Tablet`
 --
 
-/*!50001 DROP TABLE `Tablet`*/;
+/*!50001 DROP TABLE IF EXISTS `Tablet`*/;
 /*!50001 DROP VIEW IF EXISTS `Tablet`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `Tablet` AS select distinct `Tablem`.`Code` AS `Code`,`Tablem`.`Name` AS `Name`,`Tableme`.`Type` AS `Type`,`Tablem`.`Day` AS `Day`,`Tablem`.`StartTime` AS `StartTime`,`Tablem`.`EndTime` AS `EndTime`,`Tablem`.`PrevRoom` AS `PrevRoom` from (`Tablem` join `Tableme`) where (`Tablem`.`Code` = `Tableme`.`Code`) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
 -- Final view structure for view `Tablet1`
 --
 
-/*!50001 DROP TABLE `Tablet1`*/;
+/*!50001 DROP TABLE IF EXISTS `Tablet1`*/;
 /*!50001 DROP VIEW IF EXISTS `Tablet1`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `Tablet1` AS select `Tablet`.`Code` AS `Code`,`Tablet`.`Name` AS `Name`,`Tablet`.`Type` AS `Type`,`Tablet`.`Day` AS `Day`,`Tablet`.`StartTime` AS `StartTime`,`Tablet`.`EndTime` AS `EndTime`,`Tablet`.`PrevRoom` AS `PrevRoom` from `Tablet` where ((`Tablet`.`Type` = _latin1'BC') or ((`Tablet`.`Type` = _latin1'Elective') and (not((`Tablet`.`Name` like _latin1'%Lab%'))))) order by `Tablet`.`Type`,`Tablet`.`Code`,`Tablet`.`StartTime` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
 -- Final view structure for view `UG1`
 --
 
-/*!50001 DROP TABLE `UG1`*/;
+/*!50001 DROP TABLE IF EXISTS `UG1`*/;
 /*!50001 DROP VIEW IF EXISTS `UG1`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `UG1` AS select distinct `Tablem`.`Code` AS `Code`,`Tablem`.`Name` AS `Name`,`Tableme`.`Type` AS `Type`,`Tablem`.`Day` AS `Day`,`Tablem`.`StartTime` AS `StartTime`,`Tablem`.`EndTime` AS `EndTime`,`Tablem`.`PrevRoom` AS `PrevRoom` from (`Tablem` join `Tableme`) where ((`Tablem`.`Code` = `Tableme`.`Code`) and (`Tableme`.`Type` like _latin1'UG1')) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -610,4 +673,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-11-14 18:49:32
+-- Dump completed on 2012-11-14 22:23:16
