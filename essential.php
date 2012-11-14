@@ -1,3 +1,5 @@
+
+
 <?php
 $week['Sunday'] = 1;
 $week['Monday'] = 2;
@@ -451,7 +453,7 @@ function accept($name,$mail_to,$room_no,$request_id,$cc)
 	$subject="Room allocation: Request Accepted";
 	$headers  = 'MIME-Version: 1.0' . "\r\n";
 	$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-	$headers .= 'From: Noreply <noreply@roomreservation.iiit.ac.in>' . "\r\n";
+	$headers .= 'From: R A Portal <noreply@roomreservation.iiit.ac.in>' . "\r\n";
 	$headers .= "Cc: {$cc}"."\r\n";
 	mail($mail_to,$subject,$message,$headers);
 }
@@ -469,7 +471,7 @@ function reject($name,$mail_to,$room_no,$request_id,$reason, $cc)
 	$subject="Room allocation: Request Rejected";
 	$headers  = 'MIME-Version: 1.0' . "\r\n";
 	$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-	$headers .= 'From: Noreply <noreply@roomreservation.iiit.ac.in>' . "\r\n";
+	$headers .= 'From: R A Portal <noreply@roomreservation.iiit.ac.in>' . "\r\n";
 	$headers .= "Cc: {$cc}"."\r\n";
  	mail($mail_to,$subject,$message,$headers);
 }
@@ -492,7 +494,7 @@ function cancel($name,$mail_to,$room_no,$request_id,$reason, $cc){
 	$subject="Room allocation: Request Cancelled";
 	$headers  = 'MIME-Version: 1.0' . "\r\n";
 	$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-	$headers .= 'From: Noreply <noreply@roomreservation.iiit.ac.in>' . "\r\n";
+	$headers .= 'From: R A Portal <noreply@roomreservation.iiit.ac.in>' . "\r\n";
 	$headers .= "Cc: {$cc}"."\r\n";
  	mail($mail_to,$subject,$message,$headers);
 }
@@ -514,7 +516,7 @@ function forward($name,$mail_to,$room_no,$request_id,$original_mail_id, $cc)
 	$subject="Room allocation: Request forwarded";
 	$headers  = 'MIME-Version: 1.0' . "\r\n";
 	$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-	$headers .= 'From: Noreply <noreply@roomreservation.iiit.ac.in>' . "\r\n";
+	$headers .= 'From: R A Portal <noreply@roomreservation.iiit.ac.in>' . "\r\n";
 	$headers .= "Cc: {$cc}"."\r\n";
  	mail($mail_to,$subject,$message,$headers);
 }
@@ -820,6 +822,7 @@ $result1[] = $row;
 }
         }
 /* $query2 = "SELECT * FROM Instances WHERE 
+
                 Room = '".$roomId."' 
 		AND NOT (eventStartDate >'" . date('Y-m-d',$date_e) . "' OR eventEndDate < '" . date('Y-m-d',$date_s) . "') AND NOT (eventStartTime >='" . date('H:i:s',$time_e). "' OR eventEndTime <='" . date('H:i:s',$time_s). "') ORDER BY eventStartTime;";
 
@@ -854,13 +857,18 @@ function getRequests($id,$query){
 			<tr> 
 	       	<?php
 			$i=0;
+		$pri=0;
                 foreach($row as $col){        //for columns printing purposes
                 	?>
 			<td>
 			<?php
+			
+			
 			if($i==0){
 			echo "<a href='req_detail.php?id=$col'>$col</a>";
+			$pri=$col;
 			}
+
 			else{
 				echo $col; echo " ";
 			}
@@ -868,6 +876,13 @@ function getRequests($id,$query){
         	        <?php
                 	$i++;
 			}
+		
+			?>
+				<?php /*<td><?php echo "<a href='req_detail.php?id=$pri'>Details</a>" ?></td> */?>
+				<td><button type="submit" onClick="javascript:window.location.href='req_detail.php?id=<?php echo "$pri" ?>'"> Details </button></td>
+				
+					<?php
+			
 			if($id=='Accepted'){
 			?>
 				<td><button type='submit' class="cancelBtn" value=<?php echo $row['reqNo']; ?> >Cancel</button></td>
@@ -883,6 +898,76 @@ function getRequests($id,$query){
 	</tbody>
 	<?php
 }
+
+function getMyRequests($query){
+	
+	if(isset($_GET['st']))
+	    $mstart=$_GET['st'];
+	else
+	    $mstart=0;
+	$lim=10;
+	$table="Requests";
+	dbconnect();          //connecting db
+	$result=paginate("table.php",$query,$mstart,$lim,$id);             //calling paging
+	$num=mysql_numrows($result);
+	?>
+	<?php		
+		while ($row=mysql_fetch_assoc($result)){                 //fetching rows from result query
+	        ?>
+			<tr> 
+	       	<?php
+			$i=0;
+		$pri=0;
+		$status="";
+                foreach($row as $col){        //for columns printing purposes
+                	?>
+			<td>
+			<?php
+			
+			
+			if($i==0){
+			echo "<a href='req_detail.php?id=$col'>$col</a>";
+			$pri=$col;
+			}
+
+			else{
+				if($i==7)
+				{
+					$status=$col;
+				}
+				echo $col; echo " ";
+			}
+	                ?></td>
+        	        <?php
+                	$i++;
+			}
+		
+			?>
+				<?php /*<td><?php echo "<a href='req_detail.php?id=$pri'>Details</a>" ?></td> */?>
+		<td><button type="submit" onClick="javascript:window.location.href='req_detail.php?id=<?php echo "$pri" ?>'"> Details </button></td>
+			<?php
+			if($status=="Pending")
+			{
+				?>
+		<td><button type="submit" onClick="javascript:window.location.href='myconfirmdel.php?SNO=<?php echo "$pri" ?>'">Delete </button></td>
+					 
+					
+		<?php } 
+		       if($status=="Accepted")echo "<td>N/A</td>";
+		       if($status=="Rejected")echo "<td>N/A</td>";
+				
+				
+				?>
+		
+	</tr>
+	<?php
+	}
+	mysql_close();   
+	?>
+<?php
+}
+
+
 function getCC($reqID)
 {
 	dbconnect();
@@ -1000,6 +1085,20 @@ function explosion($string)
                 }    
         }    
         return $str;
+}
+function getConcernedAdmin($reqID){
+	dbconnect();
+	$query = "select concernedAdmin from Requests where reqNo = {$reqID}";
+	$result = execute($query);
+	$row = mysql_fetch_row($result);
+	return $row[0];
+}
+function getRequestStatus($reqID){
+	dbconnect();
+	$query = "select appStatus from Requests where reqNo = {$reqID}";
+	$result = execute($query);
+	$row = mysql_fetch_row($result);
+	return $row[0];
 }
 
 ?>

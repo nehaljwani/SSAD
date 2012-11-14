@@ -1,3 +1,4 @@
+<?php require_once('essential.php'); ?>
 <?php require_once('header.php'); ?>
 <div class="post">
 <?php echo $boxMsg; ?>

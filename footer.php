@@ -3,16 +3,19 @@
 		</div>
 		<!-- end #content -->
 		<div id="sidebar">
-			<div>
+			<div>	<?php 
+			$gID = getCurGroup();
+			if($gID == 2){//If Admin, display the following side bar
+			?>
 				<h2>Navigation</h2>
-								<ul class="list-style1">
-								<!-- Placed Lectures At top. Will change. -->
+				<ul class="list-style1">
+					<!-- Placed Lectures At top. Will change. -->
 					<li class="first"><a href="requestForm.php">Create Request</a></li>
 					<li><a href="lectures.php">Lectures</a></li>
 					<li><a href="instances.php">View instances</a></li>
 					<li><a href="nhome.php">Availability Status</a></li>
 					<li><a href="search.php">Advanced Search</a></li>
-					<li><a href="table.php">View requests</a></li>
+					<li><a href="table.php?view=All">View requests</a></li>
 					<li><a href="tabledel.php">Remove requests</a></li>
 					<li><a href="addUpdateGrp.php">Modify Groups</a></li>
 					<!--li><a href="s_Addroom.php">Add/Modify room</a></li>
@@ -22,15 +25,40 @@
 			<!--		<li><a href="lectures.php">Lectures</a></li> -->
                                         <li><a href="#">Tutorials</a></li>
                                         <li><a href="#">Labs</a></li>
+                                        <li><a href="myRequests.php">My Requests</a></li>
 
 				</ul>
 				<h2>Category 2</h2>
 				<ul class="list-style1">
-					<li><a href="#">Cat</a></li>
+					<li class="first"><a href="#">Cat</a></li>
 					<li><a href="#">Cat</a></li>
 					<li><a href="#">Cat</a></li>
 					<li><a href="#">Cat</a></li>
 				</ul> 
+			<?php }else{ //Else, display the following nav bar ?>
+				<h2>Navigation</h2>
+				<ul class="list-style1">
+					<!-- Placed Lectures At top. Will change. -->
+					<li class="first"><a href="requestForm.php">Create Request</a></li>
+					<li><a href="lectures.php">Lectures</a></li>
+					<li><a href="instances.php">View instances</a></li>
+					<li><a href="nhome.php">Availability Status</a></li>
+					<li><a href="search.php">Advanced Search</a></li>
+					<li><a href="table.php?view=All">View requests</a></li>
+					<li><a href="tabledel.php">Remove requests</a></li>
+					<li><a href="addUpdateGrp.php">Modify Groups</a></li>
+					<!--li><a href="s_Addroom.php">Add/Modify room</a></li>
+					<li><a href="s_Addbuilding.php">Add/Modify building</a></li-->
+					<li><a href="feedback_view.php">View Feedbacks</a></li>
+					<li><a href="allForm.php">AllForms</a></li>
+			<!--		<li><a href="lectures.php">Lectures</a></li> -->
+                                        <li><a href="#">Tutorials</a></li>
+                                        <li><a href="#">Labs</a></li>
+                                        <li><a href="myRequests.php">My Requests</a></li>
+
+				</ul>
+
+			<?php } ?>
 			</div>
 		</div>
 		<!-- end #sidebar -->

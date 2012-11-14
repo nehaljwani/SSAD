@@ -8,7 +8,7 @@ if($gID != 2){
 
 ?>
 <div class="post">
-<h2 class="title"><a href="#">Request Details</a></h2>
+<h2 class="title">Request Details</h2>
 <script type="text/javascript">
 
 function confirm_delete(x){

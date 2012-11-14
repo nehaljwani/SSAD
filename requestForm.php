@@ -1,6 +1,5 @@
 <?php include("essential.php"); ?>
 <?php require_once('header.php');
-print_r($_GET);
 ?>
 <div class="post">
   <h2 class="title"><a href="#">room request form </a></h2>
@@ -13,7 +12,7 @@ print_r($_GET);
 <script language="javascript" type="text/javascript" src="js/addRequest.js"></script>
 <script language="javascript" type="text/javascript" src="js/autofill.js"></script>
 <script language="javascript" type="text/javascript">
-<?php if(isset($_GET)){
+<?php if(isset($_GET['buildingname'])){
 	?>
 		$(document).ready(function(){
 				$('select.room').attr('value','<?php echo $_GET['roomName'];  ?>');
@@ -77,16 +76,17 @@ echo generateBuildingList("buildingName");
 	
 	echo "</td></tr>";?>
 <?php //if($_GET['roomName']){ echo "<select name ='room' id = 'room'><option name= '".$_GET['roomName']."' value='".$_GET['roomName']."'>".$_GET['roomName']."</option></select>";}    ?>
-	<tr> <td>Event Type : </td> 
+	<tr> <td>Event Frequency : </td> 
 	<td> <input type='radio' name='reqType' value='One Time' checked='true' class="repeat" id="repType1"/> One Time </td></tr><tr><td></td>
 	<td><input type='radio' name='reqType' value='Multiple' id="repType2" class="repeat"/> Multiple </td></tr>
-	<tr class="days"><td></td><td><input type="checkbox" name='day[]' value="1"/>Sunday</td><td>
-		         <input type="checkbox" name='day[]' value="2"/>Monday</td></tr>
-	<tr class="days"><td></td><td><input type="checkbox" name='day[]' value="3"/>Tuesday</td><td>
-		         <input type="checkbox" name='day[]' value="4"/>Wednesday</td></tr>
-	<tr class="days"><td></td><td><input type="checkbox" name='day[]' value="5"/>Thursday</td><td>
-		         <input type="checkbox" name='day[]' value="6"/>Friday</td></tr>
-	<tr class="days"><td></td><td><input type="checkbox" name='day[]' value="7"/>Saturday</td></tr>
+	<tr class="days"><td></td><td><input type="checkbox" name='day[]' value="1" class='weekday'/>Sunday</td><td>
+		         <input type="checkbox" name='day[]' value="2" class='weekday'/>Monday</td></tr>
+	<tr class="days"><td></td><td><input type="checkbox" name='day[]' value="3" class='weekday'/>Tuesday</td><td>
+		         <input type="checkbox" name='day[]' value="4" class='weekday'/>Wednesday</td></tr>
+	<tr class="days"><td></td><td><input type="checkbox" name='day[]' value="5"/ class='weekday'>Thursday</td><td>
+		         <input type="checkbox" name='day[]' value="6" class='weekday'/>Friday</td></tr>
+	<tr class="days"><td></td><td><input type="checkbox" name='day[]' value="7" class='weekday'/>Saturday</td><td>
+		         <input type="checkbox" id='all' value="all" />All</td></tr>
 	<tr><td> Start Date: </td><td><div id='sdivdate'>  <script>DateInput('eventStartDate', true,'YYYY-MM-DD')</script></div></td></tr>
 	<tr><td> End Date: </td><td><div id='edivdate'>  <script>DateInput('eventEndDate', true,'YYYY-MM-DD')</script> </div> </td></tr>
 	<tr> <td>Start Timeslot : </td>	
@@ -101,7 +101,7 @@ echo generateBuildingList("buildingName");
 	<select name='concernedAdmin' id='confirmedBy'>
 	<?php printNextGroupOptions(0); ?> <!-- Default will be the value of $curGroup of the user currently logged in-->
 	</select></div></td></tr><br/>
-	<tr> <td> Activity/Reason: </td><td>
+	<tr> <td> Activity Description: </td><td>
 	<textarea id='description'  name='eventDesc'/></textarea></tr>
 	<tr><td>CC: </td><td><input type="text" name="cc"></td></tr>
 	<tr><td></td><td>

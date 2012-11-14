@@ -28,4 +28,20 @@ $(document).ready(function() {
 			$("#eventEndTime").get(0).selectedIndex=($("#eventStartTime").get(0).selectedIndex+1)%48;
 
 		});
+		$("#all").change( function() {
+			if($("#all").prop('checked')==true){
+	   			$('.weekday').each(function(){    $(this).prop('checked','true')    });
+			}
+			else {
+		           $('.weekday').each(function(){    $(this).removeAttr('checked')    });
+			}
+		})
+		$('.weekday').change(function(){ 
+	  	        if($('input.weekday:checked').length==7) { 
+			 	   $('#all').prop('checked','true')    
+			}
+			else {  
+				$('#all').removeAttr('checked')     
+			}        
+		})
 });

@@ -22,6 +22,6 @@ echo "$_POST[$startDate]</br>$i";
 		 $i++;
 }
 
-header("Location:configuration.php?msg='Configutration Updated Suceesfully'");
+header("Location:configuration.php?msg='Configutration Updated Successfully'");
 
 ?>

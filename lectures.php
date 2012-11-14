@@ -1,6 +1,6 @@
 <html>
 <body>
-<?php require_once('header.php'); ?>
+<?php include('header.php'); ?>
 
 <form name='predef' action="my.php" method='post'>
 <table align='left'>
@@ -25,13 +25,13 @@
 </tr>
 <td><li><a href="printAllottedRooms.php" id="mybody">View Allotted Rooms</a></li><br></td>
 </tr>
-<td><li><a href="printoutput.php" id="mybody">Consolidaed View</a></li><br></td>
+<td><li><a href="printoutput.php" id="mybody">Consolidated View</a></li><br></td>
 </tr>
                 </table>
                 </form>
                 </table>
                 </form>
 <br/><br/><br/><br/><br/>
-<?php require_once('footer.php'); ?>
+<?php include('footer.php'); ?>
 </body>
 </html>

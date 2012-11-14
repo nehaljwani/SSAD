@@ -29,9 +29,16 @@
 	}
 	else if($_GET['view']=='Accepted'){
 	?>	
+		<th scope="col">Details</th>
 		<th scope="col">Cancel Option</th> 
 	<?php
 	}
+	else if($_GET['view']=='All' || $_GET['view']=='Pending' || $_GET['view']=='Rejected' || $_GET['view']=='nonConflicts' || $_GET['view']=='Conflicts' || $_GET['view']=='Cancelled'){
+		?>
+			<th scope="col">Details</th>
+			<?php
+	}
+
 ?>
 </tr>
 </thead>

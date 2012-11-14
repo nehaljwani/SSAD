@@ -44,19 +44,19 @@ if(ISSET($_GET) && $_GET['building_id'] != '' && $_GET['building_id'] != null &&
 	
 	if($_GET['building_id'] == $result['buildId'])
 	{
-		echo "<a id=".$result['buildId']."  class='button black' href = 'nhome.php?m=".$m."&start_time=".$morstrt."&date=" . date("d-M-y",strtotime("+0 day",$time))."&end_time=".$morend."&building_id=".$result['buildId']."'>".$result['buildingName']."</a></td>";
+		echo "<a id=".$result['buildId']."  class='button black1' href = 'nhome.php?m=".$m."&start_time=".$morstrt."&date=" . date("d-M-y",strtotime("+0 day",$time))."&end_time=".$morend."&building_id=".$result['buildId']."'>".$result['buildingName']."</a></td>";
 	}
 
 	else
 	{
-		echo "<a id=".$result['buildId']."  class='button orange' href = 'nhome.php?m=".$m."&start_time=".$morstrt."&date=" . date("d-M-y",strtotime("+0 day",$time))."&end_time=".$morend."&building_id=".$result['buildId']."'>".$result['buildingName']."</a></td>";
+		echo "<a id=".$result['buildId']."  class='button orange1' href = 'nhome.php?m=".$m."&start_time=".$morstrt."&date=" . date("d-M-y",strtotime("+0 day",$time))."&end_time=".$morend."&building_id=".$result['buildId']."'>".$result['buildingName']."</a></td>";
 	}
 
 }
 
 else
 {
-echo "<a id=".$result['buildId']."  class='button orange' href = 'nhome.php?m=".$m."&start_time=".$morstrt."&date=" . date("d-M-y",strtotime("+0 day",$time))."&end_time=".$morend."&building_id=".$result['buildId']."'>".$result['buildingName']."</a></td>";
+echo "<a id=".$result['buildId']."  class='button orange1' href = 'nhome.php?m=".$m."&start_time=".$morstrt."&date=" . date("d-M-y",strtotime("+0 day",$time))."&end_time=".$morend."&building_id=".$result['buildId']."'>".$result['buildingName']."</a></td>";
 
 }
 
@@ -118,11 +118,11 @@ while($result = mysql_fetch_assoc($dayresult))
 
 if(($result['slot'] == $_GET['m']) or ($result['slot'] == strtoupper($_GET['m'])) )
 {
-		echo "<a   style='text-transform:uppercase;' href='nhome.php?m=".$result['slot']."&start_time=".$result['starttime']."&end_time=".$result['endtime']."&date=" . date("d-M-y",strtotime("+0 day",$time))."&building_id=".$_GET["building_id"]."' class='button black' >".$result['slot']."</a>    ";
+		echo "<a   style='text-transform:uppercase;' href='nhome.php?m=".$result['slot']."&start_time=".$result['starttime']."&end_time=".$result['endtime']."&date=" . date("d-M-y",strtotime("+0 day",$time))."&building_id=".$_GET["building_id"]."' class='button black1' >".$result['slot']."</a>    ";
 }
 else
 {
-		echo "<a   style='text-transform:uppercase;' href='nhome.php?m=".$result['slot']."&start_time=".$result['starttime']."&end_time=".$result['endtime']."&date=" . date("d-M-y",strtotime("+0 day",$time))."&building_id=".$_GET["building_id"]."' class='button orange' >".$result['slot']."</a>    ";
+		echo "<a   style='text-transform:uppercase;' href='nhome.php?m=".$result['slot']."&start_time=".$result['starttime']."&end_time=".$result['endtime']."&date=" . date("d-M-y",strtotime("+0 day",$time))."&building_id=".$_GET["building_id"]."' class='button orange1' >".$result['slot']."</a>    ";
 }
 }
 //		echo "<a href='nhome.php?m=".$a."&start_time=".$aftstrt."&end_time=".$aftend."&date=" . date("d-M-y",strtotime("+0 day",$time))."&building_id=".$_GET["building_id"]."' class='button orange' >AFTERNOON</a>    ";

@@ -1,5 +1,6 @@
 <?php
 
+include("header.php");
 include("essential.php");
 dbconnect();
 if(isset($_GET['id'])){
@@ -10,6 +11,12 @@ else{
 }
 //require_once("header.php");
 //$id=19;
+if($id==0)
+{
+	echo "This Room is alloted by Admins";
+}
+else
+{
 $sq="select * from Requests where reqNo =".$id.";";
 //echo $sq;
 $res=execute($sq);
@@ -19,7 +26,6 @@ $col=mysql_fetch_row($res);
 
 ?> 
 
-<?php include("header.php"); ?>
 <?php 
 
 
@@ -115,4 +121,6 @@ if(1){ ?>
 ?>
 </table>
 </div>
+<?php }
+?>
 <?php include("footer.php"); ?>
