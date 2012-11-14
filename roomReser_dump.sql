@@ -61,11 +61,12 @@ DROP TABLE IF EXISTS `BugComments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `BugComments` (
-  `BugId` int(11) NOT NULL AUTO_INCREMENT,
+  `CommentId` int(11) NOT NULL AUTO_INCREMENT,
+  `BugId` int(11) DEFAULT NULL,
   `Comments` varchar(1000) DEFAULT NULL,
   `CommentorEmail` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`BugId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`CommentId`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -74,7 +75,7 @@ CREATE TABLE `BugComments` (
 
 LOCK TABLES `BugComments` WRITE;
 /*!40000 ALTER TABLE `BugComments` DISABLE KEYS */;
-INSERT INTO `BugComments` VALUES (1,'Rocks','shubham.sangal@students.iiit.ac.in');
+INSERT INTO `BugComments` VALUES (1,1,'Rocks','shubham.sangal@students.iiit.ac.in'),(2,1,'ssss','shubham.sangal@students.iiit.ac.in'),(3,1,'test','shubham.sangal@students.iiit.ac.in'),(4,1,'nehal','shubham.sangal@students.iiit.ac.in');
 /*!40000 ALTER TABLE `BugComments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -729,4 +730,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-11-15  1:51:51
+-- Dump completed on 2012-11-15  3:27:10
