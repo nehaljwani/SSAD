@@ -13,7 +13,7 @@ else{
 $sq="select * from Requests where reqNo =".$id.";";
 //echo $sq;
 $res=execute($sq);
-$col1=array("RequestNO","hash","Creator","creatorEmail","creatorPhone ","creatorPhone ","concernedPersonEmail"," concernedPPhone","appStatus"," reqGId","reqDate","eventStartDate","eventEndDate","eventStartTime","eventEndTime ","eventTitle","eventDesc","eventDays","concernedAdmin","room","reqType");
+$col1=array("RequestID","hash","Request made by:","Requester Email","Requester Phone ","Concerned Person Phone ","Concerned Person Email"," Concerned Person Phone","Request Status","Group of Requester","Request Date","event Start Date","event End Date","event Start Time","event End Time ","Title of the Event","event Description","Days of Event","Id of Admin handling this request","room","request Type");
 $num_row=mysql_num_fields($res);
 $col=mysql_fetch_row($res);
 
