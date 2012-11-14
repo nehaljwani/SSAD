@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.28, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.28, for debian-linux-gnu (i686)
 --
 -- Host: localhost    Database: roomReser
 -- ------------------------------------------------------
--- Server version	5.5.28-0ubuntu0.12.10.1
+-- Server version	5.5.28-0ubuntu0.12.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -54,6 +54,57 @@ INSERT INTO `Booking` VALUES (2,2,'23:57:43','2011-11-17',1,1,'to delete others 
 UNLOCK TABLES;
 
 --
+-- Table structure for table `BugComments`
+--
+
+DROP TABLE IF EXISTS `BugComments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `BugComments` (
+  `BugId` int(11) NOT NULL AUTO_INCREMENT,
+  `Comments` varchar(1000) DEFAULT NULL,
+  `CommentorEmail` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`BugId`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `BugComments`
+--
+
+LOCK TABLES `BugComments` WRITE;
+/*!40000 ALTER TABLE `BugComments` DISABLE KEYS */;
+INSERT INTO `BugComments` VALUES (1,'Rocks','shubham.sangal@students.iiit.ac.in');
+/*!40000 ALTER TABLE `BugComments` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `BugTracker`
+--
+
+DROP TABLE IF EXISTS `BugTracker`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `BugTracker` (
+  `BugId` int(11) NOT NULL AUTO_INCREMENT,
+  `Details` varchar(1000) DEFAULT NULL,
+  `Status` varchar(100) DEFAULT NULL,
+  `reporterEmail` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`BugId`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `BugTracker`
+--
+
+LOCK TABLES `BugTracker` WRITE;
+/*!40000 ALTER TABLE `BugTracker` DISABLE KEYS */;
+INSERT INTO `BugTracker` VALUES (1,'Minor test','Pending','shubham.sangal@students.iiit.ac.in'),(2,'shubham.sangal@students.iiit.ac.in','can improve!!!!','Pending'),(3,'sss','Pending','shubham.sangal@students.iiit.ac.in');
+/*!40000 ALTER TABLE `BugTracker` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `Building`
 --
 
@@ -101,30 +152,6 @@ LOCK TABLES `Category` WRITE;
 /*!40000 ALTER TABLE `Category` DISABLE KEYS */;
 INSERT INTO `Category` VALUES (1,'Projector_Room',NULL),(2,'AC',NULL),(3,'Teach_lab',NULL),(6,'Public Addressing System','Speakers'),(7,'',''),(8,'Mosquitos','Buuz buuz');
 /*!40000 ALTER TABLE `Category` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Configuration`
---
-
-DROP TABLE IF EXISTS `Configuration`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Configuration` (
-  `name` varchar(30) DEFAULT NULL,
-  `startDate` date NOT NULL DEFAULT '0000-00-00',
-  `endDate` date NOT NULL DEFAULT '0000-00-00'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Configuration`
---
-
-LOCK TABLES `Configuration` WRITE;
-/*!40000 ALTER TABLE `Configuration` DISABLE KEYS */;
-INSERT INTO `Configuration` VALUES ('Summer','0000-00-11','0000-00-00'),('Winter','0000-00-22','0000-00-22'),('Monsoon','0000-00-02','0000-00-12'),('Spring','0000-00-21','0000-00-21'),('Semester_Break','0000-00-00','0000-00-00');
-/*!40000 ALTER TABLE `Configuration` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -586,6 +613,35 @@ INSERT INTO `clash` VALUES ('ICS102','IT Workshop I','Fri','12.00','13.00','UG1'
 UNLOCK TABLES;
 
 --
+-- Table structure for table `dassod`
+--
+
+DROP TABLE IF EXISTS `dassod`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dassod` (
+  `Code` varchar(10) DEFAULT NULL,
+  `Name` varchar(100) DEFAULT NULL,
+  `Room` varchar(10) DEFAULT NULL,
+  `Day` varchar(10) DEFAULT NULL,
+  `StartTime` varchar(10) DEFAULT NULL,
+  `EndTime` varchar(10) DEFAULT NULL,
+  `Type` varchar(10) DEFAULT NULL,
+  `PrevRoom` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dassod`
+--
+
+LOCK TABLES `dassod` WRITE;
+/*!40000 ALTER TABLE `dassod` DISABLE KEYS */;
+INSERT INTO `dassod` VALUES ('CSE505','','H202','Tue','14.00','15.25','PG1','305'),('CSE505','','H202','Fri','14.00','15.25','PG1','305'),('CSE505','','H202','Mon','00.00','00.00','PG1','305');
+/*!40000 ALTER TABLE `dassod` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `eventTitle`
 --
 
@@ -673,4 +729,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-11-14 22:23:16
+-- Dump completed on 2012-11-15  1:51:51
