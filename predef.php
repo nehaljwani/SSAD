@@ -54,7 +54,7 @@ while($i<$val)
 }
 echo "</select></td></tr></table><br/><br/>";
 echo "<input type='submit' value='submit'>
-<button type='reset' value='submit'>Reset</button>
+<!-- <button type='reset' value='submit'>Reset</button> -->
  </form></center><br/>";
 include('footer.php');
 ?>
