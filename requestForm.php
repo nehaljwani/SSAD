@@ -15,7 +15,8 @@ print_r($_GET);
 <form action="addRequest.php" autocomplete="on" method="POST">
 	<table class='center'>
 	<tr><td> Name:</td><td><input type="text" name="creator" id="P1"><br> </tr>
-	<tr><td> Email: </td><td><input type="email" name="creatorEmail" id="P2" autocomplete="off"><br></tr>
+	<tr><td> Email: </td><td><input type="email" name="creatorEmail" id="P2" autocomplete="off" value='<?php echo phpCAS::getUser(); ?>'
+ readonly><br></tr>
 	<tr><td> Phone No: </td><td><input type="text" name="creatorPhone" id="P3" maxlength=10><br></tr>
 	<tr><td> Are you requesting for someone else?</td><td><input type="checkbox" id="switchAlias"/></tr>
 	<tr class="CP"><td> Details of concerned person:</td></tr>
