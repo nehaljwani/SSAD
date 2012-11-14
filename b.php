@@ -1,8 +1,9 @@
 <?php
 $a=$_POST['number'];
 include("essential.php");
-include("header.php");
+include("header_withoutCAS.php");
 dbconnect();
+include("a.php");
 echo "
 	<center>
 	<form action='present.php?tab=$a' method='post'>

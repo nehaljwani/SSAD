@@ -19,6 +19,8 @@
 <tr>
 <td><li><a href="predef.php" id="mybody">Allocate</a></li><br></td>
 </tr>
+<td><li><a href="printoutput.php" id="mybody">Consolidated View</a></li><br></td>
+</tr>
 <td><li><a href="#" id="mybody">View Time-Table File</a></li><br></td>
 </tr>
 <td><li><a href="#" id="mybody">View Master File</a></li><br></td>
