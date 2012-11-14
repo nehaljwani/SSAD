@@ -9,7 +9,7 @@ if(isset($_GET['id'])){
 $sq="select * from Requests where reqNo =".$id.";";
 //echo $sq;
 $res=execute($sq);
-$col1=array("RequestNO","hash","Creator","creatorEmail","creatorPhone ","creatorPhone ","concernedPersonEmail"," concernedPPhone","appStatus"," reqGId","reqDate","eventStartDate","eventEndDate","eventStartTime","eventEndTime ","eventTitle","eventDesc","eventDays","concernedAdmin","room","reqType");
+$col1=array("RequestID","hash","Request made by:","Requester Email","Requester Phone ","Concerned Person Phone ","concerned Person Email"," Concerned Person Phone","Request Status"," Group of Requester","Request Date","Event Start Date","Event End Date","Event Start Time","Event End Time ","Event Title","Description of Event","Days of Event","Id of concerned Admin","Room","Request Type","Reason for accept/reject","Request Last modified on:");
 $num_row=mysql_num_fields($res);
 $col=mysql_fetch_row($res);
 
@@ -82,8 +82,20 @@ if($gID == 2 || $gID ==3 || $gID ==4 | $gID ==5){ ?>
 
 
 <?php while($i<$num_row){
+	if($col[0]==0)
+	{
+		echo "This room is reserved for Admins";
+		break;
+	}
+	else
+	{
+	
 	if($i!=1)
 	{
+		if($i==17)
+		{
+			$col[$i]=explosion($col[$i]);
+		}
 ?>
 		<tr>
 		<td>
@@ -100,8 +112,9 @@ if($gID == 2 || $gID ==3 || $gID ==4 | $gID ==5){ ?>
 <?php
 	}
 	$i++;
-}
+}}
 ?>
 </table>
 </div>
+
 <?php include("footer.php"); ?>
