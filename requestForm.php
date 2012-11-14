@@ -1,31 +1,17 @@
 <?php include("essential.php"); ?>
-<?php require_once('header.php'); ?>
+<?php require_once('header.php');
+print_r($_GET);
+?>
 <div class="post">
   <h2 class="title"><a href="#">room request form </a></h2>
   <div class="entry">
   </div>
 </div>
-<script type="text/javascript">
- 
-function timedMsg()
-{
-	var t=setTimeout("document.getElementById('kapi').style.display='none';",4000);
-}
-
-</script>
-
 <script type='text/javascript' src='js/livevalidation_standalone.js'></script>
 <script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
 <script language="javascript" type="text/javascript" src="js/calendarDateInput.js"></script>
 <script language="javascript" type="text/javascript" src="js/addRequest.js"></script>
 <script language="javascript" type="text/javascript" src="js/autofill.js"></script>
-<?php if(isset($_GET['msg'])){
-		      //  echo "<p id='kapi' style='background-color:#1C478E;font-size:14pt;color:#FFFFFF;text-align:right;'>" . $_GET['msg']. "</p>";?>
-<script language="JavaScript" type="text/javascript">timedMsg()</script>
-<?php
-}
-?>
-
 <form action="addRequest.php" autocomplete="on" method="POST">
 	<table class='center'>
 	<tr><td> Name:</td><td><input type="text" name="creator" id="P1"><br> </tr>
@@ -91,15 +77,15 @@ echo generateBuildingList("buildingName");
 	<tr> <td> Activity/Reason: </td><td>
 	<textarea id='description'  name='eventDesc'/></textarea></tr>
 	<tr><td>CC: </td><td><input type="text" name="cc"></td></tr>
-	<tr><td>
+	<tr><td></td><td>
 	<?php
 	require_once("recaptchalib.php");
 	$publickey = "6LfA-NgSAAAAAI9-J_Llw-K2OkhfZxSzJy0IElfM";
 	echo recaptcha_get_html($publickey);
 	?>
 	</td></tr>
-	<tr><td><input type='submit' name='submit' id='submit' class='center' value='Book Room'/></td></tr>
-	<tr><td><input type='reset' class='center' value='Reset'/></td></tr>
+	<tr><td></td><td><input type='submit' name='submit' id='submit' class='center' value='Book Room'/>
+	<input type='reset' class='center' value='Reset'/></td></tr>
 	</table>
 	<script type="text/javascript">
 	var f21 = new LiveValidation('P1');
