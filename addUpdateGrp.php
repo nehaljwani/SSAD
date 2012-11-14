@@ -21,25 +21,22 @@ $list1=generateGroupList($query,$r);
 <script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
 <script language="javascript" type="text/javascript" src="js/delmem.js"></script>
 <script type='text/javascript' src='js/livevalidation_standalone.js'></script>
-
 <script type="text/javascript">
- 
-function timedMsg()
-{
-	        var t=setTimeout("document.getElementById('kapi').style.display='none';",4000);
+
+function confirm_delete(x){
+
+	var conf = confirm("Are you sure ");
+
+	if(conf == true){
+		window.location = 'deletemember.php?SNO='+x;
+
+	}
+
 }
 
 </script>
-
-
 </head>
 <body>
-<?php if(isset($_GET['msg'])){
-	//echo "<p id='kapi' style='background-color:#1C478E;font-size:14pt;color:#FFFFFF;text-align:right;'>" . $_GET['msg']. "</p>";
-	?>
-	 <script> timedMsg(); </script>
-	<?php
-}?>
 
 <h2 > Modify Group </h2>
 <br>
@@ -128,7 +125,8 @@ function tBody($grp,$gid)
 		
                 $i++;
 }?>
-<td><a href='deletemember.php?SNO=<?php echo "$pri";?>' style='text-align:right'>Del</a></td>
+<td><a href='#' onclick="confirm_delete('<?php echo "$pri";?>')" >Del</a></td>
+
 </tr>
 <?php
 }
