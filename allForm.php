@@ -26,7 +26,7 @@ dbconnect();
 
 function confirm_delete(x){
 
-	var conf = confirm("Are you sure ");
+	var conf = confirm("Are you sure to delete?");
 
 	if(conf == true){
 		window.location = 'deleteRoom.php?SNO='+x;

@@ -25,7 +25,7 @@ $list1=generateGroupList($query,$r);
 
 function confirm_delete(x){
 
-	var conf = confirm("Are you sure ");
+	var conf = confirm("Are you sure to delete ? ");
 
 	if(conf == true){
 		window.location = 'deletemember.php?SNO='+x;

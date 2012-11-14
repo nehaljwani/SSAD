@@ -13,7 +13,7 @@ if($gID != 2){
 
 function confirm_delete(x){
 
-	var conf = confirm("Are you sure ");
+	var conf = confirm("Are you sure to delete ?");
 
 	if(conf == true){
 		window.location = 'confirmdel.php?SNO='+x;
