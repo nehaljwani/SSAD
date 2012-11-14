@@ -234,7 +234,7 @@ for($i=1;$i<$count;$i++)
 		$n=($n+1)%10;
 	}
 }
-$result = mysql_query("SELECT * FROM CourseRooms order by Code");
+$result = mysql_query("SELECT * FROM CourseRooms order by Name");
 while($row = mysql_fetch_array($result))
 {
 	$co=$row['Code'];
