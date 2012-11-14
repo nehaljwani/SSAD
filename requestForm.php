@@ -12,6 +12,32 @@ print_r($_GET);
 <script language="javascript" type="text/javascript" src="js/calendarDateInput.js"></script>
 <script language="javascript" type="text/javascript" src="js/addRequest.js"></script>
 <script language="javascript" type="text/javascript" src="js/autofill.js"></script>
+<script language="javascript" type="text/javascript">
+<?php if(isset($_GET)){
+	?>
+		$(document).ready(function(){
+				$('select.room').attr('value','<?php echo $_GET['roomName'];  ?>');
+				$('select#buildingName').attr('value','<?php echo $_GET['buildingname'];  ?>');
+				<?php $time=strtotime($_GET['Start_Date'])  ?>
+				$month='<?php echo date('m',$time)-1; ?>'
+				$year='<?php echo date('Y',$time); ?>'
+				$day='<?php echo date('d',$time); ?>'
+				$('select#eventStartDate_Month_ID.calendarDateInput.mymonth').attr('value',$month);
+				$('select#eventStartDate_Day_ID.calendarDateInput.myday').attr('value',$day);
+				<?php $time=strtotime($_GET['End_Date'])  ?>
+				$month='<?php echo date('m',$time)-1; ?>'
+				$year='<?php echo date('Y',$time); ?>'
+				$day='<?php echo date('d',$time); ?>'
+				$('select#eventEndDate_Month_ID.calendarDateInput.mymonth').attr('value',$month);
+				$('select#eventEndDate_Day_ID.calendarDateInput.myday').attr('value',$day);
+				$('select#eventStartTime').attr('value','<?php echo $_GET['Start_Time'] ?>');
+				$('select#eventEndTime').attr('value','<?php echo $_GET['End_Time'] ?>');
+		})
+	<?php
+}
+?>
+
+</script>
 <form action="addRequest.php" autocomplete="on" method="POST">
 	<table class='center'>
 	<tr><td> Name:</td><td><input type="text" name="creator" id="P1"><br> </tr>

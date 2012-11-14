@@ -242,7 +242,7 @@ function generateTimeSlot1($myid,$t,$default=false){
 //To make a drop down list easily
 function generateTimeSlot($myid,$default=false){
         $st = "<select name='". $myid . "' id='". $myid."' >";
-        $st .= "<option value='00:00:00' id='fg'>Please select</option>";
+        $st .= "<option value='99:99:99' id='fg'>Please select</option>";
         for($i=0;$i<24;$i++){
                 $dig=0;
                 $k = $i; 
@@ -983,6 +983,23 @@ function courseToInstance(){
 
 function getCurGroup(){
 	return getGroup(phpCAS::getUser());
+}
+
+
+function explosion($string)
+{
+        $words=explode(",",$string);
+        $word=array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+        $str="";
+        for($i=0;$i<count($words);$i++)
+        {    
+                $str=$str.$word[$words[$i]-1];
+                if($i!=count($words)-1)
+                {    
+                        $str=$str." , ";
+                }    
+        }    
+        return $str;
 }
 
 ?>

@@ -257,25 +257,8 @@ foreach($new1 as $h)
 	{
 	continue;
 	}
-//echo "mehar"."<br/>";
-//echo $h['reqNo'];
-//echo "<br/>";
-//echo $h['eventStartTime'];
-//echo "<br/>";
-//echo "gv".$strttime;
-//echo "<br/>";
-//echo $h['creator'];
-//echo "<br/>";
-//echo $h['eventEndTime'];
-//echo "<br/>";
-//echo $h['appStatus'];
 //echo "<br/>";
 $x = $h['room'];
-//echo $x;
-//echo "<br/>";
-//echo $h['reqType']."<br/>";
-//$x = $h['Room'];
-//echo $h['roomName'];
 if($h['Start_Time'] != $strttime){
 
 while($strttime != $h['eventStartTime'] && $strttime < $endtime)
@@ -287,9 +270,12 @@ $t = "select roomName,buildingName from Room where roomName = '".$h['room']."';"
 $g = execute($t);
 
 $rw = mysql_fetch_assoc($g);
+$t1="select buildingName from Building where buildId = ".$rw['buildingName']."";
+$t2 = execute($t1);
+$t3 = mysql_fetch_assoc($t2);
                echo "
 <td>
-<a class='button green' style='width:20px;height:20px' href='"."requestForm.php?buildingname=".$rw['buildingName']."&roomName=".$rows['roomName']."&Start_Date=".date("d-M-y",$time)."&End_Date=".date("d-M-y",$time)."&Start_Time=".$strttime."&End_Time=".gmdate("H:i:s",(strtotime($strttime)-strtotime("00:00:00"))+1800)."'>
+<a class='button green' style='width:20px;height:20px' href='"."requestForm.php?buildingname=".$t3['buildingName']."&roomName=".$rows['roomName']."&Start_Date=".date("d-M-y",$time)."&End_Date=".date("d-M-y",$time)."&Start_Time=".$strttime."&End_Time=".gmdate("H:i:s",(strtotime($strttime)-strtotime("00:00:00"))+1800)."'>
 A
 </a>
 </td>";
@@ -299,42 +285,36 @@ A
 
 }
         if($h['appStatus']=='Accepted' && $strttime < $endtime){
-//echo "accepted";
-//echo $strttime;
-//echo $h['eventEndTime'];
 while($strttime <= $h['eventEndTime'] and $strttime < $endtime)
 {
-//echo "eeeeeeee"."<br/>";
                 echo "<td><a class='button red' style='width:20px;height:20px' href='details.php?id=".$h['reqNo']."'> ".$h['eventTitle']."</a></td>";
 $strttime = gmdate("H:i:s",(strtotime($strttime)-strtotime("00:00:00"))+1800);
         }
 
-//                echo "<td><a class='button red' style='width:20px;height:20px' href='details.php?id=".$h['reqNo']."'> ".$h['eventTitle']."</a></td>";
-//$strttime = gmdate("H:i:s",(strtotime($strttime)-strtotime("00:00:00"))+1800);
 
 }
         if($h['appStatus']=='Pending' && $strttime <$endtime){
-//echo "pendingiiiiiiiiiiiiiiiiiiiiiiii";
 while($strttime != $h['eventEndTime'] and $strttime < $endtime)
 {
                 echo "<td><a class='button blue' style='width:20px;height:20px' href='details.php?id=".$h["reqNo"]."'> R </a></td>";
 $strttime = gmdate("H:i:s",(strtotime($strttime)-strtotime("00:00:00"))+1800);
 }
-
 }
-
 }
 
 
 while($strttime != $endtime)
 {
 //echo "gv";
-$t = "select roomName,buildingName from Room where roomName = '".$x."';";
-
+$t = "select roomName,buildingName from Room where roomName = '".$rows['roomName']."';";
 $g = execute($t);
 
 $rw = mysql_fetch_assoc($g);
-	echo "<td><a style='width:20px;height:20px' class='button green' href='"."requestForm.php?buildingname=".$rw['buildingName']."&roomName=".$rows['roomName']."&Start_Date=".date("d-M-y",$time)."&End_Date=".date("d-M-y",$time)."&Start_Time=".$strttime."&End_Time=".gmdate("H:i:s",(strtotime($strttime)-strtotime("00:00:00"))+1800)."'> A </a></td>";
+$t1="select buildingName from Building where buildId = ".$rw['buildingName']."";
+$t2 = execute($t1);
+$t3 = mysql_fetch_assoc($t2);
+//echo "asdasd".$t3['buildingName']."asdasd";
+	echo "<td><a style='width:20px;height:20px' class='button green' href='"."requestForm.php?buildingname=".$t3['buildingName']."&roomName=".$rows['roomName']."&Start_Date=".date("d-M-y",$time)."&End_Date=".date("d-M-y",$time)."&Start_Time=".$strttime."&End_Time=".gmdate("H:i:s",(strtotime($strttime)-strtotime("00:00:00"))+1800)."'> A </a></td>";
  $strttime = gmdate("H:i:s",(strtotime($strttime)-strtotime("00:00:00"))+1800);
 
 }

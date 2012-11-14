@@ -26,10 +26,10 @@
 				</ul>
 				<h2>Category 2</h2>
 				<ul class="list-style1">
-					<li><a href="#">Cat</li>
-					<li><a href="#">Cat</li>
-					<li><a href="#">Cat</li>
-					<li><a href="#">Cat</li>
+					<li><a href="#">Cat</a></li>
+					<li><a href="#">Cat</a></li>
+					<li><a href="#">Cat</a></li>
+					<li><a href="#">Cat</a></li>
 				</ul> 
 			</div>
 		</div>
