@@ -2,7 +2,7 @@
 <?php include_once('header.php');?>
 <script type='text/javascript' src='js/livevalidation_standalone.js'></script>
 <div class="post">
-<h2 class="title"><a href="#">Provide Feedback</a></h2>
+<h2 class="title">Provide Feedback</h2>
 <!--p class="meta">
 <span class="date">September 12, 2012</span>
 <span class="posted">Posted by <a href="#">Someone</a></span>
