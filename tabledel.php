@@ -8,12 +8,27 @@ if($gID != 2){
 
 ?>
 <div class="post">
-  <h2 class="title"><a href="#">Request Details</a></h2>
+<h2 class="title"><a href="#">Request Details</a></h2>
+<script type="text/javascript">
+
+function confirm_delete(x){
+
+	var conf = confirm("Are you sure ");
+
+	if(conf == true){
+		window.location = 'confirmdel.php?SNO='+x;
+
+	}
+
+}
+
+</script>
+
 <?php //include("essential.php");     //include for dbconnect and paginate function
 if(isset($_GET['st']))
-    $mstart=$_GET['st'];    
+$mstart=$_GET['st'];    
 else
-    $mstart=0;
+$mstart=0;
 $lim=10;
 $table="Requests";
 dbconnect();          //connecting db
@@ -39,24 +54,24 @@ $num=mysql_numrows($result);
 <?php
 $pri=0;
 while ($row=mysql_fetch_row($result)){                 //fetching rows from result query
-        ?>  
-                <tr>
-                <?php
-                $i=0;
-                foreach($row as $col){        //for columns printing purposes
-			if($i==0){
-				$pri=$col;
-			}
-                        ?>  	
-                <td><?php echo $col; echo " "; ?></td>
-                <?php
-                $i++;
-}
-?>
-<td><a href='confirmdel.php?SNO=<?php echo "$pri";?>' style='text-align:right'>Del</a></td>
+	?>  
+		<tr>
+		<?php
+		$i=0;
+	foreach($row as $col){        //for columns printing purposes
+		if($i==0){
+			$pri=$col;
+		}
+		?>  	
+			<td><?php echo $col; echo " "; ?></td>
+			<?php
+			$i++;
+	}
+	?>
+		<td><a href='#' onclick="confirm_delete('<?php echo "$pri";?>')" >Del</a></td>
 
-</tr>
-<?php
+		</tr>
+		<?php
 }
 mysql_close();   //closing
 ?>
