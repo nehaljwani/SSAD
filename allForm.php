@@ -23,13 +23,20 @@ dbconnect();
 </div>
 <script type='text/javascript' src='js/livevalidation_standalone.js'></script>
 <script type="text/javascript">
- 
-function timedMsg()
-{
-var t=setTimeout("document.getElementById('kapi').style.display='none';",4000);
+
+function confirm_delete(x){
+
+	var conf = confirm("Are you sure ");
+
+	if(conf == true){
+		window.location = 'deleteRoom.php?SNO='+x;
+
+	}
+
 }
 
 </script>
+
 <script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
 <script language="javascript" type="text/javascript" src="js/calendarDateInput.js"></script>
 <script type='text/javascript' src='js/brand.js'></script>
@@ -39,13 +46,6 @@ var t=setTimeout("document.getElementById('kapi').style.display='none';",4000);
 <button type="button" id='delroom' >delete Room</button>
 <button type="button" id='addbuild' >Add Building</button>
 <button type="button" id='delbuild' >Delete Building</button>
-<?php if(isset($_GET['msg2'])){
-/*
-	$on_page=unserialize($_GET['msg2']);		
-	echo "<p id='kapi' style='background-color:#1C478E;font-size:14pt;color:#FFFFFF;text-align:right;'>" . $on_page[4] . "</p>";
-*/
-}
-?>
 <script  type="text/javascript">
 
 $on_pager=<?php echo json_encode($message);?>;
@@ -206,7 +206,8 @@ while($row=mysql_fetch_row($resu))
 			$i++;
 	} ?>
 	<td><a href='editRoom.php?SNO=<?php echo "$pri";?>' style='text-align:right'>Edit</a></td>
-		<td><a href='deleteRoom.php?SNO=<?php echo "$pri";?>' style='text-align:right'>Del</a></td>
+		 <td><a href='#' onclick="confirm_delete('<?php echo "$pri";?>')" >Del</a></td>
+
 		</tr>
 		<?php }?>
 		</table>
