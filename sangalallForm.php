@@ -17,7 +17,7 @@ if($gID != 2){
 dbconnect();
 ?>
 <div class="post">
-  <h2 class="title"><a href="#">All forms </a></h2>
+  <h2 class="title"><a href="#">room request form </a></h2>
   <div class="entry">
   </div>
 </div>
@@ -32,37 +32,31 @@ var t=setTimeout("document.getElementById('kapi').style.display='none';",4000);
 </script>
 <script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
 <script language="javascript" type="text/javascript" src="js/calendarDateInput.js"></script>
-<script type='text/javascript' src='js/brand.js'></script>
+<?php//<script type='text/javascript' src='js/brand.js'></script>?>
 <script type='text/javascript' src='./js/livevalidation_standalone.js'></script>
-<button type="button" id='editroom' >edit/delete Room</button>
+<?php//<button type="button" id="editroom">edit Room</button>?>
 <button type="button" id='addroom' >add/update Room</button>
 <button type="button" id='delroom' >delete Room</button>
 <button type="button" id='addbuild' >Add Building</button>
 <button type="button" id='delbuild' >Delete Building</button>
-<?php if(isset($_GET['msg2'])){
-/*
-	$on_page=unserialize($_GET['msg2']);		
-	echo "<p id='kapi' style='background-color:#1C478E;font-size:14pt;color:#FFFFFF;text-align:right;'>" . $on_page[4] . "</p>";
-*/
-}
-?>
+
 <script  type="text/javascript">
 
-$on_pager=<?php echo json_encode($message);?>;
+$on_pager=<?php echo json_encode($message);?>
 $(document).ready(function() {
 	if($on_pager){
 		$('#'+$on_pager[1]).hide();
 		$('#'+$on_pager[2]).hide();
 		$('#'+$on_pager[3]).hide();
-		$('#'+$on_pager[5]).hide();
 		$('#'+$on_pager[0]).show();
 	}
 	else{
 		$('#deleteRoom').hide();
-		$('#editRoom').show();
-		$('#addRoom').hide();
+		$('#addRoom').show();
 		$('#deleteBuilding').hide();
 		$('#addBuilding').hide();
+	
+		
 	}
 })
 </script>
@@ -77,20 +71,19 @@ $list2=generate_list($query4,$r1);
 $query = "select Category.catId, Category.catName from Category ;";                     // drop down of available rooms for update
 $category = execute($query);
 
-if(!mysql_num_rows($category))                  // checkboxes for categories
+if(!mysql_num_rows($category))                // checkboxes for categories 
 {
       $cat="No Available Categories";
 }
 else{
       while($row = mysql_fetch_array($category)){
                $cat=$cat."<input type='checkbox' name='Category[]' value='".$row['catId']."'>"  .$row['catName']. "<br/>";
- 
      }
 }
 
 $q = "select buildingName from Building";
 $x = "buildingName";
-$st =  generate_list($q,$x);?>
+$st =  generate_list($q,$x); ?>
 <form name='a_uroom' action=s_addroom2.php method='post' id="addRoom">
 <table align='center'>
  <h2 align='center'>Add/Update Room</h2>
@@ -126,13 +119,8 @@ f2.add( Validate.Presence );
 <td><br/><?php echo $cat ?></td>
 </tr>
 <tr>
-<td>
-select Building: </td>
-<td>
-<?php echo $st ?>
-</td>
-</tr>
-<tr><td></td><td> <input type='submit' name='submit' id='submit' value='Add/UpdateRoom'/><button type='reset' value='Reset'/>Reset</td></tr>
+<td>select Building: <td>
+</td></tr><tr><td></td><td> <input type='submit' name='submit' id='submit' value='Add/UpdateRoom'/><button type='reset' value='Reset'/>Reset</td></tr>
                 </table>
                 </form>
 <form name='deleteroom' method='POST' action ='s_addroom2.php' id="deleteRoom"  >
@@ -173,7 +161,8 @@ Building Name: </td>
 </tr></table>
 
 </form>
-<div id='editRoom'>
+<?php/*
+<div id="tabb">
 <table id="box-table-a">
 <tr>
 <thead>
@@ -193,23 +182,25 @@ $pri=0;
 while($row=mysql_fetch_row($resu))
 {
 	?>
-		<tr>
-		<?php
-		$i=0;
+	<tr>
+	<?php
+	$i=0;
 	foreach($row as $col){
 		if($i==0){
 			$pri=$col;
 		}
-		?>
-			<td><?php echo $col?></td>
-			<?php 
-			$i++;
+	?>
+	<td><?php echo $col?></td>
+	<?php 
+	$i++;
 	} ?>
 	<td><a href='editRoom.php?SNO=<?php echo "$pri";?>' style='text-align:right'>Edit</a></td>
-		<td><a href='deleteRoom.php?SNO=<?php echo "$pri";?>' style='text-align:right'>Del</a></td>
-		</tr>
-		<?php }?>
-		</table>
+	<td><a href='deleteRoom.php?SNO=<?php echo "$pri";?>' style='text-align:right'>Del</a></td>
+	</tr>
+<?php }?>
+</table>
+
 </div>
-		<?php require_once('footer.php'); ?>
+*/?>
+<?php require_once('footer.php'); ?>
 

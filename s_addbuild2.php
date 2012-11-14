@@ -25,6 +25,8 @@ if(isset($_POST['delete']))                                     // if to delete 
 //		header("Location:allForm.php?msg2=Give the building name");
 		die();
 	}
+	$query21="delete from Room where buildingName in (select buildId from Building where buildingName= '".$_POST['bname']."');";
+	execute($query21);
 	$query2="delete from Building where buildingName = '".$_POST['bname']."';";
 	execute($query2);
 		$on_page[0]="deleteBuilding";

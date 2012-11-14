@@ -1,10 +1,12 @@
 $(document).ready(function() {
 		$('#deleteRoom').hide();
-		$('#addRoom').show();
+		$('#addRoom').hide();
+		$('#editRoom').show();
 		$('#deleteBuilding').hide();
 		$('#addBuilding').hide();
 		$('#addroom').click(function(){
 			$('#addRoom').show();
+			$('#editRoom').hide();
 			$('#deleteRoom').hide();
 			$('#deleteBuilding').hide();
 			$('#addBuilding').hide();
@@ -12,6 +14,7 @@ $(document).ready(function() {
 			});
 		$('#delroom').click(function(){
 			$('#addRoom').hide();
+			$('#editRoom').hide();
 			$('#deleteRoom').show();
 			$('#deleteBuilding').hide();
 			$('#addBuilding').hide();
@@ -19,6 +22,7 @@ $(document).ready(function() {
 			});
 		$('#addbuild').click(function(){
 			$('#addRoom').hide();
+			$('#editRoom').hide();
 			$('#deleteRoom').hide();
 			$('#deleteBuilding').hide();
 			$('#addBuilding').show();
@@ -27,7 +31,16 @@ $(document).ready(function() {
 		$('#delbuild').click(function(){
 			$('#addRoom').hide();
 			$('#deleteRoom').hide();
+			$('#editRoom').hide();
 			$('#deleteBuilding').show();
+			$('#addBuilding').hide();
+			$('#delbtn').hide();
+			});
+		$('#editroom').click(function(){
+			$('#addRoom').hide();
+			$('#editRoom').show();
+			$('#deleteRoom').hide();
+			$('#deleteBuilding').hide();
 			$('#addBuilding').hide();
 			$('#delbtn').hide();
 			});

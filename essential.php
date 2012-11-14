@@ -23,12 +23,12 @@ if(isset($_GET['logout'])){
 
 function dbconnect(){
         GLOBAL $con;
-        $con = mysql_connect('localhost','room','ROOMIE_ROOMIE');
+        $con = mysql_connect('localhost','root','iiit123');
         if(!$con){
                 die("Error in connection!");
         }   
         else {
-                $chooseDB = "USE room_allocation";
+                $chooseDB = "USE roomReser";
                 $fetchDB = mysql_query( $chooseDB , $con);
                 if(!$fetchDB){
                         die("no database!");
@@ -119,6 +119,26 @@ function generate_list($q,$x,$isnull = true,$default= false ){
 	return $st;
 }
 
+function generate_select_list($q,$x,$b,$isnull = true,$default= false ){
+	$r = execute($q);
+	$i=0;
+	$rowcount = mysql_num_rows($r);
+	$st = "<select name='" . $x . "' id='" . $x . "'>";
+
+	while($row = mysql_fetch_array($r,MYSQL_NUM)){
+	
+		if($row[0]==$b){
+		$st .= "<option value='".$row[0]."' id='".$row[0]."' selected>".$row[0]."</option>";
+		}
+		else
+		{
+
+		$st .= "<option value='".$row[0]."' id='".$row[0]."'>".$row[0]."</option>";
+		}
+	}	
+	$st .= "</select>";
+	return $st;
+}
 function getNextGroup($curGroup){
   global $groups;
   switch($curGroup){
