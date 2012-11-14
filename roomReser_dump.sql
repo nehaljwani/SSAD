@@ -581,7 +581,6 @@ UNLOCK TABLES;
 /*!50001 DROP TABLE `Tablet`*/;
 /*!50001 DROP VIEW IF EXISTS `Tablet`*/;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`room`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `Tablet` AS select distinct `Tablem`.`Code` AS `Code`,`Tablem`.`Name` AS `Name`,`Tableme`.`Type` AS `Type`,`Tablem`.`Day` AS `Day`,`Tablem`.`StartTime` AS `StartTime`,`Tablem`.`EndTime` AS `EndTime`,`Tablem`.`PrevRoom` AS `PrevRoom` from (`Tablem` join `Tableme`) where (`Tablem`.`Code` = `Tableme`.`Code`) */;
 
 --
@@ -591,7 +590,6 @@ UNLOCK TABLES;
 /*!50001 DROP TABLE `Tablet1`*/;
 /*!50001 DROP VIEW IF EXISTS `Tablet1`*/;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`room`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `Tablet1` AS select `Tablet`.`Code` AS `Code`,`Tablet`.`Name` AS `Name`,`Tablet`.`Type` AS `Type`,`Tablet`.`Day` AS `Day`,`Tablet`.`StartTime` AS `StartTime`,`Tablet`.`EndTime` AS `EndTime`,`Tablet`.`PrevRoom` AS `PrevRoom` from `Tablet` where ((`Tablet`.`Type` = _latin1'BC') or ((`Tablet`.`Type` = _latin1'Elective') and (not((`Tablet`.`Name` like _latin1'%Lab%'))))) order by `Tablet`.`Type`,`Tablet`.`Code`,`Tablet`.`StartTime` */;
 
 --
@@ -601,7 +599,6 @@ UNLOCK TABLES;
 /*!50001 DROP TABLE `UG1`*/;
 /*!50001 DROP VIEW IF EXISTS `UG1`*/;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`room`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `UG1` AS select distinct `Tablem`.`Code` AS `Code`,`Tablem`.`Name` AS `Name`,`Tableme`.`Type` AS `Type`,`Tablem`.`Day` AS `Day`,`Tablem`.`StartTime` AS `StartTime`,`Tablem`.`EndTime` AS `EndTime`,`Tablem`.`PrevRoom` AS `PrevRoom` from (`Tablem` join `Tableme`) where ((`Tablem`.`Code` = `Tableme`.`Code`) and (`Tableme`.`Type` like _latin1'UG1')) */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
