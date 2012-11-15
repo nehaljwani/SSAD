@@ -9,7 +9,8 @@ Description: A two-column, fixed-width design with dark color scheme.
 Version    : 1.0
 Released   : 20120818
 
---><?php
+-->
+<?php
 
 require_once('CAS.php');
 
