@@ -62,7 +62,7 @@ echo "
 </table><b><br><br>
 <div style='color:#0000FF'>
 LUNCH: 01.00-02.00</div><br>
-Class Rooms: N104 in Nilgiri Building<br>
+Class Rooms: N104,N103,N125,N131,N302,N303,N305,N318,N319 in Nilgiri Building<br>
 Class Rooms: SH1, SH2, CR1, CR2, B4-301, B4-304, B6-309 in Vindhya Building<br>
 Class Rooms: H101,H102,H103,H104,H201,H202,H203,H204,H301,H302,H303,H304 in Himalaya Building<br><br><br><br><br><br><br><br><br><br></b>
 ";
@@ -90,7 +90,7 @@ echo "
 </table><b><br>
 <div style='color:#0000FF'>
 LUNCH: 01.00-02.00</div><br>
-Class Rooms: N104 in Nilgiri Building<br>
+Class Rooms: N104,N103,N125,N131,N302,N303,N305,N318,N319 in Nilgiri Building<br>
 Class Rooms: SH1, SH2, CR1, CR2, B4-301, B4-304, B6-309 in Vindhya Building<br>
 Class Rooms: H101,H102,H103,H104,H201,H202,H203,H204,H301,H302,H303,H304 in Himalaya Building
 </font>

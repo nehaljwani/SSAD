@@ -103,7 +103,7 @@ echo "<br/>";
 echo "<div style='text-align:center'>";
 
 		echo "<a href='nhome.php?m=".$m."&start_time=".$morstrt."&end_time=".$morend."&date=" . date("d-M-y",strtotime("-1 day",$time))."&building_id=".$_GET["building_id"]."' class='button gray small'><<< </a>";
-		echo "<b>    ".  date("d-M-y",$time) . "   </b>";
+		echo "<b>    ".  date("l",$time) . ",  ".   date("d-M-y",$time) . "   </b>";
 		echo "<a href='nhome.php?m=".$m."&start_time=".$morstrt."&end_time=".$morend."&date=" . date("d-M-y",strtotime("+1 day",$time))."&building_id=".$_GET["building_id"]."' class='button gray small'> >>> </a>";
 		echo "&nbsp";
 		echo "</br>";
@@ -243,7 +243,8 @@ foreach($new1 as $h)
 		{
 			if($h['appStatus']=='Accepted' and $strttime < $endtime)
 			{
-				                echo "<td><a class='button red' style='width:20px;height:20px' href='details.php?id=".$h['reqNo']."'> ".$h['eventTitle']."</a></td>";
+                echo "<td><a class='button red' style='width:20px;height:20px' href='details.php?id=".$h['reqNo']."&roomName=".$h['room']."&eventStartDate=".$h['eventStartDate']."&eventEndDate=".$h['eventEndDate']."&eventStartTime=".$h['eventStartTime']."&eventEndTime=".$h['eventEndTime']."&eventTitle=".$h['eventTitle']."'> ".$h['eventTitle']."</a></td>";
+		//		                echo "<td><a class='button red' style='width:20px;height:20px' href='details.php?id=".$h['reqNo']."&eventStartDate=".$h['eventStartDate']."'> ".$h['eventTitle']."</a></td>";
 						$strttime = gmdate("H:i:s",(strtotime($strttime)-strtotime("00:00:00"))+1800);
 			}
 			elseif($h['appStatus']=='Pending' and $strttime < $endtime)
@@ -287,7 +288,7 @@ A
         if($h['appStatus']=='Accepted' && $strttime < $endtime){
 while($strttime <= $h['eventEndTime'] and $strttime < $endtime)
 {
-                echo "<td><a class='button red' style='width:20px;height:20px' href='details.php?id=".$h['reqNo']."'> ".$h['eventTitle']."</a></td>";
+                echo "<td><a class='button red' style='width:20px;height:20px' href='details.php?id=".$h['reqNo']."&roomName=".$h['room']."&eventStartDate=".$h['eventStartDate']."&eventEndDate=".$h['eventEndDate']."&eventStartTime=".$h['eventStartTime']."&eventEndTime=".$h['eventEndTime']."&eventTitle=".$h['eventTitle']."'> ".$h['eventTitle']."</a></td>";
 $strttime = gmdate("H:i:s",(strtotime($strttime)-strtotime("00:00:00"))+1800);
         }
 

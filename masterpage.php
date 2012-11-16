@@ -9,7 +9,10 @@ include('header.php'); ?>
 <ul class="list-style1">
 
 <tr>
-<td><li><a href="masterfile.php" id="mybody">Upload Master File</a></li><br></td>
+<td><li><a href="masterfile.php" class="mybody">Upload Master File</a></li><br></td>
+</tr>
+<tr>
+<td><li><a href="configuration.php" class="mybody">Configuration Data</a></li><br></td>
 </tr>
                 </table>
                 </form>

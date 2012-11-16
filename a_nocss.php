@@ -1,5 +1,6 @@
 <?php
 include('essential.php');
+dbconnect();
 $sql=mysql_query("select distinct Name from Tablem where PrevRoom='COMMON'");
 echo "
 <center>

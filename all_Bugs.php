@@ -3,14 +3,14 @@ include("header.php");
 dbconnect();
 ?>
 <div class="post">
-<h2 class="title"><a href="#">Bugs</a></h2>
+<h2 class="title">Bugs</h2>
 <script type='text/javascript' src='js/bugs.js'></script>
-<button type="button" id='addbugs' >add bug</button>
-<button type="button" id='viewbugs' >view bugs</button>
+<button type="button" id='addbugs' >Report bug</button>
+<button type="button" id='viewbugs' >View bugs</button>
 <script  type="text/javascript">
 
-$on_pager1=<?php echo $_GET['js1'];?>;
-$on_pager2=<?php echo $_GET['js2'];?>;
+$on_pager1='<?php echo $_GET['js1'];?>';
+$on_pager2='<?php echo $_GET['js2'];?>';
 $(document).ready(function() {
 	if($on_pager1){
 		$('#'+$on_pager1).show();
@@ -45,7 +45,7 @@ dbconnect();          //connecting db
 
 $query="SELECT * FROM $table";
 
-$result=paginate("Bugs_view.php",$query,$mstart,$lim);             //calling paging
+$result=paginate("all_Bugs.php",$query,$mstart,$lim);             //calling paging
 $num=mysql_numrows($result);
 
 $pri=0;
@@ -65,16 +65,16 @@ while ($row=mysql_fetch_row($result)){                 //fetching rows from resu
 		}
 		else if($i==2){
 			if($col=="Pending"){ ?>
-				<td><a class='button red' href="addselect.php?id='<?php echo $pri;?>' & status0='<?php echo $col ;?>'"><?php echo $col;?></a></td>
+				<td><a class='button reed bug-status-red' href="addselect.php?id='<?php echo $pri;?>' & status0='<?php echo $col ;?>'"><?php echo $col;?></a></td>
 			<?php;
 			} 
 			else if ($col=="Solved"){ ?>
-				<td><a class='button green' href="addselect.php?id='<?php echo $pri;?>' & status0='<?php echo $col ;?>'"><?php echo $col;?></a></td>
+				<td><a class='button greeen bug-status-green' href="addselect.php?id='<?php echo $pri;?>' & status0='<?php echo $col ;?>'"><?php echo $col;?></a></td>
 			<?php ;
 			}
 			else
 			{ ?>
-				<td><a class='button orange' href="addselect.php?id='<?php echo $pri;?>' & status0='<?php echo $col ;?>'"><?php echo $col;?></a></td>
+				<td><a class='button oraange bug-status-yellow' href="addselect.php?id='<?php echo $pri;?>' & status0='<?php echo $col ;?>'"><?php echo $col;?></a></td>
 				<?php;
 			}
 		}

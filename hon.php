@@ -27,8 +27,8 @@ while($row=mysql_fetch_array($sql1))
 {
 	$z1=$row['Code'];
 	$_SESSION['patacode']=$z1;
-	$_SESSION['pataname']=$z2;
 	$z2=$row['Name'];
+	$_SESSION['pataname']=$z2;
 	$z3=$row['Room'];
 	$_SESSION['pataroom']=$z3;
 	$_SESSION['modroom']=$z3;

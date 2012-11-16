@@ -4,11 +4,11 @@ include('header.php');
 session_start();
 $_SESSION["mod_cou"]=5;
 $a=$_POST['a'];
-//include "modifying.php";
+include "modifying_nocss.php";
 dbconnect();
 echo "
 <center>
-<br><h2>SELECT COURSE :</h2>
+<br><h1 id='myBig'>SELECT COURSE :</h2><br/>
 <form action='hon.php' method='post'>
 ";
 $sql="select DISTINCT Code,Name from CourseRooms where Type='$a'";

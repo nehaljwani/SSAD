@@ -2,19 +2,25 @@
 include("essential.php");
 include("header.php");
 session_start();
-$num=$_SESSION['coursenum'];
+$num=$_SESSION['coursenum']; ?>
+
+<table align='left'>
+<h2 align='left'>lectures</h2><br/>
+<tr>
+<td><a href="printAllottedRooms.php" id="mybody">View Allotted Rooms</a></td></tr>
+</table>
+<?php
 if($num===0)
 {
 	echo "
-		<html>
-		<body>
 		<center>
+		<br/><br/>
 	<h2>	ROOMS ARE ALLOCATED TO ALL COURSES SUCCESFULLY!<h2>
 		";
 }
 else
 {
-	echo "<h2>ROOMS HAVE NOT BEEN ALLOCATED TO THESE COURSES<h2>";
+	echo "<h2><br/>ROOMS HAVE NOT BEEN ALLOCATED TO THESE COURSES<h2>";
 
 	$codes=$_SESSION['codes'];
 	$names=$_SESSION['names'];?>
@@ -46,5 +52,4 @@ $i=0;
 // if </div> is removed , layout is correct.
 echo "</table>";
 include("footer.php");
-echo "<br/><br/>";
 ?>

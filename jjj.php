@@ -34,7 +34,7 @@ while($i<$saver)
 	echo $i." ".$arr[$i]."<br>";
 	$i++;
 }*/
-mysql_query("delete from dassod where Code like '%'");
+mysql_query("delete from dassod");
 $i=2;
 $k=$saver-6;
 while($i<=$k)

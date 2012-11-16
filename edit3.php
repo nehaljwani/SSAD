@@ -4,7 +4,17 @@ include("header.php");
 dbconnect();
 session_start();
 $a=$_GET['tab'];
-$rooms=array("SH1","SH2","CR1","CR2","H103","H104","H203","H204","H303","H304","N104","H101","H102","H201","H202","H301","H302","B4-304","B4-301","B6-309","C1-302");
+
+$val=0;
+$sql_60 = mysql_query("select * from Room ");
+while($row_60=mysql_fetch_array($sql_60))
+{
+	$rooms[$val]=$row_60['roomName'];
+	$val++;
+}
+
+// $rooms=array("SH1","SH2","CR1","CR2","H103","H104","H203","H204","H303","H304","N104","H101","H102","H201","H202","H301","H302","B4-304","B4-301","B6-309","C1-302");
+
 echo "
 <html>
 <head>

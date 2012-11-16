@@ -88,13 +88,16 @@ function paginate($file,$myquery,$start,$lim,$id='')
 	$index = 1;
 	if($num > $lim){		// display links only if records are enuf.
 		if($back >=0){
-			echo"<a href='".$file."?st=".$back."&view=${id}'>PREV</a>"; //pre page print
+			echo"<a href='".$file."?st=".$back."&view=${id}&js1=".'viewBugs'."&js2=".'addBugs'."'>PREV</a>"; //pre page print
+
+			//echo"<a href='".$file."?st=".$back."&view=${id}'>PREV</a>"; //pre page print
 		}
 
 		for($i=0;$i<$num;$i=$i+$lim){
 			if($i != $start){
+			 echo" <a href='".$file."?st=".$i."&view={$id}&js1=".'viewBugs'."&js2=".'addBugs'."'>"; //for next page print
 
-			echo" <a href='".$file."?st=".$i."&view=${id}'>"; //for next page print
+			//echo" <a href='".$file."?st=".$i."&view=${id}'>"; //for next page print
 			echo ' '.$index;                          
 			echo "</a>";
 			}
@@ -105,7 +108,9 @@ function paginate($file,$myquery,$start,$lim,$id='')
 			$index = $index + 1;
 		}
 		if($next < $num){
-			echo" <a href='".$file."?st=".$next."&view={$id}'> NEXT</a>";  //next button referencing
+		echo" <a href='".$file."?st=".$next."&view={$id}&js1=".'viewBugs'."&js2=".'addBugs'."'> NEXT</a>";  //next button ref     erencing
+
+		//	echo" <a href='".$file."?st=".$next."&view={$id}'> NEXT</a>";  //next button referencing
 		}
 	}
 	return $result2;
@@ -120,7 +125,7 @@ function generate_list($q,$x,$isnull = true,$default= false ){
 	$i=0;
 	$rowcount = mysql_num_rows($r);
 	$st = "<select name='" . $x . "' id='" . $x . "'>";
-	if($isnull) $st .= "<option value='' >--Please select--</option>";
+	if($isnull) $st .= "<option value='' >Please select</option>";
 	while($row = mysql_fetch_array($r,MYSQL_NUM)){
 		//if($default!=false && $row[0]==$default){
 		//$st .= "<option value='".$row[0]."' id='".$row[0]."' selected>".$row[0]."</option>";
@@ -301,7 +306,7 @@ function generateRoomList($myid){
 	$query="SELECT roomName,B.buildingName FROM Room R, Building B WHERE R.buildingName=B.buildId;";
 	dbconnect();
 	$result=execute($query);
-        $st = "<select name='". $myid . "' class='". $myid."' >";
+        $st = "<select name='". $myid . "' class='". $myid."' id='".$myid."' >";
         $st .= "<option value='' id='fg'>Please select</option>";
 	while($row = mysql_fetch_array($result)){
 		$st .= "<option value='" . $row['roomName'] . "' id='" .$row['buildingName']."'>".$row['roomName']."</option>";
@@ -1017,7 +1022,7 @@ function delCourse2Instance(){
 	$query="SELECT * FROM CourseRooms;";
 	$result=execute($query);
 	while($reqDet=mysql_fetch_assoc($result)){
-		$newQuery="DELETE FROM Instances WHERE hash='".$req['hash']."'";
+		$newQuery="DELETE FROM Instances WHERE hash='".$reqDet['hash']."'";
 		execute($newQuery);
 	}
 }
@@ -1027,7 +1032,7 @@ function delCourse2InstanceSingle($hash){
 	$query="SELECT * FROM CourseRooms WHERE hash='".$hash."';";
 	$result=execute($query);
 	while($reqDet=mysql_fetch_assoc($result)){
-		$newQuery="DELETE FROM Instances WHERE hash='".$req['hash']."'";
+		$newQuery="DELETE FROM Instances WHERE hash='".$reqDet['hash']."'";
 		execute($newQuery);
 	}
 }
@@ -1051,7 +1056,7 @@ function updateCourse2Instance($Code, $Name, $Room, $Day, $StartTime, $EndTime, 
 /*	$query="SELECT reqNo FROM Requests ORDER BY reqNO DESC limit 1";
 	$result=mysql_fetch_row(execute($query));
 	$reqNo=$result['reqNo'];
-*/      $query="DELETE * FROM Instances WHERE hash = '".$hash."';";
+*/      $query="DELETE FROM Instances WHERE hash = '".$hash."';";
         $result=execute($query);
 	$query="SELECT * FROM CourseRooms WHERE hash = '".$hash."';";
         $result=execute($query);

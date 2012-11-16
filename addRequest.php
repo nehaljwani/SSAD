@@ -1,5 +1,5 @@
 <?php
-require_once("recaptchalib.php");
+require_once("recaptchaproxy.php");
     $privatekey = "6LfA-NgSAAAAAPN9GjdtA6RG4MJdeS_We5sHpkAz";
       $resp = recaptcha_check_answer ($privatekey,
 		                   $_SERVER["REMOTE_ADDR"],
@@ -25,6 +25,7 @@ require_once("recaptchalib.php");
 <?php
 include("essential.php"); // Importing pre-defined functions
 dbconnect();
+include_once("header.php");
 
 $ccPersons = CSVToArray($_POST['cc']);
 
@@ -96,6 +97,7 @@ $today=date("Y-m-d");
 $todayarray = explode("-", $today);
 $startdate = explode("-", $eventStartDate);
 $limstart=$todayarray[2]+2;
+//Fetch Limit from Limit Table
 if($todayarray[0]>=$startdate[0] and $todayarray[1]>=$startdate[1] and $startdate[2]<$limstart)
 {
 	header("Location:requestForm.php?msg='Invalid Date'");
@@ -200,6 +202,6 @@ foreach($ccPersons as $guy){
 	execute($query) or die("ccPersonAddingError");
 }
 
-header("Location: table.php");
+header("Location: myRequests.php");
 }	
 ?>

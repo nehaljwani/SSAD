@@ -60,19 +60,19 @@ $classVar = " class=\"current_page_item\"";
 	<div id="menu-wrapper">
 		<div id="menu" class="container">
 			<ul><?php if($gID==2){ ?>
-				<li <?php if($file=="index") echo $classVar;?>><a href="index.php">AdminHomepage</a></li>
-				<li <?php if($file=="conflictTable") echo $classVar; ?>><a href="conflictTable.php">Conflict View</a></li>
-				<li<?php if($file=="giveFeedback") echo $classVar; ?>><a href="giveFeedback.php">Feedback</a></li>
+				<li <?php if($file=="index") echo $classVar;?>><a href="index.php">Home</a></li>
+				<li <?php if($file=="table") echo $classVar; ?>><a href="table.php?view=All">View Requests</a></li>
 				<li<?php if($file=="masterpage") echo $classVar; ?>><a href="masterpage.php">MasterPage</a></li>
-				<li<?php if($file=="#") echo $classVar; ?>><a href="#">Links</a></li>
+				<li<?php if($file=="giveFeedback") echo $classVar; ?>><a href="feedback_view.php">View Feedbacks</a></li>
+				<li<?php if($file=="allForm") echo $classVar; ?>><a href="allForm.php">Modify Rooms</a></li>
 				<li<?php if($file=="humans") echo $classVar; ?>><a href="humans.txt">Team</a></li>
 				<li><a href="?logout=true"><?php echo $userID; ?> (Logout)</a></li>
 			    <?php }else{ ?>
-				<li <?php if($file=="index") echo $classVar;?>><a href="index.php">Homepage</a></li>
-				<li <?php if($file=="conflictTable") echo $classVar; ?>><a href="conflictTable.php">Conflict View</a></li>
-				<li<?php if($file=="giveFeedback") echo $classVar; ?>><a href="giveFeedback.php">Feedback</a></li>
-				<li<?php if($file=="masterpage") echo $classVar; ?>><a href="masterpage.php">MasterPage</a></li>
-				<li<?php if($file=="#") echo $classVar; ?>><a href="#">Links</a></li>
+				<li <?php if($file=="index") echo $classVar;?>><a href="index.php">Home</a></li>
+				<li <?php if($file=="requestForm") echo $classVar; ?>><a href="requestForm.php">New Request</a></li>
+				<li <?php if($file=="table") echo $classVar; ?>><a href="table.php?view=All">All Requests</a></li>
+				<li <?php if($file=="all_Bugs") echo $classVar; ?>><a href="all_Bugs.php">Report Bugs</a></li>
+				<li<?php if($file=="giveFeedback") echo $classVar; ?>><a href="giveFeedback.php">Give Feedback</a></li>
 				<li<?php if($file=="humans") echo $classVar; ?>><a href="humans.txt">Team</a></li>
 				<li><a href="?logout=true"><?php echo $userID; ?> (Logout)</a></li>
 			    <?php } ?>

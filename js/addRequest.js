@@ -32,6 +32,7 @@ $(document).ready(function() {
 			if(checkStatus == true){
 				$month=$('select#eventStartDate_Month_ID.calendarDateInput.mymonth').attr('value')
 				$('select#eventEndDate_Month_ID.calendarDateInput.mymonth').attr('value',$month);
+				$("#reqForm :input[name='eventEndDate']").val($("#reqForm :input[name='eventStartDate']").val())
 			}
 		})
 		$('select#eventStartDate_Day_ID.calendarDateInput.myday').change(function(){
@@ -39,13 +40,14 @@ $(document).ready(function() {
 			if(checkStatus == true){
 				$day=$('select#eventStartDate_Day_ID.calendarDateInput.myday').attr('value');
 				$('select#eventEndDate_Day_ID.calendarDateInput.myday').attr('value',$day);
+				$("#reqForm :input[name='eventEndDate']").val($("#reqForm :input[name='eventStartDate']").val())
 			}
 		})
-		
 		$('#buildingName').change(function() {
 			$building=($('#buildingName').val());
 			$("select.room").children(':not(#'+$building+')').css('display','none');
 			$("select.room").children('#'+$building).css('display','block');
+			$("select.room").children('#'+$building).first().attr('selected','selected');
 		});
 		$('#eventStartTime').change(function() {
 			$("#eventEndTime").get(0).selectedIndex=($("#eventStartTime").get(0).selectedIndex+1)%48;

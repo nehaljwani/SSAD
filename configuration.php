@@ -3,6 +3,8 @@
 require_once('essential.php');
 require_once('header.php');
 ?>
+<h2 class="title">Configuration Data</h2>
+<h3 class="title">Semester Slots</h3>
 <script type="text/javascript">
 
 function blah(id , bool) {
@@ -56,6 +58,37 @@ while($row=mysql_fetch_row($resu))
 }
 		?>
 		</table>
-		<input type='submit' name='add' value='Add'/>
+		<input type='submit' name='add' value='Update'/>
 		</form>
-		<?php require_once('footer.php'); ?>
+
+<h4 class="title">Limits</h4>
+
+<form id='setLimit' action='confirm_configuration.php' method='post'>
+<table id="box-table-a">
+<tr>
+<thead>
+<th scope="col">Desc</th>
+<th scope="col">Days</th>
+</tr>
+</thead>
+<?php
+$queue="select * from Limits;";
+$resu=execute($queue);
+$pri=0;
+$gh=0;
+while($row=mysql_fetch_assoc($resu))
+{
+	?>
+		<tr>
+			<td><input type='text' name='Name' value='<?php echo $row['Name']; ?>'></td>
+			<td><input type='text' name='Days' value='<?php echo $row['Days']; ?>'></td>
+		</tr>
+	<?php
+}
+		?>
+		</table>
+		<input type='submit' name='limit' value='Update'/>
+		</form>
+
+
+<?php require_once('footer.php'); ?>

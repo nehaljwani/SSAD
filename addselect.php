@@ -1,6 +1,13 @@
 <?php
 include("essential.php");
 require_once("header.php");
+
+$gID = getCurGroup();
+
+if($gID != 2){
+	die("Insufficient privileges");
+}
+
 ?>
 <div class='post'>
 <h2> Change Bugs Status</h2>

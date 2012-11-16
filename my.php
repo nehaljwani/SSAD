@@ -21,13 +21,34 @@ include("header.php");
 <?php
 
 dbconnect();
+delCourse2Instance();
 mysql_query("DELETE FROM CourseRooms");
 $s="CREATE VIEW Tablet AS select DISTINCT Tablem.Code,Tablem.Name,Type,Day,StartTime,EndTime,PrevRoom from Tablem,Tableme where Tablem.Code=Tableme.Code";
 mysql_query($s,$con);
-$R60=array("H101","H102","H201","H202","H301","H302","B4-304","B4-301","B6-309","C1-302");
-$R100=array("SH1","SH2","CR1","CR2","H103","H104","H203","H204","H303","H304","N104");
+
+$num60=0;$num100=0;
+$sql_60 = mysql_query("select * from Room where capacity<=60 and description not like 'Lab'");
+while($row_60=mysql_fetch_array($sql_60))
+{
+	$R60[$num60]=$row_60['roomName'];
+	$num60++;
+}
+
+$sql_100 = mysql_query("select * from Room where capacity>=100 and description not like 'Lab'");
+while($row_100=mysql_fetch_array($sql_100))
+{
+	$R100[$num100]=$row_100['roomName'];
+	$num100++;
+}
+
+//$R60=array("H101","H102","H201");
+//$R100=array("SH1","SH2","CR1","CR2");
 $sql=mysql_query("select * from Tablet where Type='UG1' and PrevRoom like 'SH1' order by Code");
 $ug1ar=$_POST["ug1seca"];
+// hard coding for FSIS and Seminars.
+//mysql_query("insert into CourseRooms values ('$z1','Seminar Talks','$z3','$z4','$z5','$z6','$z7','$z8','Course','')");
+//mysql_query("insert into CourseRooms values ('$z1','$z2','$z3','$z4','$z5','$z6','$z7','$z8','Course','')");
+
 while($row=mysql_fetch_array($sql))
 {
 	$z1=$row['Code'];
@@ -38,10 +59,7 @@ while($row=mysql_fetch_array($sql))
 	$z6=$row['EndTime'];
 	$z7="UG1";
 	$z8=$row['PrevRoom'];
-//	$hash=sha1(uniqid(mt_rand(), true));
-//      function call	
-//	mysql_query("insert into CourseRooms values ('$hash','$z1','$z2','$z3','$z4','$z5','$z6','$z7','$z8')");
-	mysql_query("insert into CourseRooms values ('$z1','$z2','$z3','$z4','$z5','$z6','$z7','$z8','course','')");
+	mysql_query("insert into CourseRooms values ('$z1','$z2','$z3','$z4','$z5','$z6','$z7','$z8','Course','')");
 }
 $sql=mysql_query("select * from Tablet where Type='UG1' and PrevRoom like 'CR2' order by Code");
 $ug1br=$_POST["ug1secb"];
@@ -58,7 +76,7 @@ while($row=mysql_fetch_array($sql))
 	$z6=$row['EndTime'];
 	$z7="UG1";
 	$z8=$row['PrevRoom'];
-	mysql_query("insert into CourseRooms values ('$z1','$z2','$z3','$z4','$z5','$z6','$z7','$z8','course','')");
+	mysql_query("insert into CourseRooms values ('$z1','$z2','$z3','$z4','$z5','$z6','$z7','$z8','Course','')");
 	// func. call
 }
 $sql=mysql_query("select * from Tablet where Type='UG2' and PrevRoom like 'SH2' order by Code");
@@ -73,7 +91,7 @@ while($row=mysql_fetch_array($sql))
 	$z6=$row['EndTime'];
 	$z7="UG2";
 	$z8=$row['PrevRoom'];
-	mysql_query("insert into CourseRooms values ('$z1','$z2','$z3','$z4','$z5','$z6','$z7','$z8','course','')");
+	mysql_query("insert into CourseRooms values ('$z1','$z2','$z3','$z4','$z5','$z6','$z7','$z8','Course','')");
 	// func. call
 }
 $sql=mysql_query("select * from Tablet where Type='UG2' and PrevRoom like '101' order by Code");
@@ -88,7 +106,7 @@ while($row=mysql_fetch_array($sql))
 	$z6=$row['EndTime'];
 	$z7="UG2";
 	$z8=$row['PrevRoom'];
-	mysql_query("insert into CourseRooms values ('$z1','$z2','$z3','$z4','$z5','$z6','$z7','$z8','course','')");
+	mysql_query("insert into CourseRooms values ('$z1','$z2','$z3','$z4','$z5','$z6','$z7','$z8','Course','')");
 	// func. call
 }
 $sql=mysql_query("select * from Tablet where Type='PG1' order by Code");
@@ -103,7 +121,7 @@ while($row=mysql_fetch_array($sql))
 	$z6=$row['EndTime'];
 	$z7="PG1";
 	$z8=$row['PrevRoom'];
-	mysql_query("insert into CourseRooms values ('$z1','$z2','$z3','$z4','$z5','$z6','$z7','$z8','course','')");
+	mysql_query("insert into CourseRooms values ('$z1','$z2','$z3','$z4','$z5','$z6','$z7','$z8','Course','')");
 	// func. call
 }
 $sql="CREATE VIEW Tablet1 AS select * from Tablet where Type='BC' OR Type='Elective' AND Name NOT LIKE '%Lab%' order by Type,Code,StartTime";
@@ -120,9 +138,9 @@ $n=0;
 $bang=0;
 $save=0;
 $roomnum=0;
-for($i=1;$i<$count;$i++)
+for($i=1;$i<=$count;$i++)
 {
-	if($row[$i]['Code']!==$row[$i-1]['Code'] or $i===$count-1)
+	if($row[$i]['Code']!==$row[$i-1]['Code'] or $i===$count)
 	{
 		$zz1=$row[$i-1]['Code'];
 		$zz2=$row[$i-1]['Name'];
@@ -148,12 +166,16 @@ for($i=1;$i<$count;$i++)
 			$zz6=$row[$l]['EndTime'];
 			$zz7=$row[$l]['Type'];
 			$zz8=$row[$l]['PrevRoom'];
-			mysql_query("insert into CourseRooms values ('$zz1','$zz2','$zz3','$zz4','$zz5','$zz6','$zz7','$zz8','course','')");
+			mysql_query("insert into CourseRooms values ('$zz1','$zz2','$zz3','$zz4','$zz5','$zz6','$zz7','$zz8','Course','')");
 			// func. call
 			//			echo $zz3." ".$zz4." ".$zz5." ".$zz6 ."\n";
 		}
 		$save=0;
 		$j=$i;
+	}
+	if($i===$count)
+	{
+		break;
 	}
 	$flag=0;
 	while($flag===0)
@@ -189,7 +211,7 @@ for($i=1;$i<$count;$i++)
 		}
 		$save++;
 		$i=$j;
-		$k=($k+1)%11;
+		$k=($k+1)%$num100;         //R100
 	}
 	while($flag===0)
 	{
@@ -218,7 +240,7 @@ for($i=1;$i<$count;$i++)
 		}
 		$save++;
 		$i=$j;
-		$n=($n+1)%10;
+		$n=($n+1)%$num60;            // R60
 	}
 }
 $result = mysql_query("SELECT * FROM CourseRooms order by Name");
@@ -288,8 +310,7 @@ if($roomnum>0)
 include('footer.php');
 echo '
 <script type="text/javascript">
-window.location="progress.php";
-</script>
-	';
+window.location="display.php";
+</script>';
 ?>
 

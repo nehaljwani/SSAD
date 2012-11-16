@@ -16,10 +16,21 @@ $_SESSION['tutet']=$c;
 $_SESSION['tutpr']=$d;
 $j=150;
 $m=0;
-$Rlab=array("TL1","TL2","N131","N125","Science Lab","H203");
+
+$val=0;
+$sql_60 = mysql_query("select * from Room where description='Lab'");
+while($row_60=mysql_fetch_array($sql_60))
+{
+		$Rlab[$val]=$row_60['roomName'];
+		$val++;
+}
+
+
+// $Rlab=array("TL1","TL2","N131","N125","Science Lab","H203");
+
 $rooms=1;
 $arr[0]="***";
-while($m<=5)
+while($m<$val)
 {
 	$flag=0;
 	$p=$Rlab[$m];
@@ -55,7 +66,7 @@ echo "
 </tr>
 ";
 $i=1;
-$sql=mysql_query("select * from CourseRooms where Code='$e' and Study='lab'");
+$sql=mysql_query("select * from CourseRooms where Code='$e' and Study='Lab'");
 while($row=mysql_fetch_array($sql))
 {
 	$z1=$row['Day'];

@@ -2,6 +2,7 @@
 <?php require_once('header.php'); ?>
 <div class="post">
 <?php echo $boxMsg; ?>
+	<img src="images/logo_name.jpg" /><br /><hr>
 <h2 class="title">ROOM &nbsp; ALLOTMENT &nbsp; PORTAL</h2>
 </div>
 <div class="post">

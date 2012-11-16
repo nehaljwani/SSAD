@@ -8,7 +8,7 @@ $c=$_SESSION['tutname'];
 $i=1;
 $j=125;
 $flag=0;
-$sql=mysql_query("select * from CourseRooms where Code='$b' and Study='tut'");
+$sql=mysql_query("select * from CourseRooms where Code='$b' and Study='Tut'");
 while($row=mysql_fetch_array($sql))
 {
 	$flag=1;
@@ -28,11 +28,11 @@ if($flag===1)
 		<th width='$j'>Day</th>
 		<th width='$j'>Start Time</th>
 		<th width='$j'>End Time</th>
-		<th width='$j'>Room</th>
 		<th width='$j'>Section</th>
+		<th width='$j'>Room</th>
 		</tr>
 		";
-	$sql=mysql_query("select * from CourseRooms where Code='$b' and Study='tut'");
+	$sql=mysql_query("select * from CourseRooms where Code='$b' and Study='Tut'");
 	while($row=mysql_fetch_array($sql))
 	{
 		$z1=$row['Day'];
@@ -46,8 +46,8 @@ if($flag===1)
 			<td width='$j' align='center'>$z1</td>
 			<td width='$j' align='center'>$z2</td>
 			<td width='$j' align='center'>$z3</td>
-			<td width='$j' align='center'>$z4</td>
 			<td width='$j' align='center'>$z5</td>
+			<td width='$j' align='center'>$z4</td>
 			<td><input type='submit' value='Edit' name='$i'></td>
 			<td><input type='submit' value='Delete' name='$i'></td>
 			</tr>";

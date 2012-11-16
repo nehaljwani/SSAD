@@ -1,6 +1,20 @@
 <?php 
 include('essential.php');
-include('header.php'); ?>
+include('header.php'); 
+include("adminOnly.php");
+?>
+<script type="text/javascript">
+
+function confirm_allocation()
+{
+	var conf = confirm("Allocation has been done already. Are you sure to Reallocate ?");
+	if(conf == true){
+		alert(conf);
+		window.location = 'predef.php';
+	}
+}
+
+</script>
 
 <form name='predef' action="my.php" method='post'>
 <table align='left'>
@@ -14,7 +28,7 @@ include('header.php'); ?>
 <td><li><a href="a.php" id="mybody">Clashes</a></li><br></td>
 </tr>
 <tr>
-<td><li><a href="predef.php" id="mybody">Allocate</a></li><br></td>
+<td><li><a href="#" onclick="confirm_allocation()" id="mybody">Allocate</li><br></td>
 </tr>
 <tr>
 <td><li><a href="courses.php" id="mybody">Modify Course Details</a></li><br/></td>

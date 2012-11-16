@@ -22,7 +22,7 @@ for($k=1;$k<$l;$k++)
 if($g==="Delete")
 {
 	$i=1;
-	$sql=mysql_query("select * from CourseRooms where Code='$b' and Study='lab'");
+	$sql=mysql_query("select * from CourseRooms where Code='$b' and Study='Lab'");
 	while($row=mysql_fetch_array($sql))
 	{
 		if($k===$i)
@@ -31,6 +31,12 @@ if($g==="Delete")
 			$z2=$row['StartTime'];
 			$z3=$row['EndTime'];
 			$z4=$row['Room'];
+
+			$sql1=mysql_query("select hash from CourseRooms where Code='$b' and Day='$z1' and StartTime='$z2' and EndTime='$z3' and Room='$z4'");
+			$row1 = mysql_fetch_array($sql1);
+			$delhash = $row1['hash'];
+			delCourse2InstanceSingle($delhash);
+
 			mysql_query("delete from CourseRooms where Code='$b' and Day='$z1' and StartTime='$z2' and EndTime='$z3' and Room='$z4'");
 			header('Location:lab4.php');
 			break;
@@ -41,7 +47,7 @@ if($g==="Delete")
 if($g==="Edit")
 {
 	$i=1;
-	$sql=mysql_query("select * from CourseRooms where Code='$b' and Study='lab'");
+	$sql=mysql_query("select * from CourseRooms where Code='$b' and Study='Lab'");
 	while($row=mysql_fetch_array($sql))
 	{
 		if($k===$i)
@@ -51,6 +57,12 @@ if($g==="Edit")
 			$z13=$row['EndTime'];
 			$z14=$row['Room'];
 			$z15=$row['PrevRoom'];
+
+			$sql1=mysql_query("select hash from CourseRooms where Code='$b' and Day='$z1' and StartTime='$z2' and EndTime='$z3' and Room='$z4'");
+			$row1 = mysql_fetch_array($sql1);
+			$delhash = $row1['hash'];
+			delCourse2InstanceSingle($delhash);
+
 			mysql_query("delete from CourseRooms where Code='$b' and Day='$z11' and StartTime='$z12' and EndTime='$z13' and Room='$z14'");
 		}
 		$flag=1;
@@ -76,7 +88,7 @@ if($g==="Edit")
 			</tr>
 			";
 		$i=1;
-		$sql=mysql_query("select * from CourseRooms where Code='$b' and Study='lab'");
+		$sql=mysql_query("select * from CourseRooms where Code='$b' and Study='Lab'");
 		while($row=mysql_fetch_array($sql))
 		{
 			$z1=$row['Day'];
@@ -122,7 +134,7 @@ if($g==="Edit")
 		<td align='center'><select></select></td>
 		<td align='center'><input type='text' value='$z15' name='sec' size=1></td>
 		</tr></table>
-		<br><br><input type='submit' value='Check CourseRooms'>";
+		<br><br><input type='submit' value='Check Labs'>";
 }
 if($g==="Add a Lab")
 {
@@ -144,7 +156,7 @@ if($g==="Add a Lab")
 			</tr>
 			";
 		$i=1;
-		$sql=mysql_query("select * from CourseRooms where Code='$b' and Study='lab'");
+		$sql=mysql_query("select * from CourseRooms where Code='$b' and Study='Lab'");
 		while($row=mysql_fetch_array($sql))
 		{
 			$z1=$row['Day'];

@@ -21,7 +21,11 @@ echo "$_POST[$startDate]</br>$i";
 		}
 		 $i++;
 }
-
+if(isset($_POST['limit'])){
+	$query="UPDATE Limits set Days='".$_POST['Days']."' WHERE Name='".$_POST['Name']."'";
+	execute($query);
+	header("Location:configuration.php?msg='Limit Updated Successfully'");
+}
 header("Location:configuration.php?msg='Configutration Updated Successfully'");
 
 ?>

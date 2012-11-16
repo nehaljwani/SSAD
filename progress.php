@@ -16,8 +16,13 @@ courseToInstance();
  
 // Tell user that the process is completed
 echo '<script language="javascript">document.getElementById("information").innerHTML="Process completed"</script>';
+echo str_repeat(' ',1024*64);
+flush(); 
+sleep(2);
+echo '<script language="javascript">window.location.replace("display.php")</script>';
+echo str_repeat(' ',1024*64);
+flush(); 
 ?>
 </body>
 </html>
-<?php header("location:lectures.php"); ?>
 

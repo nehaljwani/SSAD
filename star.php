@@ -5,9 +5,29 @@ session_start();
 dbconnect();
 $gg=$_SESSION['patacode'];
 $gh=$_SESSION['pataroom'];
-mysql_query("delete from CourseRooms where Code='$gg'");
-$R60=array("H101","H102","H201","H202","H301","H302","B4-304","B4-301","B6-309","C1-302");
-$R100=array("SH1","SH2","CR1","CR2","H103","H104","H203","H204","H303","H304","N104");
+//echo "venky is $gh";
+$result=mysql_query("select * from CourseRooms where Code='$gg' and Study like 'Courses'");
+while($req=mysql_fetch_array($result)){
+	mysql_query("DELETE FROM Instances WHERE hash='".$req['hash']."'");
+}
+mysql_query("delete from CourseRooms where Code='$gg' and Study like 'Courses'");
+// nehal func.
+$num60=0;$num100=0;
+$sql_60 = mysql_query("select * from Room where capacity<=60 and description not like 'Lab'");
+while($row_60=mysql_fetch_array($sql_60))
+{
+        $R60[$num60]=$row_60['roomName'];
+        $num60++;
+}
+
+$sql_100 = mysql_query("select * from Room where capacity>=100 and description not like 'Lab'");
+while($row_100=mysql_fetch_array($sql_100))
+{
+        $R100[$num100]=$row_100['roomName'];
+        $num100++;
+}
+//$R60=array("H101","H102","H201","H202","H301","H302","B4-304","B4-301","B6-309","C1-302");
+//$R100=array("SH1","SH2","CR1","CR2","H103","H104","H203","H204","H303","H304","N104");
 $sql=mysql_query("select * from dassod");
 $count=0;
 while($row[$count] = mysql_fetch_array($sql))
@@ -18,7 +38,7 @@ $m=0;
 $rooms=1;
 $arr[0]="***";
 $cour=0;
-while($m<=10)
+while($m<$num100)
 {
 	$flag=0;
 	$p=$R100[$m];
@@ -65,7 +85,7 @@ while($m<=10)
 	$m++;
 }
 $m=0;
-while($m<10)
+while($m<$num60)
 {
 	$flag=0;
 	$p=$R60[$m];

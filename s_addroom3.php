@@ -37,7 +37,7 @@ $q = "update Room set roomName='" .$rname. "', buildingName='" . $id . "', capac
    		/* else{
                         $q = "update Room set roomName='" .$rname. "', capacity='".$_POST['cap']."', description='".$_POST['description']."' where roomName ='".$_POST['Room']."';" ;
 		}  */   
-echo $q;
+//echo $q;
  		execute($q);
                 $del="delete from Room_Cat where roomId=".$id2.";";
 //		echo $del;
@@ -47,7 +47,7 @@ echo $q;
                 if(empty($_POST['Category']))
                 {
 
-                        //header("Location:allForm.php?msg='Room edited'");
+                        header("Location:allForm.php?msg='Room edited'");
                          die();
                 }
                 else{                                                   // adding categories to the room.

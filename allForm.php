@@ -17,7 +17,7 @@ if($gID != 2){
 dbconnect();
 ?>
 <div class="post">
-  <h2 class="title"><a href="#">All forms </a></h2>
+  <h2 class="title">All forms</h2>
   <div class="entry">
   </div>
 </div>
@@ -41,9 +41,9 @@ function confirm_delete(x){
 <script language="javascript" type="text/javascript" src="js/calendarDateInput.js"></script>
 <script type='text/javascript' src='js/brand.js'></script>
 <script type='text/javascript' src='./js/livevalidation_standalone.js'></script>
-<button type="button" id='editroom' >edit/delete Room</button>
-<button type="button" id='addroom' >add/update Room</button>
-<button type="button" id='delroom' >delete Room</button>
+<button type="button" id='editroom' >Edit/Delete Room</button>
+<button type="button" id='addroom' >Add/Update Room</button>
+<button type="button" id='delroom' >Delete Room</button>
 <button type="button" id='addbuild' >Add Building</button>
 <button type="button" id='delbuild' >Delete Building</button>
 <script  type="text/javascript">

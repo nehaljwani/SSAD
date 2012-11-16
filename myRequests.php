@@ -3,6 +3,8 @@ include("essential.php");
 require_once("header.php");
 $email=phpCAS::getUser();
 ?>
+<div class="post">
+<h2 class="title">Requests made by you </h2>
 <table id="box-table-a">
 <script language="javascript" type="text/javascript" src="js/table.js"></script>
 <thead>
@@ -25,6 +27,7 @@ $query="SELECT reqNo,creator,room,eventTitle,eventStartDate,eventStartTime,reqTy
                   getMyRequests($query);
 		  ?>
 		  </table>
+		  </div>
 		  <?php
 		  
 require_once("footer.php");

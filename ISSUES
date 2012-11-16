@@ -1,0 +1,6 @@
+* Mails might get sent multiple times (esp to CC people)
+* No mail may have been sent on creation
+* Admin may not be able to create a new request
+* Admin may not be able to delete a single instance of a request
+* The 5pm before/after forwarding switch might not work.
+* Tab groups might not have been implemented

@@ -2,8 +2,9 @@
 include('essential.php');
 $a=$_POST['a'];
 dbconnect();
+mysql_query("DELETE FROM Instances WHERE eventTitle='$a'");
 mysql_query("delete from CourseRooms where Code='$a'");
-// func. call
+// all courses , tuts , labs wud be deleted related to dat course.
 mysql_close($con);
 echo'
 <script type="text/javascript">

@@ -9,7 +9,7 @@ $c=$_SESSION['tutname'];
 $i=1;
 $j=125;
 $flag=0;
-$sql=mysql_query("select * from CourseRooms where Code='$b' and Study='lab'");
+$sql=mysql_query("select * from CourseRooms where Code='$b' and Study='Lab'");
 while($row=mysql_fetch_array($sql))
 {
 	$flag=1;
@@ -33,7 +33,7 @@ if($flag===1)
 		<th width='$j'>Section</th>
 		</tr>
 		";
-	$sql=mysql_query("select * from CourseRooms where Code='$b' and Study='lab'");
+	$sql=mysql_query("select * from CourseRooms where Code='$b' and Study='Lab'");
 	while($row=mysql_fetch_array($sql))
 	{
 		$z1=$row['Day'];
