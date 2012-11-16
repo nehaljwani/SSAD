@@ -1,7 +1,7 @@
 <?php
+include("essential.php");
 session_start();
 $code=$_POST['a'];
-include("essential.php");
 dbconnect();
 	$sql2="CREATE TABLE dassod
 	(

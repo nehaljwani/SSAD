@@ -1,6 +1,6 @@
 <?php
-session_start();
 include('essential.php');
+session_start();
 dbconnect();
 $saver=$_SESSION['realsaver'];
 //$code=$_POST['1'];

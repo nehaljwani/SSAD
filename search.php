@@ -1,4 +1,5 @@
 <?php
+require_once('essential.php');
 require_once('header.php');
 echo "<h2 class='center'>Advanced Search Options : </h2>";
 echo "<table><tr>";

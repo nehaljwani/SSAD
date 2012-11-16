@@ -1,3 +1,17 @@
+<script type="text/javascript">
+
+function confirm_delete(x){
+
+	var conf = confirm("Are you sure to delete ?");
+
+	if(conf == true){
+		window.location = 'myconfirmdel.php?SNO='+x;
+
+	}
+
+}
+
+</script>
 
 
 <?php
@@ -120,7 +134,8 @@ function generate_list($q,$x,$isnull = true,$default= false ){
 	return $st;
 }
 
-function generate_select_list($q,$x,$b,$isnull = true,$default= false ){
+function generate_select_list($q,$x,$b,$isnull = true,$default= false )
+{
 	$r = execute($q);
 	$i=0;
 	$rowcount = mysql_num_rows($r);
@@ -140,6 +155,7 @@ function generate_select_list($q,$x,$b,$isnull = true,$default= false ){
 	$st .= "</select>";
 	return $st;
 }
+
 function getGroup($userID){
 	//Takes a user ID and returns group from database. Returns 0 if not found.
 	dbconnect();
@@ -523,7 +539,7 @@ function forward($name,$mail_to,$room_no,$request_id,$original_mail_id, $cc)
 		<html>
 		<body>
 		<p>".$body."</p>
-		<p> Click <a href=\"http://localhost/roomReservationSystem/SSAD/req_detail_hash.php?hash=".$hash."&gID={$gID}\"> here </a>to verify the request! </p>
+		<p> Click <a href=\"http://web.iiit.ac.in/~room_allocation/roomReservationSystem/SSAD/req_detail_hash.php?hash=".$hash."&gID={$gID}\"> here </a>to verify the request! </p>
 		\n\n\n\nCheers,\nAdmins\n\n\n\nMail generated at: ".$date."
 		</body>
 		</html>";
@@ -963,7 +979,8 @@ function getMyRequests($query){
 			if($status=="Pending")
 			{
 				?>
-		<td><button type="submit" onClick="javascript:window.location.href='myconfirmdel.php?SNO=<?php echo "$pri" ?>'">Delete </button></td>
+		 <td><button type="submit" onClick="confirm_delete('<?php echo "$pri";?>')">Delete </button></td>
+
 					 
 					
 		<?php } 
@@ -995,7 +1012,30 @@ function getCC($reqID)
 	return $CSVString;
 }
 
-function updateCourse2Instance($hash,$Code, $Name, $Room, $Day, $StartTime, $EndTime, $Type){
+function delCourse2Instance(){
+	dbconnect();
+	$query="SELECT * FROM CourseRooms;";
+	$result=execute($query);
+	while($reqDet=mysql_fetch_assoc($result)){
+		$newQuery="DELETE FROM Instances WHERE hash='".$req['hash']."'";
+		execute($newQuery);
+	}
+}
+
+function delCourse2InstanceSingle($hash){
+	dbconnect();
+	$query="SELECT * FROM CourseRooms WHERE hash='".$hash."';";
+	$result=execute($query);
+	while($reqDet=mysql_fetch_assoc($result)){
+		$newQuery="DELETE FROM Instances WHERE hash='".$req['hash']."'";
+		execute($newQuery);
+	}
+}
+
+
+
+
+function updateCourse2Instance($Code, $Name, $Room, $Day, $StartTime, $EndTime, $Type, $PrevRoom, $Study, $hash){
 	$day2No=array(
                 "Sun"=>1,
                 "Mon"=>2,
@@ -1005,7 +1045,7 @@ function updateCourse2Instance($hash,$Code, $Name, $Room, $Day, $StartTime, $End
                 "Fri"=>6,
                 "Sat"=>7,
         );
-        $eventStartDate="2012-08-01"; //has to be taken from Constants Table
+        $eventStartDate="2012-08-01"; //has to be taken from Configuration Table
         $eventEndDate="2012-11-28";
 	dbconnect();
 /*	$query="SELECT reqNo FROM Requests ORDER BY reqNO DESC limit 1";
@@ -1025,7 +1065,7 @@ function updateCourse2Instance($hash,$Code, $Name, $Room, $Day, $StartTime, $End
 //			$reqNo++;
                         $query="INSERT INTO Instances(reqNo,hash,creator,creatorEmail,creatorPhone,concernedPName,concernedPEmail,concernedPPhone,appStatus,reqGId,reqDate,eventStartDate,eventEndDate,eventStartTime,eventEndTime,eventTitle,eventDesc,eventDays,concernedAdmin,room,reqType) VALUES(
 				'00',
-                                '".$hash=sha1(uniqid(mt_rand(), true))."',
+                                '".$hash."',
                                 'Admin',
                                 'appaji@iiit.ac.in',
                                 '',
@@ -1040,7 +1080,7 @@ function updateCourse2Instance($hash,$Code, $Name, $Room, $Day, $StartTime, $End
                                 '".$roomRecords['StartTime']."',
                                 '".$roomRecords['EndTime']."',
                                 '".$roomRecords['Code']."',
-                                '".$roomRecords['Name']."',
+                                '".$roomRecords['Name']." (".$Study.") (".$PrevRoom.")',
                                 '".$day2No[$roomRecords['Day']]."',
                                 'Admin',
                                 '".$roomRecords['Room']."',
@@ -1051,10 +1091,6 @@ function updateCourse2Instance($hash,$Code, $Name, $Room, $Day, $StartTime, $End
 
         }
 }
-
-
-
-
 
 function courseToInstance(){
         $day2No=array(
@@ -1084,7 +1120,7 @@ function courseToInstance(){
 //			$reqNo++;
                         $query="INSERT INTO Instances(reqNo,hash,creator,creatorEmail,creatorPhone,concernedPName,concernedPEmail,concernedPPhone,appStatus,reqGId,reqDate,eventStartDate,eventEndDate,eventStartTime,eventEndTime,eventTitle,eventDesc,eventDays,concernedAdmin,room,reqType) VALUES(
 				'00',
-                                '".$hash=sha1(uniqid(mt_rand(), true))."',
+                                '".$roomRecords['hash']."',
                                 'Admin',
                                 'appaji@iiit.ac.in',
                                 '',

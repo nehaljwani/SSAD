@@ -1,4 +1,5 @@
 <?php
+include("essential.php");
 session_start();
 include('header.php');
 echo "
@@ -19,6 +20,6 @@ echo "
 if($_SESSION["del_cou"]==10)
 {
 	echo "<br><br><br><br><br><br><br><br>";
-	include('footer.php');
 }
+	include('footer.php');
 ?>

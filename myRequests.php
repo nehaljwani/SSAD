@@ -1,5 +1,6 @@
-<?php require_once("header.php");
+<?php 
 include("essential.php");
+require_once("header.php");
 $email=phpCAS::getUser();
 ?>
 <table id="box-table-a">

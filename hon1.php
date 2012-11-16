@@ -1,7 +1,7 @@
 <?php
 session_start();
-include("header.php");
 include("essential.php");
+include("header.php");
 dbconnect();
 $saver=1;
 $rr=$_SESSION['modtyper'];

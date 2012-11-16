@@ -1,11 +1,12 @@
-<?php require_once('header.php'); ?>
-
-
+<?php 
+require_once('essential.php');
+require_once('header.php'); 
+?>
 <form action="project1.php"method="post"
 enctype="multipart/form-data">
 
+ <h2 >lectures - File Upload</h2><br/>
 <table align='left'>
- <h2 align='left'>lectures-File Upload</h2><br/>
 <tr>
 <td id="mybody">CSV-FILE<br>(Code,Name,Day,Start-Time,End-Time) </td></tr><tr><td><input type="file" name="file1" id="file"/></td><br/></tr><br/>
 <tr>

@@ -1,6 +1,9 @@
 <?php
-require_once("header.php");
 include("essential.php");
+require_once("header.php");
+?>
+<div class="post">
+<?php
 $id=$_GET['id'];
 $query1="select * from BugTracker where BugId=$id";
 $result1=execute($query1);
@@ -28,10 +31,12 @@ while($row2=mysql_fetch_array($result2))
 <p>Write a new Comment</p>
 <form action="confirmcomment.php" method="post">
 <input type="hidden" name="id" value=<?php echo $id?>>
-<input type="hidden" name="email" value=<?php echo phpCAS::getUser()?>>
+<input type="hidden" name="email" value=<?php echo phpCAS::getUser() ?>>
 <textarea name="bug" rows="10" cols="50" value=""></textarea><br>
 <input type="submit" value="submit"/>
+</div>
 <?php
 require_once("footer.php");
 ?>
 		
+

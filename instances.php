@@ -22,7 +22,7 @@ if(isset($_GET['st']))
     $mstart=$_GET['st'];    
 else
     $mstart=0;
-$lim=10;
+$lim=200;
 $table="Instances";
 dbconnect();          //connecting db
 $query="SELECT reqNo,creator,room,eventTitle,eventStartDate,eventStartTime,reqType,appStatus FROM $table ORDER BY eventStartDate"; //select table

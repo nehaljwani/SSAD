@@ -1,4 +1,5 @@
 <?php
+include("essential.php");
 include("header.php");
 session_start();
 $num=$_SESSION['coursenum'];

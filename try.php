@@ -2,8 +2,9 @@
 session_start();
 $_SESSION["del_cou"]=5;
 $a=$_POST['a'];
-include "deleting.php";
 include('essential.php');
+include('header.php');
+include "deleting_nocss.php";
 dbconnect();
 
 echo "

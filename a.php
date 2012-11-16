@@ -1,6 +1,6 @@
 <?php
-include('header.php');
 include('essential.php');
+include('header.php');
 dbconnect();
 $sql=mysql_query("select distinct Name from Tablem where PrevRoom='COMMON'");
 echo "

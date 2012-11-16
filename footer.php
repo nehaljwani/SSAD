@@ -23,8 +23,8 @@
 					<li><a href="feedback_view.php">View Feedbacks</a></li>
 					<li><a href="allForm.php">AllForms</a></li>
 			<!--		<li><a href="lectures.php">Lectures</a></li> -->
-                                        <li><a href="#">Tutorials</a></li>
-                                        <li><a href="#">Labs</a></li>
+                                        <li><a href="tut1.php">Tutorials</a></li>
+                                        <li><a href="lab1.php">Labs</a></li>
                                         <li><a href="myRequests.php">My Requests</a></li>
 
 				</ul>
@@ -34,7 +34,7 @@
 					<li><a href="#">Cat</a></li>
 					<li><a href="#">Cat</a></li>
 					<li><a href="#">Cat</a></li>
-				</ul> 
+				</ul>
 			<?php }else{ //Else, display the following nav bar ?>
 				<h2>Navigation</h2>
 				<ul class="list-style1">
@@ -52,8 +52,8 @@
 					<li><a href="feedback_view.php">View Feedbacks</a></li>
 					<li><a href="allForm.php">AllForms</a></li>
 			<!--		<li><a href="lectures.php">Lectures</a></li> -->
-                                        <li><a href="#">Tutorials</a></li>
-                                        <li><a href="#">Labs</a></li>
+                                        <li><a href="tut1.php">Tutorials</a></li>
+                                        <li><a href="lab1.php">Labs</a></li>
                                         <li><a href="myRequests.php">My Requests</a></li>
 
 				</ul>

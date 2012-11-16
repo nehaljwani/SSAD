@@ -11,21 +11,18 @@ include('header.php'); ?>
 <tr>
 <td><li><a href="file.php" id="mybody">File Upload</a></li><br/></td></tr><br/>
 <tr>
-<td><li><a href="courses.php" id="mybody">Modify Course Details</a></li><br/></td>
-</tr>
-<tr>
 <td><li><a href="a.php" id="mybody">Clashes</a></li><br></td>
 </tr>
 <tr>
 <td><li><a href="predef.php" id="mybody">Allocate</a></li><br></td>
 </tr>
-<td><li><a href="printMasterFile.php" id="mybody">View Master File</a></li><br></td>
+<tr>
+<td><li><a href="courses.php" id="mybody">Modify Course Details</a></li><br/></td>
 </tr>
-<td><li><a href="printTimeTable.php" id="mybody">View Time-Table File</a></li><br></td>
+<tr>
+<td><li><a href="modifyrooms.php" id="mybody">Modify Rooms</a></li><br/></td>
 </tr>
-<td><li><a href="printAllottedRooms.php" id="mybody">View Allotted Rooms</a></li><br></td>
-</tr>
-<td><li><a href="printoutput.php" id="mybody">Consolidated View</a></li><br></td>
+<td><li><a href="allviews.php" id="mybody">All Views</a></li><br></td>
 </tr>
                 </table>
                 </form>

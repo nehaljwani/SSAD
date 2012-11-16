@@ -35,7 +35,7 @@ echo "testtest";
 $hash=sha1(uniqid(mt_rand(), true));
 $eventEndDate=$_POST["eventEndDate"];
 $creator=$_POST["creator"];
-$creatorEmail=$_POST["creatorEmail"];
+$creatorEmail=phpCAS::getUser();
 if(empty($creatorEmail))
 {
 	                header("Location:requestForm.php?msg='Email  cannot be empty'");

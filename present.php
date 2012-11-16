@@ -1,5 +1,6 @@
-<?php include("header.php"); 
+<?php
 include('essential.php');
+include("header.php"); 
 dbconnect();
 /*
 $sql="CREATE TABLE clash

@@ -1,4 +1,6 @@
-<?php include("header.php"); 
+<?php
+include('essential.php');
+include("header.php"); 
 session_start();
 echo"
 <div class='post'>
@@ -6,7 +8,6 @@ echo"
 <center>
 ";
 $weeks=array('Mon','Tue','Wed','Thu','Fri','Sat');
-include('essential.php');
 dbconnect();
 
 $god=0;

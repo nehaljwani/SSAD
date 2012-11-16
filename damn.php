@@ -1,6 +1,6 @@
 <?php
-$a=$_POST['a'];
 include('essential.php');
+$a=$_POST['a'];
 dbconnect();
 mysql_query("delete from CourseRooms where Code='$a'");
 // func. call

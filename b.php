@@ -3,7 +3,7 @@ $a=$_POST['number'];
 include("essential.php");
 include("header.php");
 dbconnect();
-//include("a.php");
+//include("a_nocss.php");
 echo "
 	<center>
 	<form action='present.php?tab=$a' method='post'>

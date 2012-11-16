@@ -40,7 +40,7 @@ $buildid = 1;
 $x = $_POST['date_start'];
 $y = $_POST['date_end'];
 $hardhik = $_POST['keyword'];
-echo $hardhik;
+//echo $hardhik;
 //$query2 = "select Building.buildingName,Requests.eventDesc,eventStartTime,eventEndTime,room,eventStartDate,eventEndDate from Requests,Room,Building where appStatus = 'Accepted' AND Requests.room = Room.roomName AND Building.buildId = Room.buildingName AND Requests.eventDesc LIKE '%".$hardhik."%' AND ((eventStartDate <= DATE '".$x."' AND eventEndDate >= DATE '".$y."') OR (eventStartDate >= DATE '".$x."' AND eventEndDate >= DATE '".$y."' AND eventStartDate <= DATE '".$y."') OR (eventStartDate >= DATE '".$x."' AND eventEndDate <= DATE '".$y."') OR (eventStartDate <= DATE '".$x."' AND eventEndDate <= DATE '".$y."' AND eventEndDate >= DATE '".$x."'));";
 $query2 = "select Building.buildingName,Requests.eventDesc,eventStartTime,eventEndTime,room,eventStartDate,eventEndDate from Requests,Room,Building where appStatus = 'Accepted' AND Requests.room = Room.roomName AND Building.buildId = Room.buildingName AND Requests.eventDesc like '%".$hardhik."%' AND ((eventStartDate <= DATE '".$x."' AND eventEndDate >= DATE '".$y."') OR (eventStartDate >= DATE '".$x."' AND eventEndDate >= DATE '".$y."' AND eventStartDate <= DATE '".$y."') OR (eventStartDate >= DATE '".$x."' AND eventEndDate <= DATE '".$y."') OR (eventStartDate <= DATE '".$x."' AND eventEndDate <= DATE '".$y."' AND eventEndDate >= DATE '".$x."'));";
 $result9=execute($query2);

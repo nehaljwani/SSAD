@@ -1,4 +1,5 @@
 <?php 
+include("essential.php");
 session_start();
 include("header.php"); 
 //print_r($_POST);
@@ -19,26 +20,12 @@ include("header.php");
 </thead>
 <?php
 
-include('essential.php');
 dbconnect();
 mysql_query("DELETE FROM CourseRooms");
 $s="CREATE VIEW Tablet AS select DISTINCT Tablem.Code,Tablem.Name,Type,Day,StartTime,EndTime,PrevRoom from Tablem,Tableme where Tablem.Code=Tableme.Code";
 mysql_query($s,$con);
 $R60=array("H101","H102","H201","H202","H301","H302","B4-304","B4-301","B6-309","C1-302");
 $R100=array("SH1","SH2","CR1","CR2","H103","H104","H203","H204","H303","H304","N104");
-//	 hash varchar(100) to be added as an extra field
-/*$sql="CREATE TABLE CourseRooms
-	(
-	 Code varchar(10),
-	 Name varchar(100),
-	 Room varchar(10),
-	 Day varchar(10),
-	 StartTime varchar(10),
-	 EndTime varchar(10),
-	 Type varchar(10),
-	 PrevRoom varchar(10)
- )";
-mysql_query($sql,$con); */
 $sql=mysql_query("select * from Tablet where Type='UG1' and PrevRoom like 'SH1' order by Code");
 $ug1ar=$_POST["ug1seca"];
 while($row=mysql_fetch_array($sql))
@@ -54,7 +41,7 @@ while($row=mysql_fetch_array($sql))
 //	$hash=sha1(uniqid(mt_rand(), true));
 //      function call	
 //	mysql_query("insert into CourseRooms values ('$hash','$z1','$z2','$z3','$z4','$z5','$z6','$z7','$z8')");
-	mysql_query("insert into CourseRooms values ('$z1','$z2','$z3','$z4','$z5','$z6','$z7','$z8')");
+	mysql_query("insert into CourseRooms values ('$z1','$z2','$z3','$z4','$z5','$z6','$z7','$z8','course','')");
 }
 $sql=mysql_query("select * from Tablet where Type='UG1' and PrevRoom like 'CR2' order by Code");
 $ug1br=$_POST["ug1secb"];
@@ -71,7 +58,7 @@ while($row=mysql_fetch_array($sql))
 	$z6=$row['EndTime'];
 	$z7="UG1";
 	$z8=$row['PrevRoom'];
-	mysql_query("insert into CourseRooms values ('$z1','$z2','$z3','$z4','$z5','$z6','$z7','$z8')");
+	mysql_query("insert into CourseRooms values ('$z1','$z2','$z3','$z4','$z5','$z6','$z7','$z8','course','')");
 	// func. call
 }
 $sql=mysql_query("select * from Tablet where Type='UG2' and PrevRoom like 'SH2' order by Code");
@@ -86,7 +73,7 @@ while($row=mysql_fetch_array($sql))
 	$z6=$row['EndTime'];
 	$z7="UG2";
 	$z8=$row['PrevRoom'];
-	mysql_query("insert into CourseRooms values ('$z1','$z2','$z3','$z4','$z5','$z6','$z7','$z8')");
+	mysql_query("insert into CourseRooms values ('$z1','$z2','$z3','$z4','$z5','$z6','$z7','$z8','course','')");
 	// func. call
 }
 $sql=mysql_query("select * from Tablet where Type='UG2' and PrevRoom like '101' order by Code");
@@ -101,7 +88,7 @@ while($row=mysql_fetch_array($sql))
 	$z6=$row['EndTime'];
 	$z7="UG2";
 	$z8=$row['PrevRoom'];
-	mysql_query("insert into CourseRooms values ('$z1','$z2','$z3','$z4','$z5','$z6','$z7','$z8')");
+	mysql_query("insert into CourseRooms values ('$z1','$z2','$z3','$z4','$z5','$z6','$z7','$z8','course','')");
 	// func. call
 }
 $sql=mysql_query("select * from Tablet where Type='PG1' order by Code");
@@ -116,7 +103,7 @@ while($row=mysql_fetch_array($sql))
 	$z6=$row['EndTime'];
 	$z7="PG1";
 	$z8=$row['PrevRoom'];
-	mysql_query("insert into CourseRooms values ('$z1','$z2','$z3','$z4','$z5','$z6','$z7','$z8')");
+	mysql_query("insert into CourseRooms values ('$z1','$z2','$z3','$z4','$z5','$z6','$z7','$z8','course','')");
 	// func. call
 }
 $sql="CREATE VIEW Tablet1 AS select * from Tablet where Type='BC' OR Type='Elective' AND Name NOT LIKE '%Lab%' order by Type,Code,StartTime";
@@ -161,7 +148,7 @@ for($i=1;$i<$count;$i++)
 			$zz6=$row[$l]['EndTime'];
 			$zz7=$row[$l]['Type'];
 			$zz8=$row[$l]['PrevRoom'];
-			mysql_query("insert into CourseRooms values ('$zz1','$zz2','$zz3','$zz4','$zz5','$zz6','$zz7','$zz8')");
+			mysql_query("insert into CourseRooms values ('$zz1','$zz2','$zz3','$zz4','$zz5','$zz6','$zz7','$zz8','course','')");
 			// func. call
 			//			echo $zz3." ".$zz4." ".$zz5." ".$zz6 ."\n";
 		}
@@ -299,10 +286,10 @@ if($roomnum>0)
 }
 //sleep(5);
 include('footer.php');
-/*echo '
+echo '
 <script type="text/javascript">
 window.location="progress.php";
 </script>
-	';*/
+	';
 ?>
 

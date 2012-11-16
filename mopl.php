@@ -1,14 +1,12 @@
 <?php
+include('essential.php');
+include('header.php');
 session_start();
 $_SESSION["mod_cou"]=5;
 $a=$_POST['a'];
-include "modifying.php";
-include('essential.php');
+//include "modifying.php";
 dbconnect();
-
 echo "
-<html>
-<body>
 <center>
 <br><h2>SELECT COURSE :</h2>
 <form action='hon.php' method='post'>

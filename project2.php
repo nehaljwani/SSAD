@@ -1,4 +1,7 @@
-<?php include("header.php"); ?>
+<?php
+include('essential.php');
+include("header.php");
+?>
 <div class="post">
 <h2 class="title"></h2>
 <table id="box-table-a">
@@ -10,7 +13,6 @@
 </tr>
 </thead>
 <?php
-include('essential.php');
 dbconnect();
 function temp ()
 {

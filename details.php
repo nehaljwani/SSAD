@@ -1,7 +1,7 @@
 <?php
 
-include("header.php");
 include("essential.php");
+include("header.php");
 dbconnect();
 if(isset($_GET['id'])){
 	$id=$_GET['id'];

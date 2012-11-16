@@ -168,7 +168,7 @@ echo"			<table>
 			echo "<td></td>";
 			echo "<td><a style='width:20px;height:20px' class='button black'>8:00-8:30</a></td>";
 			echo "<td><a style='width:20px;height:20px' class='button black'>8:30-9:00</a></td>";
-			echo "<td class='button black' style='width:20px;height:20px'>9:00-9:30</td>";
+			echo "<td><a class='button black' style='width:20px;height:20px'>9:00-9:30</a></td>";
 			echo "<td><a style='width:20px;height:20px' class='button black'>9:30-10:00</a></td>";
 			echo "<td><a style='width:20px;height:20px' class='button black'>10:00-10:30</a></td>";
 			echo "<td><a style='width:20px;height:20px' class='button black'>10:30-11:00</a></td>";

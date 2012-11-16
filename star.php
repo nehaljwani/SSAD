@@ -1,7 +1,7 @@
 <?php
+include('essential.php');
 include('header.php');
 session_start();
-include('essential.php');
 dbconnect();
 $gg=$_SESSION['patacode'];
 $gh=$_SESSION['pataroom'];

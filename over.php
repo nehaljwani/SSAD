@@ -1,7 +1,7 @@
 <?php
+include('essential.php');
 require("header.php");
 session_start();
-include('essential.php');
 dbconnect();
 echo "
 <center>

@@ -15,8 +15,9 @@ Creator: Sravyasri Garapati
 Creator: Sravya Popuri
 Creator: G V Chaitanya
 Creator: Hardhik Mallipeddi
-
-#Add yourselves, people
+Creator: M.Lalit
+Creator: P.Chaitanya
+Creator: Dilip reddy
 
 # TECHNOLOGY COLOPHON
 UI: HTML5, CSS3, Javascript, jQuery

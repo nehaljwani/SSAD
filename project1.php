@@ -1,4 +1,6 @@
-<?php include("header.php"); ?>
+<?php
+include('essential.php');
+include("header.php"); ?>
 <div class="post">
 <h2 class="title"></h2>
 <table id="box-table-a">
@@ -17,7 +19,6 @@ function temp ()
 	echo '<script type="text/javascript"> window.location.replace("lectures.php"); </script>';
 }
 
-include('essential.php');
 dbconnect();
 
 $file=fopen($_FILES["file1"]["tmp_name"],"r");
