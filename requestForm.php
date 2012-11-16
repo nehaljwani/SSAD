@@ -10,7 +10,7 @@
 <script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
 <script language="javascript" type="text/javascript" src="js/calendarDateInput.js"></script>
 <script language="javascript" type="text/javascript" src="js/addRequest.js"></script>
-<script language="javascript" type="text/javascript" src="js/autofill.js"></script>
+<!--script language="javascript" type="text/javascript" src="js/autofill.js"></script-->
 <form action="addRequest.php" id='reqForm' autocomplete="on" method="POST">
 	<table class='center'>
 	<tr><td> Name:</td><td><input type="text" name="creator" id="P1"><br> </tr>
@@ -128,9 +128,24 @@ echo generateBuildingList("buildingName");
 	<?php
 }
 else{
+
 	?>
-		
+	$(document).ready(function(){
+		document.forms[0].buildingName.options[0].selected=true;
+		document.forms[0].room.options[0].selected=true;
+		document.forms[0].eventTitle.options[0].selected=true;
+	});
 	<?php
+}
+if(getCurGroup()==6){
+	?>
+	$(document).ready(function(){
+			if($('#eventStartTime').val()>'17:00:00' ) {            
+					$('#confirmedBy :nth-child(2)').attr('selected','selected');
+			}
+	});
+	<?php
+
 }
 ?>
 

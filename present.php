@@ -204,6 +204,11 @@ $b=$_GET['tab'];
 while($i<$b)
 {
 	$c=$_POST[$i];
+	$sqlw=mysql_query("select distinct PrevRoom from Tablem where Code like '$c'");
+	while($row=mysql_fetch_array($sqlw))
+	{
+		$comarr[$i]=$row['PrevRoom'];
+	}
 	mysql_query("update Tablem set PrevRoom='COMMON' where code like '$c'");
 	$i++;
 }
@@ -333,6 +338,14 @@ if($flag>0)
 		<input type='submit' value='Resolve Clashes'>
 		</form>
 		";
+}
+$i=0;
+while($i<$b)
+{
+	$c=$_POST[$i];
+	$hh=$comarr[$i];
+	mysql_query("update Tablem set PrevRoom='$hh' where code like '$c'");
+	$i++;
 }
 mysql_close($con);
 include("footer.php");

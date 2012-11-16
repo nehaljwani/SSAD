@@ -2,16 +2,31 @@
 include('essential.php');
 include('header.php'); 
 include("adminOnly.php");
+
+$query = "select * from CourseRooms";
+$result = execute($query);
+$row = mysql_fetch_array($result);
+$empty=0;
+if($row)
+{
+	$empty=0;
+}
+else
+{
+	$empty=1;
+}
+
+
 ?>
 <script type="text/javascript">
 
 function confirm_allocation()
 {
-	var conf = confirm("Allocation has been done already. Are you sure to Reallocate ?");
-	if(conf == true){
-		alert(conf);
-		window.location = 'predef.php';
-	}
+		var conf = confirm("Allocation has been done already. Are you sure to Reallocate ?");
+		if(conf == true)
+		{
+			window.location = 'predef.php';
+		}
 }
 
 </script>

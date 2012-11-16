@@ -6,11 +6,11 @@ dbconnect();
 $gg=$_SESSION['patacode'];
 $gh=$_SESSION['pataroom'];
 //echo "venky is $gh";
-$result=mysql_query("select * from CourseRooms where Code='$gg' and Study like 'Courses'");
+$result=mysql_query("select * from CourseRooms where Code='$gg' and Study like 'Course'");
 while($req=mysql_fetch_array($result)){
 	mysql_query("DELETE FROM Instances WHERE hash='".$req['hash']."'");
 }
-mysql_query("delete from CourseRooms where Code='$gg' and Study like 'Courses'");
+mysql_query("delete from CourseRooms where Code='$gg' and Study like 'Course'");
 // nehal func.
 $num60=0;$num100=0;
 $sql_60 = mysql_query("select * from Room where capacity<=60 and description not like 'Lab'");
