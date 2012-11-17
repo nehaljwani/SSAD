@@ -2,7 +2,9 @@
 session_start();
 include("essential.php");
 include("header.php");
+include("adminOnly.php");
 dbconnect();
+echo "<h2 align='left'>labs</h2><br/> ";
 $a=$_SESSION['tuttype'];
 $b=$_SESSION['tutcode'];
 $c=$_SESSION['tutname'];
@@ -72,20 +74,20 @@ if($g==="Edit")
 		<html>
 		<body>
 		<center>
-		<h2 id='myBig'>Type :$a<br><br>Code :$b<br>Name :$c<br><br></h2>
+		<h2 id='myBig'>Type : $a<br><br>Code : $b<br>Name : $c<br><br></h2>
 		<form action='lab6.php' method='post'> ";
 	if($flag===1)
 	{
 		echo "
 			<table border='0'>
-			<tr>
+			<thead>
 			<th width='$j'>S.No</th>
 			<th width='$j'>Day</th>
 			<th width='$j'>Start Time</th>
 			<th width='$j'>End Time</th>
-			<th width='$j'>Lab</th>
 			<th width='$j'>Section</th>
-			</tr>
+			<th width='$j'>Lab
+			</thead>
 			";
 		$i=1;
 		$sql=mysql_query("select * from CourseRooms where Code='$b' and Study='Lab'");
@@ -131,10 +133,9 @@ if($g==="Edit")
 		</td></select>
 		<td align='center'><input type='text' value='$z12' name='st' size=1></td>
 		<td align='center'><input type='text' value='$z13' name='et' size=1></td>
-		<td align='center'><select></select></td>
 		<td align='center'><input type='text' value='$z15' name='sec' size=1></td>
 		</tr></table>
-		<br><br><input type='submit' value='Check Labs'>";
+		<br><br><input type='submit' value='Show Available Labs'>";
 }
 if($g==="Add a Lab")
 {
@@ -142,18 +143,18 @@ if($g==="Add a Lab")
 		<html>
 		<body>
 		<center>
-		<h2 id='myBig'>Type :$a<br><br>Code :$b<br>Name :$c<br><br></h2>
+		<h2 id='myBig'>Type : $a<br><br>Code : $b<br>Name : $c<br><br></h2>
 		<form action='lab6.php' method='post'> ";
 		echo "
 			<table border='0'>
-			<tr>
+			<thead>
 			<th width='$j'>S.No</th>
 			<th width='$j'>Day</th>
 			<th width='$j'>Start Time</th>
 			<th width='$j'>End Time</th>
-			<th width='$j'>Lab</th>
 			<th width='$j'>Section</th>
-			</tr>
+			<th width='$j'>Lab</th>
+			</thead>
 			";
 		$i=1;
 		$sql=mysql_query("select * from CourseRooms where Code='$b' and Study='Lab'");
@@ -170,8 +171,8 @@ if($g==="Add a Lab")
 				<td width='$j' align='center'>$z1</td>
 				<td width='$j' align='center'>$z2</td>
 				<td width='$j' align='center'>$z3</td>
-				<td width='$j' align='center'>$z4</td>
 				<td width='$j' align='center'>$z5</td>
+				<td width='$j' align='center'>$z4</td>
 				</tr>";
 			$i++;
 		}
@@ -188,10 +189,9 @@ if($g==="Add a Lab")
 		</td></select>
 		<td align='center'><input type='text' value='00.00' name='st' size=1></td>
 		<td align='center'><input type='text' value='00.00' name='et' size=1></td>
-		<td align='center'><select></select></td>
 		<td align='center'><input type='text' value='NONE' name='sec' size=1></td>
 		</tr></table>
-		<br><br><input type='submit' value='Check Labs'>";
+		<br><br><input type='submit' value='Show Available Labs'>";
 }
 echo "
 </form>

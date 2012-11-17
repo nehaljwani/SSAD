@@ -1,6 +1,7 @@
 <?php
 include("essential.php");
 include("header.php");
+include("adminOnly.php");
 dbconnect();
 session_start();
 $a=$_GET['tab'];

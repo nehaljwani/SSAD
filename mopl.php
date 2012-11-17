@@ -1,6 +1,7 @@
 <?php
 include('essential.php');
 include('header.php');
+include("adminOnly.php");
 session_start();
 $_SESSION["mod_cou"]=5;
 $a=$_POST['a'];

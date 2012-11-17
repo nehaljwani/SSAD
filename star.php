@@ -1,6 +1,7 @@
 <?php
 include('essential.php');
 include('header.php');
+include("adminOnly.php");
 session_start();
 dbconnect();
 $gg=$_SESSION['patacode'];

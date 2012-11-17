@@ -2,7 +2,9 @@
 session_start();
 include("essential.php");
 include("header.php");
+include("adminOnly.php");
 dbconnect();
+echo "<h2 align='left'> labs </h2><br/>";
 $a=$_SESSION['tuttype'];
 $b=$_SESSION['tutcode'];
 $c=$_SESSION['tutname'];
@@ -18,7 +20,7 @@ echo "
 <html>
 <body>
 <center>
-<h2 id='myBig'>Type :$a<br><br>Code :$b<br>Name :$c<br><br></h2>
+<h2 id='myBig'>Type : $a<br><br>Code : $b<br>Name : $c<br><br></h2>
 <form action='lab5.php' method='post'> ";
 if($flag===1)
 {
@@ -29,8 +31,8 @@ if($flag===1)
 		<th width='$j'>Day</th>
 		<th width='$j'>Start Time</th>
 		<th width='$j'>End Time</th>
-		<th width='$j'>Lab</th>
 		<th width='$j'>Section</th>
+		<th width='$j'>Lab</th>
 		</tr>
 		";
 	$sql=mysql_query("select * from CourseRooms where Code='$b' and Study='Lab'");
@@ -47,8 +49,8 @@ if($flag===1)
 			<td width='$j' align='center'>$z1</td>
 			<td width='$j' align='center'>$z2</td>
 			<td width='$j' align='center'>$z3</td>
-			<td width='$j' align='center'>$z4</td>
 			<td width='$j' align='center'>$z5</td>
+			<td width='$j' align='center'>$z4</td>
 			<td><input type='submit' value='Edit' name='$i'></td>
 			<td><input type='submit' value='Delete' name='$i'></td>
 			</tr>";

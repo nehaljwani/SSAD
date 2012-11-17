@@ -1,7 +1,9 @@
 <?php
 include("essential.php");
 include("header.php");
+include("adminOnly.php");
 dbconnect();
+echo "<h2 align='left'> labs </h2><br/>";
 session_start();
 $a=$_POST['day'];
 $b=$_POST['st'];
@@ -16,7 +18,6 @@ $_SESSION['tutet']=$c;
 $_SESSION['tutpr']=$d;
 $j=150;
 $m=0;
-
 $val=0;
 $sql_60 = mysql_query("select * from Room where description='Lab'");
 while($row_60=mysql_fetch_array($sql_60))
@@ -52,18 +53,18 @@ while($m<$val)
 }
 echo "
 <center>
-<h2 id='myBig'>Type :$f<br><br>Code :$e<br>Name :$g<br><br></h2>
+<h2 id='myBig'>Type : $f<br><br>Code : $e<br>Name : $g<br><br></h2>
 <form action='lab7.php' method='post'> ";
 echo "
 <table border='0'>
-<tr>
+<thead>
 <th width='$j'>S.No</th>
 <th width='$j'>Day</th>
 <th width='$j'>Start Time</th>
 <th width='$j'>End Time</th>
-<th width='$j'>Lab</th>
 <th width='$j'>Section</th>
-</tr>
+<th width='$j'>Lab</th>
+</thead>
 ";
 $i=1;
 $sql=mysql_query("select * from CourseRooms where Code='$e' and Study='Lab'");
@@ -89,6 +90,7 @@ echo "<tr><td align='center'>$i</td>
 <td align='center' width='$j'>$a</td>
 <td align='center' width='$j'>$b</td>
 <td align='center' width='$j'>$c</td>
+<td align='center' width='$j'>$d</td>
 <td align='center' width='$j'><select name='room'>";
 for($i=1;$i<$rooms;$i++)
 {
@@ -97,7 +99,6 @@ for($i=1;$i<$rooms;$i++)
 }
 echo "
 </select></td>
-<td align='center' width='$j'>$d</td>
 </tr></table>";
 echo "
 <br><br><input type='submit' value='Allot Lab'>

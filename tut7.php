@@ -1,7 +1,8 @@
 <?php
 include("essential.php");
-dbconnect();
 include("header.php");
+include("adminOnly.php");
+dbconnect();
 session_start();
 $a=$_SESSION['tutcode'];
 $b=$_SESSION['tutname'];

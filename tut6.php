@@ -1,7 +1,10 @@
 <?php
 include('essential.php');
 include('header.php');
+include("adminOnly.php");
+dbconnect();
 session_start();
+echo "<h2 align='left'> tutorials </h2><br/>";
 $a=$_POST['day'];
 $b=$_POST['st'];
 $c=$_POST['et'];
@@ -76,8 +79,6 @@ while($m<$num60)
 	$m++;
 }
 echo "
-<html>
-<body>
 <center>
 <h2 id='myBig'>Type :$f<br><br>Code :$e<br>Name :$g<br><br></h2>
 <form action='tut7.php' method='post'> ";
@@ -107,8 +108,8 @@ while($row=mysql_fetch_array($sql))
 		<td width='$j' align='center'>$z1</td>
 		<td width='$j' align='center'>$z2</td>
 		<td width='$j' align='center'>$z3</td>
-		<td width='$j' align='center'>$z5</td>
 		<td width='$j' align='center'>$z4</td>
+		<td width='$j' align='center'>$z5</td>
 		</tr>";
 	$i++;
 }

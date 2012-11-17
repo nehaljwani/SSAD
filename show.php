@@ -1,6 +1,7 @@
 <?php
 include('essential.php');
 include("header.php"); 
+include("adminOnly.php");
 session_start();
 echo"
 <div class='post'>

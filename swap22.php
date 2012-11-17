@@ -1,6 +1,7 @@
 <?php
 include("essential.php");
 include("header.php");
+include("adminOnly.php");
 dbconnect();
 session_start();
 //include "swap1.php";
@@ -13,43 +14,20 @@ while($row=mysql_fetch_array($sql1))
 	$p1=$row['Room'];
 }
 $sql=mysql_query("select * from CourseRooms where Code='$c2' and Study='course'");
-$cour=0;
 while($row=mysql_fetch_array($sql))
 {
 	$b=$row['StartTime'];
 	$c=$row['EndTime'];
 	$a=$row['Day'];
-	//	echo "1".$row['Code']." ".$a." ".$b." ".$c."<br>";
+//	echo "1".$row['Code']." ".$a." ".$b." ".$c."<br>";
 	$sql2=mysql_query("select * from CourseRooms where Room='$p1' and Code not like '$c1' and Study='course'");
 	while($row1 = mysql_fetch_array($sql2))
 	{
-		//		echo "2".$row1['Code']." ".$row1['Day']." ".$row1['StartTime']." ".$row1['EndTime']."<br>";
+//		echo "2".$row1['Code']." ".$row1['Day']." ".$row1['StartTime']." ".$row1['EndTime']."<br>";
 		if((($row1['StartTime']>$b and $row1['StartTime']<$c) or ($row1['EndTime']>$b and $row1['EndTime']<$c) or ($row1['StartTime']>=$c and $row1['EndTime']<=$c) or ($row1['StartTime']<=$b and $row1['EndTime']>=$c)) and $row1['Day']===$a)
 		{
 			$flag=1;
-			$p=$row1['Code'];
-			for($mm=0;$mm<$cour;$mm++)
-			{
-				if($ho[$mm]===$p)
-				{
-					break;
-				}
-				if($mm===$cour-1)
-				{
-					$ho[$cour]=$row1['Code'];
-					$ho1[$cour]=$row1['Name'];
-					$ho2[$cour]=$row1['Room'];
-					$cour++;
-					break;
-				}
-			}
-			if($cour===0)
-			{
-				$ho[$cour]=$row1['Code'];
-				$ho1[$cour]=$row1['Name'];
-				$ho2[$cour]=$row1['Room'];
-				$cour++;
-			}
+			break;
 		}
 	}
 }
@@ -70,29 +48,7 @@ while($row=mysql_fetch_array($sql))
 		if((($row1['StartTime']>$b and $row1['StartTime']<$c) or ($row1['EndTime']>$b and $row1['EndTime']<$c) or ($row1['StartTime']>=$c and $row1['EndTime']<=$c) or ($row1['StartTime']<=$b and $row1['EndTime']>=$c)) and $row1['Day']===$a)
 		{
 			$flag=1;
-			$p=$row1['Code'];
-			for($mm=0;$mm<$cour;$mm++)
-			{
-				if($ho[$mm]===$p)
-				{
-					break;
-				}
-				if($mm===$cour-1)
-				{
-					$ho[$cour]=$row1['Code'];
-					$ho1[$cour]=$row1['Name'];
-					$ho2[$cour]=$row1['Room'];
-					$cour++;
-					break;
-				}
-			}
-			if($cour===0)
-			{
-				$ho[$cour]=$row1['Code'];
-				$ho1[$cour]=$row1['Name'];
-				$ho2[$cour]=$row1['Room'];
-				$cour++;
-			}
+			break;
 		}
 	}
 }
@@ -110,12 +66,7 @@ if($flag===0)
 }
 else
 {
-	echo "<center><h1 id='myBig'>CLASHES OCCUR FOR COURSES :<br>";
-	for($i=0;$i<$cour;$i++)
-	{
-		echo $ho[$i]."-".$ho1[$i]." ".$ho2[$i]."<br>";
-	}
-	echo "	STILL CONTINUE?<br><br>
+	echo "<center><h1 id='myBig'>CLASHES OCCUR!<br><br>STILL CONTINUE?<br><br>
 		<form action='swap3.php' method='post'>
 		<input type='submit' value='YES' name=1>
 		<input type='submit' value='NO' name=1></h2></center>

@@ -1,7 +1,6 @@
 <?php
 include('essential.php');
 include("header.php"); 
-include("adminOnly.php");
 dbconnect();
 /*
 $sql="CREATE TABLE clash
@@ -200,18 +199,9 @@ if($flag1===0)
 	echo "<br><h3>NONE</h3><br>";
 }
 $sql=mysql_query("drop view PG1");
-$i=0;
-$b=$_GET['tab'];
-while($i<$b)
-{
-	$c=$_POST[$i];
-	mysql_query("update Tablem set PrevRoom='COMMON' where code like '$c'");
-	$i++;
-}
 $sql="CREATE VIEW UG2 AS select DISTINCT Tablem.Code,Tablem.Name,Type,Day,StartTime,EndTime,PrevRoom from Tablem,Tableme where Tablem.Code=Tableme.Code and Type like 'UG2'";
 mysql_query($sql,$con);
 echo "<h1>CLASHES OCCURED FOR UG2 ARE:</h1>";
-//$b=$_GET['tab'];
 $i=0;
 $sql1=mysql_query("select * from UG2");
 $count1=0;
@@ -232,7 +222,7 @@ while($i<$count1)
 	$j=$i+1;
 	while($j<$count1)
 	{
-		if($day[$i]===$day[$j] and ($pr[$i]===$pr[$j] or $pr[$i]==="COMMON" or $pr[$j]==="COMMON") and (($st[$i]<$st[$j] and $et[$i]>$st[$j]) or ($st[$i]<$et[$j] and $et[$i]>$et[$j]) or ($st[$i]>=$st[$j] and $et[$j]>=$et[$i])))
+		if($day[$i]===$day[$j] and ($pr[$i]===$pr[$j]) and (($st[$i]<$st[$j] and $et[$i]>$st[$j]) or ($st[$i]<$et[$j] and $et[$i]>$et[$j]) or ($st[$i]>=$st[$j] and $et[$j]>=$et[$i])))
 		{
 			$flag=1;
 			$flag1=1;
@@ -244,20 +234,12 @@ while($i<$count1)
 			{
 				$x="ECE";
 			}
-			else
-			{
-				$x="COMMON";
-			}
 			$z1=$code[$i];
 			$z2=$name[$i];
 			$z3=$day[$i];
 			$z4=$st[$i];
 			$z5=$et[$i];
 			$z6=$pr[$i];
-			if($x==="COMMON")
-			{
-				$z6="COMMON";
-			}
 			$aaa="insert into clash values ('$z1','$z2','$z3','$z4','$z5','UG2','$z6')";
 			mysql_query($aaa,$con);
 			//			echo $code[$i]." ".$name[$i]." ".$day[$i]." ".$st[$i]." ".$et[$i]." ".$x."\n";
@@ -292,20 +274,12 @@ while($i<$count1)
 			{
 				$x="ECE";
 			}
-			else
-			{
-				$x="COMMON";
-			}
 			$z1=$code[$j];
 			$z2=$name[$j];
 			$z3=$day[$j];
 			$z4=$st[$j];
 			$z5=$et[$j];
 			$z6=$pr[$j];
-			if($x==="COMMON")
-			{
-				$z6=$x;
-			}
 			$aaa="insert into clash values ('$z1','$z2','$z3','$z4','$z5','UG2','$z6')";
 			mysql_query($aaa,$con);
 			echo"

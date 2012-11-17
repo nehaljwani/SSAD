@@ -6,7 +6,7 @@ include('header.php'); ?>
 <center>
 <form name='predef' action="my.php" method='post'>
 <table align='center'>
-<script language="javascript" type="text/javascript" src="js/predef.js"></script> 
+<script language="javascript" type="text/javascript" src="js/predef.js"></script>
 <tr>
 
 <?php
@@ -23,7 +23,7 @@ while($row_60=mysql_fetch_array($sql_60))
 
 $i=0;
 echo "
-<td>UG1_GRPA &nbsp; &nbsp; &nbsp; </td> <td><select name='ug1seca'>";
+<td>UG1-GROUPA &nbsp; &nbsp; &nbsp; </td> <td><select name='UG1-GROUPA'>";
 while($i<$val)
 {
 	$h=$rooms[$i];
@@ -31,7 +31,7 @@ while($i<$val)
 	$i++;
 }
 echo "</select></td></tr>
-	<td>UG1_GRPB &nbsp; &nbsp; &nbsp; </td> <td><select name='ug1secb'>";
+	<td>UG1-GROUPB &nbsp; &nbsp; &nbsp; </td> <td><select name='UG1-GROUPB'>";
 $i=0;
 while($i<$val)
 {
@@ -40,7 +40,7 @@ while($i<$val)
 	$i++;
 }
 echo "</select></td></tr>
-<td>PG1 &nbsp; &nbsp; &nbsp; </td> <td><select name='pg1'>";
+<td>PG1 &nbsp; &nbsp; &nbsp; </td> <td><select name='PG1'>";
 $i=0;
 while($i<$val)
 {
@@ -49,7 +49,7 @@ while($i<$val)
 	$i++;
 }
 echo "</select></td></tr>
-<td>UG2_CSE &nbsp; &nbsp; &nbsp; </td> <td><select name='ug2cse'>";
+<td>UG2-CSE &nbsp; &nbsp; &nbsp; </td> <td><select name='UG2-CSE'>";
 $i=0;
 while($i<$val)
 {
@@ -58,7 +58,7 @@ while($i<$val)
 	$i++;
 }
 echo "</select></td></tr>
-	<td>UG2_ECE &nbsp; &nbsp; &nbsp; </td> <td><select name='ug2ece'>";
+	<td>UG2-ECE &nbsp; &nbsp; &nbsp; </td> <td><select name='UG2-ECE'>";
 $i=0;
 while($i<$val)
 {

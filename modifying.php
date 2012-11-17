@@ -2,6 +2,7 @@
 include("essential.php");
 session_start();
 include('header.php');
+include("adminOnly.php");
 echo "
 <center>
 <h1>MODIFYING A COURSE<br><br></h1>

@@ -1,5 +1,7 @@
 <?php
 include('essential.php');
+include("header.php");
+include("adminOnly.php");
 $a=$_POST['a'];
 dbconnect();
 mysql_query("DELETE FROM Instances WHERE eventTitle='$a'");

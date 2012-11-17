@@ -1,6 +1,8 @@
 <?php
 session_start();
 include('essential.php');
+include("header.php");
+include("adminOnly.php");
 dbconnect();
 $a=$_POST['1'];
 if($a==="Allocate Same Room")

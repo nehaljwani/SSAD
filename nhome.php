@@ -286,7 +286,7 @@ A
 
 }
         if($h['appStatus']=='Accepted' && $strttime < $endtime){
-while($strttime <= $h['eventEndTime'] and $strttime < $endtime)
+while($strttime < $h['eventEndTime'] and $strttime < $endtime)
 {
                 echo "<td><a class='button red' style='width:20px;height:20px' href='details.php?id=".$h['reqNo']."&roomName=".$h['room']."&eventStartDate=".$h['eventStartDate']."&eventEndDate=".$h['eventEndDate']."&eventStartTime=".$h['eventStartTime']."&eventEndTime=".$h['eventEndTime']."&eventTitle=".$h['eventTitle']."'> ".$h['eventTitle']."</a></td>";
 $strttime = gmdate("H:i:s",(strtotime($strttime)-strtotime("00:00:00"))+1800);

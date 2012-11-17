@@ -1,6 +1,7 @@
 <?php
 include("essential.php");
 include("header.php");
+include("adminOnly.php");
 dbconnect();
 session_start();
 include("lab1_nocss.php");
@@ -8,7 +9,7 @@ $a=$_POST['a'];
 $_SESSION['tuttype']=$a;
 echo "
 <center>
-<br><h2>SELECT COURSE :</h2>
+<br><h1 id='myBig'>SELECT COURSE :</h2><br/>
 <form action='lab3.php' method='post'>
 ";
 $sql="select DISTINCT Tablem.Code,Tablem.Name from Tablem,Tableme where Tablem.Code=Tableme.Code and Type='$a'";

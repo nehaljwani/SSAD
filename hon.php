@@ -1,5 +1,7 @@
 <?php
 include("essential.php");
+include("header.php");
+include("adminOnly.php");
 session_start();
 $code=$_POST['a'];
 dbconnect();

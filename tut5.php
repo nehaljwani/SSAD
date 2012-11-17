@@ -1,8 +1,10 @@
 <?php
 include("essential.php");
 include("header.php");
+include("adminOnly.php");
 session_start();
 dbconnect();
+echo "<h2 align='left'> tutorials </h2><br/>";
 $a=$_SESSION['tuttype'];
 $b=$_SESSION['tutcode'];
 $c=$_SESSION['tutname'];
@@ -72,7 +74,7 @@ if($g==="Edit")
 		<html>
 		<body>
 		<center>
-		<h2 id='myBig' >Type :$a<br><br>Code :$b<br>Name :$c<br><br></h2>
+		<h2 id='myBig' >Type : $a<br><br>Code : $b<br>Name : $c<br><br></h2>
 		<form action='tut6.php' method='post'> ";
 	if($flag===1)
 	{
@@ -141,7 +143,7 @@ if($g==="Add a Tutorial")
 		<html>
 		<body>
 		<center>
-		<h2 id='myBig'>Type :$a<br><br>Code :$b<br>Name :$c<br><br></h2>
+		<h2 id='myBig'>Type : $a<br><br>Code : $b<br>Name : $c<br><br></h2>
 		<form action='tut6.php' method='post'> ";
 		echo "
 			<table border='0' >

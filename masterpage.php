@@ -1,6 +1,8 @@
 <?php 
 include('essential.php');
-include('header.php'); ?>
+include('header.php');
+include("adminOnly.php");
+?>
 
 <form name='predef' action="my.php" method='post'>
 <table align='left'>

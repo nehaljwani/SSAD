@@ -40,10 +40,11 @@ function confirm_allocation()
 <tr>
 <td><li><a href="file.php" id="mybody">File Upload</a></li><br/></td></tr><br/>
 <tr>
-<td><li><a href="a.php" id="mybody">Clashes</a></li><br></td>
+<td><li><a href="present.php" id="mybody">Clashes</a></li><br></td>
 </tr>
 <tr>
-	<?php 
+<?php 
+
 if(!$empty)
 {
 	echo "<td><li><a href='#' onclick='confirm_allocation()' id='mybody'>Allocate</li><br></td></tr>";

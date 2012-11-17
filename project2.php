@@ -1,6 +1,7 @@
 <?php
 include('essential.php');
 include("header.php");
+include("adminOnly.php");
 ?>
 <div class="post">
 <h2 class="title"></h2>

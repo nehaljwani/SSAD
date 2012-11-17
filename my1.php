@@ -2,7 +2,6 @@
 include("essential.php");
 session_start();
 include("header.php"); 
-include("adminOnly.php");
 //print_r($_POST);
 ?>
 <div class="post">
@@ -45,24 +44,10 @@ while($row_100=mysql_fetch_array($sql_100))
 //$R60=array("H101","H102","H201");
 //$R100=array("SH1","SH2","CR1","CR2");
 $sql=mysql_query("select * from Tablet where Type='UG1' and PrevRoom like 'SH1' order by Code");
-$ug1ar=$_POST["UG1-GROUPA"];
-
+$ug1ar=$_POST["ug1seca"];
 // hard coding for FSIS and Seminars.
-$sql_block = mysql_query("select * from Room");
-while($row_blk=mysql_fetch_array($sql_block))
-{
-	$fg=$row_blk['roomName'];
-//	mysql_query("insert into CourseRooms values ('N/A','Seminar Talks',"$row_blk['roomName']",'Mon','15.30','17.00','Talks',"$row_blk['roomName']",'Talks','')");
-	mysql_query("insert into CourseRooms values ('N/A','Seminar Talks','$fg','Mon','15.30','17.00','Talks','$fg','Talks','')");
-}
-
-// hard coding for FSIS and Seminars.
-$sql_block = mysql_query("select * from Room");
-while($row_blk=mysql_fetch_array($sql_block))
-{
-	$fg=$row_blk['roomName'];
-	mysql_query("insert into CourseRooms values ('N/A','FSIS','$fg','Thu','17.00','18.00','Talks','$fg','Talks','')");
-}
+//mysql_query("insert into CourseRooms values ('$z1','Seminar Talks','$z3','$z4','$z5','$z6','$z7','$z8','Course','')");
+//mysql_query("insert into CourseRooms values ('$z1','$z2','$z3','$z4','$z5','$z6','$z7','$z8','Course','')");
 
 while($row=mysql_fetch_array($sql))
 {
@@ -77,7 +62,7 @@ while($row=mysql_fetch_array($sql))
 	mysql_query("insert into CourseRooms values ('$z1','$z2','$z3','$z4','$z5','$z6','$z7','$z8','Course','')");
 }
 $sql=mysql_query("select * from Tablet where Type='UG1' and PrevRoom like 'CR2' order by Code");
-$ug1br=$_POST["UG1-GROUPB"];
+$ug1br=$_POST["ug1secb"];
 //echo "hi";
 //echo $ug1br;
 //echo "he";
@@ -94,8 +79,8 @@ while($row=mysql_fetch_array($sql))
 	mysql_query("insert into CourseRooms values ('$z1','$z2','$z3','$z4','$z5','$z6','$z7','$z8','Course','')");
 	// func. call
 }
-$sql=mysql_query("select * from Tablet where Type='UG2' and (PrevRoom like 'SH2' or PrevRoom like 'COMMON')order by Code");
-$ug2cr=$_POST["UG2-CSE"];
+$sql=mysql_query("select * from Tablet where Type='UG2' and PrevRoom like 'SH2' order by Code");
+$ug2cr=$_POST["ug2cse"];
 while($row=mysql_fetch_array($sql))
 {
 	$z1=$row['Code'];
@@ -110,7 +95,7 @@ while($row=mysql_fetch_array($sql))
 	// func. call
 }
 $sql=mysql_query("select * from Tablet where Type='UG2' and PrevRoom like '101' order by Code");
-$ug2er=$_POST["UG2-ECE"];
+$ug2er=$_POST["ug2ece"];
 while($row=mysql_fetch_array($sql))
 {
 	$z1=$row['Code'];
@@ -125,7 +110,7 @@ while($row=mysql_fetch_array($sql))
 	// func. call
 }
 $sql=mysql_query("select * from Tablet where Type='PG1' order by Code");
-$pg1r=$_POST["PG1"];
+$pg1r=$_POST["pg1"];
 while($row=mysql_fetch_array($sql))
 {
 	$z1=$row['Code'];

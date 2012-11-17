@@ -1,5 +1,7 @@
 <?php
 include("essential.php");
+include("header.php");
+include("adminOnly.php");
 dbconnect();
 $arr=array("Mon","Tue","Wed","Thu","Fri","Sat");
 $i=0;

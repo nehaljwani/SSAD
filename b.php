@@ -2,6 +2,7 @@
 $a=$_POST['number'];
 include("essential.php");
 include("header.php");
+include("adminOnly.php");
 dbconnect();
 //include("a_nocss.php");
 echo "

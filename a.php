@@ -1,6 +1,7 @@
 <?php
 include('essential.php');
 include('header.php');
+include("adminOnly.php");
 dbconnect();
 $sql=mysql_query("select distinct Name from Tablem where PrevRoom='COMMON'");
 echo "
@@ -19,8 +20,10 @@ if($c===0)
 	echo "<h3>NONE</h3><br>";
 }
 echo "
+<br/>
 <form action='b.php' method='post'>
 <h3>Number Of Common Courses for UG2 : <input type='text' name='number'></h3>
+<br/>
 <input type='submit' value='submit'>
 </form>
 </center>";

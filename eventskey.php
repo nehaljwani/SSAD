@@ -42,9 +42,11 @@ $x = $_POST['date_start'];
 $y = $_POST['date_end'];
 $hardhik = $_POST['keyword'];
 //echo $hardhik;
-//$query2 = "select Building.buildingName,Requests.eventDesc,eventStartTime,eventEndTime,room,eventStartDate,eventEndDate from Requests,Room,Building where appStatus = 'Accepted' AND Requests.room = Room.roomName AND Building.buildId = Room.buildingName AND Requests.eventDesc LIKE '%".$hardhik."%' AND ((eventStartDate <= DATE '".$x."' AND eventEndDate >= DATE '".$y."') OR (eventStartDate >= DATE '".$x."' AND eventEndDate >= DATE '".$y."' AND eventStartDate <= DATE '".$y."') OR (eventStartDate >= DATE '".$x."' AND eventEndDate <= DATE '".$y."') OR (eventStartDate <= DATE '".$x."' AND eventEndDate <= DATE '".$y."' AND eventEndDate >= DATE '".$x."'));";
-$query2 = "select Building.buildingName,Instances.eventDesc,eventStartTime,eventEndTime,room,eventStartDate,eventEndDate from Instances,Room,Building where Instances.room = Room.roomName AND Building.buildId = Room.buildingName AND (Instances.eventDesc like '%".$hardhik."%' or Instances.creator like '%.$hardhik.%') AND ((eventStartDate <= DATE '".$x."' AND eventEndDate >= DATE '".$y."') OR (eventStartDate >= DATE '".$x."' AND eventEndDate >= DATE '".$y."' AND eventStartDate <= DATE '".$y."') OR (eventStartDate >= DATE '".$x."' AND eventEndDate <= DATE '".$y."') OR (eventStartDate <= DATE '".$x."' AND eventEndDate <= DATE '".$y."' AND eventEndDate >= DATE '".$x."'));";
-$result9=execute($query2);
+$query2 = "select Building.buildingName,Requests.eventDesc,eventStartTime,eventEndTime,room,eventStartDate,eventEndDate from Requests,Room,Building where appStatus = 'Accepted' AND Requests.room = Room.roomName AND Building.buildId = Room.buildingName AND (Requests.creator LIKE '%".$hardhik."%' OR Requests.eventDesc LIKE '%".$hardhik."%') AND ((eventStartDate <= DATE '".$x."' AND eventEndDate >= DATE '".$y."') OR (eventStartDate >= DATE '".$x."' AND eventEndDate >= DATE '".$y."' AND eventStartDate <= DATE '".$y."') OR (eventStartDate >= DATE '".$x."' AND eventEndDate <= DATE '".$y."') OR (eventStartDate <= DATE '".$x."' AND eventEndDate <= DATE '".$y."' AND eventEndDate >= DATE '".$x."'));";
+//$query2 = "select Building.buildingName,Instances.eventDesc,eventStartTime,eventEndTime,room,eventStartDate,eventEndDate from Instances,Room,Building where Instances.room = Room.roomName AND Building.buildId = Room.buildingName AND (Instances.eventDesc LIKE '%".$hardhik."%' OR Instances.creator LIKE '%".$hardhik."%') AND ((eventStartDate <= DATE '".$x."' AND eventEndDate >= DATE '".$y."') OR (eventStartDate >= DATE '".$x."' AND eventEndDate >= DATE '".$y."' AND eventStartDate <= DATE '".$y."') OR (eventStartDate >= DATE '".$x."' AND eventEndDate <= DATE '".$y."') OR (eventStartDate <= DATE '".$x."' AND eventEndDate <= DATE '".$y."' AND eventEndDate >= DATE '".$x."'));";
+//echo $query2;
+//$result9=execute($query2);
+$result9 = mysql_query($query2);
 $y = mysql_num_rows($result9);
 if($y!=0){
 echo "<table id='box-table-a'>
@@ -64,6 +66,7 @@ else{
 	echo "<h2>There are no results matching your query.</h2>";
 	}
 
+//while($y!=0)
 while($y!=0)
 {
 $row3 = mysql_fetch_assoc($result9);

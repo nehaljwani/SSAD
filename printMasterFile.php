@@ -1,6 +1,7 @@
 <?php
 include("essential.php");
 include("header.php");
+include("adminOnly.php");
 dbconnect();
 ?>
 <h2> Master-File: </h2>

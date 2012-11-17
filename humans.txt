@@ -4,6 +4,7 @@
 # TEAM
 Application: Room Allocation Portal
 Demo Site: http://web.iiit.ac.in/~room_allocation/SSAD
+Mailing list: ra_ssad@googlegroups.com
 Creator: Ankush Jain
 Creator: Nehal J Wani
 Creator: Shubham Sangal

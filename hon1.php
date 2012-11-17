@@ -2,6 +2,7 @@
 session_start();
 include("essential.php");
 include("header.php");
+include("adminOnly.php");
 dbconnect();
 $saver=1;
 $rr=$_SESSION['modtyper'];

@@ -4,6 +4,7 @@ $_SESSION["del_cou"]=5;
 $a=$_POST['a'];
 include('essential.php');
 include('header.php');
+include("adminOnly.php");
 include "deleting_nocss.php";
 dbconnect();
 

@@ -1,6 +1,7 @@
 <?php
 include('essential.php');
 require("header.php");
+include("adminOnly.php");
 session_start();
 dbconnect();
 echo "
