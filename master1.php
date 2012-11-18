@@ -2,6 +2,7 @@
 include('essential.php');
 include('header.php');
 include('adminOnly.php'); 
+dbconnect();
 $a=$_POST['1'];
 if($a==="DELETE A COURSE")
 {
@@ -13,6 +14,6 @@ else if($a==="MODIFY A COURSE")
 }
 else
 {
-	
+	header('Location:master9.php');
 }
-?>
+include("footer.php")?>

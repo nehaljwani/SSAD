@@ -14,6 +14,9 @@ include("adminOnly.php");
 <td><li><a href="masterfile.php" class="mybody">Upload Master File</a></li><br></td>
 </tr>
 <tr>
+<td><li><a href="master.php" class="mybody">Modify Master File Details</a></li><br></td>
+</tr>
+<tr>
 <td><li><a href="configuration.php" class="mybody">Configuration Data</a></li><br></td>
 </tr>
                 </table>

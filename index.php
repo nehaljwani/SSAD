@@ -3,7 +3,7 @@
 <div class="post">
 <?php echo $boxMsg; ?>
 	<img src="images/logo_name.jpg" /><br /><hr>
-<h2 class="title">ROOM &nbsp; ALLOTMENT &nbsp; PORTAL</h2>
+<h2 class="title" style="text-transform:none;">Room Reservation Portal</h2>
 </div>
 <div class="post">
 	<div class="entry">
@@ -20,7 +20,7 @@
 	</table>
 	<input type="submit" name="submit" value="Submit">
 	</form-->
-	Welcome to Room Allocation Portal. <br /><br />You are logged in as <?php echo phpCAS::getUser(); ?>. <a href="?logout=true">Click here</a> to logout. <br /><br />Otherwise, click on the navigation links at the top or side to browse the portal. In case of any suggestions, queries, or bugs, contact us at ra_ssad@googlegroups.com.
+	Welcome to Room Allocation Portal. <br /><br />You are logged in as <?php echo phpCAS::getUser(); ?>. <a href="?logout=true">Click here</a> to logout. <br /><br />Click on the navigation links at the top or side to browse the portal. In case of any suggestions, queries, or bugs, contact us at ra_ssad@googlegroups.com.
 	</div>
 </div>
 <?php require_once('footer.php'); ?>

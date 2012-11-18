@@ -15,7 +15,7 @@ include('header.php'); ?>
 </tr>
 <td><li><a href="printAllottedRooms.php" id="mybody">View Allotted Rooms</a></li><br></td>
 </tr>
-<td><li><a href="printoutput.php" id="mybody">Consolidated View</a></li><br></td>
+<td><li><a href="printoutput1.php" id="mybody">Consolidated View</a></li><br></td>
 </tr>
                 </table>
                 </form>

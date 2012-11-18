@@ -1,8 +1,12 @@
 <?php
+include('essential.php');
+include('header.php');
+include('adminOnly.php'); 
+dbconnect();
 echo "
 <center>
 <h1>DELETE A COURSE<br><br></h1>
-<h2>SELECT TYPE OF COURSE :<br><br></h2>
+<h1 id='myBig'>SELECT TYPE OF COURSE :<br><br></h1>
 <form action='master3.php' method='post'>
 <input type='submit' value='UG1' name='a'>
 <input type='submit' value='UG2' name='a'>
@@ -14,4 +18,5 @@ echo "
 echo "
 </center>
 ";
+include("footer.php");
 ?>

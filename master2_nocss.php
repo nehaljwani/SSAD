@@ -1,13 +1,9 @@
 <?php
-include('essential.php');
-include('header.php');
-include('adminOnly.php'); 
-dbconnect();
 echo "
 <center>
-<h1>MODIFY A COURSE<br><br></h1>
-<h1 id='myBig'>SELECT TYPE OF COURSE :<br><br></h1>
-<form action='master6.php' method='post'>
+<h1>DELETE A COURSE<br><br></h1>
+<h2 id='myBig'>SELECT TYPE OF COURSE :<br><br></h2>
+<form action='master3.php' method='post'>
 <input type='submit' value='UG1' name='a'>
 <input type='submit' value='UG2' name='a'>
 <input type='submit' value='PG1' name='a'>
@@ -18,5 +14,4 @@ echo "
 echo "
 </center>
 ";
-include("footer.php");
 ?>

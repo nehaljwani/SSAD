@@ -1,9 +1,11 @@
 <?php
-include "master2.php";
+include('essential.php');
+include('header.php');
+dbconnect();
+include("master2_nocss.php");
+echo "<br/>";
 $a=$_POST['a'];
 echo "
-<html>
-<head>
 <script>
 function myFunction()
 {
@@ -28,7 +30,6 @@ echo "
 <input type='submit' onclick='myFunction()' value='Delete'>
 </form>
 </center>
-</body>
-</html>
 ";
+include("footer.php");
 ?>

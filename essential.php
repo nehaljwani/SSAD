@@ -544,7 +544,7 @@ function forward($name,$mail_to,$room_no,$request_id,$original_mail_id, $cc)
 		<html>
 		<body>
 		<p>".$body."</p>
-		<p> Click <a href=\"http://web.iiit.ac.in/~room_allocation/roomReservationSystem/SSAD/req_detail_hash.php?hash=".$hash."&gID={$gID}\"> here </a>to verify the request! </p>
+		<p> Click <a href=\"http://web.iiit.ac.in/~room_allocation/SSAD/req_detail_hash.php?hash=".$hash."&gID={$gID}\"> here </a>to verify the request! </p>
 		\n\n\n\nCheers,\nAdmins\n\n\n\nMail generated at: ".$date."
 		</body>
 		</html>";

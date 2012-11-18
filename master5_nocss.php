@@ -1,8 +1,4 @@
 <?php
-include('essential.php');
-include('header.php');
-include('adminOnly.php'); 
-dbconnect();
 echo "
 <center>
 <h1>MODIFY A COURSE<br><br></h1>
@@ -18,5 +14,4 @@ echo "
 echo "
 </center>
 ";
-include("footer.php");
 ?>

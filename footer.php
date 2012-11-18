@@ -53,7 +53,7 @@
 	</div>
 	<!-- end #page -->
 <div id="footer">
-	<p><a href="humans.txt">Developed by Teams 17, 18 and 42</a> as a part of their SSAD Project. Template based on <a href="http://www.freecsstemplates.org">Trendybiz</a>.</p>
+	<p><a href="humans.txt">Developed by Teams <b>17, 18 and 42</b></a> as a part of their <b>SSAD</b> Project. Template based on <a href="http://www.freecsstemplates.org">Trendybiz</a>.</p>
 </div>
 <!-- end #footer -->
 </body>

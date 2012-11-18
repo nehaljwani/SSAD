@@ -1,15 +1,16 @@
 <?php
-include "master5.php";
+include('essential.php');
+include('header.php');
+include('adminOnly.php'); 
+dbconnect();
+include('master5_nocss.php');
 $a=$_POST['a'];
 echo "
-<html>
-<body>
 <center>
-<br>SELECT COURSE :<br>
+<h1 id='myBig'><br>SELECT COURSE :<br><br></h1>
 <form action='master7.php' method='post'>
 ";
 $sql="select DISTINCT Code,Name from Tableme where Type='$a'";
-$_SESSION['modtype']=$a;
 $result = mysql_query($sql);
 echo "<select name='a'>";
 while ($row = mysql_fetch_array($result)) 
@@ -22,7 +23,6 @@ echo "
 <input type='submit' value='Modify'>
 </form>
 </center>
-</body>
-</html>
 ";
+include("footer.php");
 ?>
